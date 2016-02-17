@@ -8,9 +8,9 @@
 
 #define DATAPATH "Resources/Data/"
 #define TEXTPATH "Resources/Texts/"
-#define SCENEPATH "Resources/Scenes/"
 #define SHADERPATH "Resources/Shaders/"
 #define TEXTURETPATH "Resources/Textures/"
+#define LVLDESCIPTPATH "Resources/LevelDescriptors/"
 #define TEXTUREDESCRIPTIONEXTENSION ".description"
 
 #define TILESIZE 16

@@ -5,6 +5,10 @@
 // sf::Texture        Resources::....
 sf::Texture            Resources::key;
 sf::Texture            Resources::talkBox;
+sf::Texture            Resources::doors_OX;
+sf::Texture            Resources::doors_OO;
+sf::Texture            Resources::doors_XX;
+
 sf::Shader             Resources::cInvert;
 
 sf::Font               Resources::pauseMenuFont;
@@ -17,7 +21,10 @@ void Resources::load() {
     //LOAD THE INFORMATION IN THE VARIABLES
     //...loadFromFile(); or whatever
     key.loadFromFile                    (TEXTURETPATH+std::string("key.png"));
-    //talkBox.loadFromFile                (TEXTURETPATH+std::string("talkBox.png"));
+    talkBox.loadFromFile                (TEXTURETPATH+std::string("talkBox.png"));
+    doors_OX.loadFromFile               (TEXTURETPATH+std::string("doors_OX.png"));
+    doors_OX.loadFromFile               (TEXTURETPATH+std::string("doors_OO.png"));
+    doors_OX.loadFromFile               (TEXTURETPATH+std::string("doors_XX.png"));
 
    // descriptions = std::vector<SpriteSheetDescription>(spriteDescriptionsQtt);
    // descriptions[linkSpritesDescriptions]       = loadDescription("linkSheet");

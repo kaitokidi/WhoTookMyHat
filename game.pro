@@ -31,7 +31,8 @@ SOURCES += main.cpp \
     StatsBar.cpp \
     TextBoxManager.cpp \
     InputManager.cpp \
-    SceneTest.cpp
+    SceneTest.cpp \
+    Background.cpp
 
 HEADERS += utils.hpp \
         Resources.cpp \
@@ -57,4 +58,5 @@ HEADERS += utils.hpp \
     StatsBar.hpp \
     TextBoxManager.hpp \
     InputManager.hpp \
-    SceneTest.hpp
+    SceneTest.hpp \
+    Background.hpp
