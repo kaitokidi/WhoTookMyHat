@@ -1,0 +1,19 @@
+// fragment shader
+
+uniform sampler2D textureImage;
+
+void main( void )
+{
+	mat3 window = mat3(
+		gl_TexCoord[0].st-(1,1), gl_TexCoord[0].st-(0,1), gl_TexCoord[0].st-(-1,1),
+		gl_TexCoord[0].st-(1,0), gl_TexCoord[0].st-(0,0), gl_TexCoord[0].st-(-1,0),
+		gl_TexCoord[0].st-(1,-1), gl_TexCoord[0].st+(0,1), gl_TexCoord[0].st+(1,1)
+    );
+	
+	mat3 sobel = mat3 (
+		-2,0,2,
+		-1,0,1,
+		-2,0,2
+	);
+	gl_FragColor = texture2D(textureImage, gl_TexCoord[0].st );
+}

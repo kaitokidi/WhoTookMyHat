@@ -1,0 +1,7 @@
+DefaultSign 
+I'm a Sign
+#
+DangerSign
+Danger!!!
+#
+END
