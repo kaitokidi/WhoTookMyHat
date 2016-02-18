@@ -16,15 +16,18 @@ sf::Font               Resources::pauseMenuFont;
 std::vector<SpriteSheetDescription> Resources::descriptions;
 
 
+void printError(std::string s){
+    std::cout << "Resources:: Error loading... " << std::endl;
+}
 
 void Resources::load() {
     //LOAD THE INFORMATION IN THE VARIABLES
     //...loadFromFile(); or whatever
-    key.loadFromFile                    (TEXTURETPATH+std::string("key.png"));
-    talkBox.loadFromFile                (TEXTURETPATH+std::string("talkBox.png"));
-    doors_OX.loadFromFile               (TEXTURETPATH+std::string("doors_OX.png"));
-    doors_OX.loadFromFile               (TEXTURETPATH+std::string("doors_OO.png"));
-    doors_OX.loadFromFile               (TEXTURETPATH+std::string("doors_XX.png"));
+    if(! key.loadFromFile                    (TEXTURETPATH+std::string("key.png"))      ) printError("keyTex");
+    if(! talkBox.loadFromFile                (TEXTURETPATH+std::string("talkBox.png"))  ) printError("talkbTex");
+    if(! doors_OX.loadFromFile               (TEXTURETPATH+std::string("doors_OX.png")) ) printError("doorOXTex");
+    if(! doors_OO.loadFromFile               (TEXTURETPATH+std::string("doors_OO.png")) ) printError("doorOOTex");
+    if(! doors_XX.loadFromFile               (TEXTURETPATH+std::string("doors_XX.png")) ) printError("doorXXTex");
 
    // descriptions = std::vector<SpriteSheetDescription>(spriteDescriptionsQtt);
    // descriptions[linkSpritesDescriptions]       = loadDescription("linkSheet");
@@ -38,7 +41,7 @@ void Resources::load() {
 
 //ONLY USED IF USING DESCRIPTORS
 SpriteSheetDescription Resources::loadDescription(std::string fileName) {
-    std::string filePath = TEXTURETPATH + fileName + TEXTUREDESCRIPTIONEXTENSION;
+/*    std::string filePath = TEXTURETPATH + fileName + TEXTUREDESCRIPTIONEXTENSION;
     SpriteSheetDescription ret;
     // leer el fichero
     std::ifstream file(filePath);
@@ -94,5 +97,5 @@ SpriteSheetDescription Resources::loadDescription(std::string fileName) {
         i += 4;
     }
 
-    return ssd;
+    return ssd;*/
 }

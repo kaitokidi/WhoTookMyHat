@@ -32,7 +32,9 @@ SOURCES += main.cpp \
     TextBoxManager.cpp \
     InputManager.cpp \
     SceneTest.cpp \
-    Background.cpp
+    Background.cpp \
+    ScenePlayable.cpp \
+    Player.cpp
 
 HEADERS += utils.hpp \
         Resources.cpp \
@@ -59,4 +61,6 @@ HEADERS += utils.hpp \
     TextBoxManager.hpp \
     InputManager.hpp \
     SceneTest.hpp \
-    Background.hpp
+    Background.hpp \
+    ScenePlayable.hpp \
+    Player.hpp

@@ -6,6 +6,7 @@
 #include "Resources.hpp"
 #include "SceneTest.hpp"
 #include "SceneChanger.hpp"
+#include "ScenePlayable.hpp"
 #include "TextBoxManager.hpp"
 
 
@@ -24,18 +25,19 @@ public:
 
 
 private:
+    //Player _player
+    Scene* _lastScene;
+    Scene* _currentScene;
     sf::RenderWindow _window;
     std::map<std::string, Scene*> _scenes;
-    Scene* _currentScene;
-    Scene* _lastScene;
 
     //sf::Mutex _mutex;
-    //f::Thread* _thread;
+    //sf::Thread* _thread;
 
+    void initInput();
     void loadScenes();
     void loadScene(std::string sceneName);
 
-    void initInput();
 };
 
 #endif

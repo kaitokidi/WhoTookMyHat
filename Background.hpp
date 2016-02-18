@@ -11,10 +11,12 @@ class Background {
 
 public:
 
-    Background(std::string lvlDesc);
+    Background();
     ~Background();
+    Background(std::string lvlDesc);
+    void init(std::string lvlDesc);
     void readLevel(std::string lvlDesc);
-    void draw(sf::RenderTarget& target);
+    void draw(sf::RenderTarget *target);
 
 private:
 

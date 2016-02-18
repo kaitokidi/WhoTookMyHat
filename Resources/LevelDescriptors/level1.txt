@@ -1,0 +1,10 @@
+cave1
+0
+hat1.png
+hat2.png
+hat3.png
+$ END
+
+first there are the name of the background file
+then the number of hats achieved at this level
+then the images of the hats.
