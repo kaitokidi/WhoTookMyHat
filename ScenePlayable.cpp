@@ -1,11 +1,14 @@
 #include "Resources.hpp"
 #include "ScenePlayable.hpp"
 
-scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string next, std::string levelName)
+scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string next, std::string levelName, Player *player)
                                                     : Scene(g, w, sceneTypes::testScene, levelName)  {
     _view = _window->getDefaultView();
     initView(&_view, sf::Vector2i(1024,768));
 
+    _player = player;
+    _player->setHookPos(100,100);
+    _player->setPosition(200,200);
     _next = next;
     readLVL(levelName);
 
@@ -20,6 +23,7 @@ void scenePlayable::init(sf::Vector2f aux){
 
 void scenePlayable::update(float deltaTime){
     _timer += deltaTime;
+    _player->update(deltaTime);
 }
 
 void scenePlayable::processInput(){
@@ -32,6 +36,7 @@ void scenePlayable::processInput(){
 
 void scenePlayable::render(sf::RenderTarget *target){
     bg.draw(target);
+    _player->draw(target);
 }
 
 void scenePlayable::resizing(){
@@ -50,16 +55,11 @@ void scenePlayable::readLVL(std::string levelName){
 
         while (line[0] != '$') {
             if(line[0] != '#'){
-                //std::cout << "initializing bg" << std::endl;
-
                 bg.init(line);
-                //std::cout << "bg init" << std::endl;
-
             }
             std::getline (myfile,line);
             while(line[0] == '#') std::getline (myfile,line);
             _hatsOwned = myStoi(line);
-            //std::cout << "hats owned = " << _hatsOwned << std::endl;
 
             for(int i = 0; i < 3; ++i){
                 std::getline (myfile,line);

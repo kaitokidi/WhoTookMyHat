@@ -2,13 +2,14 @@
 #define SCENEPLAYABLE_HPP
 #include "utils.hpp"
 #include "Scene.hpp"
+#include "Player.hpp"
 #include "Background.hpp"
 
 class Game;
 
 class scenePlayable : public Scene {
 public:
-    scenePlayable(Game* g, sf::RenderWindow* w, std::string next, std::string levelName = "cave1");
+    scenePlayable(Game* g, sf::RenderWindow* w, std::string next, std::string levelName, Player * player);
 
     ~scenePlayable();
 
@@ -30,6 +31,7 @@ private:
     float _timer;
     Background bg;
     int _hatsOwned;
+    Player* _player;
     std::string _next;
     sf::Sprite _hats[3];
     sf::Texture _hatsT[3];

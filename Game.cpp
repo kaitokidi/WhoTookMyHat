@@ -73,7 +73,7 @@ void Game::loadScenes() {
 
     _scenes.insert(std::make_pair("test", new SceneTest(this, &_window, "test2")));
     _scenes.insert(std::make_pair("test2", new SceneTest(this, &_window, "cave1")));
-    _scenes.insert(std::make_pair("cave1", new scenePlayable(this, & _window, "test", "level1")));
+    _scenes.insert(std::make_pair("cave1", new scenePlayable(this, & _window, "test", "level1", &_player)));
 }
 
 void Game::loadScene(std::string sceneName) {

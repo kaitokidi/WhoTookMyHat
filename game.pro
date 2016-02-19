@@ -34,7 +34,10 @@ SOURCES += main.cpp \
     SceneTest.cpp \
     Background.cpp \
     ScenePlayable.cpp \
-    Player.cpp
+    Player.cpp \
+    Eyes.cpp \
+    Hook.cpp \
+    AnimatedCircle.cpp
 
 HEADERS += utils.hpp \
         Resources.cpp \
@@ -63,4 +66,7 @@ HEADERS += utils.hpp \
     SceneTest.hpp \
     Background.hpp \
     ScenePlayable.hpp \
-    Player.hpp
+    Player.hpp \
+    Eyes.hpp \
+    Hook.hpp \
+    AnimatedCircle.hpp

@@ -10,6 +10,8 @@ public:
     //DEFINE AS STATIC THE RESOURCES YOU WANT
     //static sf::Texture ...
     static sf::Texture key;
+    static sf::Texture eyes;
+    static sf::Texture chain;
     static sf::Texture talkBox;
     static sf::Texture doors_OX;
     static sf::Texture doors_OO;

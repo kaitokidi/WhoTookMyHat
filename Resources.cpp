@@ -4,6 +4,8 @@
 
 // sf::Texture        Resources::....
 sf::Texture            Resources::key;
+sf::Texture            Resources::eyes;
+sf::Texture            Resources::chain;
 sf::Texture            Resources::talkBox;
 sf::Texture            Resources::doors_OX;
 sf::Texture            Resources::doors_OO;
@@ -24,6 +26,8 @@ void Resources::load() {
     //LOAD THE INFORMATION IN THE VARIABLES
     //...loadFromFile(); or whatever
     if(! key.loadFromFile                    (TEXTURETPATH+std::string("key.png"))      ) printError("keyTex");
+    if(! eyes.loadFromFile                   (TEXTURETPATH+std::string("eyes.png"))     ) printError("eyes");
+    if(! chain.loadFromFile                  (TEXTURETPATH+std::string("chain.png"))    ) printError("chainTex");
     if(! talkBox.loadFromFile                (TEXTURETPATH+std::string("talkBox.png"))  ) printError("talkbTex");
     if(! doors_OX.loadFromFile               (TEXTURETPATH+std::string("doors_OX.png")) ) printError("doorOXTex");
     if(! doors_OO.loadFromFile               (TEXTURETPATH+std::string("doors_OO.png")) ) printError("doorOOTex");

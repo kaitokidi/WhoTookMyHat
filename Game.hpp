@@ -25,7 +25,7 @@ public:
 
 
 private:
-    //Player _player
+    Player _player;
     Scene* _lastScene;
     Scene* _currentScene;
     sf::RenderWindow _window;

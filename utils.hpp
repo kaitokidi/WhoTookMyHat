@@ -217,6 +217,25 @@ enum collisionMapMask {
   collisionMapMaskQtty = -1
 };
 
+namespace constant{
+    static const int tileSize = 30;
+    static const float gravity = 3.8;
+    static const float hookForce = 0.03;
+    static const float playerJump = 150;
+    static const float playerSpeed = 20;
+    static const float playerRadious = 30;
+    static const float playerMaxSpeed = 100;
+
+    static const float defense = 20;
+    static const float strength = 20;
+    static const float hitPoints = 200;
+    static const float magicPower = 20;
+    static const float resistence = 20;
+
+
+    static const float clientTimeOut = 5;
+}
+
 bool isInt(std::string s);
 
 int myStoi(std::string s);
