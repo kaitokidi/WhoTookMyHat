@@ -8,10 +8,6 @@ Game::Game() : _window(sf::VideoMode::getFullscreenModes()[0],"TOPKeK", sf::Styl
     _currentScene = nullptr;
 
     initInput();
-    Resources::load();
-    DataManager::load();
-    SoundManager::load();
-    TextBoxManager::load();
 
     SoundManager::setGlobalSoundVolumen(100.0f);
     SoundManager::setGlobalMusicVolumen(100.0f);
@@ -83,22 +79,25 @@ void Game::loadScene(std::string sceneName) {
 
 void Game::initInput() {
 
-    InputManager::bind(InputAction::menuUp, sf::Keyboard::Up);
+   /* InputManager::bind(InputAction::menuUp, sf::Keyboard::Up);
     InputManager::bind(InputAction::menuDown, sf::Keyboard::Down);
     InputManager::bind(InputAction::menuEnter, sf::Keyboard::Return);
     InputManager::bind(InputAction::menuEnter, 0, 0);  // Xbox A
     InputManager::bind(InputAction::menuBack, sf::Keyboard::Escape);
     InputManager::bind(InputAction::menuBack, 0, 1); // Xbox B
-    InputManager::bind(InputAction::menuMovement, 0, sf::Joystick::Axis::Y);
+    InputManager::bind(InputAction::menuMovement, 0, sf::Joystick::Axis::Y);*/
 
-    InputManager::bind(InputAction::up, sf::Keyboard::W);
-    InputManager::bind(InputAction::down, sf::Keyboard::S);
-    InputManager::bind(InputAction::left, sf::Keyboard::A);
+    InputManager::bind(InputAction::up,    sf::Keyboard::W);
+    InputManager::bind(InputAction::left,  sf::Keyboard::A);
+    InputManager::bind(InputAction::down,  sf::Keyboard::S);
     InputManager::bind(InputAction::right, sf::Keyboard::D);
+    InputManager::bind(InputAction::hook,  sf::Keyboard::Space);
+    InputManager::bind(InputAction::hook,  sf::Mouse::Right);
+    InputManager::bind(InputAction::shoot, sf::Keyboard::LShift);
     InputManager::bind(InputAction::pause, sf::Keyboard::Escape);
-    InputManager::bind(InputAction::action, sf::Keyboard::Space);
-    InputManager::bind(InputAction::action, 0, 0);  // Xbox A
 
+   // InputManager::bind(InputAction::action, 0, 0);  // Xbox A
+/*
     InputManager::bind(InputAction::p1movementX, 0, sf::Joystick::Axis::X);
     InputManager::bind(InputAction::p2movementX, 1, sf::Joystick::Axis::X);
     InputManager::bind(InputAction::p1movementY, 0, sf::Joystick::Axis::Y);
@@ -107,5 +106,5 @@ void Game::initInput() {
     InputManager::bind(InputAction::pause, 0, 7); // Xbox start
 
 	InputManager::bind(InputAction::reset, sf::Keyboard::F5);
-    InputManager::bind(InputAction::reset, 0, 6);
+    InputManager::bind(InputAction::reset, 0, 6);*/
 }

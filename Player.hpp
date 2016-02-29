@@ -6,6 +6,7 @@
 #include "Eyes.hpp"
 #include "Hook.hpp"
 #include "utils.hpp"
+#include "Background.hpp"
 #include "AnimatedCircle.hpp"
 
 class Player {
@@ -28,42 +29,37 @@ protected:
     sf::Vector2f mousePos;
     sf::Vector2f cameraPos;
 
-
     AnimatedCircle body;
     AnimatedCircle guide;
 
 public:
 
     Player();
-    Player(int id);
-    void setAngle(float a);
-    sf::Vector2f getPosition();
+
+    void update(float deltaTime, sf::Vector2i auxMousePos, Background *bg);
     void draw(sf::RenderTarget *w);
-    void setHookPos(sf::Vector2f pos);
-    void setPosition(sf::Vector2f pos);
-    void setHookPos(float posX, float posY);
-    void setPosition(float posX, float posY);
 
-    int actionW(){return -1;}
-    int actionS(){return -1;}
-    int actionCW(){return -1;}
-    int actionCS(){return -1;}
-
-    void setDistantHookPos();
     float getSpeed() const;
+    sf::Vector2f getPosition();
     sf::Vector2f getPos() const;
     sf::Vector2f getLookPos() const;
     sf::Vector2f getHookPos() const;
     sf::Vector2f getMousePos() const;
 
+    void setAngle(float a);
     void setSpeed(float value);
+
     void setPos(const sf::Vector2f &value);
-    void setHookPos(const sf::Vector2f &value);
     void setMousePos(const sf::Vector2f &value);
 
-    void update(float deltaTime);
-    //void update(sf::Packet &packet, float deltaTime);
+    void setPosition(float posX, float posY);
+    void setPosition(const sf::Vector2f pos);
 
+    void setDistantHookPos(sf::Vector2i mousePos, Background* bg);
+    void setHookPos(float posX, float posY);
+    void setHookPos(const sf::Vector2f value);
+
+    float getRadius();
 };
 
 #endif // PLAYER_HPP

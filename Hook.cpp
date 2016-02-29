@@ -5,7 +5,7 @@
 
 Hook::Hook(){
     simple = true;
-    size = 2;
+    size = 20;
 }
 
 Hook::Hook(float w){
@@ -65,6 +65,7 @@ void Hook::draw(sf::RenderTarget * window){
     }
     else {
         sprite.setTexture(texture);
+        makeTextureRepeteable();
         if(texture.isRepeated()){
             sprite.setTextureRect(sf::IntRect(0,0,getModule(destiny,origin),texture.getSize().y));
         }

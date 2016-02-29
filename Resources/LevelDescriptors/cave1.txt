@@ -4,6 +4,7 @@ doors
 OO
 #boundaries separated by next beeing left top width height
 boundaries
+next
 #limit left
 0
 0
@@ -18,7 +19,7 @@ next
 next
 #limit bot
 0
-730
+710
 1024
 40
 next
@@ -27,10 +28,11 @@ next
 0
 40
 770
+next
 #centralBar
-298
+300
 340
-432
+430
 60
 end
 $ End Of Description File

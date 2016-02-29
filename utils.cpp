@@ -18,6 +18,10 @@ bool myStob(std::string s) {
     return s != "0";
 }
 
+void print(std::string s){
+    std::cout << s << std::endl;
+}
+
 float difference(float a, float b){
     float c = a-b;
     if(c > 0) return c;
@@ -156,4 +160,9 @@ int getSign(float n) {
     if (n>0) return 1;
     else if (n<0) return -1;
     else return 0;
+}
+
+
+void log(std::string s){
+    std::cout << s << std::endl;
 }

@@ -26,7 +26,7 @@ public:
 
 
 private:
-    static SpriteSheetDescription loadDescription(std::string fileName);
+    static SpriteSheetDescription loadDescription(std::string);
 
 };
 

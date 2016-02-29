@@ -5,6 +5,8 @@ AnimatedCircle::AnimatedCircle(){
 }
 
 AnimatedCircle::AnimatedCircle(float radius=0, unsigned int pointCount=30){
+    circle.setOutlineThickness(4);
+    circle.setOutlineColor(sf::Color::Black);
     circle.setRadius(radius);
     circle.setPointCount(pointCount);
     circle.setOrigin(circle.getRadius(), circle.getRadius());

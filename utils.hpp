@@ -90,6 +90,8 @@ namespace InputAction {
       fairyAction   , 
       pause         ,
 	  reset			,
+      shoot         ,
+      hook          ,
       inputQtt
   };
 }
@@ -219,7 +221,8 @@ enum collisionMapMask {
 
 namespace constant{
     static const int tileSize = 30;
-    static const float gravity = 3.8;
+    static const float gravity = 4;
+    static const float friction = 2;
     static const float hookForce = 0.03;
     static const float playerJump = 150;
     static const float playerSpeed = 20;
@@ -235,6 +238,8 @@ namespace constant{
 
     static const float clientTimeOut = 5;
 }
+
+void log(std::string s);
 
 bool isInt(std::string s);
 
@@ -269,6 +274,8 @@ int getHorizontal(directions dir);
 int getVertical(directions dir);
 
 sf::Vector2f getRandBounce(float speed, directions dir);
+
+void print(std::string s);
 
 int getSign(float n);
 

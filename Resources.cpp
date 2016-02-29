@@ -19,7 +19,7 @@ std::vector<SpriteSheetDescription> Resources::descriptions;
 
 
 void printError(std::string s){
-    std::cout << "Resources:: Error loading... " << std::endl;
+    std::cout << "Resources:: Error loading... " << s << std::endl;
 }
 
 void Resources::load() {
@@ -27,7 +27,7 @@ void Resources::load() {
     //...loadFromFile(); or whatever
     if(! key.loadFromFile                    (TEXTURETPATH+std::string("key.png"))      ) printError("keyTex");
     if(! eyes.loadFromFile                   (TEXTURETPATH+std::string("eyes.png"))     ) printError("eyes");
-    if(! chain.loadFromFile                  (TEXTURETPATH+std::string("chain.png"))    ) printError("chainTex");
+    if(! chain.loadFromFile                  (TEXTURETPATH+std::string("hook.png"))    ) printError("chainTex");
     if(! talkBox.loadFromFile                (TEXTURETPATH+std::string("talkBox.png"))  ) printError("talkbTex");
     if(! doors_OX.loadFromFile               (TEXTURETPATH+std::string("doors_OX.png")) ) printError("doorOXTex");
     if(! doors_OO.loadFromFile               (TEXTURETPATH+std::string("doors_OO.png")) ) printError("doorOOTex");
@@ -40,11 +40,12 @@ void Resources::load() {
 
     if (!pauseMenuFont.loadFromFile("Resources/Fonts/font.ttf")) exit(EXIT_FAILURE);
 
+    std::cout << " Resources Loaded " << std::endl;
 }
 
 
 //ONLY USED IF USING DESCRIPTORS
-SpriteSheetDescription Resources::loadDescription(std::string fileName) {
+SpriteSheetDescription Resources::loadDescription(std::string) {
 /*    std::string filePath = TEXTURETPATH + fileName + TEXTUREDESCRIPTIONEXTENSION;
     SpriteSheetDescription ret;
     // leer el fichero

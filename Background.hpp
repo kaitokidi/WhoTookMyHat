@@ -12,22 +12,28 @@ class Background {
 public:
 
     Background();
-    ~Background();
     Background(std::string lvlDesc);
+
+    ~Background();
+
     void init(std::string lvlDesc);
+    bool colision(sf::Vector2f pos);
     void readLevel(std::string lvlDesc);
     void draw(sf::RenderTarget *target);
+    bool circleColision(sf::Vector2i pos, float rad);
+    sf::Vector2i getIntersection(sf::Vector2i mousePos);
 
+    bool colision(float x, float y);
 private:
 
-    bool doorOpenedL;
-    bool doorOpenedR;
+    bool _doorOpenedL;
+    bool _doorOpenedR;
 
-    sf::Sprite doors;
-    sf::Texture bTexture;
-    sf::Sprite background;
+    sf::Sprite _doors;
+    sf::Texture _bTexture;
+    sf::Sprite _background;
 
-    std::vector<sf::FloatRect> boundaries;
+    std::vector<sf::FloatRect> _boundaries;
 
 
 };
