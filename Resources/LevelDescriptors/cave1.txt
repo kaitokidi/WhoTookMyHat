@@ -19,9 +19,9 @@ next
 next
 #limit bot
 0
-710
+702
 1024
-40
+100
 next
 #limit right
 984
@@ -31,8 +31,8 @@ next
 next
 #centralBar
 300
-340
+342
 430
-60
+58
 end
 $ End Of Description File

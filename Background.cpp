@@ -43,35 +43,35 @@ void Background::draw(sf::RenderTarget *target){
     }
     target->draw(_doors);
 
- /* //DEBUG DRAW RED RECTANGLES
-    for(int i = 0; i < _boundaries.size(); ++i){
+    //DEBUG DRAW RED RECTANGLES
+  /*  for(int i = 0; i < _boundaries.size(); ++i){
         sf::RectangleShape RS(sf::Vector2f(_boundaries[i].width,_boundaries[i].height));
         RS.setPosition(sf::Vector2f(_boundaries[i].left,_boundaries[i].top));
         RS.setFillColor(sf::Color::Red);
         target->draw(RS);
     }
-    */
+*/
 }
 
-bool Background::circleColision(sf::Vector2i pos, float rad) {
+bool Background::circleColision(sf::Vector2f pos, float rad) {
     for(int i = 0; i < _boundaries.size(); ++i){
 
-        if(    _boundaries[i].contains(sf::Vector2f(pos.x+rad, pos.y))
-            || _boundaries[i].contains(sf::Vector2f(pos.x-rad, pos.y))
-            || _boundaries[i].contains(sf::Vector2f(pos.x, pos.y+rad))
-            || _boundaries[i].contains(sf::Vector2f(pos.x, pos.y-rad))
+        if(    _boundaries[i].contains(pos.x+rad, pos.y)
+            || _boundaries[i].contains(pos.x-rad, pos.y)
+            || _boundaries[i].contains(pos.x, pos.y+rad)
+            || _boundaries[i].contains(pos.x, pos.y-rad)
                                                                     ){
             return true;
         }
-        else if(       getModule(sf::Vector2f(pos), sf::Vector2f(_boundaries[i].left,_boundaries[i].top)) < rad
-                    || getModule(sf::Vector2f(pos), sf::Vector2f(_boundaries[i].left+_boundaries[i].width,_boundaries[i].top)) < rad
-                    || getModule(sf::Vector2f(pos), sf::Vector2f(_boundaries[i].left,_boundaries[i].top+_boundaries[i].height)) < rad
-                    || getModule(sf::Vector2f(pos), sf::Vector2f(_boundaries[i].left+_boundaries[i].width,_boundaries[i].top+_boundaries[i].height)) < rad
+        else if(       getModule(pos, sf::Vector2f(_boundaries[i].left,_boundaries[i].top)) < rad
+                    || getModule(pos, sf::Vector2f(_boundaries[i].left+_boundaries[i].width,_boundaries[i].top)) < rad
+                    || getModule(pos, sf::Vector2f(_boundaries[i].left,_boundaries[i].top+_boundaries[i].height)) < rad
+                    || getModule(pos, sf::Vector2f(_boundaries[i].left+_boundaries[i].width,_boundaries[i].top+_boundaries[i].height)) < rad
                        ){
             return true;
         }
-        return false;
     }
+    return false;
 }
 
 sf::Vector2i Background::getIntersection(sf::Vector2i mousePos){

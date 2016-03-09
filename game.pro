@@ -37,7 +37,8 @@ SOURCES += main.cpp \
     Player.cpp \
     Eyes.cpp \
     Hook.cpp \
-    AnimatedCircle.cpp
+    AnimatedCircle.cpp \
+    Enemy.cpp
 
 HEADERS += utils.hpp \
         Resources.cpp \
@@ -69,4 +70,5 @@ HEADERS += utils.hpp \
     Player.hpp \
     Eyes.hpp \
     Hook.hpp \
-    AnimatedCircle.hpp
+    AnimatedCircle.hpp \
+    Enemy.hpp

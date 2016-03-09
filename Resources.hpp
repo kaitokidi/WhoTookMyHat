@@ -11,11 +11,16 @@ public:
     //static sf::Texture ...
     static sf::Texture key;
     static sf::Texture eyes;
+    static sf::Texture enemy;
     static sf::Texture chain;
     static sf::Texture talkBox;
     static sf::Texture doors_OX;
     static sf::Texture doors_OO;
     static sf::Texture doors_XX;
+
+
+    static std::vector<sf::Texture> spawnAnim;
+    static std::vector<sf::Texture> destroyAnim;
 
 
     static sf::Shader cInvert;

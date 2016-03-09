@@ -6,94 +6,23 @@
 Player::Player(): body(40,100), guide(10,100){
     angle = 0;
     speed = PLAYERSPEED;
-    radius = 40;
+    radius = 35;
     lastUpdate = 0;
     hooking = false;
-    vel.x = vel.y = 0;
+    hookPos.x = hookPos.y = 1;
+    hook.setOrigin(hookPos);
+    hook.setDestiny(hookPos);
+    vel.x = vel.y = 0.01;
     cameraPos = mousePos = sf::Vector2f(0,0);
     //eyes.setTexture();
     body.setColor(sf::Color(100,100,100));
     guide.setColor(sf::Color(100,100,100));
     hook.setTexture(std::string(TEXTURETPATH)+("hook.png"));
-
-    log("cra Player");
-
 }
 
 
 sf::Vector2f colisionPoint(sf::Vector2f pos, sf::Vector2f lpos){
-/*
-    //Take parameters
 
-    Map* map = _map;
-    sf::Vector2f position = pos;
-    sf::Vector2f lookPosition = lpos;
-
-    //Generate functions
-
-    //y = mx + n
-    //x = (y - n)/m
-    //Ax + By + C = 0
-    float m = (-lookPosition.y - -position.y) / 0.1;
-    if((lookPosition.x - position.x) != 0)
-        m = (-lookPosition.y - -position.y) / ((lookPosition.x - position.x));
-    float A = -(-lookPosition.y - -position.y);
-    float B = (lookPosition.x - position.x);
-    float C = -B*(-position.y) - -A*-(position.x);
-    float n = -C/B;
-
-    //Define auxiliar variables
-    int offsetX = 1;
-    int offsetY = -1;
-    int growDirectionX = 1;
-    int growDirectionY = -1;
-
-    bool colision = false;
-    bool colisioningOnX = true;
-
-    float Y = position.y - ( ((int)position.y % (int)constant::tileSize));
-    float X = position.x + (constant::tileSize - ((int)position.x % (int)constant::tileSize));
-
-    //Set auxiliar variables by case
-
-    if(lookPosition.x < position.x) { offsetX = -1;growDirectionX = -1; X -= constant::tileSize;}
-    if(lookPosition.y > position.y) { offsetY = 1;  growDirectionY = 1; Y += constant::tileSize;}
-
-    if(growDirectionY == 1 && (-(m*X + n)) > Y) colisioningOnX = false;
-    if(growDirectionY == -1 && (-(m*X + n)) < Y) colisioningOnX = false;
-    if(std::abs(position.y - lookPosition.y) <= constant::tileSize) colisioningOnX = true;
-    if(std::abs(position.x - lookPosition.x) <= constant::tileSize) colisioningOnX = false;
-
-    //While you have not found the colision
-    while( ! colision ){
-
-        if(colisioningOnX){ //if colision is on X
-            float pointOnY = -(m*X + n) ;
-            if( ! bg->colision(X+offsetX,pointOnY)){
-                X += constant::tileSize * growDirectionX;
-                if (growDirectionY == 1 && (-(m*X + n) > Y)) colisioningOnX = false;
-                else if (growDirectionY == -1 && (-(m*X + n) < Y)) colisioningOnX = false;
-            }
-            else {
-                colision = true;
-                return(sf::Vector2f(X, pointOnY));
-            }
-        }
-        else {              //if colisioning On Y
-            float pointOnX = ((-Y)-n)/m;
-            if( ! bg->colision(pointOnX, Y+offsetY) ){
-                Y += constant::tileSize * growDirectionY;
-                if (growDirectionX == 1 &&  (((-Y)-n)/m > X )) colisioningOnX = true;
-                else if (growDirectionX == -1 &&  (((-Y)-n)/m < X )) colisioningOnX = true;
-            }
-            else {
-                colision = true;
-                return(sf::Vector2f(pointOnX, Y));
-            }
-        }
-    }
-    return sf::Vector2f(-1,-1);// Si llega aquí se ha roto :(
-*/
 }
 
 void Player::setDistantHookPos(sf::Vector2i mousePos, Background* bg){
@@ -134,6 +63,7 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
     }
     if( InputManager::action(InputAction::hook) > 0){
        hooking = true;
+       //std::cout << "auxmousepos " << auxMousePos.x << " , " << auxMousePos.y << std::endl;
        setDistantHookPos(auxMousePos, bg);
     } else {
        hooking = false;
@@ -203,7 +133,7 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
   //  pos.y = dest.y;
     //orig.x = orig.x;
 
-    if(pos.y > 660) pos.y = 660;
+    //if(pos.y > 660) pos.y = 660;
     setPosition(pos);
     //If it colisioned on x stop movint on that axe
     //(is done now, not in the oclision because) we need the speed on x to check Y colisions.

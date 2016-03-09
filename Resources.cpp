@@ -5,11 +5,15 @@
 // sf::Texture        Resources::....
 sf::Texture            Resources::key;
 sf::Texture            Resources::eyes;
+sf::Texture            Resources::enemy;
 sf::Texture            Resources::chain;
 sf::Texture            Resources::talkBox;
 sf::Texture            Resources::doors_OX;
 sf::Texture            Resources::doors_OO;
 sf::Texture            Resources::doors_XX;
+
+std::vector<sf::Texture> Resources::spawnAnim (9);
+std::vector<sf::Texture> Resources::destroyAnim (9);
 
 sf::Shader             Resources::cInvert;
 
@@ -26,20 +30,27 @@ void Resources::load() {
     //LOAD THE INFORMATION IN THE VARIABLES
     //...loadFromFile(); or whatever
     if(! key.loadFromFile                    (TEXTURETPATH+std::string("key.png"))      ) printError("keyTex");
-    if(! eyes.loadFromFile                   (TEXTURETPATH+std::string("eyes.png"))     ) printError("eyes");
-    if(! chain.loadFromFile                  (TEXTURETPATH+std::string("hook.png"))    ) printError("chainTex");
+    if(! eyes.loadFromFile                   (TEXTURETPATH+std::string("eyes.png"))     ) printError("eyesTex");
+    if(! enemy.loadFromFile                  (TEXTURETPATH+std::string("enemy.png"))    ) printError("enemyTex");
+    if(! chain.loadFromFile                  (TEXTURETPATH+std::string("hook.png"))     ) printError("chainTex");
     if(! talkBox.loadFromFile                (TEXTURETPATH+std::string("talkBox.png"))  ) printError("talkbTex");
     if(! doors_OX.loadFromFile               (TEXTURETPATH+std::string("doors_OX.png")) ) printError("doorOXTex");
     if(! doors_OO.loadFromFile               (TEXTURETPATH+std::string("doors_OO.png")) ) printError("doorOOTex");
     if(! doors_XX.loadFromFile               (TEXTURETPATH+std::string("doors_XX.png")) ) printError("doorXXTex");
 
-   // descriptions = std::vector<SpriteSheetDescription>(spriteDescriptionsQtt);
-   // descriptions[linkSpritesDescriptions]       = loadDescription("linkSheet");
+    for(int i = 0; i < 9; ++i){
+        if(! spawnAnim[i].loadFromFile  (TEXTURETPATH+std::string("spawn/smoke_plume_000")+std::string(std::to_string(i+1))+std::string(".png") )) printError("spawnAnim");
+    }
+    for(int i = 0; i < 9; ++i){
+        if(! destroyAnim[i].loadFromFile  (TEXTURETPATH+std::string("destroy/smoke_jump_000")+std::string(std::to_string(i+1))+std::string(".png") )) printError("destroyAnim");
+    }
 
     if (!cInvert.loadFromFile           (SHADERPATH+std::string("invert.frag"), sf::Shader::Fragment)) exit(EXIT_FAILURE);
 
     if (!pauseMenuFont.loadFromFile("Resources/Fonts/font.ttf")) exit(EXIT_FAILURE);
 
+   // descriptions = std::vector<SpriteSheetDescription>(spriteDescriptionsQtt);
+   // descriptions[linkSpritesDescriptions]       = loadDescription("linkSheet");
     std::cout << " Resources Loaded " << std::endl;
 }
 
