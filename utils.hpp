@@ -227,6 +227,7 @@ namespace constant{
     static const float playerJump = 150;
     static const float playerSpeed = 20;
     static const float playerRadious = 30;
+    static const float shootMaxTime = 1.2;
     static const float playerMaxSpeed = 100;
 
     static const float defense = 20;

@@ -45,7 +45,32 @@ void Enemy::update(float deltaTime, Background *bg){
 }
 
 void Enemy::dyeing(){
-//ghost function
+    //ghost function
+}
+
+bool Enemy::colides(Bullet *b){
+    return getGlobalBounds().contains(b->getPosition());
+}
+
+bool Enemy::colides(Player *p){
+    float rad = p->getRadius();
+    sf::Vector2f pos = p->getPosition();
+    sf::FloatRect _boundaries = getGlobalBounds();
+    if(    _boundaries.contains(pos.x+rad, pos.y)
+        || _boundaries.contains(pos.x-rad, pos.y)
+        || _boundaries.contains(pos.x, pos.y+rad)
+        || _boundaries.contains(pos.x, pos.y-rad)
+                                                                ){
+        return true;
+    }
+    else if(       getModule(pos, sf::Vector2f(_boundaries.left,_boundaries.top)) < rad
+                || getModule(pos, sf::Vector2f(_boundaries.left+_boundaries.width,_boundaries.top)) < rad
+                || getModule(pos, sf::Vector2f(_boundaries.left,_boundaries.top+_boundaries.height)) < rad
+                || getModule(pos, sf::Vector2f(_boundaries.left+_boundaries.width,_boundaries.top+_boundaries.height)) < rad
+                   ){
+        return true;
+    }
+    return false;
 }
 
 void Enemy::updateSprite(bool alive){

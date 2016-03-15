@@ -6,17 +6,15 @@ scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string next, std
     _view = _window->getDefaultView();
     initView(&_view, sf::Vector2i(1024,768));
 
+    _shootTimer = 0;
     _player = player;
-    //_player->setHookPos(100,100);
-    //std::cout << "position "<< _player->getPosition().x << " , " << _player->getPosition().y << std::endl;
     _player->setPosition(_player->getRadius()*3,660);
-    //std::cout << "position2 "<< _player->getPosition().x << " , " << _player->getPosition().y << std::endl;
-
     _next = next;
     readLVL(levelName);
 
     init();
 
+    _player->setHat(_hats[0]);
   //  _picking = true;
 //    _playing = false;
     _playing = true;
@@ -38,6 +36,7 @@ void scenePlayable::init(sf::Vector2f aux){
 
 void scenePlayable::update(float deltaTime){
     _timer += deltaTime;
+    _shootTimer += deltaTime;
 
     if(_picking){
 
@@ -45,7 +44,7 @@ void scenePlayable::update(float deltaTime){
     if(_playing){
 
        if(_enemyTimePull.size() > 0) {
-           std::cout <<"timer = " << _timer << " and timepull = " << _enemyTimePull.front() << std::endl;
+           //std::cout <<"timer = " << _timer << " and timepull = " << _enemyTimePull.front() << std::endl;
            if(_timer > _enemyTimePull.front()){
                _enemyTimePull.pop();
                _enemies.push_back(_enemyPull.front());
@@ -61,9 +60,48 @@ void scenePlayable::update(float deltaTime){
            }
        }
 
+       //Update Enemies
        for(auto it = _enemies.begin(); it != _enemies.end(); ++it){
            it->update(deltaTime, &bg);
        }
+
+       //Update Bullets
+       for(auto it = _bullets.begin(); it != _bullets.end(); ++it){
+           it->update(deltaTime, &bg);
+       }
+
+
+       auto itb = _bullets.begin();
+       for(itb; itb != _bullets.end();){
+           if(! (*itb).isAlive()){
+               itb = _bullets.erase(itb);
+           }
+           else ++itb;
+       }
+
+       auto ite = _enemies.begin();
+       itb = _bullets.begin();
+       for(ite; ite != _enemies.end();){
+
+           if(ite->colides(_player)){
+               ite = _enemies.erase(ite);
+               //player.hit();
+           }
+           else for(itb; itb != _bullets.end() && ite != _enemies.end();){
+
+               //check enemy and bullet colision
+               if(ite->colides(&(*itb))){
+                   itb = _bullets.erase(itb);
+                   ite = _enemies.erase(ite);
+               }
+               else ++itb;
+
+           }
+           //check enemy and player colision
+           if(ite != _enemies.end()) ++ite;
+       }
+
+
 
     }
 
@@ -86,13 +124,25 @@ void scenePlayable::processInput(){
                 break;
         }
     }
+
     InputManager::update();
+
+    if( InputManager::action(InputAction::shoot) > 0 && _shootTimer > constant::shootMaxTime){
+        _shootTimer = 0;
+        Bullet b;
+        b.setPosition(_player->getPosition());
+        b.setDestiny(sf::Vector2f(bg.getIntersection(sf::Vector2i(_window->mapPixelToCoords(sf::Mouse::getPosition((*_window)),_view)))));
+        _bullets.push_back(b);
+    }
 }
 
 void scenePlayable::render(sf::RenderTarget *target){
     bg.draw(target);
     _player->draw(target);
     for(auto it = _enemies.begin(); it != _enemies.end(); ++it){
+        target->draw(*it);
+    }
+    for(auto it = _bullets.begin(); it != _bullets.end(); ++it){
         target->draw(*it);
     }
 }

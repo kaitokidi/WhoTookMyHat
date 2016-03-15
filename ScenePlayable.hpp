@@ -3,6 +3,7 @@
 #include "utils.hpp"
 #include "Enemy.hpp"
 #include "Scene.hpp"
+#include "Bullet.hpp"
 #include "Player.hpp"
 #include "Background.hpp"
 
@@ -39,13 +40,14 @@ private:
     Background bg;
     char _hatsOwned;
     Player* _player;
+    float _shootTimer;
     std::string _next;
     sf::Sprite _hats[3];
     sf::Texture _hatsT[3];
 
     sf::Vector2i _spawnPoint;
-//    std::list < Shoots > _shoot;
     std::list < Enemy > _enemies;
+    std::list < Bullet > _bullets;
     std::queue < Enemy > _enemyPull;
     std::queue < int > _enemyTimePull;
 

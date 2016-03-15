@@ -93,7 +93,7 @@ void Game::initInput() {
     InputManager::bind(InputAction::right, sf::Keyboard::D);
     InputManager::bind(InputAction::hook,  sf::Keyboard::Space);
     InputManager::bind(InputAction::hook,  sf::Mouse::Right);
-    InputManager::bind(InputAction::shoot, sf::Keyboard::LShift);
+    InputManager::bind(InputAction::shoot, sf::Mouse::Left);
     InputManager::bind(InputAction::pause, sf::Keyboard::Escape);
 
    // InputManager::bind(InputAction::action, 0, 0);  // Xbox A

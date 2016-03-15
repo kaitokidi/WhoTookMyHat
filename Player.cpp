@@ -36,9 +36,7 @@ void Player::setDistantHookPos(sf::Vector2i mousePos, Background* bg){
 
 }
 
-float Player::getRadius(){
-    return radius;
-}
+float Player::getRadius() const{ return radius; }
 
 void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
 
@@ -160,10 +158,17 @@ void Player::draw(sf::RenderTarget * w){
     guiaPos.y = body.getPosition().y + std::sin(angle*M_PI/180) * (body.getRadius() + guide.getRadius() + 10);
     guide.setPosition(guiaPos);
 
+    sf::Vector2f hatpos;
+    float anglehat = -(90+35);
+    hatpos.x = body.getPosition().x + std::cos(anglehat*M_PI/180) * (body.getRadius());
+    hatpos.y = body.getPosition().y + std::sin(anglehat*M_PI/180) * (body.getRadius());
+    hat.setPosition(hatpos);
+
     if(hooking) hook.draw(w);
     body.draw(w);
-    guide.draw(w);
     eyes.draw(w);
+    w->draw(hat);
+    guide.draw(w);
 }
 
 
@@ -190,6 +195,11 @@ void Player::setAngle(float a){ angle = a; }
 void Player::setHookPos(sf::Vector2f pos){
     hookPos = pos;
     hook.setDestiny(pos);
+}
+
+void Player::setHat(sf::Sprite& spr) {
+    hat.setTexture((*spr.getTexture()));
+    hat.setOrigin(hat.getLocalBounds().width/2, hat.getLocalBounds().height/2);
 }
 
 void Player::setHookPos(float posX, float posY) { hook.setDestiny(sf::Vector2f(posX,posY)); }

@@ -7,6 +7,7 @@ sf::Texture            Resources::key;
 sf::Texture            Resources::eyes;
 sf::Texture            Resources::enemy;
 sf::Texture            Resources::chain;
+sf::Texture            Resources::bullet;
 sf::Texture            Resources::talkBox;
 sf::Texture            Resources::doors_OX;
 sf::Texture            Resources::doors_OO;
@@ -33,6 +34,7 @@ void Resources::load() {
     if(! eyes.loadFromFile                   (TEXTURETPATH+std::string("eyes.png"))     ) printError("eyesTex");
     if(! enemy.loadFromFile                  (TEXTURETPATH+std::string("enemy.png"))    ) printError("enemyTex");
     if(! chain.loadFromFile                  (TEXTURETPATH+std::string("hook.png"))     ) printError("chainTex");
+    if(! bullet.loadFromFile                 (TEXTURETPATH+std::string("bullet.png"))   ) printError("bulleTex");
     if(! talkBox.loadFromFile                (TEXTURETPATH+std::string("talkBox.png"))  ) printError("talkbTex");
     if(! doors_OX.loadFromFile               (TEXTURETPATH+std::string("doors_OX.png")) ) printError("doorOXTex");
     if(! doors_OO.loadFromFile               (TEXTURETPATH+std::string("doors_OO.png")) ) printError("doorOOTex");

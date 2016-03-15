@@ -17,6 +17,7 @@ protected:
     Eyes eyes;
     Hook hook;
     float angle;
+    sf::Sprite hat;
 
     float speed;
     bool hooking;
@@ -40,11 +41,14 @@ public:
     void draw(sf::RenderTarget *w);
 
     float getSpeed() const;
+    float getRadius() const;
     sf::Vector2f getPosition();
     sf::Vector2f getPos() const;
     sf::Vector2f getLookPos() const;
     sf::Vector2f getHookPos() const;
     sf::Vector2f getMousePos() const;
+
+    void setHat(sf::Sprite &spr);
 
     void setAngle(float a);
     void setSpeed(float value);
@@ -59,7 +63,6 @@ public:
     void setHookPos(float posX, float posY);
     void setHookPos(const sf::Vector2f value);
 
-    float getRadius();
 };
 
 #endif // PLAYER_HPP

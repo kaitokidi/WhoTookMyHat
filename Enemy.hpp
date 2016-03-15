@@ -1,6 +1,8 @@
 #ifndef ENEMY_HPP
 #define ENEMY_HPP
 #include "utils.hpp"
+#include "Bullet.hpp"
+#include "Player.hpp"
 #include "Background.hpp"
 
 class Enemy : public sf::Sprite {
@@ -10,6 +12,8 @@ public:
     virtual void init();
     virtual void update(float deltaTime, Background* bg);
     virtual void dyeing();
+    virtual bool colides(Bullet* b);
+    virtual bool colides(Player* p);
     virtual void updateSprite(bool alive);
     virtual void movement(float deltaTime, Background *bg);
 
