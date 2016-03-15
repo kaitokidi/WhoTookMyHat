@@ -39,9 +39,12 @@ void scenePlayable::update(float deltaTime){
     _shootTimer += deltaTime;
 
     if(_picking){
-
+        bg._doorOpenedL = true;
+        bg._doorOpenedR = true;
     }
     if(_playing){
+        bg._doorOpenedL = false;
+        bg._doorOpenedR = false;
 
        if(_enemyTimePull.size() > 0) {
            //std::cout <<"timer = " << _timer << " and timepull = " << _enemyTimePull.front() << std::endl;
@@ -80,11 +83,20 @@ void scenePlayable::update(float deltaTime){
        }
 
        auto ite = _enemies.begin();
+       for(ite; ite != _enemies.end();){
+           if(! (*ite).isAlive()){
+               ite = _enemies.erase(ite);
+           }
+           else ++ite;
+       }
+
+       ite = _enemies.begin();
        itb = _bullets.begin();
        for(ite; ite != _enemies.end();){
 
-           if(ite->colides(_player)){
-               ite = _enemies.erase(ite);
+           if(ite->colides(_player) && ite->colisionable()){
+               //ite = _enemies.erase(ite);
+               ite->hit();
                //player.hit();
            }
            else for(itb; itb != _bullets.end() && ite != _enemies.end();){
@@ -92,7 +104,8 @@ void scenePlayable::update(float deltaTime){
                //check enemy and bullet colision
                if(ite->colides(&(*itb))){
                    itb = _bullets.erase(itb);
-                   ite = _enemies.erase(ite);
+                   //ite = _enemies.erase(ite);
+                   ite->hit();
                }
                else ++itb;
 

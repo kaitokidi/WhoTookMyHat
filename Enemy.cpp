@@ -4,6 +4,7 @@
 #define ENEMROTATION 40
 Enemy::Enemy(){
 
+    _hp = 2;
     _index = 0;
 
     _alive = true;
@@ -17,11 +18,29 @@ Enemy::Enemy(){
 
 }
 
+void Enemy::hit(){
+    --_hp;
+    if(_hp <= 0) {
+        _index = 0;
+        setRotation(0);
+        _destroying = true;
+        _animTimer.restart();
+    }
+}
+
 
 void Enemy::init() {
     _texture = Resources::enemy;
     _spawnAnimation = Resources::spawnAnim;
     _destroyAnimation = Resources::destroyAnim;
+}
+
+bool Enemy::isAlive()                             {
+    return _alive;
+}
+
+bool Enemy::colisionable(){
+    return (!_spawning && !_destroying);
 }
 
 
@@ -31,6 +50,7 @@ void Enemy::update(float deltaTime, Background *bg){
         updateSprite(true);
         return;
     } if(_destroying){
+        //log("updatespritedestroy");
         updateSprite(false);
         return;
     } else {

@@ -16,6 +16,8 @@ public:
 
     ~Background();
 
+    bool _doorOpenedL;
+    bool _doorOpenedR;
     void init(std::string lvlDesc);
     bool colision(sf::Vector2f pos);
     void readLevel(std::string lvlDesc);
@@ -24,10 +26,9 @@ public:
     sf::Vector2i getIntersection(sf::Vector2i mousePos);
 
     bool colision(float x, float y);
+
 private:
 
-    bool _doorOpenedL;
-    bool _doorOpenedR;
 
     sf::Sprite _doors;
     sf::Texture _bTexture;
