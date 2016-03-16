@@ -131,8 +131,10 @@ void Enemy::movement(float deltaTime, Background *bg) {
     } else {
         move(dest.x, 0);
         if (_vel.x > 0){
-               rotate(ENEMROTATION*deltaTime);
-        } else rotate(-ENEMROTATION*deltaTime);
+//            std::cout << _vel.x*deltaTime/double(getGlobalBounds().width/2.0) << std::endl;
+//               rotate(_vel.x*deltaTime/double(getGlobalBounds().width/2.0)*180/3.1415);//ENEMROTATION*deltaTime);
+            rotate(_vel.x*deltaTime/60.0*180/3.1415);//ENEMROTATION*deltaTime);
+        } else rotate(_vel.x*deltaTime/60.0*180/3.1415);//-ENEMROTATION*deltaTime);
     }
 
 
