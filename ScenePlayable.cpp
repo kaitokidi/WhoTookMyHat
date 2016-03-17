@@ -144,7 +144,7 @@ void scenePlayable::processInput(){
         _shootTimer = 0;
         Bullet b;
         b.setPosition(_player->getPosition());
-        b.setDestiny(sf::Vector2f(bg.getIntersection(sf::Vector2i(_window->mapPixelToCoords(sf::Mouse::getPosition((*_window)),_view)))));
+        b.setDestiny(sf::Vector2f(bg.getIntersection( sf::Vector2i(_player->getPosition()) ,sf::Vector2i(_window->mapPixelToCoords(sf::Mouse::getPosition((*_window)),_view)))));
         _bullets.push_back(b);
     }
 }

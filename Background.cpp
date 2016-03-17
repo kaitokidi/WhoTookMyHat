@@ -74,18 +74,126 @@ bool Background::circleColision(sf::Vector2f pos, float rad) {
     return false;
 }
 
+
+//#include <iostream>
+#include <complex>
+
+using namespace std;
+
+typedef complex<double> point;
+
+double error=1e-7;
+
+double prodesc(point p1,point p2)
+{
+  return real(conj(p1)*p2);
+}
+
+double prodvec(point p1,point p2)
+{
+  return imag(conj(p1)*p2);
+}
+
+point calculainterseccio(point p1,point v1,point p2,point v2)
+{
+  return p1+(prodvec(p2-p1,v2)/prodvec(v1,v2))*v1;
+}
+
+pair<bool,point> intersecciosemirectasegment(point p1,point v1,point a,point b)
+{
+  point p2=a;
+  point v2=b-a;
+
+  if (abs(prodvec(v1,v2))<error) return pair<bool,point> (false,0.0);
+
+  point interseccio=calculainterseccio(p1,v1,p2,v2);
+
+  if (prodesc(interseccio-p1,v1)<-error) return pair<bool,point> (false,0.0);
+  if (prodesc(interseccio-p2,v2)<-error) return pair<bool,point> (false,0.0);
+  if (prodesc(interseccio-b,v2)>error) return pair<bool,point> (false,0.0);
+  return pair<bool,point> (true,interseccio);
+}
+
+
+
+sf::Vector2i Background::getIntersection(sf::Vector2i position, sf::Vector2i mousePos){
+
+    sf::Vector2i ret(0,0);
+
+    pair <bool,point> result;
+    result.second.real(0);
+    result.second.imag(0);
+    result.first = false;
+
+    point pos(position.x, position.y);
+    point vec(mousePos.x - position.x, mousePos.y - position.y);
+    for(int i = 0; i < _boundaries.size(); ++i){
+
+        point a, b;
+
+        //TOP
+        result.first = false;
+        a.real( double( _boundaries[i].left));
+        a.imag( double( _boundaries[i].top));
+        b.real( double( _boundaries[i].left + _boundaries[i].width));
+        b.imag( double( _boundaries[i].top));
+        result = intersecciosemirectasegment(pos, vec, a, b);
+        if(result.first &&
+                (abs(pos-result.second) > abs(pos- point(ret.x, ret.y))))
+                    ret = sf::Vector2i(result.second.real(),result.second.imag());
+
+/*
+        //LEFT
+        result.first = false;
+        a.real( double( _boundaries[i].left));
+        a.imag( double( _boundaries[i].top));
+        b.real( double( _boundaries[i].left));
+        b.imag( double( _boundaries[i].top - _boundaries[i].height));
+        result = intersecciosemirectasegment(pos, vec, a, b);
+        if(result.first) ret = sf::Vector2i(result.second.real(),result.second.imag());
+
+        //BOT
+        result.first = false;
+        a.real( double( _boundaries[i].left));
+        a.imag( double( _boundaries[i].top - _boundaries[i].height));
+        b.real( double( _boundaries[i].left+ _boundaries[i].width));
+        b.imag( double( _boundaries[i].top - _boundaries[i].height));
+        result = intersecciosemirectasegment(pos, vec, a, b);
+        if(result.first) ret = sf::Vector2i(result.second.real(),result.second.imag());
+
+        //RIGHT
+        result.first = false;
+        a.real( double( _boundaries[i].left+ _boundaries[i].width));
+        a.imag( double( _boundaries[i].top ));
+        b.real( double( _boundaries[i].left+ _boundaries[i].width));
+        b.imag( double( _boundaries[i].top - _boundaries[i].height));
+        result = intersecciosemirectasegment(pos, vec, a, b);
+        if(result.first) ret = sf::Vector2i(result.second.real(),result.second.imag());
+*/
+
+    }
+
+    if(ret.x != 0) ret.x = mousePos.x;
+    if(ret.y != 0) ret.y = mousePos.y;
+    //retorna minim
+    return ret;
+
+}
+
 sf::Vector2i Background::getIntersection(sf::Vector2i mousePos){
 
     sf::Vector2i ret(1,1);
 
     for(int i = 0; i < _boundaries.size(); ++i){
         if(_boundaries[i].contains(sf::Vector2f(mousePos.x,mousePos.y))){
-            //ret.x = _boundaries[i].left;
-            //ret.y = _boundaries[i].top;
-            ret.x = mousePos.x;
-            ret.y = mousePos.y;
+            ret.x = _boundaries[i].left;
+            ret.y = _boundaries[i].top;
+      //      ret.x = mousePos.x;
+      //      ret.y = mousePos.y;
         }
+
     }
+
     return ret;
 
 }

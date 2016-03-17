@@ -27,7 +27,7 @@ sf::Vector2f colisionPoint(sf::Vector2f pos, sf::Vector2f lpos){
 
 void Player::setDistantHookPos(sf::Vector2i mousePos, Background* bg){
 
-    sf::Vector2i intersection = bg->getIntersection(mousePos);
+    sf::Vector2i intersection = bg->getIntersection(sf::Vector2i(getPosition()), mousePos);
     if(intersection.x == intersection.y == 1) {
         intersection.x = getPosition().x;
         intersection.y = getPosition().y;
@@ -202,7 +202,7 @@ void Player::setHat(sf::Sprite& spr) {
     hat.setOrigin(hat.getLocalBounds().width/2, hat.getLocalBounds().height/2);
 }
 
-void Player::setHookPos(float posX, float posY) { hook.setDestiny(sf::Vector2f(posX,posY)); }
+void Player::setHookPos(float posX, float posY) { hookPos.x = posX; hookPos.y = posY; hook.setDestiny(sf::Vector2f(posX,posY)); }
 
 void Player::setPosition(float posX, float posY){ setPosition(sf::Vector2f(posX, posY)); }
 

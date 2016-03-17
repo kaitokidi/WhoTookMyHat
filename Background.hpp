@@ -19,13 +19,13 @@ public:
     bool _doorOpenedL;
     bool _doorOpenedR;
     void init(std::string lvlDesc);
+    bool colision(float x, float y);
     bool colision(sf::Vector2f pos);
     void readLevel(std::string lvlDesc);
     void draw(sf::RenderTarget *target);
     bool circleColision(sf::Vector2f pos, float rad);
     sf::Vector2i getIntersection(sf::Vector2i mousePos);
-
-    bool colision(float x, float y);
+    sf::Vector2i getIntersection(sf::Vector2i position, sf::Vector2i mousePos);
 
 private:
 
