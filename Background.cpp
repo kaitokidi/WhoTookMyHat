@@ -118,7 +118,7 @@ pair<bool,point> intersecciosemirectasegment(point p1,point v1,point a,point b)
 
 sf::Vector2i Background::getIntersection(sf::Vector2i position, sf::Vector2i mousePos){
 
-    sf::Vector2i ret(0,0);
+    sf::Vector2i ret(-2000,-2000);
 
     pair <bool,point> result;
     result.second.real(0);
@@ -139,42 +139,47 @@ sf::Vector2i Background::getIntersection(sf::Vector2i position, sf::Vector2i mou
         b.imag( double( _boundaries[i].top));
         result = intersecciosemirectasegment(pos, vec, a, b);
         if(result.first &&
-                (abs(pos-result.second) > abs(pos- point(ret.x, ret.y))))
+                (abs(pos-result.second) < abs(pos- point(ret.x, ret.y))))
                     ret = sf::Vector2i(result.second.real(),result.second.imag());
 
-/*
         //LEFT
         result.first = false;
         a.real( double( _boundaries[i].left));
         a.imag( double( _boundaries[i].top));
         b.real( double( _boundaries[i].left));
-        b.imag( double( _boundaries[i].top - _boundaries[i].height));
+        b.imag( double( _boundaries[i].top + _boundaries[i].height));
         result = intersecciosemirectasegment(pos, vec, a, b);
-        if(result.first) ret = sf::Vector2i(result.second.real(),result.second.imag());
+        if(result.first &&
+                (abs(pos-result.second) < abs(pos- point(ret.x, ret.y))))
+                    ret = sf::Vector2i(result.second.real(),result.second.imag());
 
         //BOT
         result.first = false;
         a.real( double( _boundaries[i].left));
-        a.imag( double( _boundaries[i].top - _boundaries[i].height));
+        a.imag( double( _boundaries[i].top + _boundaries[i].height));
         b.real( double( _boundaries[i].left+ _boundaries[i].width));
-        b.imag( double( _boundaries[i].top - _boundaries[i].height));
+        b.imag( double( _boundaries[i].top + _boundaries[i].height));
         result = intersecciosemirectasegment(pos, vec, a, b);
-        if(result.first) ret = sf::Vector2i(result.second.real(),result.second.imag());
+        if(result.first &&
+                (abs(pos-result.second) < abs(pos- point(ret.x, ret.y))))
+                    ret = sf::Vector2i(result.second.real(),result.second.imag());
 
         //RIGHT
         result.first = false;
         a.real( double( _boundaries[i].left+ _boundaries[i].width));
         a.imag( double( _boundaries[i].top ));
         b.real( double( _boundaries[i].left+ _boundaries[i].width));
-        b.imag( double( _boundaries[i].top - _boundaries[i].height));
+        b.imag( double( _boundaries[i].top + _boundaries[i].height));
         result = intersecciosemirectasegment(pos, vec, a, b);
-        if(result.first) ret = sf::Vector2i(result.second.real(),result.second.imag());
-*/
+        if(result.first &&
+                (abs(pos-result.second) < abs(pos- point(ret.x, ret.y))))
+                    ret = sf::Vector2i(result.second.real(),result.second.imag());
+
 
     }
 
-    if(ret.x != 0) ret.x = mousePos.x;
-    if(ret.y != 0) ret.y = mousePos.y;
+//    if(ret.x != 0) ret.x = mousePos.x;
+  //  if(ret.y != 0) ret.y = mousePos.y;
     //retorna minim
     return ret;
 
