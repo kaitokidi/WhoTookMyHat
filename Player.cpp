@@ -60,9 +60,9 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
         vel.x += constant::playerSpeed*deltaTime;
     }
     if( InputManager::action(InputAction::hook) > 0){
+       if(!hooking)setDistantHookPos(auxMousePos, bg);
        hooking = true;
        //std::cout << "auxmousepos " << auxMousePos.x << " , " << auxMousePos.y << std::endl;
-       setDistantHookPos(auxMousePos, bg);
     } else {
        hooking = false;
        hookPos = mousePos;
