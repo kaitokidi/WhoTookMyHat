@@ -4,7 +4,7 @@
 #define ENEMROTATION 40
 Enemy::Enemy(){
 
-    _hp = 2;
+    _hp = 4;
     _index = 0;
 
     _alive = true;

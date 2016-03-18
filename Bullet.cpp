@@ -1,5 +1,5 @@
 #include "Bullet.hpp"
-#define SPEED 1;
+#define SPEED 600;
 
 Bullet::Bullet(){
     _alive = true;
@@ -15,7 +15,7 @@ void Bullet::update(float deltaTime, Background *bg){
     sf::Vector2f movement;
 
     float angle = std::atan(deltaY / deltaX)*180/M_PI;
-    float mod = std::sqrt(std::pow(deltaX,2) + std::pow(deltaY,2));
+    float mod = std::sqrt(std::pow(deltaX,2) + std::pow(deltaY,2)); mod = 1;
     if(deltaX >= 0) { movement.x = std::cos(angle*M_PI/180) * mod * SPEED; }
     else movement.x = -1* std::cos(angle*M_PI/180) * mod * SPEED;
     if(deltaY >= 0) { movement.y = std::abs(std::sin(angle*M_PI/180)) * mod * SPEED; }

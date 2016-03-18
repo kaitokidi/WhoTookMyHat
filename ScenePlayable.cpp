@@ -41,6 +41,12 @@ void scenePlayable::update(float deltaTime){
     if(_picking){
         bg._doorOpenedL = true;
         bg._doorOpenedR = true;
+
+        //Update Bullets
+        for(auto it = _bullets.begin(); it != _bullets.end(); ++it){
+            it->update(deltaTime, &bg);
+        }
+
     }
     if(_playing){
         bg._doorOpenedL = false;
@@ -102,7 +108,7 @@ void scenePlayable::update(float deltaTime){
            else for(itb; itb != _bullets.end() && ite != _enemies.end();){
 
                //check enemy and bullet colision
-               if(ite->colides(&(*itb))){
+               if(ite->colides(&(*itb))  && ite->colisionable()){
                    itb = _bullets.erase(itb);
                    //ite = _enemies.erase(ite);
                    ite->hit();
