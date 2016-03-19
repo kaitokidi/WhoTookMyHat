@@ -38,12 +38,14 @@ private:
     Game* _game;
     float _timer;
     Background bg;
-    char _hatsOwned;
+    int _hatsOwned;
     Player* _player;
+    int _hatshits[3];
     float _shootTimer;
     std::string _next;
     sf::Sprite _hats[3];
     sf::Texture _hatsT[3];
+    std::string _levelName;
 
     sf::Vector2i _spawnPoint;
     std::list < Enemy > _enemies;

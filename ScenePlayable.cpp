@@ -1,24 +1,37 @@
 #include "Resources.hpp"
 #include "ScenePlayable.hpp"
+/*
+first time it does not get the correct level when i pick it.
+
+changes when hitted or something plox
+
+no update of _hatsOwned if i completed a level which was inferior that the highest.
+*/
 
 scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string next, std::string levelName, Player *player)
                                                     : Scene(g, w, sceneTypes::testScene, levelName)  {
     _view = _window->getDefaultView();
     initView(&_view, sf::Vector2i(1024,768));
 
-    _shootTimer = 0;
     _player = player;
     _player->setPosition(_player->getRadius()*3,660);
+
     _next = next;
+    _hatsOwned = 0;
+    _shootTimer = 0;
     readLVL(levelName);
+    //std::cout << "^^ " << _hatsOwned << std::endl;
+    _levelName = levelName;
+
+    for(int i = 0; i < 3; ++i) _hatshits[i] = 0;
 
     init();
 
     _player->setHat(_hats[0]);
-  //  _picking = true;
-//    _playing = false;
-    _playing = true;
-    _picking = false;
+    _picking = true;
+    _playing = false;
+//    _playing = true;
+//    _picking = false;
 
 }
 
@@ -28,6 +41,77 @@ scenePlayable::~scenePlayable(){
 
 void scenePlayable::readEnemies(int lvl){
 //spoiler not neededs
+    //spoiler2 si que needs it
+
+    std::string line;
+    std::ifstream myfile (LVLDESCIPTPATH+_levelName+".txt");
+
+    if (myfile.is_open()) {
+        std::getline (myfile,line);
+        while(line[0] == '#') std::getline (myfile,line);
+
+        while (line[0] != '$') {
+
+            std::getline (myfile,line);
+            while(line[0] == '#') std::getline (myfile,line);
+
+            if(line == "enemies"){
+
+                std::getline (myfile,line);
+                while(line[0] == '#') std::getline (myfile,line);
+
+                while(line[0] != '$'){
+
+//                    std::cout << "compare " << (line[0]-'0') << std::endl;
+                    if((line[0]-'0') == lvl){
+
+  //                      std::cout << "loading level " << lvl << std::endl;
+
+                        //read enemies
+                        std::getline (myfile,line);
+                        while(line[0] == '#') std::getline (myfile,line);
+                        for(int i = 0; i < line.size(); ++i){
+                            switch(line[i]) {
+                                case 'b':
+                                _enemyPull.push(Enemy());
+                                _enemyPull.back().setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
+                                break;
+                                default:
+                                break;
+                            }
+                        }
+
+                        //read times
+                        std::getline (myfile,line);
+                        while(line[0] == '#') std::getline (myfile,line);
+
+                        for(int i = 0; i < line.size(); ++i){
+                            if(line[i] != ' '){
+                                _enemyTimePull.push(line[i]-'0');
+                            }
+                        }
+                    } else {
+                        //read enemies
+                        std::getline (myfile,line);
+                        while(line[0] == '#') std::getline (myfile,line);
+                        //read times
+                        std::getline (myfile,line);
+                        while(line[0] == '#') std::getline (myfile,line);
+                    }
+
+                    std::getline (myfile,line);
+                    while(line[0] == '#') std::getline (myfile,line);
+
+                }
+
+            }
+
+        }
+        myfile.close();
+    }
+    else std::cout << "scenePlayable file not oppened loading enemies" << std::endl;
+
+
 }
 
 void scenePlayable::init(sf::Vector2f aux){
@@ -42,9 +126,31 @@ void scenePlayable::update(float deltaTime){
         bg._doorOpenedL = true;
         bg._doorOpenedR = true;
 
+
+        _hats[0].setPosition(300,100); _hats[1].setPosition(500,100); _hats[2].setPosition(700,100);
+
         //Update Bullets
-        for(auto it = _bullets.begin(); it != _bullets.end(); ++it){
+        for(auto it = _bullets.begin(); it != _bullets.end();){
             it->update(deltaTime, &bg);
+            bool kill = false;
+            for(int i = 0; i < 3; ++i){
+                if(i <= _hatsOwned && _hats[i].getGlobalBounds().contains(it->getPosition())){
+                    ++_hatshits[i];
+                    _hats[i].setScale(sf::Vector2f(_hats[i].getScale().x+0.1,_hats[i].getScale().y+0.1));
+                    kill = true;
+                }
+            }
+            if(kill) it = _bullets.erase(it);
+            else ++it;
+        }
+
+        for(int i = 0; i < 3; ++i){
+            if(_hatshits[i] > 3){
+                //std::cout << " i " << i << std::endl;
+                readEnemies(i);
+                _playing = true;
+                _picking = false;
+            }
         }
 
     }
@@ -53,7 +159,6 @@ void scenePlayable::update(float deltaTime){
         bg._doorOpenedR = false;
 
        if(_enemyTimePull.size() > 0) {
-           //std::cout <<"timer = " << _timer << " and timepull = " << _enemyTimePull.front() << std::endl;
            if(_timer > _enemyTimePull.front()){
                _enemyTimePull.pop();
                _enemies.push_back(_enemyPull.front());
@@ -66,6 +171,8 @@ void scenePlayable::update(float deltaTime){
            if(_enemies.empty()) {
                _playing = false;
                _picking = true;
+               for(int i = 0; i < 3; ++i) { _hatshits[i] = 0; _hats[i].setScale(sf::Vector2f(1.0,1.0));}
+               _hatsOwned = (_hatsOwned + 1) % 3;
            }
        }
 
@@ -157,6 +264,11 @@ void scenePlayable::processInput(){
 
 void scenePlayable::render(sf::RenderTarget *target){
     bg.draw(target);
+    if(_picking){
+        target->draw(_hats[0]);
+        target->draw(_hats[1]);
+        target->draw(_hats[2]);
+    }
     _player->draw(target);
     for(auto it = _enemies.begin(); it != _enemies.end(); ++it){
         target->draw(*it);
@@ -186,7 +298,8 @@ void scenePlayable::readLVL(std::string levelName){
             std::getline (myfile,line);
             while(line[0] == '#') std::getline (myfile,line);
             //_hatsOwned = myStoi(line);
-            _hatsOwned = line[0];
+            _hatsOwned = line[0]-'0';
+
 
             for(int i = 0; i < 3; ++i){
                 std::getline (myfile,line);
@@ -223,7 +336,7 @@ void scenePlayable::readLVL(std::string levelName){
 
                 while(line[0] != '$'){
 
-                    if(line[0] == _hatsOwned){
+                    if((line[0]-'0') == _hatsOwned){
 
                         std::getline (myfile,line);
                         while(line[0] == '#') std::getline (myfile,line);
