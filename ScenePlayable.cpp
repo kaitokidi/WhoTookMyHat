@@ -20,11 +20,11 @@ scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string next, std
     _hatsOwned = 0;
     _shootTimer = 0;
     readLVL(levelName);
-    //std::cout << "^^ " << _hatsOwned << std::endl;
+//    readEnemies(_hatsOwned);
     _levelName = levelName;
 
     for(int i = 0; i < 3; ++i) _hatshits[i] = 0;
-
+    for(int i = 0; i < 3; ++i) _hats[i].setOrigin(_hats[i].getGlobalBounds().width/2,_hats[i].getGlobalBounds().height/2 );
     init();
 
     _player->setHat(_hats[0]);
@@ -127,7 +127,7 @@ void scenePlayable::update(float deltaTime){
         bg._doorOpenedR = true;
 
 
-        _hats[0].setPosition(300,100); _hats[1].setPosition(500,100); _hats[2].setPosition(700,100);
+        _hats[0].setPosition(300,150); _hats[1].setPosition(500,150); _hats[2].setPosition(700,150);
 
         //Update Bullets
         for(auto it = _bullets.begin(); it != _bullets.end();){
@@ -146,7 +146,7 @@ void scenePlayable::update(float deltaTime){
 
         for(int i = 0; i < 3; ++i){
             if(_hatshits[i] > 3){
-                //std::cout << " i " << i << std::endl;
+                //std::cout << i << std::endl;
                 readEnemies(i);
                 _playing = true;
                 _picking = false;
@@ -172,7 +172,7 @@ void scenePlayable::update(float deltaTime){
                _playing = false;
                _picking = true;
                for(int i = 0; i < 3; ++i) { _hatshits[i] = 0; _hats[i].setScale(sf::Vector2f(1.0,1.0));}
-               _hatsOwned = (_hatsOwned + 1) % 3;
+               _hatsOwned = (_hatsOwned + 1);
            }
        }
 
