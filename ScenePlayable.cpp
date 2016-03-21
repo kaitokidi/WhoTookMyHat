@@ -19,13 +19,8 @@ scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string next, std
     _hatsOwned = 0;
     _shootTimer = 0;
 
-    //    std::cout <<"prereadlevel  "<< _enemyPull.size() << std::endl;
     readLVL(levelName);
     _levelName = levelName;
-   // std::cout << "prereadenemies " << _enemyPull.size() << std::endl;
-    //readEnemies(_hatsOwned);
-
-    //std::cout <<"then "<< _enemyPull.size() << std::endl;
 
     for(int i = 0; i < 3; ++i) _hatshits[i] = 0;
     for(int i = 0; i < 3; ++i) _hats[i].setOrigin(_hats[i].getGlobalBounds().width/2,_hats[i].getGlobalBounds().height/2 );
@@ -141,7 +136,7 @@ void scenePlayable::update(float deltaTime){
             for(int i = 0; i < 3; ++i){
                 if(i <= _hatsOwned && _hats[i].getGlobalBounds().contains(it->getPosition())){
                     ++_hatshits[i];
-                    _hats[i].setScale(sf::Vector2f(_hats[i].getScale().x+0.1,_hats[i].getScale().y+0.1));
+                    _hats[i].setScale(sf::Vector2f(_hats[i].getScale().x*2,_hats[i].getScale().y*2));
                     kill = true;
                 }
             }
@@ -150,7 +145,11 @@ void scenePlayable::update(float deltaTime){
         }
 
         for(int i = 0; i < 3; ++i){
-            if(_hatshits[i] > 3){
+            _hats[i].rotate((std::sin(_timer))*20*deltaTime);
+        }
+
+        for(int i = 0; i < 3; ++i){
+            if(_hatshits[i] > 1){
                 if(_enemyPull.empty()) readEnemies(i);
                 _playing = true;
                 _picking = false;
