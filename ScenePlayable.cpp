@@ -6,7 +6,6 @@
 
 changes when hitted or something plox
 
-no update of _hatsOwned if i completed a level which was inferior that the highest.
 */
 
 scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string next, std::string levelName, Player *player)
@@ -293,12 +292,21 @@ void scenePlayable::writteLVL(int lvl){
         inf.close();
         aux.close();
 
-        //std::unlink(_levelName);
-        const char * from = (_levelName+".aux").c_str();
-        std::rename(from, _levelName.c_str());
+        std::ifstream auxin( LVLDESCIPTPATH+_levelName+".aux");
+        std::ofstream out( LVLDESCIPTPATH+_levelName+".txt");
+        if(auxin.is_open() && out.is_open()){
 
+            std::cout << line << std::endl;
+            while(std::getline (auxin,line)){
+                out << line << '\n';
+            }
+
+        } else {log("no puc escriure u.u");}
+
+
+        auxin.close();
+        out.close();
     } else {log("NO, no puedo escribir aquí..."); std::cout << inf.is_open() << "  " << aux.is_open() << std::endl;}
-
 
 
 }
