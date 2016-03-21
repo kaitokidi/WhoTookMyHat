@@ -1,7 +1,6 @@
 #include "Resources.hpp"
 #include "ScenePlayable.hpp"
-/*
-first time it does not get the correct level when i pick it.
+/* QUESTLOG
 
 changes when hitted or something plox
 
