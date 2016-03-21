@@ -19,9 +19,14 @@ scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string next, std
     _next = next;
     _hatsOwned = 0;
     _shootTimer = 0;
+
+    //    std::cout <<"prereadlevel  "<< _enemyPull.size() << std::endl;
     readLVL(levelName);
-//    readEnemies(_hatsOwned);
     _levelName = levelName;
+   // std::cout << "prereadenemies " << _enemyPull.size() << std::endl;
+    //readEnemies(_hatsOwned);
+
+    //std::cout <<"then "<< _enemyPull.size() << std::endl;
 
     for(int i = 0; i < 3; ++i) _hatshits[i] = 0;
     for(int i = 0; i < 3; ++i) _hats[i].setOrigin(_hats[i].getGlobalBounds().width/2,_hats[i].getGlobalBounds().height/2 );
@@ -62,13 +67,12 @@ void scenePlayable::readEnemies(int lvl){
 
                 while(line[0] != '$'){
 
-//                    std::cout << "compare " << (line[0]-'0') << std::endl;
-                    if((line[0]-'0') == lvl){
+                    if(int(line[0]-'0') == lvl){
 
-  //                      std::cout << "loading level " << lvl << std::endl;
-
+                        //std::cout <<"....."<< lvl << std::endl;
                         //read enemies
                         std::getline (myfile,line);
+                        //std::cout << " ---- " << line << std::endl;
                         while(line[0] == '#') std::getline (myfile,line);
                         for(int i = 0; i < line.size(); ++i){
                             switch(line[i]) {
@@ -91,6 +95,7 @@ void scenePlayable::readEnemies(int lvl){
                             }
                         }
                     } else {
+                        std::cout << "nollegit " << line << std::endl;
                         //read enemies
                         std::getline (myfile,line);
                         while(line[0] == '#') std::getline (myfile,line);
@@ -119,6 +124,7 @@ void scenePlayable::init(sf::Vector2f aux){
 }
 
 void scenePlayable::update(float deltaTime){
+
     _timer += deltaTime;
     _shootTimer += deltaTime;
 
@@ -146,8 +152,7 @@ void scenePlayable::update(float deltaTime){
 
         for(int i = 0; i < 3; ++i){
             if(_hatshits[i] > 3){
-                //std::cout << i << std::endl;
-                readEnemies(i);
+                if(_enemyPull.empty()) readEnemies(i);
                 _playing = true;
                 _picking = false;
             }
