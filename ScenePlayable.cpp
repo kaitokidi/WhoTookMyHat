@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <unistd.h>
 #include "Resources.hpp"
 #include "ScenePlayable.hpp"
 /* QUESTLOG
@@ -175,7 +177,8 @@ void scenePlayable::update(float deltaTime){
                _playing = false;
                _picking = true;
                for(int i = 0; i < 3; ++i) { _hatshits[i] = 0; _hats[i].setScale(sf::Vector2f(1.0,1.0));}
-               _hatsOwned = (_hatsOwned + 1);
+               //_hatsOwned = (_hatsOwned + 1);
+               writteLVL(_hatsOwned+1);
            }
        }
 
@@ -211,16 +214,13 @@ void scenePlayable::update(float deltaTime){
        for(ite; ite != _enemies.end();){
 
            if(ite->colides(_player) && ite->colisionable()){
-               //ite = _enemies.erase(ite);
                ite->hit();
-               //player.hit();
            }
            else for(itb; itb != _bullets.end() && ite != _enemies.end();){
 
                //check enemy and bullet colision
                if(ite->colides(&(*itb))  && ite->colisionable()){
                    itb = _bullets.erase(itb);
-                   //ite = _enemies.erase(ite);
                    ite->hit();
                }
                else ++itb;
@@ -263,6 +263,44 @@ void scenePlayable::processInput(){
         b.setDestiny(sf::Vector2f(bg.getIntersection( sf::Vector2i(_player->getPosition()) ,sf::Vector2i(_window->mapPixelToCoords(sf::Mouse::getPosition((*_window)),_view)))));
         _bullets.push_back(b);
     }
+}
+
+void scenePlayable::writteLVL(int lvl){
+
+    std::string line;
+    std::ifstream inf( LVLDESCIPTPATH+_levelName+".txt");
+    std::ofstream aux( LVLDESCIPTPATH+_levelName+".aux");
+    //std::cout << _levelName << std::endl;
+    if(inf.is_open() && aux.is_open()){
+
+        //Name
+        std::getline (inf,line);
+        while(line[0] == '#') std::getline (inf,line);
+        aux << line << '\n';
+
+
+        //number
+        std::getline (inf,line);
+        while(line[0] == '#') std::getline (inf,line);
+        int oldLVL = (line[0]-'0');
+        if(lvl > oldLVL) aux << lvl << '\n';
+        else aux << line << '\n';
+
+        while(std::getline (inf,line)){
+            aux << line << '\n';
+        }
+
+        inf.close();
+        aux.close();
+
+        //std::unlink(_levelName);
+        const char * from = (_levelName+".aux").c_str();
+        std::rename(from, _levelName.c_str());
+
+    } else {log("NO, no puedo escribir aquí..."); std::cout << inf.is_open() << "  " << aux.is_open() << std::endl;}
+
+
+
 }
 
 void scenePlayable::render(sf::RenderTarget *target){

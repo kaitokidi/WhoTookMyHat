@@ -20,6 +20,8 @@ public:
 
     void processInput();
 
+    void writteLVL(int lvl);
+
     void readEnemies(int lvl);
 
     void update(float deltaTime);
