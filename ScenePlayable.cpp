@@ -289,7 +289,7 @@ void scenePlayable::writteLVL(int lvl){
     std::string line;
     std::ifstream inf( LVLDESCIPTPATH+_levelName+".txt");
     std::ofstream aux( LVLDESCIPTPATH+_levelName+".aux");
-    //std::cout << _levelName << std::endl;
+
     if(inf.is_open() && aux.is_open()){
 
         //Name
@@ -297,13 +297,13 @@ void scenePlayable::writteLVL(int lvl){
         while(line[0] == '#') std::getline (inf,line);
         aux << line << '\n';
 
-
         //number
         std::getline (inf,line);
         while(line[0] == '#') std::getline (inf,line);
         int oldLVL = (line[0]-'0');
-        aux << std::min(lvl+1,2) << '\n';
-//        if(oldLVL > _hatsOwned) _hatsOwned = oldLVL;
+        _hatsOwned = std::min(std::max(oldLVL,lvl+1),2);
+        aux << std::min(std::max(oldLVL,lvl+1),2) << '\n';
+        //if(oldLVL > _hatsOwned) _hatsOwned = oldLVL;
         //if(lvl > oldLVL) aux << lvl << '\n';
         //else aux << line << '\n';
 
