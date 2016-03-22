@@ -12,23 +12,30 @@ changes when hitted or something plox
 
 scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string next, std::string levelName, Player *player)
                                                     : Scene(g, w, sceneTypes::testScene, levelName)  {
-    _view = _window->getDefaultView();
-    initView(&_view, sf::Vector2i(1024,768));
-
     _player = player;
-    _player->setPosition(_player->getRadius()*3,660);
-
     _next = next;
     _hatsOwned = 0;
-    _shootTimer = 0;
-
     readLVL(levelName);
 //    readEnemies(_hatsOwned);
     _levelName = levelName;
+    init();
+
+}
+
+void scenePlayable::init(sf::Vector2f aux){
+    _timer = 0;
+    _view = _window->getDefaultView();
+    initView(&_view, sf::Vector2i(1024,768));
+
+    _player->setPosition(_player->getRadius()*3,660);
+
+    //_hatsOwned = 0;
+    _shootTimer = 0;
 
     for(int i = 0; i < 3; ++i) _hatshits[i] = 0;
+    for(int i = 0; i < 3; ++i) { _hatshits[i] = 0; _hats[i].setScale(sf::Vector2f(1.0,1.0)); _hats[i].setRotation(0);}
     for(int i = 0; i < 3; ++i) _hats[i].setOrigin(_hats[i].getGlobalBounds().width/2,_hats[i].getGlobalBounds().height/2 );
-    init();
+    //init();
 
     if(! _t.loadFromFile(std::string(TEXTURETPATH+std::string("hat0.png")))) std::cout << "unable to open hat0" << std::endl;
     _s.setTexture(_t);
@@ -37,10 +44,12 @@ scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string next, std
     _player->setHat(_hats[0]);
     _picking = true;
     _playing = false;
+
+
 //    _playing = true;
 //    _picking = false;
-
 }
+
 
 scenePlayable::~scenePlayable(){
 
@@ -130,21 +139,29 @@ void scenePlayable::readEnemies(int lvl) {
 
 }
 
-void scenePlayable::init(sf::Vector2f aux){
-    _timer = 0;
-}
-
 void scenePlayable::update(float deltaTime){
 
     _timer += deltaTime;
     _shootTimer += deltaTime;
 
     if(_picking){
+
         bg._doorOpenedL = true;
-        bg._doorOpenedR = true;
+        if(_hatsOwned >= 2) bg._doorOpenedR = true;
 
 
         _hats[0].setPosition(300,150); _hats[1].setPosition(500,150); _hats[2].setPosition(700,150);
+
+
+//left        75.2164 , 666.996
+//right       948.689 , 666.996
+        if(_player->getPosition().y > 666){//està a terra
+            if(_player->getPosition().x > 948) {
+                _player->setPosition(666, 948);
+                changeScene(_next);//move to next LVL
+            }
+            if(_player->getPosition().x < 76) std::cout << "why would i do that" << std::endl; //move to previous LVL
+        }
 
         //Update Bullets
         for(auto it = _bullets.begin(); it != _bullets.end();){
@@ -193,8 +210,7 @@ void scenePlayable::update(float deltaTime){
            if(_enemies.empty()) {
                _playing = false;
                _picking = true;
-               for(int i = 0; i < 3; ++i) { _hatshits[i] = 0; _hats[i].setScale(sf::Vector2f(1.0,1.0));}
-               for(int i = 0; i < 3; ++i) { _hatshits[i] = 0; _hats[i].setRotation(0);}
+               for(int i = 0; i < 3; ++i) { _hatshits[i] = 0; _hats[i].setScale(sf::Vector2f(1.0,1.0)); _hats[i].setRotation(0);}
                //_hatsOwned = (_hatsOwned + 1);
                writteLVL(std::min(_hatsOwned,2));
            }
@@ -380,7 +396,7 @@ void scenePlayable::readLVL(std::string levelName){
             while(line[0] == '#') std::getline (myfile,line);
             //_hatsOwned = myStoi(line);
             _hatsOwned = line[0]-'0';
-
+//std::cout << _hatsOwned << std::endl;
 
             for(int i = 0; i < 3; ++i){
                 std::getline (myfile,line);
@@ -410,7 +426,7 @@ void scenePlayable::readLVL(std::string levelName){
 
             }
 
-/*
+
             if(line == "enemies"){
 
                 std::getline (myfile,line);
@@ -455,11 +471,12 @@ void scenePlayable::readLVL(std::string levelName){
                 }
 
             }
-*/
+
         }
         myfile.close();
     }
     else std::cout << "scenePlayable file not oppened" << std::endl;
 
+   // log("readLVL finishes");
 
 }
