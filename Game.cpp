@@ -14,6 +14,8 @@ Game::Game() : _window(sf::VideoMode::getDesktopMode(),"WhoTookMyHat", sf::Style
     //SoundManager::playMusic("overWorld");
     //SoundManager::setLoop(true, "overWorld");
 
+    _player.setPosition(_player.getRadius()*3,660);
+
 }
 
 Game::~Game() {
@@ -68,8 +70,9 @@ void Game::loadScenes() {
    */
 
     _scenes.insert(std::make_pair("test", new SceneTest(this, &_window, "test2")));
-    _scenes.insert(std::make_pair("test2", new SceneTest(this, &_window, "cave1")));
-    _scenes.insert(std::make_pair("cave1", new scenePlayable(this, & _window, "test", "level1", &_player)));
+    _scenes.insert(std::make_pair("test2", new SceneTest(this, &_window, "level1")));
+    _scenes.insert(std::make_pair("level1", new scenePlayable(this, & _window, "test", "level1", "level2", &_player)));
+    _scenes.insert(std::make_pair("level2", new scenePlayable(this, & _window, "level1", "level2", "level2", &_player)));
 }
 
 void Game::loadScene(std::string sceneName) {

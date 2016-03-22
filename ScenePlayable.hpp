@@ -12,7 +12,7 @@ class Game;
 class scenePlayable : public Scene {
 public:
 
-    scenePlayable(Game* g, sf::RenderWindow* w, std::string next, std::string levelName, Player * player);
+    scenePlayable(Game* g, sf::RenderWindow* w, std::string previous, std::string levelName, std::string next, Player * player);
 
     ~scenePlayable();
 
@@ -46,6 +46,7 @@ private:
     Player* _player;
     int _hatshits[3];
     float _shootTimer;
+    std::string _prev;
     std::string _next;
     sf::Sprite _hats[3];
     sf::Texture _hatsT[3];

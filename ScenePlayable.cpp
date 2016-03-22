@@ -10,11 +10,12 @@ changes when hitted or something plox
 //He tret el llegir enemics del readLVL, ho deixo escrit just in case
 */
 
-scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string next, std::string levelName, Player *player)
+scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string previous, std::string levelName, std::string next, Player *player)
                                                     : Scene(g, w, sceneTypes::testScene, levelName)  {
-    _player = player;
     _next = next;
     _hatsOwned = 0;
+    _player = player;
+    _prev = previous;
     readLVL(levelName);
 //    readEnemies(_hatsOwned);
     _levelName = levelName;
@@ -27,7 +28,7 @@ void scenePlayable::init(sf::Vector2f aux){
     _view = _window->getDefaultView();
     initView(&_view, sf::Vector2i(1024,768));
 
-    _player->setPosition(_player->getRadius()*3,660);
+    //_player->setPosition(_player->getRadius()*3,660);
 
     //_hatsOwned = 0;
     _shootTimer = 0;
@@ -147,6 +148,7 @@ void scenePlayable::update(float deltaTime){
     if(_picking){
 
         bg._doorOpenedL = true;
+        bg._doorOpenedR = false;
         if(_hatsOwned >= 2) bg._doorOpenedR = true;
 
 
@@ -156,11 +158,16 @@ void scenePlayable::update(float deltaTime){
 //left        75.2164 , 666.996
 //right       948.689 , 666.996
         if(_player->getPosition().y > 666){//està a terra
-            if(_player->getPosition().x > 948) {
-                _player->setPosition(666, 948);
+            if(bg._doorOpenedR && _player->getPosition().x > 948) {
+                _player->setPosition(76, 666);
                 changeScene(_next);//move to next LVL
             }
-            if(_player->getPosition().x < 76) std::cout << "why would i do that" << std::endl; //move to previous LVL
+            if(bg._doorOpenedL && _player->getPosition().x < 76) {
+                _player->setPosition(947,666);
+                changeScene(_prev);
+            }
+
+                //std::cout << "why would i do that" << std::endl; //move to previous LVL
         }
 
         //Update Bullets
