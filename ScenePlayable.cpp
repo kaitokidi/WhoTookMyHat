@@ -39,7 +39,7 @@ scenePlayable::~scenePlayable(){
 
 }
 
-void scenePlayable::readEnemies(int lvl){
+void scenePlayable::readEnemies(int lvl) {
 //spoiler not neededs
     //spoiler2 si que needs it
 
@@ -47,11 +47,22 @@ void scenePlayable::readEnemies(int lvl){
     std::ifstream myfile (LVLDESCIPTPATH+_levelName+".txt");
 
     if (myfile.is_open()) {
+        //read name of cave
         std::getline (myfile,line);
         while(line[0] == '#') std::getline (myfile,line);
 
+        //read _hatsowned
+        std::getline (myfile,line);
+        while(line[0] == '#') std::getline (myfile,line);
+        //std::cout << "1__ " << _hatsOwned << std::endl;
+        //_hatsOwned = line[0]-'0';
+        _hatsOwned = lvl;
+        //std::cout << "2__ " << _hatsOwned << std::endl;
+
+        //until end reached
         while (line[0] != '$') {
 
+            //read new line
             std::getline (myfile,line);
             while(line[0] == '#') std::getline (myfile,line);
 
@@ -64,10 +75,9 @@ void scenePlayable::readEnemies(int lvl){
 
                     if(int(line[0]-'0') == lvl){
 
-                        //std::cout <<"....."<< lvl << std::endl;
                         //read enemies
                         std::getline (myfile,line);
-                        //std::cout << " ---- " << line << std::endl;
+
                         while(line[0] == '#') std::getline (myfile,line);
                         for(int i = 0; i < line.size(); ++i){
                             switch(line[i]) {
@@ -162,6 +172,7 @@ void scenePlayable::update(float deltaTime){
         bg._doorOpenedL = false;
         bg._doorOpenedR = false;
 
+       //spawn enemy if needed
        if(_enemyTimePull.size() > 0) {
            if(_timer > _enemyTimePull.front()){
                _enemyTimePull.pop();
@@ -177,7 +188,7 @@ void scenePlayable::update(float deltaTime){
                _picking = true;
                for(int i = 0; i < 3; ++i) { _hatshits[i] = 0; _hats[i].setScale(sf::Vector2f(1.0,1.0));}
                //_hatsOwned = (_hatsOwned + 1);
-               writteLVL(_hatsOwned+1);
+               writteLVL(std::min(_hatsOwned,2));
            }
        }
 
@@ -192,6 +203,7 @@ void scenePlayable::update(float deltaTime){
        }
 
 
+       //erase dead bullets
        auto itb = _bullets.begin();
        for(itb; itb != _bullets.end();){
            if(! (*itb).isAlive()){
@@ -200,6 +212,7 @@ void scenePlayable::update(float deltaTime){
            else ++itb;
        }
 
+       //erase dead enemies
        auto ite = _enemies.begin();
        for(ite; ite != _enemies.end();){
            if(! (*ite).isAlive()){
@@ -208,6 +221,7 @@ void scenePlayable::update(float deltaTime){
            else ++ite;
        }
 
+       //colision between enemies and bullets
        ite = _enemies.begin();
        itb = _bullets.begin();
        for(ite; ite != _enemies.end();){
@@ -225,8 +239,9 @@ void scenePlayable::update(float deltaTime){
                else ++itb;
 
            }
-           //check enemy and player colision
+
            if(ite != _enemies.end()) ++ite;
+
        }
 
 
@@ -282,8 +297,10 @@ void scenePlayable::writteLVL(int lvl){
         std::getline (inf,line);
         while(line[0] == '#') std::getline (inf,line);
         int oldLVL = (line[0]-'0');
-        if(lvl > oldLVL) aux << lvl << '\n';
-        else aux << line << '\n';
+        _hatsOwned = std::min(lvl+1,2);
+        aux << std::min(lvl+1,2) << '\n';
+        //if(lvl > oldLVL) aux << lvl << '\n';
+        //else aux << line << '\n';
 
         while(std::getline (inf,line)){
             aux << line << '\n';
