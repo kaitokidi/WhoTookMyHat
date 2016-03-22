@@ -121,18 +121,14 @@ void Enemy::movement(float deltaTime, Background *bg) {
     _vel.y += constant::gravity;
 
     sf::Vector2f dest(_vel.x * deltaTime, _vel.y * deltaTime);
- //   if(bg->colision(getPosition().x, getPosition().y+dest.y)){
     if(bg->circleColision( sf::Vector2f( getPosition().x, float(getPosition().y)+dest.y ), 60)){
         _vel.y = 0;
     } else move(0, dest.y);
-    //if(bg->colision(getPosition().x+dest.x, getPosition().y)){
     if(bg->circleColision( sf::Vector2f( dest.x + float(getPosition().x), getPosition().y ), 60)){
         _vel.x = 0;
     } else {
         move(dest.x, 0);
         if (_vel.x > 0){
-//            std::cout << _vel.x*deltaTime/double(getGlobalBounds().width/2.0) << std::endl;
-//               rotate(_vel.x*deltaTime/double(getGlobalBounds().width/2.0)*180/3.1415);//ENEMROTATION*deltaTime);
             rotate(_vel.x*deltaTime/60.0*180/3.1415);//ENEMROTATION*deltaTime);
         } else rotate(_vel.x*deltaTime/60.0*180/3.1415);//-ENEMROTATION*deltaTime);
     }
