@@ -6,6 +6,8 @@
 
 changes when hitted or something plox
 
+
+//He tret el llegir enemics del readLVL, ho deixo escrit just in case
 */
 
 scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string next, std::string levelName, Player *player)
@@ -21,6 +23,7 @@ scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string next, std
     _shootTimer = 0;
 
     readLVL(levelName);
+//    readEnemies(_hatsOwned);
     _levelName = levelName;
 
     for(int i = 0; i < 3; ++i) _hatshits[i] = 0;
@@ -104,7 +107,6 @@ void scenePlayable::readEnemies(int lvl) {
                             }
                         }
                     } else {
-                        std::cout << "nollegit " << line << std::endl;
                         //read enemies
                         std::getline (myfile,line);
                         while(line[0] == '#') std::getline (myfile,line);
@@ -166,6 +168,7 @@ void scenePlayable::update(float deltaTime){
         for(int i = 0; i < 3; ++i){
             if(_hatshits[i] > 1){
                 if(_enemyPull.empty()) readEnemies(i);
+                _player->setHat(_hats[i]);
                 _playing = true;
                 _picking = false;
             }
@@ -407,6 +410,7 @@ void scenePlayable::readLVL(std::string levelName){
 
             }
 
+/*
             if(line == "enemies"){
 
                 std::getline (myfile,line);
@@ -451,7 +455,7 @@ void scenePlayable::readLVL(std::string levelName){
                 }
 
             }
-
+*/
         }
         myfile.close();
     }
