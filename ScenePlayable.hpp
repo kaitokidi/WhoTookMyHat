@@ -40,6 +40,8 @@ private:
     Game* _game;
     float _timer;
     Background bg;
+    sf::Sprite _s;
+    sf::Texture _t;
     int _hatsOwned;
     Player* _player;
     int _hatshits[3];

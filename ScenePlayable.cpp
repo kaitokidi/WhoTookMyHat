@@ -27,6 +27,10 @@ scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string next, std
     for(int i = 0; i < 3; ++i) _hats[i].setOrigin(_hats[i].getGlobalBounds().width/2,_hats[i].getGlobalBounds().height/2 );
     init();
 
+    if(! _t.loadFromFile(std::string(TEXTURETPATH+std::string("hat0.png")))) std::cout << "unable to open hat0" << std::endl;
+    _s.setTexture(_t);
+    _s.setOrigin(_s.getGlobalBounds().width/2, _s.getGlobalBounds().height/2);
+
     _player->setHat(_hats[0]);
     _picking = true;
     _playing = false;
@@ -187,6 +191,7 @@ void scenePlayable::update(float deltaTime){
                _playing = false;
                _picking = true;
                for(int i = 0; i < 3; ++i) { _hatshits[i] = 0; _hats[i].setScale(sf::Vector2f(1.0,1.0));}
+               for(int i = 0; i < 3; ++i) { _hatshits[i] = 0; _hats[i].setRotation(0);}
                //_hatsOwned = (_hatsOwned + 1);
                writteLVL(std::min(_hatsOwned,2));
            }
@@ -297,8 +302,8 @@ void scenePlayable::writteLVL(int lvl){
         std::getline (inf,line);
         while(line[0] == '#') std::getline (inf,line);
         int oldLVL = (line[0]-'0');
-        _hatsOwned = std::min(lvl+1,2);
         aux << std::min(lvl+1,2) << '\n';
+//        if(oldLVL > _hatsOwned) _hatsOwned = oldLVL;
         //if(lvl > oldLVL) aux << lvl << '\n';
         //else aux << line << '\n';
 
@@ -331,9 +336,16 @@ void scenePlayable::writteLVL(int lvl){
 void scenePlayable::render(sf::RenderTarget *target){
     bg.draw(target);
     if(_picking){
-        target->draw(_hats[0]);
-        target->draw(_hats[1]);
-        target->draw(_hats[2]);
+        for(int i = 0; i < 3; ++i){
+            if(i <= _hatsOwned ) target->draw(_hats[i]);
+            else {
+                _s.setPosition(300+200*i,150);
+                target->draw(_s);
+            }
+        }
+//        target->draw(_hats[0]);
+//        target->draw(_hats[1]);
+//        target->draw(_hats[2]);
     }
     _player->draw(target);
     for(auto it = _enemies.begin(); it != _enemies.end(); ++it){
