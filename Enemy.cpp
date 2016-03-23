@@ -1,6 +1,7 @@
 #include "Enemy.hpp"
-#define ANIMTIMER 0.10
 #define ENEMSPEED 60
+#define ANIMTIMER 0.10
+#define HITEDTIMER 0.8
 #define ENEMROTATION 40
 Enemy::Enemy(){
 
@@ -8,21 +9,25 @@ Enemy::Enemy(){
     _index = 0;
 
     _alive = true;
+    _hitted = false;
     _spawning = true;
     _destroying = false;
 
     _vel.x = _vel.y = 0;
 
     init();
+    _hittedTimer = 0.0;
     _animTimer.restart();
 
 }
 
 void Enemy::hit(){
     --_hp;
+    _hitted = true;
     if(_hp <= 0) {
         _index = 0;
         setRotation(0);
+        _hitted = false;
         _destroying = true;
         _animTimer.restart();
     }
@@ -40,7 +45,7 @@ bool Enemy::isAlive()                             {
 }
 
 bool Enemy::colisionable(){
-    return (!_spawning && !_destroying);
+    return (!_spawning && !_destroying && !_hitted);
 }
 
 
@@ -61,6 +66,14 @@ void Enemy::update(float deltaTime, Background *bg){
     }
 
     movement(deltaTime, bg);
+
+    if(_hitted){
+        _hittedTimer += deltaTime;
+        if(_hittedTimer >= HITEDTIMER){
+            _hitted = false;
+            _hittedTimer = 0.0;
+        }
+    }
 }
 
 void Enemy::dyeing(){
@@ -134,3 +147,6 @@ void Enemy::movement(float deltaTime, Background *bg) {
 
 
 }
+bool Enemy::hitted() const { return _hitted; }
+float Enemy::hittedTimer() const{ return _hittedTimer; }
+

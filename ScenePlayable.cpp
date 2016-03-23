@@ -71,10 +71,7 @@ void scenePlayable::readEnemies(int lvl) {
         //read _hatsowned
         std::getline (myfile,line);
         while(line[0] == '#') std::getline (myfile,line);
-        //std::cout << "1__ " << _hatsOwned << std::endl;
-        //_hatsOwned = line[0]-'0';
         _hatsOwned = lvl;
-        //std::cout << "2__ " << _hatsOwned << std::endl;
 
         //until end reached
         while (line[0] != '$') {
@@ -377,8 +374,13 @@ void scenePlayable::render(sf::RenderTarget *target){
 //        target->draw(_hats[2]);
     }
     _player->draw(target);
+
     for(auto it = _enemies.begin(); it != _enemies.end(); ++it){
-        target->draw(*(*it));
+        if((*it)->hitted()){
+            Resources::cInvert.setParameter("deltaTime", (*it)->hittedTimer());
+            target->draw(*(*it),&Resources::cInvert);
+        }
+        else target->draw(*(*it));
     }
     for(auto it = _bullets.begin(); it != _bullets.end(); ++it){
         target->draw(*it);
@@ -406,7 +408,6 @@ void scenePlayable::readLVL(std::string levelName){
             while(line[0] == '#') std::getline (myfile,line);
             //_hatsOwned = myStoi(line);
             _hatsOwned = line[0]-'0';
-//std::cout << _hatsOwned << std::endl;
 
             for(int i = 0; i < 3; ++i){
                 std::getline (myfile,line);
@@ -448,6 +449,7 @@ void scenePlayable::readLVL(std::string levelName){
 
                         std::getline (myfile,line);
                         while(line[0] == '#') std::getline (myfile,line);
+                        /*
                         for(int i = 0; i < line.size(); ++i){
                             switch(line[i]) {
                                 case 'b':
@@ -462,15 +464,16 @@ void scenePlayable::readLVL(std::string levelName){
                                 break;
                             }
                         }
+                        */
 
                         std::getline (myfile,line);
                         while(line[0] == '#') std::getline (myfile,line);
 
-                        for(int i = 0; i < line.size(); ++i){
+/*                        for(int i = 0; i < line.size(); ++i){
                             if(line[i] != ' '){
                                 _enemyTimePull.push(line[i]-'0');
                             }
-                        }
+                        }*/
                     } else {
                         std::getline (myfile,line);
                         while(line[0] == '#') std::getline (myfile,line);

@@ -20,19 +20,28 @@ public:
     virtual void update(float deltaTime, Background* bg);
     virtual void movement(float deltaTime, Background *bg);
 
+
+    bool hitted() const;
+    float hittedTimer() const;
+
 protected:
 
-    int _index;
     int _hp;
+    int _index;
+
     bool _alive;
+    bool _hitted;
     bool _spawning;
     bool _destroying;
+
+    float _hittedTimer;
 
     sf::Vector2f _vel;
 
     sf::Clock _animTimer;
 
     sf::Texture _texture;
+
     std::vector < sf::Texture > _spawnAnimation;
     std::vector < sf::Texture > _destroyAnimation;
 
