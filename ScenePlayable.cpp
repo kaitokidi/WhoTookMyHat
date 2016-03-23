@@ -259,9 +259,9 @@ void scenePlayable::update(float deltaTime){
 
        //colision between enemies and bullets
        ite = _enemies.begin();
-       itb = _bullets.begin();
-       for(ite; ite != _enemies.end();){
+       for(ite; ite != _enemies.end();++ite){
 
+            itb = _bullets.begin();
            if((*ite)->colides(_player) && (*ite)->colisionable()){
                (*ite)->hit();
            }
@@ -275,8 +275,6 @@ void scenePlayable::update(float deltaTime){
                else ++itb;
 
            }
-
-           if(ite != _enemies.end()) ++ite;
 
        }
 
