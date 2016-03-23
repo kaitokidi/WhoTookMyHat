@@ -18,15 +18,14 @@ public:
     static sf::Texture doors_OX;
     static sf::Texture doors_OO;
     static sf::Texture doors_XX;
-
-
-    static std::vector<sf::Texture> spawnAnim;
-    static std::vector<sf::Texture> destroyAnim;
-
+    static sf::Texture enemyBloc;
 
     static sf::Shader cInvert;
 
     static sf::Font pauseMenuFont;
+
+    static std::vector<sf::Texture> spawnAnim;
+    static std::vector<sf::Texture> destroyAnim;
 
     static std::vector<SpriteSheetDescription> descriptions;
 

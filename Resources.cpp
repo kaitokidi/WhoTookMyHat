@@ -12,6 +12,7 @@ sf::Texture            Resources::talkBox;
 sf::Texture            Resources::doors_OX;
 sf::Texture            Resources::doors_OO;
 sf::Texture            Resources::doors_XX;
+sf::Texture            Resources::enemyBloc;
 
 std::vector<sf::Texture> Resources::spawnAnim (9);
 std::vector<sf::Texture> Resources::destroyAnim (9);
@@ -30,15 +31,16 @@ void printError(std::string s){
 void Resources::load() {
     //LOAD THE INFORMATION IN THE VARIABLES
     //...loadFromFile(); or whatever
-    if(! key.loadFromFile                    (TEXTURETPATH+std::string("key.png"))      ) printError("keyTex");
-    if(! eyes.loadFromFile                   (TEXTURETPATH+std::string("eyes.png"))     ) printError("eyesTex");
-    if(! enemy.loadFromFile                  (TEXTURETPATH+std::string("enemy.png"))    ) printError("enemyTex");
-    if(! chain.loadFromFile                  (TEXTURETPATH+std::string("hook.png"))     ) printError("chainTex");
-    if(! bullet.loadFromFile                 (TEXTURETPATH+std::string("bullet.png"))   ) printError("bulleTex");
-    if(! talkBox.loadFromFile                (TEXTURETPATH+std::string("talkBox.png"))  ) printError("talkbTex");
-    if(! doors_OX.loadFromFile               (TEXTURETPATH+std::string("doors_OX.png")) ) printError("doorOXTex");
-    if(! doors_OO.loadFromFile               (TEXTURETPATH+std::string("doors_OO.png")) ) printError("doorOOTex");
-    if(! doors_XX.loadFromFile               (TEXTURETPATH+std::string("doors_XX.png")) ) printError("doorXXTex");
+    if(! key.loadFromFile                    (TEXTURETPATH+std::string("key.png"))        ) printError("keyTex");
+    if(! eyes.loadFromFile                   (TEXTURETPATH+std::string("eyes.png"))       ) printError("eyesTex");
+    if(! enemy.loadFromFile                  (TEXTURETPATH+std::string("enemy.png"))      ) printError("enemyTex");
+    if(! chain.loadFromFile                  (TEXTURETPATH+std::string("hook.png"))       ) printError("chainTex");
+    if(! bullet.loadFromFile                 (TEXTURETPATH+std::string("bullet.png"))     ) printError("bulleTex");
+    if(! talkBox.loadFromFile                (TEXTURETPATH+std::string("talkBox.png"))    ) printError("talkbTex");
+    if(! doors_OX.loadFromFile               (TEXTURETPATH+std::string("doors_OX.png"))   ) printError("doorOXTex");
+    if(! doors_OO.loadFromFile               (TEXTURETPATH+std::string("doors_OO.png"))   ) printError("doorOOTex");
+    if(! doors_XX.loadFromFile               (TEXTURETPATH+std::string("doors_XX.png"))   ) printError("doorXXTex");
+    if(! enemyBloc.loadFromFile               (TEXTURETPATH+std::string("enemyBloc.png")) ) printError("enemyBloc");
 
     for(int i = 0; i < 9; ++i){
         if(! spawnAnim[i].loadFromFile  (TEXTURETPATH+std::string("spawn/smoke_plume_000")+std::string(std::to_string(i+1))+std::string(".png") )) printError("spawnAnim");
@@ -53,7 +55,7 @@ void Resources::load() {
 
    // descriptions = std::vector<SpriteSheetDescription>(spriteDescriptionsQtt);
    // descriptions[linkSpritesDescriptions]       = loadDescription("linkSheet");
-    std::cout << " Resources Loaded " << std::endl;
+    std::cerr << " Resources Loaded " << std::endl;
 }
 
 

@@ -5,8 +5,11 @@
 class EnemyBloc : public Enemy{
 public:
     EnemyBloc();
-    virtual void update(float deltaTime, Background* bg);
+    virtual void init();
     virtual void movement(float deltaTime, Background *bg);
+
+protected:
+
 };
 
 #endif // ENEMYBLOC_HPP

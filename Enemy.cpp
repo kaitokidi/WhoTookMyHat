@@ -50,7 +50,6 @@ void Enemy::update(float deltaTime, Background *bg){
         updateSprite(true);
         return;
     } if(_destroying){
-        //log("updatespritedestroy");
         updateSprite(false);
         return;
     } else {

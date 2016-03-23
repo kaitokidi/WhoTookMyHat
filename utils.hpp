@@ -3,9 +3,6 @@
 
 #define FRAMERATE 60
 
-#define SCENEEXTENSION ".scene"
-#define SCENEEXTENSIONSIZE 6
-
 #define DATAPATH "Resources/Data/"
 #define TEXTPATH "Resources/Texts/"
 #define SHADERPATH "Resources/Shaders/"
@@ -13,19 +10,6 @@
 #define LVLDESCIPTPATH "Resources/LevelDescriptors/"
 #define TEXTUREDESCRIPTIONEXTENSION ".description"
 
-#define TILESIZE 16
-#define TILEOFFSET 1
-#define TILESETWIDTH 18
-#define TILESETHEIGH 8
-
-#define WINDOWRATIOX 256
-#define WINDOWRATIOY 176
-
-#define DUNGEONSIZEX 256
-#define DUNGEONSIZEY 176
-
-#define UIRATIOX 1117
-#define UIRATIOY 768
 
 #ifdef _WIN32
 #define NOMINMAX
@@ -61,8 +45,8 @@
 #include <SFML/Graphics.hpp>
 
 //movement dir { down, left, right, up , none };
-const int mx[5] = {0,  -1,     1,       0,   0   };
-const int my[5] = {1,    0,     0,   -1,   0   };
+const int mx[5] = {0,   -1,     1,   0,   0   };
+const int my[5] = {1,    0,     0,  -1,   0   };
 
 const float TO_RADIANS = (1 / 180.0f) * (float ) M_PI;
 const float TO_DEGREES = (1 / (float ) M_PI) * 180;
@@ -81,13 +65,10 @@ namespace InputAction {
       down          , 
       up            ,
       p1movementY   , 
-      p2movementY   , 
       left          , 
       right         ,
       p1movementX   ,
-      p2movementX   ,  
       action        ,
-      fairyAction   , 
       pause         ,
 	  reset			,
       shoot         ,
@@ -105,11 +86,6 @@ enum sceneTypes {
 // SpriteSheets
 typedef std::vector< std::vector < sf::IntRect> > SpriteSheetDescription;
 
-enum spriteSheetsDescriptions {
-    linkSpritesDescriptions,
-    spriteDescriptionsQtt
-};
-
 enum animationActions {
     action_none,
     action_skip,
@@ -120,78 +96,6 @@ enum animationActions {
     rotateClockwhise,
     rotateCounterClockwhise,
     qttyAnimationActions
-};
-// Animations
-enum linkActions {
-    move            ,
-    attack          ,
-    linkActionsQtt
-};
-
-// Sword Types
-enum swordtypes {
-    first,
-    second,
-    third,
-    fourth,
-    qttSwordTypes
-};
-
-// Props Types
-enum propTypes {
-    treeGreen   ,
-    treeBrown   ,
-    treeWhite   ,
-    statueGreen ,
-    statueBrown ,
-    statueWhite ,
-    bushGreen   ,
-    bushBrown   ,
-    grave       ,
-    soldierGreen,
-    soldierBrown,
-    soldierWhite,
-    propsQtty
-};
-
-enum dungeonHorDoorTypes {
-    openTop,
-    openBot,
-    closTop,
-    closBot,
-    keysTop,
-    keysBot,
-    dungeonHorDoorQtty
-};
-
-enum dungeonVerDoorTypes {
-    openRight,
-    openLeft ,
-    closRight,
-    closLeft ,
-    keysRight,
-    keysLeft ,
-    dungeonVerDoorQtty
-};
-
-enum objectType {
-    halfHeal ,
-    fullHeal ,
-    life     ,
-    rupee    ,
-    rupee5   ,
-    bomb     ,
-    key      ,
-    triforce ,
-    triblue  ,
-    objectsQtty
-};
-
-enum enemyType {
-  octorok,
-  ortorokBlue,
-  penguin,
-  enemyTypeQtty
 };
 
 // Directions
@@ -209,18 +113,7 @@ enum directions { //u were afraid i could change it to make it beautiful dindn't
     directionsQtty
 };
 
-enum collisionMapMask {
-  water = 1, // blue
-  passage = 2, // green
-  rock = 4, // red
-  ground = 0, // ground (it have to be white :( I cry everytime)
-  wall = 7, // walls
-
-  collisionMapMaskQtty = -1
-};
-
 namespace constant{
-    static const int tileSize = 30;
     static const float gravity = 4;
     static const float friction = 2;
     static const float hookForce = 0.03;
@@ -229,15 +122,6 @@ namespace constant{
     static const float playerRadious = 30;
     static const float shootMaxTime = 0.8;
     static const float playerMaxSpeed = 100;
-
-    static const float defense = 20;
-    static const float strength = 20;
-    static const float hitPoints = 200;
-    static const float magicPower = 20;
-    static const float resistence = 20;
-
-
-    static const float clientTimeOut = 5;
 }
 
 void log(std::string s);
