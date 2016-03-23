@@ -1,7 +1,7 @@
 #include "Enemy.hpp"
 #define ENEMSPEED 60
 #define ANIMTIMER 0.10
-#define HITEDTIMER 0.8
+#define HITEDTIMER 0.91
 #define ENEMROTATION 40
 Enemy::Enemy(){
 

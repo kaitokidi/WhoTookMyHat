@@ -2,13 +2,6 @@
 #include <unistd.h>
 #include "Resources.hpp"
 #include "ScenePlayable.hpp"
-/* QUESTLOG
-
-changes when hitted or something plox
-
-
-//He tret el llegir enemics del readLVL, ho deixo escrit just in case
-*/
 
 scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string previous, std::string levelName, std::string next, Player *player)
                                                     : Scene(g, w, sceneTypes::testScene, levelName)  {
@@ -215,7 +208,7 @@ void scenePlayable::update(float deltaTime){
         }
         else {
            //s'han acabat els enemics
-           if(_enemies.empty()) {
+           if(_enemies.empty() && _enemyPull.empty()) {
                _playing = false;
                _picking = true;
                for(int i = 0; i < 3; ++i) { _hatshits[i] = 0; _hats[i].setScale(sf::Vector2f(1.0,1.0)); _hats[i].setRotation(0);}
@@ -377,8 +370,10 @@ void scenePlayable::render(sf::RenderTarget *target){
 
     for(auto it = _enemies.begin(); it != _enemies.end(); ++it){
         if((*it)->hitted()){
-            Resources::cInvert.setParameter("deltaTime", (*it)->hittedTimer());
-            target->draw(*(*it),&Resources::cInvert);
+            float aux = (*it)->hittedTimer();
+            Resources::cInvert.setParameter("deltaTime", aux);
+            if (int(aux*10) %3 != 0) target->draw(*(*it),&Resources::cInvert);
+            else target->draw(*(*it));
         }
         else target->draw(*(*it));
     }
