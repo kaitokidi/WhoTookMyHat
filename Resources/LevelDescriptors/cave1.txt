@@ -1,4 +1,4 @@
-cave_1.png
+cave1.png
 #doors with OO, OX or XX
 doors
 OO
