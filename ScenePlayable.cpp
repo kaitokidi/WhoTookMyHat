@@ -410,7 +410,7 @@ void scenePlayable::readLVL(std::string levelName){
 
                 if(! _hatsT[i].loadFromFile(TEXTURETPATH+line)) std::cout << "not loaded texture of hat" << i << "on readlvl scenePlayable" << std::endl;
                 else{
-                    _hats[i].setTexture(_hatsT[i]);
+                    _hats[i].setTexture(_hatsT[i],true);
                 }
             }
 

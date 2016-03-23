@@ -158,7 +158,8 @@ void Player::draw(sf::RenderTarget * w){
     sf::Vector2f hatpos;
     float anglehat = -(90+35);
     hatpos.x = body.getPosition().x + std::cos(anglehat*M_PI/180) * (body.getRadius());
-    hatpos.y = body.getPosition().y + std::sin(anglehat*M_PI/180) * (body.getRadius());
+    hatpos.y = body.getPosition().y + std::sin(anglehat*M_PI/180) * (body.getRadius())+ (vel.y*-3 * (vel.y > 0));
+    hat.setRotation(-1*vel.x);
     hat.setPosition(hatpos);
 
     if(hooking) hook.draw(w);
@@ -195,7 +196,7 @@ void Player::setHookPos(sf::Vector2f pos){
 }
 
 void Player::setHat(sf::Sprite& spr) {
-    hat.setTexture((*spr.getTexture()));
+    hat.setTexture((*spr.getTexture()),true);
     hat.setOrigin(hat.getLocalBounds().width/2, hat.getLocalBounds().height/2);
 }
 
