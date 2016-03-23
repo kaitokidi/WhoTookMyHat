@@ -13,6 +13,7 @@ sf::Texture            Resources::doors_OX;
 sf::Texture            Resources::doors_OO;
 sf::Texture            Resources::doors_XX;
 sf::Texture            Resources::enemyBloc;
+sf::Texture            Resources::enemyStar;
 
 std::vector<sf::Texture> Resources::spawnAnim (9);
 std::vector<sf::Texture> Resources::destroyAnim (9);
@@ -40,7 +41,8 @@ void Resources::load() {
     if(! doors_OX.loadFromFile               (TEXTURETPATH+std::string("doors_OX.png"))   ) printError("doorOXTex");
     if(! doors_OO.loadFromFile               (TEXTURETPATH+std::string("doors_OO.png"))   ) printError("doorOOTex");
     if(! doors_XX.loadFromFile               (TEXTURETPATH+std::string("doors_XX.png"))   ) printError("doorXXTex");
-    if(! enemyBloc.loadFromFile               (TEXTURETPATH+std::string("enemyBloc.png")) ) printError("enemyBloc");
+    if(! enemyBloc.loadFromFile              (TEXTURETPATH+std::string("enemyBloc.png"))  ) printError("enemyBloc");
+    if(! enemyStar.loadFromFile              (TEXTURETPATH+std::string("enemyStar.png"))  ) printError("enemyStar");
 
     for(int i = 0; i < 9; ++i){
         if(! spawnAnim[i].loadFromFile  (TEXTURETPATH+std::string("spawn/smoke_plume_000")+std::string(std::to_string(i+1))+std::string(".png") )) printError("spawnAnim");

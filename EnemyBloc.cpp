@@ -27,7 +27,6 @@ void EnemyBloc::movement(float deltaTime, Background *bg){
     sf::Vector2f dest(_vel.x, _vel.y);
 
     //colide on y
-
     sf::FloatRect desrect = getGlobalBounds();
     desrect.top += _vel.y;
     if(bg->rectangleColision( desrect )){

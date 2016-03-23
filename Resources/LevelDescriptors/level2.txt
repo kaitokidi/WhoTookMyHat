@@ -11,7 +11,7 @@ enemies
 s s s s s 
 2 2 2 1 1
 1
-b s s b b s b b 
+f f f f f f f f 
 2 2 1 1 1 1 1 1
 2
 b s s b s s b s s

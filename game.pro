@@ -40,7 +40,8 @@ SOURCES += main.cpp \
     AnimatedCircle.cpp \
     Enemy.cpp \
     Bullet.cpp \
-    EnemyBloc.cpp
+    EnemyBloc.cpp \
+    EnemyFlying.cpp
 
 HEADERS += utils.hpp \
         Resources.cpp \
@@ -75,4 +76,5 @@ HEADERS += utils.hpp \
     AnimatedCircle.hpp \
     Enemy.hpp \
     Bullet.hpp \
-    EnemyBloc.hpp
+    EnemyBloc.hpp \
+    EnemyFlying.hpp

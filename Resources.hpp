@@ -19,6 +19,7 @@ public:
     static sf::Texture doors_OO;
     static sf::Texture doors_XX;
     static sf::Texture enemyBloc;
+    static sf::Texture enemyStar;
 
     static sf::Shader cInvert;
 

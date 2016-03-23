@@ -96,6 +96,10 @@ void scenePlayable::readEnemies(int lvl) {
                                 _enemyPull.push(new EnemyBloc());
                                 _enemyPull.back()->setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
                                 break;
+                                case 'f':
+                                _enemyPull.push(new EnemyFlying());
+                                _enemyPull.back()->setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
+                                break;
                                 default:
                                 break;
                             }
@@ -161,7 +165,6 @@ void scenePlayable::update(float deltaTime){
                 changeScene(_prev);
             }
 
-                //std::cout << "why would i do that" << std::endl; //move to previous LVL
         }
 
         //Update Bullets
