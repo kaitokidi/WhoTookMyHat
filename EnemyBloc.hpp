@@ -7,8 +7,11 @@ public:
     EnemyBloc();
     virtual void init();
     virtual void movement(float deltaTime, Background *bg);
+    virtual void getNewDirection();
 
 protected:
+
+    direction::dir _dir;
 
 };
 

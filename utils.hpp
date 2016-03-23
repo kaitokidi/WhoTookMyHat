@@ -45,6 +45,9 @@
 #include <SFML/Graphics.hpp>
 
 //movement dir { down, left, right, up , none };
+namespace direction {
+    enum dir { down, left, right, up , none };
+}
 const int mx[5] = {0,   -1,     1,   0,   0   };
 const int my[5] = {1,    0,     0,  -1,   0   };
 
@@ -99,7 +102,7 @@ enum animationActions {
 };
 
 // Directions
-enum directions { //u were afraid i could change it to make it beautiful dindn't u ? xd
+enum directions {
     down    , // This have
     left    , // to be
     up      , // in this

@@ -8,14 +8,14 @@ spawn
 170
 enemies
 0
-b b b b b 
+s s s s s 
 2 2 2 1 1
 1
-b b b b b b b b 
+b s s b b s b b 
 2 2 1 1 1 1 1 1
 2
-b b b b b b b b b b b b b b b b 
-2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1
+b s s b s s b s s
+2 2 2 2 2 1 1 1 1
 $ END
 
 first there are the name of the background file

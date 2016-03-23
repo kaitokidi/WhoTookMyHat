@@ -74,6 +74,21 @@ bool Background::circleColision(sf::Vector2f pos, float rad) {
     return false;
 }
 
+bool Background::rectangleColision(sf::FloatRect rect){
+    for(int i = 0; i < _boundaries.size(); ++i){
+        if(   _boundaries[i].contains(rect.left, rect.top)
+           || _boundaries[i].contains(rect.left+rect.width, rect.top)
+           || _boundaries[i].contains(rect.left, rect.top+rect.height)
+           || _boundaries[i].contains(rect.left+rect.width, rect.top+rect.height))
+            return true;
+        if(   rect.contains(_boundaries[i].left, _boundaries[i].top)
+              || rect.contains(_boundaries[i].left+_boundaries[i].width, _boundaries[i].top)
+              || rect.contains(_boundaries[i].left, _boundaries[i].top+_boundaries[i].height)
+              || rect.contains(_boundaries[i].left+_boundaries[i].width, _boundaries[i].top+_boundaries[i].height))
+               return true;
+    }
+    return false;
+}
 
 //#include <iostream>
 #include <complex>

@@ -5,6 +5,7 @@
 #include "Scene.hpp"
 #include "Bullet.hpp"
 #include "Player.hpp"
+#include "EnemyBloc.hpp"
 #include "Background.hpp"
 
 class Game;
@@ -53,9 +54,9 @@ private:
     std::string _levelName;
 
     sf::Vector2i _spawnPoint;
-    std::list < Enemy > _enemies;
+    std::list < Enemy* > _enemies;
     std::list < Bullet > _bullets;
-    std::queue < Enemy > _enemyPull;
+    std::queue < Enemy* > _enemyPull;
     std::queue < int > _enemyTimePull;
 
 };

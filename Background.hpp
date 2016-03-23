@@ -23,6 +23,7 @@ public:
     bool colision(sf::Vector2f pos);
     void readLevel(std::string lvlDesc);
     void draw(sf::RenderTarget *target);
+    bool rectangleColision(sf::FloatRect rect);
     bool circleColision(sf::Vector2f pos, float rad);
     sf::Vector2i getIntersection(sf::Vector2i mousePos);
     sf::Vector2i getIntersection(sf::Vector2i position, sf::Vector2i mousePos);

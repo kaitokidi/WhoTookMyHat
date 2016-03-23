@@ -99,8 +99,12 @@ void scenePlayable::readEnemies(int lvl) {
                         for(int i = 0; i < line.size(); ++i){
                             switch(line[i]) {
                                 case 'b':
-                                _enemyPull.push(Enemy());
-                                _enemyPull.back().setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
+                                _enemyPull.push(new Enemy());
+                                _enemyPull.back()->setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
+                                break;
+                                case 's':
+                                _enemyPull.push(new EnemyBloc());
+                                _enemyPull.back()->setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
                                 break;
                                 default:
                                 break;
@@ -225,7 +229,7 @@ void scenePlayable::update(float deltaTime){
 
        //Update Enemies
        for(auto it = _enemies.begin(); it != _enemies.end(); ++it){
-           it->update(deltaTime, &bg);
+           (*it)->update(deltaTime, &bg);
        }
 
        //Update Bullets
@@ -246,7 +250,8 @@ void scenePlayable::update(float deltaTime){
        //erase dead enemies
        auto ite = _enemies.begin();
        for(ite; ite != _enemies.end();){
-           if(! (*ite).isAlive()){
+           if(! (*(*ite)).isAlive()){
+               delete(*ite);
                ite = _enemies.erase(ite);
            }
            else ++ite;
@@ -257,15 +262,15 @@ void scenePlayable::update(float deltaTime){
        itb = _bullets.begin();
        for(ite; ite != _enemies.end();){
 
-           if(ite->colides(_player) && ite->colisionable()){
-               ite->hit();
+           if((*ite)->colides(_player) && (*ite)->colisionable()){
+               (*ite)->hit();
            }
            else for(itb; itb != _bullets.end() && ite != _enemies.end();){
 
                //check enemy and bullet colision
-               if(ite->colides(&(*itb))  && ite->colisionable()){
+               if((*ite)->colides(&(*itb))  && (*ite)->colisionable()){
                    itb = _bullets.erase(itb);
-                   ite->hit();
+                   (*ite)->hit();
                }
                else ++itb;
 
@@ -375,7 +380,7 @@ void scenePlayable::render(sf::RenderTarget *target){
     }
     _player->draw(target);
     for(auto it = _enemies.begin(); it != _enemies.end(); ++it){
-        target->draw(*it);
+        target->draw(*(*it));
     }
     for(auto it = _bullets.begin(); it != _bullets.end(); ++it){
         target->draw(*it);
@@ -448,8 +453,12 @@ void scenePlayable::readLVL(std::string levelName){
                         for(int i = 0; i < line.size(); ++i){
                             switch(line[i]) {
                                 case 'b':
-                                _enemyPull.push(Enemy());
-                                _enemyPull.back().setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
+                                _enemyPull.push(new Enemy());
+                                _enemyPull.back()->setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
+                                break;
+                                case 's':
+                                _enemyPull.push(new EnemyBloc());
+                                _enemyPull.back()->setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
                                 break;
                                 default:
                                 break;
