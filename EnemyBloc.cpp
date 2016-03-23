@@ -1,5 +1,5 @@
 #include "EnemyBloc.hpp"
-#define ENEMSPEED 1500
+#define ENEMSPEED 100
 //enum dir { down, left, right, up , none };
 
 EnemyBloc::EnemyBloc(){
@@ -18,22 +18,25 @@ void EnemyBloc::init() {
 void EnemyBloc::movement(float deltaTime, Background *bg){
 
 //    log("::::::::::::::::::::::::::");
-    _dir = direction::none;
-    if(_dir == direction::none) getNewDirection();
+    if(_dir == direction::none)     getNewDirection();
     if(_dir == direction::up)       _vel.y = -ENEMSPEED*deltaTime;
     if(_dir == direction::left)     _vel.x = -ENEMSPEED*deltaTime;
     if(_dir == direction::down)     _vel.y =  ENEMSPEED*deltaTime;
     if(_dir == direction::right)    _vel.x =  ENEMSPEED*deltaTime;
-    //_vel.y += constant::gravity;
 
-    sf::Vector2f dest(_vel.x * deltaTime, _vel.y * deltaTime);
+    sf::Vector2f dest(_vel.x, _vel.y);
 
     //colide on y
-    if(bg->rectangleColision( getGlobalBounds() )){
+
+    sf::FloatRect desrect = getGlobalBounds();
+    desrect.top += _vel.y;
+    if(bg->rectangleColision( desrect )){
         _vel.y = 0; _dir = direction::none;
     } else move(0, dest.y);
+    desrect.top -= _vel.y;
+    desrect.left += _vel.x;
     //colide on x
-    if(bg->rectangleColision( getGlobalBounds() )){
+    if(bg->rectangleColision( desrect )){
         _vel.x = 0; _dir = direction::none;
     } else move(dest.x, 0);
 
