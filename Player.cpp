@@ -169,6 +169,9 @@ void Player::draw(sf::RenderTarget * w){
     guide.draw(w);
 }
 
+void Player::moveOut(float speed){
+    setPosition(sf::Vector2f(getPosition().x+speed, getPosition().y));
+}
 
 void Player::setPosition(const sf::Vector2f pos){
     hook.setOrigin(pos);

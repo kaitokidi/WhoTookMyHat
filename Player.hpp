@@ -37,8 +37,9 @@ public:
 
     Player();
 
-    void update(float deltaTime, sf::Vector2i auxMousePos, Background *bg);
     void draw(sf::RenderTarget *w);
+    void moveOut(float speed);
+    void update(float deltaTime, sf::Vector2i auxMousePos, Background *bg);
 
     float getSpeed() const;
     float getRadius() const;
@@ -48,20 +49,16 @@ public:
     sf::Vector2f getHookPos() const;
     sf::Vector2f getMousePos() const;
 
-    void setHat(sf::Sprite &spr);
-
     void setAngle(float a);
     void setSpeed(float value);
-
+    void setHat(sf::Sprite &spr);
     void setPos(const sf::Vector2f &value);
-    void setMousePos(const sf::Vector2f &value);
-
     void setPosition(float posX, float posY);
     void setPosition(const sf::Vector2f pos);
-
+    void setHookPos (float posX, float posY);
+    void setHookPos (const sf::Vector2f value);
+    void setMousePos(const sf::Vector2f &value);
     void setDistantHookPos(sf::Vector2i mousePos, Background* bg);
-    void setHookPos(float posX, float posY);
-    void setHookPos(const sf::Vector2f value);
 
 };
 

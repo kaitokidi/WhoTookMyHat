@@ -35,7 +35,7 @@ void scenePlayable::init(sf::Vector2f aux){
     _s.setTexture(_t);
     _s.setOrigin(_s.getGlobalBounds().width/2, _s.getGlobalBounds().height/2);
 
-    _player->setHat(_hats[0]);
+    //_player->setHat(_hats[0]);
     _picking = true;
     _playing = false;
 
@@ -157,15 +157,25 @@ void scenePlayable::update(float deltaTime){
 //right       948.689 , 666.996
         if(_player->getPosition().y > 666){//està a terra
             if(bg._doorOpenedR && _player->getPosition().x > 948) {
-                _player->setPosition(76, 666);
-                changeScene(_next);//move to next LVL
-            }
-            if(bg._doorOpenedL && _player->getPosition().x < 76) {
-                _player->setPosition(947,666);
-                changeScene(_prev);
-            }
+                if (_player->getPosition().x < 1024+_player->getRadius()+50 ) {
+                    _player->moveOut(90*deltaTime);
+                }
+                else {
+                    _player->setPosition(76, 666);
+                    changeScene(_next);//move to next LVL
+                }
 
-        }
+            }
+            else if(bg._doorOpenedL && _player->getPosition().x < 76) {
+                if(_player->getPosition().x > 0-_player->getRadius()-50){
+                    _player->moveOut(-90*deltaTime);
+                }else {
+                    _player->setPosition(947,666);
+                    changeScene(_prev);
+                }
+            }
+            else _player->update(deltaTime, sf::Vector2i(_window->mapPixelToCoords(sf::Mouse::getPosition((*_window)),_view)), &bg);
+        } else   _player->update(deltaTime, sf::Vector2i(_window->mapPixelToCoords(sf::Mouse::getPosition((*_window)),_view)), &bg);
 
         //Update Bullets
         for(auto it = _bullets.begin(); it != _bullets.end();){
@@ -271,11 +281,11 @@ void scenePlayable::update(float deltaTime){
 
        }
 
-
+    _player->update(deltaTime, sf::Vector2i(_window->mapPixelToCoords(sf::Mouse::getPosition((*_window)),_view)), &bg);
 
     }
 
-    _player->update(deltaTime, sf::Vector2i(_window->mapPixelToCoords(sf::Mouse::getPosition((*_window)),_view)), &bg);
+
 }
 
 void scenePlayable::processInput(){
