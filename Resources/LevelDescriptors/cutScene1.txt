@@ -1,0 +1,29 @@
+tunel1
+#Catalan language
+CAT
+Benvingut 
+A la COVA dels BARRETS!!!
+     
+apreta les tecles 
+[A] i [W] 
+per moure't
+OK
+#English language
+ENG
+Welcome
+At the HAT CAVE!!!
+     
+press keys 
+[A] and [W]
+to move
+OK
+#Spanish language
+ESP
+Bienvenido
+A la CUEVA de los SOMBREROS!
+       
+pulsa las teclas
+[A] y [W]
+para moverte
+OK
+$ End of Descriptor file : )

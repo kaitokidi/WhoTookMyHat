@@ -1,0 +1,20 @@
+tunel2.png
+#doors with OO, OX or XX
+doors
+OO
+#boundaries separated by next beeing left top width height
+boundaries
+next
+#limit top
+0
+0
+1024
+530
+next
+#limit bot
+0
+702
+1024
+100
+end
+$ End Of Description File

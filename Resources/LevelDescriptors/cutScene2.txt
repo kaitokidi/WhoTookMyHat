@@ -1,0 +1,23 @@
+tunel2
+#Catalan language
+CAT
+Una cova molt acollidora
+no trobes?
+        
+salta amb [W] 
+OK
+#English language
+ENG
+Wonderful place to stay
+don't you think so?
+           
+jump with [W]
+OK
+#Spanish language
+ESP
+Una cueva muy acojedora
+no te parece?
+        
+salta con [W]
+OK
+$ End of Descriptor file : )

@@ -1,0 +1,26 @@
+tunel3
+#Catalan language
+CAT
+    
+Apreta el botó dret del ratolíi
+per tirar un ganxo a les parets!!!
+        
+jeje... ratolíi, com l'animal... jeje
+OK
+#English language
+ENG
+    
+Press the right click on the mouse
+to shoot a hook to the walls!!!
+          
+jeje... mouse... like the animal... jeje
+OK
+#Spanish language
+ESP
+     
+Aprieta el botón derecho del ratón
+para tirar un garfio a las paredes!!!
+     
+jeje... ratón... como el animal... jeje
+OK
+$ End of Descriptor file : )
