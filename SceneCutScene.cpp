@@ -48,6 +48,14 @@ void SceneCutScene::processInput() {
     }
 
     InputManager::update();
+
+    if( InputManager::action(InputAction::shoot) > 0 && _shootTimer > constant::shootMaxTime){
+        _shootTimer = 0;
+        Bullet b;
+        b.setPosition(_player->getPosition());
+        b.setDestiny(sf::Vector2f(bg.getIntersection( sf::Vector2i(_player->getPosition()) ,sf::Vector2i(_window->mapPixelToCoords(sf::Mouse::getPosition((*_window)),_view)))));
+        _bullets.push_back(b);
+    }
 }
 
 void SceneCutScene::update(float deltaTime){

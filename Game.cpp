@@ -86,11 +86,12 @@ void Game::loadScenes() {
 
     _scenes.insert(std::make_pair("test", new SceneTest(this, &_window, "test2")));
     _scenes.insert(std::make_pair("test2", new SceneTest(this, &_window, "cutScene1")));
-    _scenes.insert(std::make_pair("cutScene1", new SceneCutScene(this, & _window, "test2", "cutScene1", "level1", &_player)));
-    _scenes.insert(std::make_pair("level1", new scenePlayable(this, & _window, "cutScene1", "level1", "cutScene2", &_player)));
-    _scenes.insert(std::make_pair("cutScene2", new SceneCutScene(this, & _window, "level1", "cutScene2", "level2", &_player)));
-    _scenes.insert(std::make_pair("level2", new scenePlayable(this, & _window, "cutScene2", "level2", "cutScene3", &_player)));
-    _scenes.insert(std::make_pair("cutScene3", new SceneCutScene(this, & _window, "level2", "cutScene3", "level2", &_player)));
+    _scenes.insert(std::make_pair("cutScene1", new SceneCutScene(this, & _window, "test2", "cutScene1", "cutScene2", &_player)));
+    _scenes.insert(std::make_pair("cutScene2", new SceneCutScene(this, & _window, "cutScene1", "cutScene2", "cutScene3", &_player)));
+    _scenes.insert(std::make_pair("cutScene3", new SceneCutScene(this, & _window, "cutScene2", "cutScene3", "cutScene4", &_player)));
+    _scenes.insert(std::make_pair("cutScene4", new SceneCutScene(this, & _window, "cutScene3", "cutScene4", "level1", &_player)));
+    _scenes.insert(std::make_pair("level1", new scenePlayable(this, & _window, "cutScene4", "level1", "level2", &_player)));
+    _scenes.insert(std::make_pair("level2", new scenePlayable(this, & _window, "level1", "level2", "test2", &_player)));
 
 }
 
