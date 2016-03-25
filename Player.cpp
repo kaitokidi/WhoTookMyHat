@@ -170,6 +170,7 @@ void Player::draw(sf::RenderTarget * w){
 }
 
 void Player::moveOut(float speed){
+    vel.x = vel.y = 0;
     setPosition(sf::Vector2f(getPosition().x+speed, getPosition().y));
 }
 
