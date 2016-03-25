@@ -15,6 +15,7 @@ public:
     virtual void init(sf::Vector2f sceneIniCoord = sf::Vector2f(0,0));
     void run();
     void killScene();
+    std::string getLanguage();
 
     virtual sceneTypes getType();
     sf::View* getPtrView();

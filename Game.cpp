@@ -16,6 +16,11 @@ Game::Game() : _window(sf::VideoMode::getDesktopMode(),"WhoTookMyHat", sf::Style
 
     _player.setPosition(_player.getRadius()*3,660);
 
+    /*could be read from a file*/
+    LANGUAGE = "CAT";
+    // LANGUAGE = "ENG";
+    // LANGUAGE = "ESP";
+
 }
 
 Game::~Game() {
@@ -58,6 +63,16 @@ void Game::changeScene(std::string sceneName) {
         _currentScene->init();
     }
 }
+std::string Game::getLANGUAGE() const
+{
+    return LANGUAGE;
+}
+
+void Game::setLANGUAGE(const std::string &value)
+{
+    LANGUAGE = value;
+}
+
 
 
 void Game::loadScenes() {
@@ -70,9 +85,13 @@ void Game::loadScenes() {
    */
 
     _scenes.insert(std::make_pair("test", new SceneTest(this, &_window, "test2")));
-    _scenes.insert(std::make_pair("test2", new SceneTest(this, &_window, "level1")));
-    _scenes.insert(std::make_pair("level1", new scenePlayable(this, & _window, "test", "level1", "level2", &_player)));
-    _scenes.insert(std::make_pair("level2", new scenePlayable(this, & _window, "level1", "level2", "level2", &_player)));
+    _scenes.insert(std::make_pair("test2", new SceneTest(this, &_window, "cutScene1")));
+    _scenes.insert(std::make_pair("cutScene1", new SceneCutScene(this, & _window, "test2", "cutScene1", "level1", &_player)));
+    _scenes.insert(std::make_pair("level1", new scenePlayable(this, & _window, "cutScene1", "level1", "cutScene2", &_player)));
+    _scenes.insert(std::make_pair("cutScene2", new SceneCutScene(this, & _window, "level1", "cutScene2", "level2", &_player)));
+    _scenes.insert(std::make_pair("level2", new scenePlayable(this, & _window, "cutScene2", "level2", "cutScene3", &_player)));
+    _scenes.insert(std::make_pair("cutScene3", new SceneCutScene(this, & _window, "level2", "cutScene3", "level2", &_player)));
+
 }
 
 void Game::loadScene(std::string sceneName) {

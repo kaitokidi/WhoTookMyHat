@@ -7,12 +7,12 @@
 #include "SceneTest.hpp"
 #include "SceneChanger.hpp"
 #include "ScenePlayable.hpp"
+#include "SceneCutScene.hpp"
 #include "TextBoxManager.hpp"
 
 
 class Game {
-friend class SceneMenu;
-friend class SceneCutScene;
+
 public:
 
     Game();
@@ -23,11 +23,14 @@ public:
     void changeScene(SceneChanger* sC);
     void changeScene(std::string sceneName);
 
+    std::string getLANGUAGE() const;
+    void setLANGUAGE(const std::string &value);
 
 private:
     Player _player;
     Scene* _lastScene;
     Scene* _currentScene;
+    std::string LANGUAGE;
     sf::RenderWindow _window;
     std::map<std::string, Scene*> _scenes;
 

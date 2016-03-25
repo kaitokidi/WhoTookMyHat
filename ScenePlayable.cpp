@@ -198,6 +198,7 @@ void scenePlayable::update(float deltaTime){
 
         for(int i = 0; i < 3; ++i){
             if(_hatshits[i] > 1){
+
                 if(_enemyPull.empty()) readEnemies(i);
                 _player->setHat(_hats[i]);
                 _playing = true;
@@ -335,9 +336,6 @@ void scenePlayable::writteLVL(int lvl){
         int oldLVL = (line[0]-'0');
         _hatsOwned = std::min(std::max(oldLVL,lvl+1),2);
         aux << std::min(std::max(oldLVL,lvl+1),2) << '\n';
-        //if(oldLVL > _hatsOwned) _hatsOwned = oldLVL;
-        //if(lvl > oldLVL) aux << lvl << '\n';
-        //else aux << line << '\n';
 
         while(std::getline (inf,line)){
             aux << line << '\n';
@@ -375,10 +373,12 @@ void scenePlayable::render(sf::RenderTarget *target){
                 target->draw(_s);
             }
         }
-//        target->draw(_hats[0]);
-//        target->draw(_hats[1]);
-//        target->draw(_hats[2]);
     }
+
+    for(auto it = _bullets.begin(); it != _bullets.end(); ++it){
+        target->draw(*it);
+    }
+
     _player->draw(target);
 
     for(auto it = _enemies.begin(); it != _enemies.end(); ++it){
@@ -389,9 +389,6 @@ void scenePlayable::render(sf::RenderTarget *target){
             else target->draw(*(*it));
         }
         else target->draw(*(*it));
-    }
-    for(auto it = _bullets.begin(); it != _bullets.end(); ++it){
-        target->draw(*it);
     }
 }
 

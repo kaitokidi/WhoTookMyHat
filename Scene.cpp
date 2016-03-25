@@ -45,6 +45,10 @@ void Scene::killScene() {
     _killed = true;
 }
 
+std::string Scene::getLanguage() {
+    _game->getLANGUAGE();
+}
+
 sceneTypes Scene::getType() {
     return _sceneType;
 }
