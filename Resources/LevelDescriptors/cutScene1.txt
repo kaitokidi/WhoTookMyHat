@@ -5,7 +5,7 @@ Benvingut
 A la COVA dels BARRETS!!!
      
 apreta les tecles 
-[A] i [W] 
+[A] i [D] 
 per moure't
 OK
 #English language
@@ -14,7 +14,7 @@ Welcome
 At the HAT CAVE!!!
      
 press keys 
-[A] and [W]
+[A] and [D]
 to move
 OK
 #Spanish language
@@ -23,7 +23,7 @@ Bienvenido
 A la CUEVA de los SOMBREROS!
        
 pulsa las teclas
-[A] y [W]
+[A] y [D]
 para moverte
 OK
 $ End of Descriptor file : )

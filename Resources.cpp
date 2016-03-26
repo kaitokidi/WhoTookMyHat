@@ -53,7 +53,7 @@ void Resources::load() {
 
     if (!cInvert.loadFromFile           (SHADERPATH+std::string("invert.frag"), sf::Shader::Fragment)) exit(EXIT_FAILURE);
 
-    if (!pauseMenuFont.loadFromFile("Resources/Fonts/font.otf")) exit(EXIT_FAILURE);
+    if (!pauseMenuFont.loadFromFile("Resources/Fonts/font.TTF")) exit(EXIT_FAILURE);
 
    // descriptions = std::vector<SpriteSheetDescription>(spriteDescriptionsQtt);
    // descriptions[linkSpritesDescriptions]       = loadDescription("linkSheet");

@@ -16,6 +16,7 @@ SceneCutScene::SceneCutScene(Game *g, sf::RenderWindow *w, std::string previous,
     _text.setFont(Resources::pauseMenuFont);
     _text.setCharacterSize(40);
     _text.setPosition(150,200);
+    _text.setColor(sf::Color(214,214,198));
 
 }
 
@@ -110,6 +111,20 @@ void SceneCutScene::render(sf::RenderTarget *target) {
 
     for(int i = 0; i < _texts.size(); ++i){
         _text.setString(_texts[i]);
+
+        //TextOutline
+        _text.setColor(sf::Color(30,30,30)); int offset = 5;
+        _text.setPosition(int ( (1024)/2 - (_text.getGlobalBounds().width/2))+offset, 150+i*_text.getCharacterSize()*1.5);
+        target->draw(_text);
+        _text.setPosition(int ( (1024)/2 - (_text.getGlobalBounds().width/2))-offset, 150+i*_text.getCharacterSize()*1.5);
+        target->draw(_text);
+        _text.setPosition(int ( (1024)/2 - (_text.getGlobalBounds().width/2)), 150+i*_text.getCharacterSize()*1.5+offset);
+        target->draw(_text);
+        _text.setPosition(int ( (1024)/2 - (_text.getGlobalBounds().width/2)), 150+i*_text.getCharacterSize()*1.5-offset);
+        target->draw(_text);
+
+        //TEXT
+        _text.setColor(sf::Color(214,214,198));
         _text.setPosition(int ( (1024)/2 - (_text.getGlobalBounds().width/2)), 150+i*_text.getCharacterSize()*1.5);
         target->draw(_text);
     }
