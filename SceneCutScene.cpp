@@ -27,6 +27,7 @@ void SceneCutScene::init(sf::Vector2f aux){
     initView(&_view, sf::Vector2i(1024,768));
    _shootTimer = 0;
 
+
 }
 
 void SceneCutScene::resizing() { }

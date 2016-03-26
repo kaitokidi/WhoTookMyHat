@@ -44,13 +44,15 @@ void Background::draw(sf::RenderTarget *target){
     target->draw(_doors);
 
     //DEBUG DRAW RED RECTANGLES
-  /*  for(int i = 0; i < _boundaries.size(); ++i){
+  /*
+   for(int i = 0; i < _boundaries.size(); ++i){
         sf::RectangleShape RS(sf::Vector2f(_boundaries[i].width,_boundaries[i].height));
         RS.setPosition(sf::Vector2f(_boundaries[i].left,_boundaries[i].top));
-        RS.setFillColor(sf::Color::Red);
+        RS.setFillColor(sf::Color(i*10+10,i*20+20,i*30+30));
         target->draw(RS);
     }
-*/
+    */
+
 }
 
 bool Background::circleColision(sf::Vector2f pos, float rad) {
@@ -223,6 +225,7 @@ sf::Vector2i Background::getIntersection(sf::Vector2i mousePos){
 void Background::readLevel(std::string lvlDesc) {
     std::string line;
     std::ifstream myfile (LVLDESCIPTPATH+lvlDesc+".txt");
+    //std::cout << (LVLDESCIPTPATH+lvlDesc+".txt") << std::endl;
 
     if (myfile.is_open()) {
 

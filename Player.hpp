@@ -16,11 +16,13 @@ protected:
     //Eyes
     Eyes eyes;
     Hook hook;
-    float angle;
     sf::Sprite hat;
 
-    float speed;
     bool hooking;
+    bool jumping;
+
+    float angle;
+    float speed;
     float radius;
     float lastUpdate;
 

@@ -47,8 +47,9 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
     float dY = mousePos.y-getPos().y;
     angle = std::atan2(dY,dX)*180/M_PI;
 
-    if( InputManager::action(InputAction::up) > 0){
+    if( InputManager::action(InputAction::up) > 0 && (! jumping) ){
         vel.y = -constant::playerJump*deltaTime;
+        jumping = true;
     }
     if( InputManager::action(InputAction::down) > 0){
         //cry me a river
@@ -89,8 +90,10 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
 
 
     //Check that the speed on y is not higher than the maximum speed
-    if(vel.y > constant::playerMaxSpeed) vel.y = constant::playerMaxSpeed;
-    if(vel.y < -1*constant::playerMaxSpeed) vel.y = -1*constant::playerMaxSpeed;
+    if(vel.y > 2*constant::playerMaxSpeed) vel.y = 2*constant::playerMaxSpeed;
+    if(vel.y < -2*constant::playerMaxSpeed) vel.y = -2*constant::playerMaxSpeed;
+    if(vel.x > constant::playerMaxSpeed) vel.x = constant::playerMaxSpeed;
+    if(vel.x < -1*constant::playerMaxSpeed) vel.x = -1*constant::playerMaxSpeed;
 
 
     //Check COLISIONS
@@ -123,6 +126,7 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
         if(vel.x < 0) vel.x += constant::friction/5 * deltaTime;
     }
     else {//THERE IS A COLISION ON Y
+        if(vel.y > 0) jumping = false;
         vel.y = 0;
         vel.x -= vel.x/1.7  * deltaTime;
         if(vel.x > 0) vel.x -= constant::friction * deltaTime;
@@ -132,7 +136,9 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
     setPosition(pos);
     //If it colisioned on x stop movint on that axe
     //(is done now, not in the oclision because) we need the speed on x to check Y colisions.
+    //if(getPosition().y > 666) jumping = false;
     if (stopX) vel.x = 0;
+
 }
 
 float Player::getSpeed() const { return speed; }

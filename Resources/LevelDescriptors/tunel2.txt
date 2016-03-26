@@ -16,5 +16,11 @@ next
 702
 1024
 100
+next
+#stone
+285
+640
+430
+58
 end
 $ End Of Description File
