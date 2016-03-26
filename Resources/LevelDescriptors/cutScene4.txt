@@ -1,0 +1,26 @@
+tunel4
+#Catalan language
+CAT
+    
+Apreta el botó esquerre del ratolíi
+per disparar projectils!!!
+Dispara els barrets
+per començar l'accióo
+OK
+#English language
+ENG
+    
+Press the left click on the mouse
+to shoot your bullets!!!
+Shoot at the hats
+to start the action
+OK
+#Spanish language
+ESP
+     
+Aprieta el boton izquierdo del ratón
+para disparar proyectiles!!!
+Dispara los sombreros
+para empezar la acción!
+OK
+$ End of Descriptor file : )
