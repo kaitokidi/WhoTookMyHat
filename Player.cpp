@@ -92,8 +92,8 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
     //Check that the speed on y is not higher than the maximum speed
     if(vel.y > 2*constant::playerMaxSpeed) vel.y = 2*constant::playerMaxSpeed;
     if(vel.y < -2*constant::playerMaxSpeed) vel.y = -2*constant::playerMaxSpeed;
-    if(vel.x > constant::playerMaxSpeed) vel.x = constant::playerMaxSpeed;
-    if(vel.x < -1*constant::playerMaxSpeed) vel.x = -1*constant::playerMaxSpeed;
+    if(vel.x > 1.6*constant::playerMaxSpeed) vel.x = 1.6*constant::playerMaxSpeed;
+    if(vel.x < -1.6*constant::playerMaxSpeed) vel.x = -1.6*constant::playerMaxSpeed;
 
 
     //Check COLISIONS

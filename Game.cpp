@@ -2,7 +2,7 @@
 //getFullscreenModes()[0]
 Game::Game() : _window(sf::VideoMode::getDesktopMode(),"WhoTookMyHat", sf::Style::Close | sf::Style::Fullscreen) {
     _window.setFramerateLimit(FRAMERATE);
-    //_window.setMouseCursorVisible(false);
+    _window.setMouseCursorVisible(false);
 
     _lastScene = nullptr;
     _currentScene = nullptr;

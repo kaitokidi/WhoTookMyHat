@@ -35,13 +35,9 @@ void scenePlayable::init(sf::Vector2f aux){
     _s.setTexture(_t);
     _s.setOrigin(_s.getGlobalBounds().width/2, _s.getGlobalBounds().height/2);
 
-    //_player->setHat(_hats[0]);
     _picking = true;
     _playing = false;
 
-
-//    _playing = true;
-//    _picking = false;
 }
 
 
@@ -88,16 +84,20 @@ void scenePlayable::readEnemies(int lvl) {
                         while(line[0] == '#') std::getline (myfile,line);
                         for(int i = 0; i < line.size(); ++i){
                             switch(line[i]) {
-                                case 'b':
+                                case 's': // Spike ball
                                 _enemyPull.push(new Enemy());
                                 _enemyPull.back()->setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
                                 break;
-                                case 's':
+                                case 'w': // Wall square
                                 _enemyPull.push(new EnemyBloc());
                                 _enemyPull.back()->setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
                                 break;
-                                case 'f':
+                                case 'f': // Flying star
                                 _enemyPull.push(new EnemyFlying());
+                                _enemyPull.back()->setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
+                                break;
+                                case 'b': // Bouncing Ball
+                                _enemyPull.push(new EnemyBouncy());
                                 _enemyPull.back()->setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
                                 break;
                                 default:

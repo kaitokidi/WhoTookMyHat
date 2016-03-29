@@ -7,6 +7,7 @@
 #include "Player.hpp"
 #include "EnemyBloc.hpp"
 #include "Background.hpp"
+#include "EnemyBouncy.hpp"
 #include "EnemyFlying.hpp"
 
 class Game;
