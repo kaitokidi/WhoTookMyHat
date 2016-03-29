@@ -96,7 +96,7 @@ void scenePlayable::readEnemies(int lvl) {
                                 _enemyPull.push(new EnemyFlying());
                                 _enemyPull.back()->setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
                                 break;
-                                case 'b': // Bouncing Ball
+                                case 'b': // Bouncing spike
                                 _enemyPull.push(new EnemyBouncy());
                                 _enemyPull.back()->setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
                                 break;
