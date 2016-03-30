@@ -29,10 +29,58 @@ next
 40
 770
 next
-#centralBar
-300
-342
-430
-58
+#punts top 1
+114
+80
+62
+56
+next
+#punts top 2
+484
+93
+64
+55
+next
+#punts top 3
+825
+91
+66
+54
+next
+#punts mig 1
+31
+371
+94
+52
+next
+#punts mig 2
+310
+368
+132
+53
+next
+#punts mig 3
+625
+367
+118
+53
+next
+#punts mig 4
+913
+370
+85
+49
+next
+#punts bot 1
+259
+644
+56
+59
+next
+#punts bot 2
+726
+644
+56
+59
 end
 $ End Of Description File
