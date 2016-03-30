@@ -17,8 +17,8 @@ Game::Game() : _window(sf::VideoMode::getDesktopMode(),"WhoTookMyHat", sf::Style
     _player.setPosition(_player.getRadius()*3,660);
 
     /*could be read from a file*/
-    LANGUAGE = "CAT";
-    // LANGUAGE = "ENG";
+    //LANGUAGE = "CAT";
+     LANGUAGE = "ENG";
     // LANGUAGE = "ESP";
 
 }

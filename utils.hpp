@@ -6,6 +6,7 @@
 #define DATAPATH "Resources/Data/"
 #define TEXTPATH "Resources/Texts/"
 #define SHADERPATH "Resources/Shaders/"
+#define OPTIONSPATH "Resources/Options/"
 #define TEXTURETPATH "Resources/Textures/"
 #define LVLDESCIPTPATH "Resources/LevelDescriptors/"
 #define TEXTUREDESCRIPTIONEXTENSION ".description"

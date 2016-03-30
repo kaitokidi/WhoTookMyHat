@@ -21,7 +21,7 @@ SceneCutScene::SceneCutScene(Game *g, sf::RenderWindow *w, std::string previous,
 }
 
 void SceneCutScene::init(sf::Vector2f aux){
-
+    aux = aux; //per treure el warning de unused variable -_-
     _timer = 0;
     _view = _window->getDefaultView();
     initView(&_view, sf::Vector2i(1024,768));
@@ -96,7 +96,7 @@ void SceneCutScene::update(float deltaTime){
 
    //erase dead bullets
    auto itb = _bullets.begin();
-   for(itb; itb != _bullets.end();){
+   for(;itb != _bullets.end();){
        if(! (*itb).isAlive()){
            itb = _bullets.erase(itb);
        }
@@ -110,7 +110,7 @@ void SceneCutScene::render(sf::RenderTarget *target) {
 
     _player->draw(target);
 
-    for(int i = 0; i < _texts.size(); ++i){
+    for(unsigned int i = 0; i < _texts.size(); ++i){
         _text.setString(_texts[i]);
 
         //TextOutline
@@ -141,6 +141,12 @@ void SceneCutScene::readLVL(std::string levelName){
     std::string line;
     std::ifstream myfile (LVLDESCIPTPATH+levelName+".txt");
 
+    std::string LANG;
+    std::ifstream mf (OPTIONSPATH+std::string("LANGUAGE.txt"));
+    if(mf.is_open()){
+        std::getline(mf, LANG);
+    }else log("Error on languageFile -> SceneCutScene readLVL");
+
     if (myfile.is_open()) {
 
         std::getline (myfile,line);
@@ -152,7 +158,7 @@ void SceneCutScene::readLVL(std::string levelName){
             while(line[0] == '#') std::getline (myfile,line);
 
             //GET LANGUAGE TODO
-            if(line == "CAT"){
+            if(line == LANG){
 
                 std::getline (myfile,line);
                 while(line[0] == '#') std::getline (myfile,line);
