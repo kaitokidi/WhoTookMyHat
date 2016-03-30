@@ -1,0 +1,19 @@
+CAT
+
+Només es llegirà l aprimera linia, les opcions poden ser
+CAT per català
+ENG per anglès
+ESP per castellà
+Vigila de no posar espais a la primera línia.
+
+Only  the first line will be read, the options can be
+CAT for catalan
+ENG for english
+ESP for spanish
+be careful not to have spaces on the first line.
+
+Solo se va a leer la primera linea, las opciones pueden ser
+CAT para catalàn 
+ENG para inglés
+ESP para castellano
+vigila de no poner espacios en la primera linea.
