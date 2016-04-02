@@ -4,7 +4,7 @@
 Bullet::Bullet(){
     _alive = true;
     setTexture(Resources::bullet);
-    setOrigin(getGlobalBounds().width/2, getGlobalBounds().height/2);
+    setOrigin(getLocalBounds().width/2, getLocalBounds().height/2);
 }
 
 bool Bullet::isAlive(){
@@ -30,7 +30,8 @@ void Bullet::update(float deltaTime, Background *bg){
 
 void Bullet::setDestiny(sf::Vector2f destiny){
     _destiny = destiny;
-    deltaX = _destiny.x - getPosition().x;
-    deltaY = _destiny.y - getPosition().y;
+    //TODO 50 hacks0rs wtf man
+    deltaX = _destiny.x - getPosition().x-50;
+    deltaY = _destiny.y - getPosition().y-50;
 }
 

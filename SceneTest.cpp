@@ -13,6 +13,7 @@ SceneTest::~SceneTest(){
 }
 
 void SceneTest::init(sf::Vector2f aux){
+    aux = aux;
     timer = 0;
     _texture = Resources::key;
     _sprite.setTexture(_texture);

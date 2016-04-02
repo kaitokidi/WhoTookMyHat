@@ -45,9 +45,12 @@ protected:
 
 
 private: 
+
     bool _killed;
     sceneTypes _sceneType;
     std::string _nextScene;
+    sf::Sprite _mousePointer;
+
     void withoutFocus();
 
 };

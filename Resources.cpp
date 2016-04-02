@@ -8,6 +8,7 @@ sf::Texture            Resources::eyes;
 sf::Texture            Resources::enemy;
 sf::Texture            Resources::chain;
 sf::Texture            Resources::bullet;
+sf::Texture            Resources::pointer;
 sf::Texture            Resources::talkBox;
 sf::Texture            Resources::doors_OX;
 sf::Texture            Resources::doors_OO;
@@ -26,7 +27,7 @@ std::vector<SpriteSheetDescription> Resources::descriptions;
 
 
 void printError(std::string s){
-    std::cout << "Resources:: Error loading... " << s << std::endl;
+    std::cerr << "Resources:: Error loading... " << s << std::endl;
 }
 
 void Resources::load() {
@@ -38,6 +39,7 @@ void Resources::load() {
     if(! chain.loadFromFile                  (TEXTURETPATH+std::string("hook.png"))       ) printError("chainTex");
     if(! bullet.loadFromFile                 (TEXTURETPATH+std::string("bullet.png"))     ) printError("bulleTex");
     if(! talkBox.loadFromFile                (TEXTURETPATH+std::string("talkBox.png"))    ) printError("talkbTex");
+    if(! pointer.loadFromFile                (TEXTURETPATH+std::string("pointer.png"))    ) printError("poinrTex");
     if(! doors_OX.loadFromFile               (TEXTURETPATH+std::string("doors_OX.png"))   ) printError("doorOXTex");
     if(! doors_OO.loadFromFile               (TEXTURETPATH+std::string("doors_OO.png"))   ) printError("doorOOTex");
     if(! doors_XX.loadFromFile               (TEXTURETPATH+std::string("doors_XX.png"))   ) printError("doorXXTex");
@@ -63,6 +65,7 @@ void Resources::load() {
 
 //ONLY USED IF USING DESCRIPTORS
 SpriteSheetDescription Resources::loadDescription(std::string) {
+    //Ja els llegeix cada nivell.
 /*    std::string filePath = TEXTURETPATH + fileName + TEXTUREDESCRIPTIONEXTENSION;
     SpriteSheetDescription ret;
     // leer el fichero

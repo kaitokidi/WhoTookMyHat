@@ -14,6 +14,7 @@ public:
     static sf::Texture enemy;
     static sf::Texture chain;
     static sf::Texture bullet;
+    static sf::Texture pointer;
     static sf::Texture talkBox;
     static sf::Texture doors_OX;
     static sf::Texture doors_OO;

@@ -9,6 +9,8 @@ Scene::Scene(Game* g, sf::RenderWindow* w, sceneTypes sT, std::string name) :
     _sceneName(name),
     _sceneType(sT)
      {
+    _mousePointer.setTexture(Resources::pointer);
+    _mousePointer.setOrigin(_mousePointer.getLocalBounds().width/2,_mousePointer.getLocalBounds().height/2);
 }
 
 Scene::~Scene(){}
@@ -46,7 +48,7 @@ void Scene::killScene() {
 }
 
 std::string Scene::getLanguage() {
-    _game->getLANGUAGE();
+    return _game->getLANGUAGE();
 }
 
 sceneTypes Scene::getType() {
@@ -88,6 +90,8 @@ void Scene::display() {
     _window->setView(_view);
     render();
     _window->setView(_window->getDefaultView());
+    _mousePointer.setPosition(sf::Vector2f(sf::Mouse::getPosition(*_window)));
+    _window->draw(_mousePointer);
     _window->display();
 }
 
