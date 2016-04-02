@@ -3,6 +3,10 @@
 #include "Resources.hpp"
 #include "ScenePlayable.hpp"
 
+/*
+colisió bullet _hat
+*/
+
 scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string previous, std::string levelName, std::string next, Player *player)
                                                     : Scene(g, w, sceneTypes::testScene, levelName)  {
     _next = next;
@@ -182,7 +186,9 @@ void scenePlayable::update(float deltaTime){
             it->update(deltaTime, &bg);
             bool kill = false;
             for(int i = 0; i < 3; ++i){
-                if(i <= _hatsOwned && _hats[i].getGlobalBounds().contains(it->getPosition())){
+                if(i <= _hatsOwned
+                        && _hats[i].getGlobalBounds().contains(it->getPosition())
+                   ){
                     ++_hatshits[i];
                     _hats[i].setScale(sf::Vector2f(_hats[i].getScale().x*2,_hats[i].getScale().y*2));
                     kill = true;
