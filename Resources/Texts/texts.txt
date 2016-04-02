@@ -1,0 +1,19 @@
+DefaultCAT
+       Vull el meu Barret i el vull amb molta intensitat       
+#
+DefaultENG
+I want my Hat
+#
+DefaultESP
+Quiero mi sombrero
+#
+DangerCAT
+Alerta!!!
+#
+DangerENG
+Danger!!!
+#
+DangerESP
+Peligro!!!
+#
+END
