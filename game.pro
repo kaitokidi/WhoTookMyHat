@@ -43,7 +43,8 @@ SOURCES += main.cpp \
     EnemyBloc.cpp \
     EnemyFlying.cpp \
     SceneCutScene.cpp \
-    EnemyBouncy.cpp
+    EnemyBouncy.cpp \
+    SceneTemporal.cpp
 
 HEADERS += utils.hpp \
         Resources.cpp \
@@ -81,4 +82,5 @@ HEADERS += utils.hpp \
     EnemyBloc.hpp \
     EnemyFlying.hpp \
     SceneCutScene.hpp \
-    EnemyBouncy.hpp
+    EnemyBouncy.hpp \
+    SceneTemporal.hpp

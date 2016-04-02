@@ -1,4 +1,6 @@
 tunel3
+#thoughts
+Default
 #Catalan language
 CAT
 Apreta el botó dret del ratolíi

@@ -106,6 +106,8 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
     //CHECK on X
     if(        ! bg->colision(dest.x+rad, orig.y)
             && ! bg->colision(dest.x-rad, orig.y)
+            && ! bg->colision(dest.x, orig.y-aux)
+            && ! bg->colision(dest.x, orig.y+aux)
             && ! bg->colision(dest.x+rad, orig.y+aux)
             && ! bg->colision(dest.x+rad, orig.y-aux)
             && ! bg->colision(dest.x-rad, orig.y+aux)
@@ -124,8 +126,8 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
             && ! bg->colision(orig.x-aux, dest.y+rad)
             && ! bg->colision(orig.x-aux, dest.y-rad) ){
         pos.y = dest.y;
-        if(vel.x > 0) vel.x -= constant::friction/5 * deltaTime;
-        if(vel.x < 0) vel.x += constant::friction/5 * deltaTime;
+        if(vel.x > 0) vel.x -= constant::friction/3 * deltaTime;
+        if(vel.x < 0) vel.x += constant::friction/3 * deltaTime;
     }
     else {//THERE IS A COLISION ON Y
         if(vel.y > 0) jumping = false;

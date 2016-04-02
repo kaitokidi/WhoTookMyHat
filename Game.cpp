@@ -84,7 +84,9 @@ void Game::loadScenes() {
                                                                Resources::AnimationIntro)));
    */
 
-    _scenes.insert(std::make_pair("test", new SceneTest(this, &_window, "test2")));
+
+    _scenes.insert(std::make_pair("test", new SceneTest(this, &_window, "portada")));
+    _scenes.insert(std::make_pair("portada", new SceneTemporal(this, &_window, "test2", 5, "", "Portada")));
     _scenes.insert(std::make_pair("test2", new SceneTest(this, &_window, "cutScene1")));
     _scenes.insert(std::make_pair("cutScene1", new SceneCutScene(this, & _window, "level1", "cutScene1", "cutScene2", &_player)));
     _scenes.insert(std::make_pair("cutScene2", new SceneCutScene(this, & _window, "cutScene1", "cutScene2", "cutScene3", &_player)));

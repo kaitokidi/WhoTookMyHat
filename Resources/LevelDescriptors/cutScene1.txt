@@ -1,4 +1,6 @@
 tunel1
+#thoughts
+Default
 #Catalan language
 CAT
 Benvingut 

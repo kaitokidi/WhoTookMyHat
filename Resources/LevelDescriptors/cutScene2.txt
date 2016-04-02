@@ -1,4 +1,6 @@
 tunel2
+#thoughts
+Default
 #Catalan language
 CAT
 Una cova molt acollidora

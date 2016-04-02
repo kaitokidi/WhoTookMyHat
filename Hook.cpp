@@ -47,6 +47,7 @@ void Hook::setOrigin(const sf::Vector2f &value){
 
 
 void Hook::setTexture(std::string path) {
+    path = path;
     texture = Resources::chain;
     simple = false;
 }

@@ -1,4 +1,5 @@
 #include "SceneCutScene.hpp"
+#include "TextBoxManager.hpp"
 
 SceneCutScene::SceneCutScene(Game *g, sf::RenderWindow *w, std::string previous, std::string levelName, std::string next, Player *player)
     : Scene(g, w, sceneTypes::testScene, levelName)  {
@@ -18,6 +19,10 @@ SceneCutScene::SceneCutScene(Game *g, sf::RenderWindow *w, std::string previous,
     _text.setPosition(150,200);
     _text.setColor(sf::Color(214,214,198));
 
+    _thought.setFont(Resources::pauseMenuFont);
+    _thought.setCharacterSize(20);
+    _thought.setPosition(100,710);
+
 }
 
 void SceneCutScene::init(sf::Vector2f aux){
@@ -27,6 +32,7 @@ void SceneCutScene::init(sf::Vector2f aux){
     initView(&_view, sf::Vector2i(1024,768));
    _shootTimer = 0;
 
+   _textActive = false;
 
 }
 
@@ -41,6 +47,9 @@ void SceneCutScene::processInput() {
                 //Close key
                 if (event.key.code == sf::Keyboard::Escape) {
                     _window->close(); exit(0);
+                }
+                if (event.key.code == sf::Keyboard::T) {
+                    _textActive = !_textActive;
                 }
                 break;
 
@@ -58,6 +67,14 @@ void SceneCutScene::processInput() {
         b.setDestiny(sf::Vector2f(bg.getIntersection( sf::Vector2i(_player->getPosition()) ,sf::Vector2i(_window->mapPixelToCoords(sf::Mouse::getPosition((*_window)),_view)))));
         _bullets.push_back(b);
     }
+}
+
+std::string gettextqtty(int ppos, int max, std::string s){
+    float rate = float(ppos)/float(max);
+    int value = s.size()*rate;
+    std::string aux;
+    for(int i = 0; i < value && i < s.size(); ++i) aux.push_back(s[i]);
+    return aux;
 }
 
 void SceneCutScene::update(float deltaTime){
@@ -103,7 +120,11 @@ void SceneCutScene::update(float deltaTime){
        else ++itb;
    }
 
+   std::string actualText = gettextqtty(_player->getPosition().x, 800, _totalThought);
+   _thought.setString(actualText);
+
 }
+
 
 void SceneCutScene::render(sf::RenderTarget *target) {
     bg.draw(target);
@@ -134,6 +155,8 @@ void SceneCutScene::render(sf::RenderTarget *target) {
         target->draw(*it);
     }
 
+    //if(_textActive) TextBoxManager::drawText(target, _player->getPosition().x - TextBoxManager::getSize().x/2, _player->getPosition().y - 100);
+    target->draw(_thought);
 }
 
 void SceneCutScene::readLVL(std::string levelName){
@@ -141,7 +164,6 @@ void SceneCutScene::readLVL(std::string levelName){
     std::string line;
     std::ifstream myfile (LVLDESCIPTPATH+levelName+".txt");
 
-    std::string LANG;
     std::ifstream mf (OPTIONSPATH+std::string("LANGUAGE.txt"));
     if(mf.is_open()){
         std::getline(mf, LANG);
@@ -152,6 +174,14 @@ void SceneCutScene::readLVL(std::string levelName){
         std::getline (myfile,line);
         while(line[0] == '#') std::getline (myfile,line);
         bg.init(line);
+
+        std::getline (myfile,line);
+        while(line[0] == '#') std::getline (myfile,line);
+        //TextBoxManager::setSize(1024,100);
+        //TextBoxManager::setText(std::string(line+LANG));
+        //log(line+LANG);
+        _totalThought = TextBoxManager::getText(std::string(line+LANG));
+
         while (line[0] != '$') {
 
             std::getline (myfile,line);

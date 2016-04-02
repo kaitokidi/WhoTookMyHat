@@ -1,4 +1,6 @@
 tunel4
+#thoughts
+Default
 #Catalan language
 CAT
     

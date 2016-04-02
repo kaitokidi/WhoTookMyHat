@@ -29,13 +29,19 @@ private:
     Background bg;
     sf::Text _text;
     Player* _player;
+    bool _textActive;
     float _shootTimer;
+    std::string LANG;
     std::string _prev;
     std::string _next;
     std::string _levelName;
     sf::Vector2i _spawnPoint;
     std::list < Bullet > _bullets;
     std::vector < std::string > _texts;
+
+    sf::Text _thought;
+    std::string _totalThought;
+
 
 };
 

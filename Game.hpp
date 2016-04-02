@@ -6,6 +6,7 @@
 #include "Resources.hpp"
 #include "SceneTest.hpp"
 #include "SceneChanger.hpp"
+#include "SceneTemporal.hpp"
 #include "ScenePlayable.hpp"
 #include "SceneCutScene.hpp"
 #include "TextBoxManager.hpp"
@@ -33,9 +34,6 @@ private:
     std::string LANGUAGE;
     sf::RenderWindow _window;
     std::map<std::string, Scene*> _scenes;
-
-    //sf::Mutex _mutex;
-    //sf::Thread* _thread;
 
     void initInput();
     void loadScenes();

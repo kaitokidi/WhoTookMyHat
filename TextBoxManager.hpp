@@ -11,6 +11,7 @@ class TextBoxManager {
 
 public:
     //TextBoxManager();
+    static std::string getText(std::string s);
 
     static void load();
     static void loadTexts(std::string fileName);

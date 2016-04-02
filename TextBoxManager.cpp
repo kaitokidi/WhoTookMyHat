@@ -26,17 +26,22 @@ void TextBoxManager::loadTexts(std::string fileName){
     }
 }
 
+std::string TextBoxManager::getText(std::string s){
+    return texts[s];
+}
+
 void TextBoxManager::load() {
 
     texts["none"] = " ";
     texts["default"] = "Who Took My Hat!?!";
     texts["penguins"] = "Penguin penguin penguin niugnep There are believed to be 17 species of penguins.  This includes the Aptendytes (Great penguins), Pygoscelis (Brush-Tailed penguins), Eudyptula (Little penguins), Megadyptes (Only 1 kind of Megadypte penguin survives), and Eudyptes (Crested penguins) Nobody really knows the root of the word penguin. The word has no English, French, Spanish or other romantic language roots. As there are no penguins in the Northern Hemisphere, it wasn’t until European explorers discovered them in the South that the world first appeared. It’s first referenced in English and Dutch as pen gwyn which in Welsh means white head.Through evolution, the penguin’s wings have evolved into flippers which are more adapted to aquatic life. Most penguins can move at a total speed of up to 6 to 12 km/h (3.7 to 7.5 mph) while underwater, but the fastest penguin (The Gentoo Penguin) can achieve a remarkable top speeds of 36 Km/h (22 mph). Emperor penguins have also been known to dive as deep as 565 meters (1,870 feet) for 22 minutes – an absolutely incredible feat for a diving bird. Most penguins species however only stay underwater for around 4-5 minutes at a time, as most of their food can be gathered from very low depths.";
-    //TextBoxManager::loadTexts("TextsFile.txt");
+    TextBoxManager::loadTexts("texts.txt");
 
     _textBox.setTexture(Resources::talkBox);
     _textBox.setTextColor(sf::Color::Black);
     _textBox.setFont(Resources::pauseMenuFont);
     setText("default",30);
+    //setSize(400,50);
 
 }
 

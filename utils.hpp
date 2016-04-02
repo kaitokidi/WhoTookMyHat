@@ -119,7 +119,7 @@ enum directions {
 
 namespace constant{
     static const float gravity = 5;
-    static const float friction = 2;
+    static const float friction = 4;
     static const float hookForce = 0.03;
     static const float playerJump = 850;
     static const float playerSpeed = 20;
