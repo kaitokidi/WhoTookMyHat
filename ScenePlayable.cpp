@@ -104,6 +104,14 @@ void scenePlayable::readEnemies(int lvl) {
                                 _enemyPull.push(new EnemyBouncy());
                                 _enemyPull.back()->setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
                                 break;
+                                case 'g': // ghost
+                                _enemyPull.push(new EnemyGhost());
+                                _enemyPull.back()->setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
+                                break;
+                                case 'n': // ninja
+                                _enemyPull.push(new EnemyNinja(&_enemies));
+                                _enemyPull.back()->setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
+                                break;
                                 default:
                                 break;
                             }
@@ -156,13 +164,11 @@ void scenePlayable::update(float deltaTime){
 
         _hats[0].setPosition(300,150); _hats[1].setPosition(500,150); _hats[2].setPosition(700,150);
 
-
-//left        75.2164 , 666.996
-//right       948.689 , 666.996
         if(_player->getPosition().y > 666){//està a terra
             if(bg._doorOpenedR && _player->getPosition().x > 948) {
                 if (_player->getPosition().x < 1024+_player->getRadius()+50 ) {
                     _player->moveOut(90*deltaTime);
+                    _bullets.clear();
                 }
                 else {
                     _player->setPosition(76, 666);
@@ -173,6 +179,7 @@ void scenePlayable::update(float deltaTime){
             else if(bg._doorOpenedL && _player->getPosition().x < 76) {
                 if(_player->getPosition().x > 0-_player->getRadius()-50){
                     _player->moveOut(-90*deltaTime);
+                    _bullets.clear();
                 }else {
                     _player->setPosition(947,666);
                     changeScene(_prev);

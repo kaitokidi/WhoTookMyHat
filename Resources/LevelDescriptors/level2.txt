@@ -8,13 +8,13 @@ spawn
 170
 enemies
 0
-b w w b w
+n b n n w
 2 2 2 1 1
 1
 s s w w w f f f
 2 2 2 2 2 1 1 1
 2
-b b s s s s s s s
+g g g s s g g s g
 2 2 1 1 1 1 1 1 1
 $ END
 

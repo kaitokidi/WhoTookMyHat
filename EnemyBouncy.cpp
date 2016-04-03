@@ -26,11 +26,12 @@ void EnemyBouncy::movement(float deltaTime, Background *bg) {
     if(bg->circleColision( sf::Vector2f( getPosition().x, float(getPosition().y)+dest.y ), 60)){
         //_vel.y = 0;
         if(_vel.y > 0) _vel.y = - JUMPSPEED - rand()%50;
-        setScale(getScale().x,0.7);
+        else _vel.y = 0;
+        setScale(1,0.7);
     } else move(0, dest.y);
     if(bg->circleColision( sf::Vector2f( dest.x + float(getPosition().x), getPosition().y ), 60)){
         _vel.x = 0;
-        setScale(0.7,getScale().y);
+        setScale(0.7,1);
     } else {
         move(dest.x, 0);
         if (_vel.x > 0){

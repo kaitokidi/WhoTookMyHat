@@ -10,9 +10,12 @@ public:
     //DEFINE AS STATIC THE RESOURCES YOU WANT
     //static sf::Texture ...
     static sf::Texture key;
+    static sf::Texture log;
     static sf::Texture eyes;
     static sf::Texture enemy;
     static sf::Texture chain;
+    static sf::Texture ghost;
+    static sf::Texture ninja;
     static sf::Texture bullet;
     static sf::Texture pointer;
     static sf::Texture Portada;
@@ -27,6 +30,8 @@ public:
 
     static sf::Font pauseMenuFont;
 
+    static std::vector<sf::Texture> one;
+    static std::vector<sf::Texture> puff;
     static std::vector<sf::Texture> spawnAnim;
     static std::vector<sf::Texture> destroyAnim;
 

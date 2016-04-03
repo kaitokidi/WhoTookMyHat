@@ -37,7 +37,6 @@ private:
 
     void initInput();
     void loadScenes();
-    void loadScene(std::string sceneName);
 
 };
 

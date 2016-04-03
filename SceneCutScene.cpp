@@ -156,7 +156,7 @@ void SceneCutScene::render(sf::RenderTarget *target) {
     }
 
     //if(_textActive) TextBoxManager::drawText(target, _player->getPosition().x - TextBoxManager::getSize().x/2, _player->getPosition().y - 100);
-    target->draw(_thought);
+    //target->draw(_thought);
 }
 
 void SceneCutScene::readLVL(std::string levelName){

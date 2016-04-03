@@ -97,10 +97,6 @@ void Game::loadScenes() {
 
 }
 
-void Game::loadScene(std::string sceneName) {
-
-}
-
 
 void Game::initInput() {
 

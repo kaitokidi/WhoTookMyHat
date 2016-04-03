@@ -34,6 +34,7 @@ protected:
     bool _spawning;
     bool _destroying;
 
+    float _aliveTimer;
     float _hittedTimer;
 
     sf::Vector2f _vel;
