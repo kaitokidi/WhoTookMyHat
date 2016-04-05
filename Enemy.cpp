@@ -21,6 +21,7 @@ Enemy::Enemy(){
 
 }
 
+//it calls dyeing, just in case you need it
 void Enemy::hit(){
     --_hp;
     _hitted = true;
@@ -30,6 +31,7 @@ void Enemy::hit(){
         _hitted = false;
         _destroying = true;
         _animTimer.restart();
+        dyeing();
     }
 }
 
@@ -79,7 +81,8 @@ void Enemy::update(float deltaTime, Background *bg){
 }
 
 void Enemy::dyeing(){
-    //ghost function
+    //IS INVOKED FROM THE HIT FUNCTION
+    //if you implementd hit() be careful to call it
 }
 
 bool Enemy::colides(Bullet *b){

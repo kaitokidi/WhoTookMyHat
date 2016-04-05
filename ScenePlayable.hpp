@@ -9,6 +9,7 @@
 #include "Background.hpp"
 #include "EnemyGhost.hpp"
 #include "EnemyNinja.hpp"
+#include "EnemySnipper.hpp"
 #include "EnemyBouncy.hpp"
 #include "EnemyFlying.hpp"
 

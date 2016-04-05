@@ -47,7 +47,10 @@ SOURCES += main.cpp \
     SceneTemporal.cpp \
     EnemyGhost.cpp \
     EnemyNinja.cpp \
-    EnemyLog.cpp
+    EnemyLog.cpp \
+    EnemyShooter.cpp \
+    EnemyBullet.cpp \
+    EnemySnipper.cpp
 
 HEADERS += utils.hpp \
         Resources.cpp \
@@ -89,4 +92,7 @@ HEADERS += utils.hpp \
     SceneTemporal.hpp \
     EnemyGhost.hpp \
     EnemyNinja.hpp \
-    EnemyLog.hpp
+    EnemyLog.hpp \
+    EnemyShooter.hpp \
+    EnemyBullet.hpp \
+    EnemySnipper.hpp

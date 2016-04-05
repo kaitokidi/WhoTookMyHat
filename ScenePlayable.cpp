@@ -20,7 +20,8 @@ scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string previous,
 
 }
 
-void scenePlayable::init(sf::Vector2f aux){
+void scenePlayable::init(sf::Vector2f){
+
     _timer = 0;
     _view = _window->getDefaultView();
     initView(&_view, sf::Vector2i(1024,768));
@@ -110,6 +111,10 @@ void scenePlayable::readEnemies(int lvl) {
                                 break;
                                 case 'n': // ninja
                                 _enemyPull.push(new EnemyNinja(&_enemies));
+                                _enemyPull.back()->setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
+                                break;
+                                case 'd': //distant shooters
+                                _enemyPull.push(new EnemySnipper(& _enemies, _player));
                                 _enemyPull.back()->setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
                                 break;
                                 default:
@@ -257,7 +262,7 @@ void scenePlayable::update(float deltaTime){
 
        //erase dead bullets
        auto itb = _bullets.begin();
-       for(itb; itb != _bullets.end();){
+       for(;itb != _bullets.end();){
            if(! (*itb).isAlive()){
                itb = _bullets.erase(itb);
            }
@@ -266,7 +271,7 @@ void scenePlayable::update(float deltaTime){
 
        //erase dead enemies
        auto ite = _enemies.begin();
-       for(ite; ite != _enemies.end();){
+       for(; ite != _enemies.end();){
            if(! (*(*ite)).isAlive()){
                delete(*ite);
                ite = _enemies.erase(ite);
@@ -276,13 +281,13 @@ void scenePlayable::update(float deltaTime){
 
        //colision between enemies and bullets
        ite = _enemies.begin();
-       for(ite; ite != _enemies.end();++ite){
+       for(; ite != _enemies.end();++ite){
 
             itb = _bullets.begin();
            if((*ite)->colides(_player) && (*ite)->colisionable()){
                (*ite)->hit();
            }
-           else for(itb; itb != _bullets.end() && ite != _enemies.end();){
+           else for(; itb != _bullets.end() && ite != _enemies.end();){
 
                //check enemy and bullet colision
                if((*ite)->colides(&(*itb))  && (*ite)->colisionable()){
