@@ -6,20 +6,23 @@ EnemyLog::EnemyLog(){
     _hp = 1;
     init();
     _animTimer.restart();
+    _alive = true;
 }
 
 void EnemyLog::init() {
     _texture = Resources::log;
     _spawnAnimation = Resources::puff;
-    _destroyAnimation = Resources::spawnAnim;
+    _destroyAnimation = Resources::puff;
 }
 
 void EnemyLog::update(float deltaTime   , Background *bg) {
     _aliveTimer += deltaTime;
-    if(_aliveTimer > 10) {
-        _alive = false;
+    if(!_destroying && _aliveTimer > 10) {
+        //_alive = false;
+        _index = 0;
         _destroying = true;
         _animTimer.restart();
+        move(-31, -31);
     }
 
     if(_spawning){
