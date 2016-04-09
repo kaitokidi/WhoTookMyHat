@@ -17,6 +17,7 @@ public:
     static sf::Texture ghost;
     static sf::Texture ninja;
     static sf::Texture bullet;
+    static sf::Texture shooter;
     static sf::Texture pointer;
     static sf::Texture Portada;
     static sf::Texture talkBox;

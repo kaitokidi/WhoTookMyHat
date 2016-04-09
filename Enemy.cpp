@@ -82,7 +82,7 @@ void Enemy::update(float deltaTime, Background *bg){
 
 void Enemy::dyeing(){
     //IS INVOKED FROM THE HIT FUNCTION
-    //if you implementd hit() be careful to call it
+    //if you implementd hit() be careful to call it if you want this function
 }
 
 bool Enemy::colides(Bullet *b){
@@ -119,9 +119,12 @@ void Enemy::updateSprite(bool alive){
 
     if(_animTimer.getElapsedTime().asSeconds() > ANIMTIMER){
         ++_index;
-        if(_index >= _spawnAnimation.size()) {
+        if(    (_alive && _index >= _spawnAnimation.size() )
+            || (!_alive && _index >= _destroyAnimation.size() ) ) {
+
             if(_destroying) _destroying = _alive = false;
             else _spawning = false;
+
         }
         _animTimer.restart();
     }

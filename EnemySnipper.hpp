@@ -8,11 +8,10 @@ class EnemySnipper : public Enemy, public EnemyShooter {
 
 public:
     //TODO
-    //init
-    //Specific movement
-    //specific pictures
+    virtual void init();
     EnemySnipper(std::list < Enemy* >* e, Player* p);
     virtual void update(float deltaTime, Background* bg);
+    virtual void movement(float deltaTime, Background *bg);
 protected:
     Player* _player;
 };

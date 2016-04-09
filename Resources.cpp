@@ -11,6 +11,7 @@ sf::Texture            Resources::chain;
 sf::Texture            Resources::ghost;
 sf::Texture            Resources::ninja;
 sf::Texture            Resources::bullet;
+sf::Texture            Resources::shooter;
 sf::Texture            Resources::Portada;
 sf::Texture            Resources::pointer;
 sf::Texture            Resources::talkBox;
@@ -21,7 +22,7 @@ sf::Texture            Resources::enemyBloc;
 sf::Texture            Resources::enemyStar;
 
 std::vector<sf::Texture> Resources::one(1);
-std::vector<sf::Texture> Resources::none (9);
+std::vector<sf::Texture> Resources::none (1);
 std::vector<sf::Texture> Resources::puff (9);
 std::vector<sf::Texture> Resources::spawnAnim (9);
 std::vector<sf::Texture> Resources::destroyAnim (9);
@@ -50,6 +51,7 @@ void Resources::load() {
     if(! bullet.loadFromFile                 (TEXTURETPATH+std::string("bullet.png"))     ) printError("bulleTex");
     if(! talkBox.loadFromFile                (TEXTURETPATH+std::string("talkBox.png"))    ) printError("talkbTex");
     if(! pointer.loadFromFile                (TEXTURETPATH+std::string("pointer.png"))    ) printError("poinrTex");
+    if(! shooter.loadFromFile                (TEXTURETPATH+std::string("shooter.png"))    ) printError("shterTex");
     if(! Portada.loadFromFile                (TEXTURETPATH+std::string("Portada.png"))    ) printError("portaTex");
     if(! doors_OX.loadFromFile               (TEXTURETPATH+std::string("doors_OX.png"))   ) printError("doorOXTex");
     if(! doors_OO.loadFromFile               (TEXTURETPATH+std::string("doors_OO.png"))   ) printError("doorOOTex");
@@ -57,7 +59,7 @@ void Resources::load() {
     if(! enemyBloc.loadFromFile              (TEXTURETPATH+std::string("enemyBloc.png"))  ) printError("enemyBloc");
     if(! enemyStar.loadFromFile              (TEXTURETPATH+std::string("enemyStar.png"))  ) printError("enemyStar");
 
-    for(int i = 0; i < 9; ++i){
+    for(int i = 0; i < 1; ++i){
         if(! none[i].loadFromFile  (TEXTURETPATH+std::string("none/none.png") )) printError("noneAnim");
     }
     for(int i = 0; i < 9; ++i){

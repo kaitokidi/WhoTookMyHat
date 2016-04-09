@@ -12,7 +12,7 @@ public:
 
 protected:
     float _angle;
-    sf::Vector2i _delta;
+    sf::Vector2f _delta;
 
 };
 
