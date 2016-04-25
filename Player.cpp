@@ -28,7 +28,7 @@ sf::Vector2f colisionPoint(sf::Vector2f pos, sf::Vector2f lpos){
 void Player::setDistantHookPos(sf::Vector2i mousePos, Background* bg){
 
     sf::Vector2i intersection = bg->getIntersection(sf::Vector2i(getPosition()), mousePos);
-    if(intersection.x == intersection.y == 1) {
+    if(intersection.x == 1 && intersection.y == 1) {
         intersection.x = getPosition().x;
         intersection.y = getPosition().y;
     }

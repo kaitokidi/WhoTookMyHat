@@ -91,9 +91,7 @@ bool Background::rectangleColision(sf::FloatRect rect){
     return false;
 }
 
-//#include <iostream>
 #include <complex>
-
 using namespace std;
 
 typedef complex<double> point;
@@ -134,7 +132,7 @@ pair<bool,point> intersecciosemirectasegment(point p1,point v1,point a,point b)
 
 sf::Vector2i Background::getIntersection(sf::Vector2i position, sf::Vector2i mousePos){
 
-    sf::Vector2i ret(-2000,-2000);
+    sf::Vector2i ret(-1337,-1337);
 
     pair <bool,point> result;
     result.second.real(0);

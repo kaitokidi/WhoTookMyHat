@@ -50,7 +50,7 @@ void Resources::load() {
     if(! ghost.loadFromFile                  (TEXTURETPATH+std::string("ghost.png"))      ) printError("ghostTex");
     if(! ninja.loadFromFile                  (TEXTURETPATH+std::string("ninja.png"))      ) printError("ninjaTex");
     if(! bullet.loadFromFile                 (TEXTURETPATH+std::string("bullet.png"))     ) printError("bulleTex");
-    if(! bullet2.loadFromFile                 (TEXTURETPATH+std::string("bullet2.png"))   ) printError("bulleTex");
+    if(! bullet2.loadFromFile                (TEXTURETPATH+std::string("bullet2.png"))    ) printError("bulleTex");
     if(! talkBox.loadFromFile                (TEXTURETPATH+std::string("talkBox.png"))    ) printError("talkbTex");
     if(! pointer.loadFromFile                (TEXTURETPATH+std::string("pointer.png"))    ) printError("poinrTex");
     if(! shooter.loadFromFile                (TEXTURETPATH+std::string("shooter.png"))    ) printError("shterTex");
