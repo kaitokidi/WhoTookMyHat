@@ -61,20 +61,19 @@ bool Background::circleColision(sf::Vector2f pos, float rad) {
         if(    _boundaries[i].contains(pos.x+rad, pos.y)
             || _boundaries[i].contains(pos.x-rad, pos.y)
             || _boundaries[i].contains(pos.x, pos.y+rad)
-            || _boundaries[i].contains(pos.x, pos.y-rad)
-                                                                    ){
+            || _boundaries[i].contains(pos.x, pos.y-rad) ){
             return true;
         }
-        else if(       getModule(pos, sf::Vector2f(_boundaries[i].left,_boundaries[i].top)) < rad
-                    || getModule(pos, sf::Vector2f(_boundaries[i].left+_boundaries[i].width,_boundaries[i].top)) < rad
-                    || getModule(pos, sf::Vector2f(_boundaries[i].left,_boundaries[i].top+_boundaries[i].height)) < rad
-                    || getModule(pos, sf::Vector2f(_boundaries[i].left+_boundaries[i].width,_boundaries[i].top+_boundaries[i].height)) < rad
-                       ){
+        else if(    getModule(pos, sf::Vector2f(_boundaries[i].left,_boundaries[i].top)) < rad
+                 || getModule(pos, sf::Vector2f(_boundaries[i].left+_boundaries[i].width,_boundaries[i].top)) < rad
+                 || getModule(pos, sf::Vector2f(_boundaries[i].left,_boundaries[i].top+_boundaries[i].height)) < rad
+                 || getModule(pos, sf::Vector2f(_boundaries[i].left+_boundaries[i].width,_boundaries[i].top+_boundaries[i].height)) < rad ){
             return true;
         }
     }
     return false;
 }
+
 
 bool Background::rectangleColision(sf::FloatRect rect){
     for(int i = 0; i < _boundaries.size(); ++i){
@@ -216,6 +215,42 @@ sf::Vector2i Background::getIntersection(sf::Vector2i mousePos){
 
     }
 
+    return ret;
+
+}
+
+sf::Vector2f Background::getCircleColisionOffset(sf::Vector2f pos, float rad){
+    sf::Vector2f ret(0,0);
+
+    for(int i = 0; i < _boundaries.size(); ++i){
+
+        if( _boundaries[i].contains(pos.x+rad, pos.y)) ret.x = std::max(pos.x+rad - _boundaries[i].left, ret.x);
+        if( _boundaries[i].contains(pos.x-rad, pos.y)) ret.x = std::max(_boundaries[i].left + _boundaries[i].width - pos.x-rad, pos.x);
+        if( _boundaries[i].contains(pos.x, pos.y+rad)) ret.y = std::max(pos.y+rad - _boundaries[i].top, ret.y);
+        if( _boundaries[i].contains(pos.x, pos.y-rad)) ret.y = std::max(_boundaries[i].top + _boundaries[i].height - pos.y+rad, ret.y);
+
+        if( getModule(pos, sf::Vector2f(_boundaries[i].left,_boundaries[i].top)) < rad ) {
+            float ratio = rad / getModule(pos, sf::Vector2f(_boundaries[i].left,_boundaries[i].top));
+            ret.x = std::max(ret.x, (_boundaries[i].left - pos.x)*ratio);
+            ret.y = std::max(ret.y, (_boundaries[i].top - pos.y)*ratio);
+        }
+        if( getModule(pos, sf::Vector2f(_boundaries[i].left+_boundaries[i].width,_boundaries[i].top)) < rad ){
+            float ratio = rad / getModule(pos, sf::Vector2f(_boundaries[i].left+_boundaries[i].width,_boundaries[i].top));
+            ret.x = std::max(ret.x, (pos.x - _boundaries[i].left+_boundaries[i].width)*ratio);
+            ret.y = std::max(ret.y, (_boundaries[i].top - pos.y)*ratio);
+        }
+        if( getModule(pos, sf::Vector2f(_boundaries[i].left,_boundaries[i].top+_boundaries[i].height)) < rad ){
+            float ratio = rad / getModule(pos, sf::Vector2f(_boundaries[i].left,_boundaries[i].top+_boundaries[i].height));
+            ret.x = std::max(ret.x, (_boundaries[i].left - pos.x)*ratio);
+            ret.y = std::max(ret.y, (pos.y - _boundaries[i].top+_boundaries[i].height)*ratio);
+        }
+        if( getModule(pos, sf::Vector2f(_boundaries[i].left+_boundaries[i].width,_boundaries[i].top+_boundaries[i].height)) < rad ){
+            float ratio = rad / getModule(pos, sf::Vector2f(_boundaries[i].left+_boundaries[i].width,_boundaries[i].top+_boundaries[i].height));
+            ret.x = std::max(ret.x, (pos.x - _boundaries[i].left+_boundaries[i].width)*ratio);
+            ret.y = std::max(ret.y, (pos.y - _boundaries[i].top+_boundaries[i].height)*ratio);
+        }
+
+    }
     return ret;
 
 }

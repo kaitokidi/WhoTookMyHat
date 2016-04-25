@@ -106,8 +106,8 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
     //CHECK on X
     if(        ! bg->colision(dest.x+rad, orig.y)
             && ! bg->colision(dest.x-rad, orig.y)
-            && ! bg->colision(dest.x, orig.y-aux)
-            && ! bg->colision(dest.x, orig.y+aux)
+            && ! bg->colision(dest.x,     orig.y-rad)
+            && ! bg->colision(dest.x,     orig.y+rad)
             && ! bg->colision(dest.x+rad, orig.y+aux)
             && ! bg->colision(dest.x+rad, orig.y-aux)
             && ! bg->colision(dest.x-rad, orig.y+aux)
@@ -121,6 +121,8 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
     //CHECK on Y
     if(        ! bg->colision(orig.x, dest.y+rad)
             && ! bg->colision(orig.x, dest.y-rad)
+            && ! bg->colision(orig.x+rad, dest.y)
+            && ! bg->colision(orig.x-rad, dest.y)
             && ! bg->colision(orig.x+aux, dest.y+rad)
             && ! bg->colision(orig.x+aux, dest.y-rad)
             && ! bg->colision(orig.x-aux, dest.y+rad)
@@ -143,6 +145,19 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
     //if(getPosition().y > 666) jumping = false;
     if (stopX) vel.x = 0;
 
+    /*****
+    if(bg->circleColision(dest, rad)){
+        sf::Vector2f offset = bg->getCircleColisionOffset(dest,rad);
+        if(offset.x != 0){
+            pos.x = pos.x + (offset.x * (-1*(vel.x < 0)));
+        }else pos.x = dest.x;
+        if(offset.y != 0){
+            pos.y = pos.y + (offset.y * (-1*(vel.y > 0)));
+        }else pos.y = dest.y;
+        setPosition(pos);
+    }
+    else setPosition(dest);
+    ****/
 }
 
 float Player::getSpeed() const { return speed; }
@@ -157,7 +172,7 @@ sf::Vector2f Player::getPos() const { return pos; }
 
 void Player::setPos(const sf::Vector2f &value) { pos = value; log("setPos");}
 
-sf::Vector2f Player::getPosition(){ return body.getPosition(); }
+sf::Vector2f Player::getPosition() { return body.getPosition(); }
 
 void Player::draw(sf::RenderTarget * w){
     sf::Vector2f guiaPos;

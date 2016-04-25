@@ -31,7 +31,6 @@ void SceneTemporal::init(sf::Vector2f aux){
 void SceneTemporal::update(float deltaTime){
     timer += deltaTime;
 
-    //_sprite.rotate(5*deltaTime);
     float f = 1+(std::sin(timer)/4);
     _text.setScale(sf::Vector2f(f,f));
     if(timer > _maxTime){

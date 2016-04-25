@@ -14,7 +14,6 @@ scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string previous,
     _player = player;
     _prev = previous;
     readLVL(levelName);
-//    readEnemies(_hatsOwned);
     _levelName = levelName;
     init();
 
@@ -26,9 +25,6 @@ void scenePlayable::init(sf::Vector2f){
     _view = _window->getDefaultView();
     initView(&_view, sf::Vector2i(1024,768));
 
-    //_player->setPosition(_player->getRadius()*3,660);
-
-    //_hatsOwned = 0;
     _shootTimer = 0;
 
     for(int i = 0; i < 3; ++i) _hatshits[i] = 0;
@@ -164,7 +160,7 @@ void scenePlayable::update(float deltaTime){
 
         bg._doorOpenedL = true;
         bg._doorOpenedR = false;
-        if(_hatsOwned >= 2) bg._doorOpenedR = true;
+        if(_hatsOwned >= 3) bg._doorOpenedR = true;
 
 
         _hats[0].setPosition(300,150); _hats[1].setPosition(500,150); _hats[2].setPosition(700,150);
@@ -352,8 +348,8 @@ void scenePlayable::writteLVL(int lvl){
         std::getline (inf,line);
         while(line[0] == '#') std::getline (inf,line);
         int oldLVL = (line[0]-'0');
-        _hatsOwned = std::min(std::max(oldLVL,lvl+1),2);
-        aux << std::min(std::max(oldLVL,lvl+1),2) << '\n';
+        _hatsOwned = std::min(std::max(oldLVL,lvl+1),3);
+        aux << std::min(std::max(oldLVL,lvl+1),3) << '\n';
 
         while(std::getline (inf,line)){
             aux << line << '\n';
@@ -515,7 +511,7 @@ void scenePlayable::readLVL(std::string levelName){
         }
         myfile.close();
     }
-    else std::cout << "scenePlayable file not oppened" << std::endl;
+    else std::cout << "scenePlayable file " << LVLDESCIPTPATH+levelName << " not oppened" << std::endl;
 
    // log("readLVL finishes");
 
