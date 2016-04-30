@@ -32,6 +32,7 @@ public:
     sf::Vector2i getIntersection(sf::Vector2i mousePos);
     sf::Vector2f getCircleColisionOffset(sf::Vector2f pos, float rad);
     sf::Vector2i getIntersection(sf::Vector2i position, sf::Vector2i mousePos);
+    sf::Vector2f getVectorFromCircleColision(sf::Vector2f &direction, sf::Vector2f pos, float rad);
 
 private:
 

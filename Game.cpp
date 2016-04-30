@@ -86,7 +86,17 @@ void Game::loadScenes() {
 
 
     _scenes.insert(std::make_pair("test", new SceneTest(this, &_window, "portada")));
-    _scenes.insert(std::make_pair("portada", new SceneTemporal(this, &_window, "test2", 5, "", "Portada")));
+    _scenes.insert(std::make_pair("portada", new SceneTemporal(this, &_window, "s1", 5, "", "Portada")));
+    _scenes.insert(std::make_pair("s1", new SceneTemporal(this, &_window, "s2", 1, "", "scene1.png")));
+    _scenes.insert(std::make_pair("s2", new SceneTemporal(this, &_window, "s3", 1, "", "scene2.png")));
+    _scenes.insert(std::make_pair("s3", new SceneTemporal(this, &_window, "s4", 1, "", "scene3.png")));
+    _scenes.insert(std::make_pair("s4", new SceneTemporal(this, &_window, "s5", 1, "", "scene4.png")));
+    _scenes.insert(std::make_pair("s5", new SceneTemporal(this, &_window, "s6", 1, "", "scene5.png")));
+    _scenes.insert(std::make_pair("s6", new SceneTemporal(this, &_window, "s7", 1, "", "scene6.png")));
+    _scenes.insert(std::make_pair("s7", new SceneTemporal(this, &_window, "s8", 1, "", "scene7.png")));
+    _scenes.insert(std::make_pair("s8", new SceneTemporal(this, &_window, "s9", 1, "", "scene8.png")));
+    _scenes.insert(std::make_pair("s9", new SceneTemporal(this, &_window, "s10", 1, "", "scene9.png")));
+    _scenes.insert(std::make_pair("s10", new SceneTemporal(this, &_window, "test2", 1, "", "scene10.png")));
     _scenes.insert(std::make_pair("test2", new SceneTest(this, &_window, "cutScene1")));
     _scenes.insert(std::make_pair("cutScene1", new SceneCutScene(this, & _window, "level4", "cutScene1", "cutScene2", &_player)));
     _scenes.insert(std::make_pair("cutScene2", new SceneCutScene(this, & _window, "cutScene1", "cutScene2", "cutScene3", &_player)));

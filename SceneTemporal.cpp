@@ -18,6 +18,7 @@ void SceneTemporal::init(sf::Vector2f aux){
     aux = aux;
     timer = 0;
     if(_name == "Portada") _texture = Resources::Portada;
+    else _texture.loadFromFile(TEXTURETPATH+_name);
     _sprite.setTexture(_texture);
     _sprite.setOrigin(_sprite.getLocalBounds().width/2, _sprite.getLocalBounds().height/2);
     //_sprite.setPosition(_window->getSize().x/2, _window->getSize().y/2);

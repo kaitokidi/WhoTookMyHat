@@ -104,14 +104,21 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
     float aux = sqrt( (rad*rad)/2 );
 
     //CHECK on X
-    if(        ! bg->colision(dest.x+rad, orig.y)
+
+    bool colision = false;
+    int COLISIONPRECISION = 50;
+    float step = 360/COLISIONPRECISION;
+    for(int s = 0; s < COLISIONPRECISION; ++s){
+        if(bg->colision(dest.x+(std::cos(step*s)*rad),orig.y+(std::sin(step*s)*rad))) colision = true;
+    }
+    if(!colision && ! bg->colision(dest.x+rad, orig.y)
             && ! bg->colision(dest.x-rad, orig.y)
             && ! bg->colision(dest.x,     orig.y-rad)
             && ! bg->colision(dest.x,     orig.y+rad)
-            && ! bg->colision(dest.x+rad, orig.y+aux)
-            && ! bg->colision(dest.x+rad, orig.y-aux)
-            && ! bg->colision(dest.x-rad, orig.y+aux)
-            && ! bg->colision(dest.x-rad, orig.y-aux) ){
+            && ! bg->colision(dest.x+aux, orig.y+aux)
+            && ! bg->colision(dest.x+aux, orig.y-aux)
+            && ! bg->colision(dest.x-aux, orig.y+aux)
+            && ! bg->colision(dest.x-aux, orig.y-aux) ){
         pos.x = dest.x;
         orig.x = dest.x;
     }
@@ -119,14 +126,18 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
         stopX = true;
     }
     //CHECK on Y
-    if(        ! bg->colision(orig.x, dest.y+rad)
+    colision = false;
+    for(int s = 0; s < COLISIONPRECISION; ++s){
+        if(bg->colision(orig.x+(std::cos(step*s)*rad),dest.y+(std::sin(step*s)*rad))) colision = true;
+    }
+    if( !colision &&       ! bg->colision(orig.x, dest.y+rad)
             && ! bg->colision(orig.x, dest.y-rad)
             && ! bg->colision(orig.x+rad, dest.y)
             && ! bg->colision(orig.x-rad, dest.y)
-            && ! bg->colision(orig.x+aux, dest.y+rad)
-            && ! bg->colision(orig.x+aux, dest.y-rad)
-            && ! bg->colision(orig.x-aux, dest.y+rad)
-            && ! bg->colision(orig.x-aux, dest.y-rad) ){
+            && ! bg->colision(orig.x+aux, dest.y+aux)
+            && ! bg->colision(orig.x+aux, dest.y-aux)
+            && ! bg->colision(orig.x-aux, dest.y+aux)
+            && ! bg->colision(orig.x-aux, dest.y-aux) ){
         pos.y = dest.y;
         if(vel.x > 0) vel.x -= constant::friction/3 * deltaTime;
         if(vel.x < 0) vel.x += constant::friction/3 * deltaTime;
@@ -138,6 +149,10 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
         if(vel.x > 0) vel.x -= constant::friction * deltaTime;
         if(vel.x < 0) vel.x += constant::friction * deltaTime;
     }
+
+
+   /***** sf::Vector2f toGoBack = bg->getVectorFromCircleColision(vel, dest, rad);
+    pos = dest - toGoBack;******/
 
     setPosition(pos);
     //If it colisioned on x stop movint on that axe
@@ -158,6 +173,8 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
     }
     else setPosition(dest);
     ****/
+
+
 }
 
 float Player::getSpeed() const { return speed; }

@@ -199,6 +199,130 @@ sf::Vector2i Background::getIntersection(sf::Vector2i position, sf::Vector2i mou
 
 }
 
+sf::Vector2f Background::getVectorFromCircleColision(sf::Vector2f &direction, sf::Vector2f pos, float rad) {
+    sf::Vector2f ret(0,0);
+    direction.x = direction.x / getModule(sf::Vector2f(0,0), direction);
+    direction.y = direction.y / getModule(sf::Vector2f(0,0), direction);
+
+    for(int i = 0; i < _boundaries.size(); ++i){
+        float left, right, top, bot;
+        top = _boundaries[i].top;
+        left = _boundaries[i].left;
+        bot = _boundaries[i].top + _boundaries[i].height;
+        right = _boundaries[i].left + _boundaries[i].width;
+
+        log("0");
+        // )|
+        if( _boundaries[i].contains(pos.x+rad, pos.y)) { ret.x = min(left - pos.x+rad, ret.x);}
+        // |(
+        if( _boundaries[i].contains(pos.x-rad, pos.y)) { ret.x = max(pos.x-rad - right, ret.x);}
+        // _U_
+        if( _boundaries[i].contains(pos.x, pos.y+rad)) { ret.y = max(pos.y+rad - top, ret.y); }
+        //  ^
+        if( _boundaries[i].contains(pos.x, pos.y-rad)) { ret.y = min(bot - pos.y-rad, ret.y); }
+
+/*
+        if( getModule(pos, sf::Vector2f(left,top)) < rad ) {
+            sf::Vector2f origin(left,top);
+            sf::Vector2f center = pos;
+            sf::Vector2f d = origin - center;
+            sf::Vector2f point;
+            float a = direction.x*direction.x + direction.y*direction.y;
+            float b = d.x*direction.x + d.y*direction.y;
+            float c = d.x*d.x + d.y*d.y - rad * rad;
+            float disc = b*b-a*c;
+
+            float sqrtDisc = std::sqrt(disc);
+            float invA = 1.0/a;
+
+            float t0 = (-b - sqrtDisc) *invA;
+            float t1 = (-b + sqrtDisc) *invA;
+
+            point.x = origin.x + t0 * direction.x;
+            point.y = origin.y + t1 * direction.y;
+
+            ret.y = min(ret.y, abs(top - point.y));
+            ret.x = min(ret.x, abs(left - point.x));
+
+        }
+
+        if( getModule(pos, sf::Vector2f(right,top)) < rad ) {
+            sf::Vector2f origin(right,top);
+            sf::Vector2f center = pos;
+            sf::Vector2f d = origin - center;
+            sf::Vector2f point;
+            float a = direction.x*direction.x + direction.y*direction.y;
+            float b = d.x*direction.x + d.y*direction.y;
+            float c = d.x*d.x + d.y*d.y - rad * rad;
+            float disc = b*b-a*c;
+
+            float sqrtDisc = std::sqrt(disc);
+            float invA = 1.0/a;
+
+            float t0 = (-b - sqrtDisc) *invA;
+            float t1 = (-b + sqrtDisc) *invA;
+
+            point.x = origin.x + t0 * direction.x;
+            point.y = origin.y + t1 * direction.y;
+
+            ret.y = min(ret.y, abs(top - point.y));
+            ret.x = max(ret.x, abs(right - point.x));
+
+        }
+
+        if( getModule(pos, sf::Vector2f(right,bot)) < rad ) {
+            sf::Vector2f origin(right,bot);
+            sf::Vector2f center = pos;
+            sf::Vector2f d = origin - center;
+            sf::Vector2f point;
+            float a = direction.x*direction.x + direction.y*direction.y;
+            float b = d.x*direction.x + d.y*direction.y;
+            float c = d.x*d.x + d.y*d.y - rad * rad;
+            float disc = b*b-a*c;
+
+            float sqrtDisc = std::sqrt(disc);
+            float invA = 1.0/a;
+
+            float t0 = (-b - sqrtDisc) *invA;
+            float t1 = (-b + sqrtDisc) *invA;
+
+            point.x = origin.x + t0 * direction.x;
+            point.y = origin.y + t1 * direction.y;
+
+            ret.y = max(ret.y, abs(bot - point.y));
+            ret.x = max(ret.x, abs(right - point.x));
+
+        }
+
+        if( getModule(pos, sf::Vector2f(left,bot)) < rad ) {
+            sf::Vector2f origin(left,bot);
+            sf::Vector2f center = pos;
+            sf::Vector2f d = origin - center;
+            sf::Vector2f point;
+            float a = direction.x*direction.x + direction.y*direction.y;
+            float b = d.x*direction.x + d.y*direction.y;
+            float c = d.x*d.x + d.y*d.y - rad * rad;
+            float disc = b*b-a*c;
+
+            float sqrtDisc = std::sqrt(disc);
+            float invA = 1.0/a;
+
+            float t0 = (-b - sqrtDisc) *invA;
+            float t1 = (-b + sqrtDisc) *invA;
+
+            point.x = origin.x + t0 * direction.x;
+            point.y = origin.y + t1 * direction.y;
+
+            ret.y = max(ret.y, abs(bot - point.y));
+            ret.x = min(ret.x, abs(left - point.x));
+
+        }
+*/
+    }
+    return ret;
+
+}
+
 sf::Vector2i Background::getIntersection(sf::Vector2i mousePos){
 
     sf::Vector2i ret(1,1);
@@ -252,6 +376,7 @@ sf::Vector2f Background::getCircleColisionOffset(sf::Vector2f pos, float rad){
     return ret;
 
 }
+
 
 
 
