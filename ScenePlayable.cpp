@@ -387,10 +387,42 @@ void scenePlayable::render(sf::RenderTarget *target){
                 target->draw(_s);
             }
         }
+        if(DEBUGDRAW){
+            sf::RectangleShape box;
+            box.setFillColor(sf::Color(0,0,100,130));
+            box.setOutlineThickness(5);
+            box.setOutlineColor(sf::Color(0,0,100,180));
+            for(int i = 0; i < 3; ++i){
+                if(i <= _hatsOwned ){
+                    box.setOrigin(_hats[i].getOrigin());
+                    box.setRotation(_hats[i].getRotation());
+                    box.setPosition(_hats[i].getPosition());
+                    box.setSize(sf::Vector2f (_hats[i].getLocalBounds().width*_hats[i].getScale().x, _hats[i].getLocalBounds().height*_hats[i].getScale().y) );
+                    target->draw(box);
+                }
+                else {
+                    box.setOrigin(_s.getOrigin());
+                    box.setPosition(300+200*i,150);
+                    box.setSize(sf::Vector2f (_s.getLocalBounds().width*_s.getScale().x, _s.getLocalBounds().height*_s.getScale().y) );
+                    target->draw(box);
+                }
+            }
+        }
     }
 
     for(auto it = _bullets.begin(); it != _bullets.end(); ++it){
         target->draw(*it);
+        if(DEBUGDRAW){
+            sf::RectangleShape box;
+            box.setFillColor(sf::Color(0,100,100,130));
+            box.setOutlineThickness(2);
+            box.setOutlineColor(sf::Color(0,100,100,180));
+            box.setOrigin((*it).getOrigin());
+            box.setRotation((*it).getRotation());
+            box.setPosition((*it).getPosition());
+            box.setSize(sf::Vector2f ((*it).getLocalBounds().width, (*it).getLocalBounds().height) );
+            target->draw(box);
+        }
     }
 
     _player->draw(target);
@@ -403,6 +435,18 @@ void scenePlayable::render(sf::RenderTarget *target){
             else target->draw(*(*it));
         }
         else target->draw(*(*it));
+
+        if(DEBUGDRAW){
+            sf::RectangleShape box;
+            box.setFillColor(sf::Color(100,0,100,130));
+            box.setOutlineThickness(4);
+            box.setOutlineColor(sf::Color(100,0,100,180));
+            box.setOrigin((*(*it)).getOrigin());
+            box.setRotation((*(*it)).getRotation());
+            box.setPosition((*(*it)).getPosition());
+            box.setSize(sf::Vector2f ((*(*it)).getLocalBounds().width, (*(*it)).getLocalBounds().height) );
+            target->draw(box);
+        }
     }
 }
 
