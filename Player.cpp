@@ -21,8 +21,8 @@ Player::Player(): body(40,100), guide(10,100){
 }
 
 
-sf::Vector2f colisionPoint(sf::Vector2f pos, sf::Vector2f lpos){
-
+sf::Vector2f colisionPoint(sf::Vector2f /*pos*/, sf::Vector2f /*lpos*/){
+    return sf::Vector2f(-1,-1);
 }
 
 void Player::setDistantHookPos(sf::Vector2i mousePos, Background* bg){
@@ -101,43 +101,12 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
     sf::Vector2f dest = pos + vel;
     float rad = radius; bool stopX = false;
 
-    float aux = sqrt( (rad*rad)/2 );
+   // float aux = sqrt( (rad*rad)/2 );
+    float aux = std::sin(45)*rad;
 
-    //CHECK on X
 
-    bool colision = false;
-    int COLISIONPRECISION = 50;
-    float step = 360/COLISIONPRECISION;
-    for(int s = 0; s < COLISIONPRECISION; ++s){
-        if(bg->colision(dest.x+(std::cos(step*s)*rad),orig.y+(std::sin(step*s)*rad))) colision = true;
-    }
-    if(!colision && ! bg->colision(dest.x+rad, orig.y)
-            && ! bg->colision(dest.x-rad, orig.y)
-            && ! bg->colision(dest.x,     orig.y-rad)
-            && ! bg->colision(dest.x,     orig.y+rad)
-            && ! bg->colision(dest.x+aux, orig.y+aux)
-            && ! bg->colision(dest.x+aux, orig.y-aux)
-            && ! bg->colision(dest.x-aux, orig.y+aux)
-            && ! bg->colision(dest.x-aux, orig.y-aux) ){
-        pos.x = dest.x;
-        orig.x = dest.x;
-    }
-    else {//THERE IS A COLISION ON X
-        stopX = true;
-    }
-    //CHECK on Y
-    colision = false;
-    for(int s = 0; s < COLISIONPRECISION; ++s){
-        if(bg->colision(orig.x+(std::cos(step*s)*rad),dest.y+(std::sin(step*s)*rad))) colision = true;
-    }
-    if( !colision &&       ! bg->colision(orig.x, dest.y+rad)
-            && ! bg->colision(orig.x, dest.y-rad)
-            && ! bg->colision(orig.x+rad, dest.y)
-            && ! bg->colision(orig.x-rad, dest.y)
-            && ! bg->colision(orig.x+aux, dest.y+aux)
-            && ! bg->colision(orig.x+aux, dest.y-aux)
-            && ! bg->colision(orig.x-aux, dest.y+aux)
-            && ! bg->colision(orig.x-aux, dest.y-aux) ){
+    //check Y
+    if(! bg->rectangleColision(sf::FloatRect(orig.x-aux, dest.y-aux, 2*aux, 2*aux))){
         pos.y = dest.y;
         if(vel.x > 0) vel.x -= constant::friction/3 * deltaTime;
         if(vel.x < 0) vel.x += constant::friction/3 * deltaTime;
@@ -150,30 +119,18 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
         if(vel.x < 0) vel.x += constant::friction * deltaTime;
     }
 
-
-   /***** sf::Vector2f toGoBack = bg->getVectorFromCircleColision(vel, dest, rad);
-    pos = dest - toGoBack;******/
+    //check X
+    if(! bg->rectangleColision(sf::FloatRect(dest.x-aux, pos.y-aux, 2*aux, 2*aux))){
+        pos.x = dest.x;
+        orig.x = dest.x;
+    }
+    else {//THERE IS A COLISION ON X
+        stopX = true;
+    }
 
     setPosition(pos);
-    //If it colisioned on x stop movint on that axe
-    //(is done now, not in the oclision because) we need the speed on x to check Y colisions.
-    //if(getPosition().y > 666) jumping = false;
+
     if (stopX) vel.x = 0;
-
-    /*****
-    if(bg->circleColision(dest, rad)){
-        sf::Vector2f offset = bg->getCircleColisionOffset(dest,rad);
-        if(offset.x != 0){
-            pos.x = pos.x + (offset.x * (-1*(vel.x < 0)));
-        }else pos.x = dest.x;
-        if(offset.y != 0){
-            pos.y = pos.y + (offset.y * (-1*(vel.y > 0)));
-        }else pos.y = dest.y;
-        setPosition(pos);
-    }
-    else setPosition(dest);
-    ****/
-
 
 }
 
@@ -209,6 +166,35 @@ void Player::draw(sf::RenderTarget * w){
     eyes.draw(w);
     w->draw(hat);
     guide.draw(w);
+
+    if(DEBUGDRAW){
+        sf::CircleShape O;
+        O.setRadius(guide.getRadius());
+        O.setOrigin(guide.getRadius(),guide.getRadius());
+        O.setPosition(guiaPos);
+        O.setFillColor(sf::Color(255,255,255,120));
+        O.setOutlineColor(sf::Color(100,0,0,120));
+        O.setOutlineThickness(5);
+        w->draw(O);
+        O.setRadius(body.getRadius());
+        O.setOrigin(body.getRadius(), body.getRadius());
+        O.setPosition(body.getPosition());
+        w->draw(O);
+        sf::RectangleShape bbox;
+        bbox.setPosition(body.getPosition().x-29.78,
+                         body.getPosition().y-29.78);
+        bbox.setSize(sf::Vector2f(2*29.78,2*29.78));
+        bbox.setFillColor(sf::Color(255,0,0,120));
+        bbox.setOutlineThickness(0);
+        w->draw(bbox);
+        sf::RectangleShape box;
+        box.setOrigin(hat.getOrigin());
+        box.setRotation(hat.getRotation());
+        box.setPosition(hat.getPosition());
+        box.setFillColor(sf::Color(0,100,0,100));
+        box.setSize(sf::Vector2f(hat.getGlobalBounds().width, hat.getGlobalBounds().height));
+        w->draw(box);
+    }
 }
 
 void Player::moveOut(float speed){

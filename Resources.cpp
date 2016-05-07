@@ -86,6 +86,8 @@ void Resources::load() {
 
 //ONLY USED IF USING DESCRIPTORS
 SpriteSheetDescription Resources::loadDescription(std::string) {
+    SpriteSheetDescription s;
+    return s;
     //Ja els llegeix cada nivell.
 /*    std::string filePath = TEXTURETPATH + fileName + TEXTUREDESCRIPTIONEXTENSION;
     SpriteSheetDescription ret;

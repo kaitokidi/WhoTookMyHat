@@ -8,14 +8,14 @@ bool isInt(std::string s) {
 }
 
 int myStoi(std::string s) {
-    int x=0;
+    int x = 0;
     for (int i = 0; i < int(s.size()); ++i)
         x = 10*x+(s[i]-'0');
     return x;
 }
 
 bool myStob(std::string s) {
-    return s != "0";
+    return (s != "0");
 }
 
 void print(std::string s){
@@ -162,7 +162,10 @@ int getSign(float n) {
     else return 0;
 }
 
-
 void log(std::string s){
+    std::cout << s << std::endl;
+}
+
+void mlog(std::string s){
     std::cout << s << std::endl;
 }

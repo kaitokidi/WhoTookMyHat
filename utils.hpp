@@ -45,6 +45,8 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
+static const bool DEBUGDRAW = true;
+
 //movement dir { down, left, right, up , none };
 namespace direction {
     enum dir { down, left, right, up , none };
@@ -129,6 +131,8 @@ namespace constant{
 }
 
 void log(std::string s);
+
+void mlog(std::string s);
 
 bool isInt(std::string s);
 
