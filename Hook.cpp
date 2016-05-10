@@ -50,6 +50,9 @@ void Hook::setTexture(std::string path) {
     path = path;
     texture = Resources::chain;
     simple = false;
+    _end.setTexture(Resources::endHook);
+    _end.setOrigin(_end.getLocalBounds().width/2,
+                   _end.getLocalBounds().height/2);
 }
 
 bool Hook::makeTextureRepeteable(){
@@ -78,6 +81,8 @@ void Hook::draw(sf::RenderTarget * window){
         //godoy knows
         sprite.setRotation(getAngle(origin,destiny));
         window->draw(sprite);
+        _end.setPosition(destiny);
+        window->draw(_end);
     }
 
 

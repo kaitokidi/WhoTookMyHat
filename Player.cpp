@@ -3,6 +3,16 @@
 #include <iostream>
 #define PLAYERSPEED 50
 
+
+int Player::actualHat() const
+{
+    return _actualHat;
+}
+
+void Player::setActualHat(int actualHat)
+{
+    _actualHat = actualHat;
+}
 Player::Player(): body(40,100), guide(10,100){
     angle = 0;
     speed = PLAYERSPEED;
@@ -18,6 +28,7 @@ Player::Player(): body(40,100), guide(10,100){
     body.setColor(sf::Color(100,100,100));
     guide.setColor(sf::Color(100,100,100));
     hook.setTexture(std::string(TEXTURETPATH)+("hook.png"));
+    _actualHat = 0;
 }
 
 

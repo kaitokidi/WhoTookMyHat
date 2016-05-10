@@ -26,6 +26,8 @@ protected:
     float radius;
     float lastUpdate;
 
+    int _actualHat;
+
     sf::Vector2f pos;
     sf::Vector2f vel;
     sf::Vector2f hookPos;
@@ -62,6 +64,8 @@ public:
     void setMousePos(const sf::Vector2f &value);
     void setDistantHookPos(sf::Vector2i mousePos, Background* bg);
 
+    int actualHat() const;
+    void setActualHat(int actualHat);
 };
 
 #endif // PLAYER_HPP

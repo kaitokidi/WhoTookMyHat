@@ -5,6 +5,7 @@
 
 #define DATAPATH "Resources/Data/"
 #define TEXTPATH "Resources/Texts/"
+#define HATSPATH "Resources/Documents/"
 #define SHADERPATH "Resources/Shaders/"
 #define OPTIONSPATH "Resources/Options/"
 #define TEXTURETPATH "Resources/Textures/"

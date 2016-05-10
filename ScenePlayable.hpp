@@ -26,6 +26,8 @@ public:
 
     void processInput();
 
+    void incrementHats();
+
     void writteLVL(int lvl);
 
     void readEnemies(int lvl);
@@ -51,12 +53,15 @@ private:
     int _hatsOwned;
     Player* _player;
     int _hatshits[3];
+    int _hatsAchieved;
     float _shootTimer;
     std::string _prev;
     std::string _next;
     sf::Sprite _hats[3];
     sf::Texture _hatsT[3];
     std::string _levelName;
+    sf::Sprite _playerHatSprite;
+    sf::Texture _playerHatTexture;
 
     sf::Vector2i _spawnPoint;
     std::list < Bullet > _bullets;

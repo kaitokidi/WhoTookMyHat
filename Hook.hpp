@@ -6,21 +6,8 @@
 
 class Hook {
 
-private:
-
-    float size;
-    bool simple;
-
-    sf::Sprite sprite;
-    sf::Texture texture;
-
-    sf::Vector2f origin;
-    sf::Vector2f destiny;
-
-    float getAngle(sf::Vector2f &orig, sf::Vector2f &des);
-    float getModule(sf::Vector2f &orig, sf::Vector2f &des);
-
 public:
+
     //Creator
     Hook();
     Hook(float w);
@@ -41,6 +28,22 @@ public:
     bool makeTextureRepeteable();
 
     void draw(sf::RenderTarget *window);
+
+private:
+
+    float size;
+    bool simple;
+
+    sf::Sprite _end;
+    sf::Sprite sprite;
+    sf::Texture texture;
+
+    sf::Vector2f origin;
+    sf::Vector2f destiny;
+
+    float getAngle(sf::Vector2f &orig, sf::Vector2f &des);
+    float getModule(sf::Vector2f &orig, sf::Vector2f &des);
+
 };
 
 #endif // HOOK_HPP

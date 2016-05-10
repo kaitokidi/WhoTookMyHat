@@ -39,6 +39,16 @@ void scenePlayable::init(sf::Vector2f){
     _picking = true;
     _playing = false;
 
+    int value = 0;
+    std::string line;
+    std::ifstream inf( HATSPATH + std::string("progress.txt"));
+    if(inf.is_open()){
+        std::getline (inf,line);
+        value = myStoi(line)+1;
+    }else std::cout << "can't open progress.txt to read on init." << std::endl;
+    _hatsAchieved = value;
+    inf.close();
+
 }
 
 
@@ -313,6 +323,19 @@ void scenePlayable::processInput(){
                 if (event.key.code == sf::Keyboard::Escape) {
                     _window->close(); exit(0);
                 }
+
+                if (event.key.code == sf::Keyboard::Y){
+                    int hat = (_player->actualHat()+1)%_hatsAchieved;
+                    _player->setActualHat(hat);
+                    if(! _playerHatTexture.loadFromFile( std::string (
+                                              TEXTURETPATH+
+                                              std::string("hat")+
+                                              std::to_string(hat+1)+
+                                              std::string(".png")                        ))) std::cout << "unable to open next hat" << std::endl;
+                    _playerHatSprite.setTexture(_playerHatTexture);
+                    _playerHatSprite.setOrigin(_playerHatSprite.getGlobalBounds().width/2, _playerHatSprite.getGlobalBounds().height/2);
+                   _player->setHat(_playerHatSprite);
+                }
                 break;
 
             default:
@@ -329,6 +352,25 @@ void scenePlayable::processInput(){
         b.setDestiny(sf::Vector2f(bg.getIntersection( sf::Vector2i(_player->getPosition()) ,sf::Vector2i(_window->mapPixelToCoords(sf::Mouse::getPosition((*_window)),_view)))));
         _bullets.push_back(b);
     }
+}
+
+void scenePlayable::incrementHats() {
+
+    int value = 0;
+    std::string line;
+    std::ifstream inf( HATSPATH + std::string("progress.txt"));
+    if(inf.is_open()){
+        std::getline (inf,line);
+        value = myStoi(line)+1;
+    }else std::cout << "can't open progress.txt to read." << std::endl;
+    _hatsAchieved = value;
+    inf.close();
+
+    std::ofstream aux( HATSPATH + std::string("progress.txt"));
+    if(aux.is_open()){
+        aux << std::to_string(value);
+    }else std::cout << "can't open progress.txt to writte." << std::endl;
+    aux.close();
 }
 
 void scenePlayable::writteLVL(int lvl){
@@ -349,6 +391,9 @@ void scenePlayable::writteLVL(int lvl){
         while(line[0] == '#') std::getline (inf,line);
         int oldLVL = (line[0]-'0');
         _hatsOwned = std::min(std::max(oldLVL,lvl+1),3);
+
+        if(std::max(oldLVL,lvl+1) < 3 ) incrementHats();
+
         aux << std::min(std::max(oldLVL,lvl+1),3) << '\n';
 
         while(std::getline (inf,line)){

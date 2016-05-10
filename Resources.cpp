@@ -11,6 +11,7 @@ sf::Texture            Resources::chain;
 sf::Texture            Resources::ghost;
 sf::Texture            Resources::ninja;
 sf::Texture            Resources::bullet;
+sf::Texture            Resources::endHook;
 sf::Texture            Resources::bullet2;
 sf::Texture            Resources::shooter;
 sf::Texture            Resources::Portada;
@@ -52,6 +53,7 @@ void Resources::load() {
     if(! bullet.loadFromFile                 (TEXTURETPATH+std::string("bullet.png"))     ) printError("bulleTex");
     if(! bullet2.loadFromFile                (TEXTURETPATH+std::string("bullet2.png"))    ) printError("bulleTex");
     if(! talkBox.loadFromFile                (TEXTURETPATH+std::string("talkBox.png"))    ) printError("talkbTex");
+    if(! endHook.loadFromFile                (TEXTURETPATH+std::string("endHook.png"))    ) printError("endHkTex");
     if(! pointer.loadFromFile                (TEXTURETPATH+std::string("pointer.png"))    ) printError("poinrTex");
     if(! shooter.loadFromFile                (TEXTURETPATH+std::string("shooter.png"))    ) printError("shterTex");
     if(! Portada.loadFromFile                (TEXTURETPATH+std::string("Portada.png"))    ) printError("portaTex");
