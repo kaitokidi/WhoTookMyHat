@@ -51,7 +51,6 @@ void scenePlayable::init(sf::Vector2f){
 
 }
 
-
 scenePlayable::~scenePlayable(){
 
 }
@@ -166,13 +165,14 @@ void scenePlayable::update(float deltaTime){
     _timer += deltaTime;
     _shootTimer += deltaTime;
 
+    //PICKING
     if(_picking){
 
         bg._doorOpenedL = true;
         bg._doorOpenedR = false;
         if(_hatsOwned >= 3) bg._doorOpenedR = true;
 
-
+        //Set selection Hats
         _hats[0].setPosition(300,150); _hats[1].setPosition(500,150); _hats[2].setPosition(700,150);
 
         if(_player->getPosition().y > 666){//està a terra
@@ -216,21 +216,26 @@ void scenePlayable::update(float deltaTime){
             else ++it;
         }
 
+        //HATS bouncing animation
         for(int i = 0; i < 3; ++i){
             _hats[i].rotate((std::sin(_timer))*20*deltaTime);
         }
 
+        //Hat hitted
         for(int i = 0; i < 3; ++i){
             if(_hatshits[i] > 1){
-
                 if(_enemyPull.empty()) readEnemies(i);
                 _player->setHat(_hats[i]);
                 _playing = true;
                 _picking = false;
             }
         }
-
     }
+
+
+
+
+    //PLAYING
     if(_playing){
         bg._doorOpenedL = false;
         bg._doorOpenedR = false;
@@ -251,7 +256,7 @@ void scenePlayable::update(float deltaTime){
                _picking = true;
                for(int i = 0; i < 3; ++i) { _hatshits[i] = 0; _hats[i].setScale(sf::Vector2f(1.0,1.0)); _hats[i].setRotation(0);}
                //_hatsOwned = (_hatsOwned + 1);
-               writteLVL(std::min(_hatsOwned,2));
+               writteLVL(std::min(_hatsOwned,3));
            }
        }
 
@@ -266,7 +271,7 @@ void scenePlayable::update(float deltaTime){
        }
 
 
-       //erase dead bullets
+       //Erase dead bullets
        auto itb = _bullets.begin();
        for(;itb != _bullets.end();){
            if(! (*itb).isAlive()){
@@ -275,7 +280,7 @@ void scenePlayable::update(float deltaTime){
            else ++itb;
        }
 
-       //erase dead enemies
+       //Erase dead enemies
        auto ite = _enemies.begin();
        for(; ite != _enemies.end();){
            if(! (*(*ite)).isAlive()){
@@ -285,7 +290,7 @@ void scenePlayable::update(float deltaTime){
            else ++ite;
        }
 
-       //colision between enemies and bullets
+       //Colision between enemies and bullets
        ite = _enemies.begin();
        for(; ite != _enemies.end();++ite){
 
@@ -335,6 +340,14 @@ void scenePlayable::processInput(){
                     _playerHatSprite.setTexture(_playerHatTexture);
                     _playerHatSprite.setOrigin(_playerHatSprite.getGlobalBounds().width/2, _playerHatSprite.getGlobalBounds().height/2);
                    _player->setHat(_playerHatSprite);
+                }
+
+                if(event.key.code == sf::Keyboard::K){
+                    auto ite = _enemies.begin();
+                    for(; ite != _enemies.end();){
+                        delete(*ite);
+                        ite = _enemies.erase(ite);
+                    }
                 }
                 break;
 
@@ -390,11 +403,11 @@ void scenePlayable::writteLVL(int lvl){
         std::getline (inf,line);
         while(line[0] == '#') std::getline (inf,line);
         int oldLVL = (line[0]-'0');
-        _hatsOwned = std::min(std::max(oldLVL,lvl+1),3);
+        _hatsOwned = std::min(std::max(oldLVL,lvl+1),4);
 
-        if(std::max(oldLVL,lvl+1) < 3 ) incrementHats();
+        if(oldLVL < _hatsOwned ) incrementHats();
 
-        aux << std::min(std::max(oldLVL,lvl+1),3) << '\n';
+        aux << std::min(std::max(oldLVL,lvl+1),4) << '\n';
 
         while(std::getline (inf,line)){
             aux << line << '\n';
