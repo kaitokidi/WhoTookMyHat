@@ -18,6 +18,7 @@ protected:
     Hook hook;
     sf::Sprite hat;
 
+    bool _hitted;
     bool hooking;
     bool jumping;
 
@@ -25,7 +26,9 @@ protected:
     float speed;
     float radius;
     float lastUpdate;
+    float _hittedTimer;
 
+    int _hp;
     int _actualHat;
 
     sf::Vector2f pos;
@@ -42,9 +45,14 @@ public:
     Player();
 
     void draw(sf::RenderTarget *w);
+
     void moveOut(float speed);
+    void updateHits(float deltaTime);
     void update(float deltaTime, sf::Vector2i auxMousePos, Background *bg);
 
+    void hit();
+    int getHP() const;
+    int actualHat() const;
     float getSpeed() const;
     float getRadius() const;
     sf::Vector2f getPosition();
@@ -55,7 +63,9 @@ public:
 
     void setAngle(float a);
     void setSpeed(float value);
+    void setHP(int helthPoints);
     void setHat(sf::Sprite &spr);
+    void setActualHat(int actualHat);
     void setPos(const sf::Vector2f &value);
     void setPosition(float posX, float posY);
     void setPosition(const sf::Vector2f pos);
@@ -64,8 +74,10 @@ public:
     void setMousePos(const sf::Vector2f &value);
     void setDistantHookPos(sf::Vector2i mousePos, Background* bg);
 
-    int actualHat() const;
-    void setActualHat(int actualHat);
+    bool hitted() const;
+    void setHitted(bool hitted);
+    float hittedTimer() const;
+    void setHittedTimer(float hittedTimer);
 };
 
 #endif // PLAYER_HPP
