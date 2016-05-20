@@ -86,7 +86,7 @@ void Game::loadScenes() {
 
 
     _scenes.insert(std::make_pair("test", new SceneTest(this, &_window, "portada")));
-    _scenes.insert(std::make_pair("portada", new SceneTemporal(this, &_window, "level1", 5, "", "Portada")));
+    _scenes.insert(std::make_pair("portada", new SceneTemporal(this, &_window, "s1", 5, "", "Portada")));
     _scenes.insert(std::make_pair("s1", new SceneTemporal(this, &_window, "s2", 1, "", "scene1.png")));
     _scenes.insert(std::make_pair("s2", new SceneTemporal(this, &_window, "s3", 1, "", "scene2.png")));
     _scenes.insert(std::make_pair("s3", new SceneTemporal(this, &_window, "s4", 1, "", "scene3.png")));
