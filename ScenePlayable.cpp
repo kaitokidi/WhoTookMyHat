@@ -437,6 +437,34 @@ void scenePlayable::writteLVL(int lvl){
 
 void scenePlayable::render(sf::RenderTarget *target){
     bg.draw(target);
+
+    //draw player
+    _player->draw(target);
+
+    //draw enemies
+    for(auto it = _enemies.begin(); it != _enemies.end(); ++it){
+        if((*it)->hitted()){
+            float aux = (*it)->hittedTimer();
+            Resources::cInvert.setParameter("deltaTime", aux);
+            if (int(aux*10) %3 != 0) target->draw(*(*it),&Resources::cInvert);
+            else target->draw(*(*it));
+        }
+        else target->draw(*(*it));
+
+        if(DEBUGDRAW){
+            sf::RectangleShape box;
+            box.setFillColor(sf::Color(100,0,100,130));
+            box.setOutlineThickness(4);
+            box.setOutlineColor(sf::Color(100,0,100,180));
+            box.setOrigin((*(*it)).getOrigin());
+            box.setRotation((*(*it)).getRotation());
+            box.setPosition((*(*it)).getPosition());
+            box.setSize(sf::Vector2f ((*(*it)).getLocalBounds().width, (*(*it)).getLocalBounds().height) );
+            target->draw(box);
+        }
+    }
+
+    //if picking draw hats
     if(_picking){
         for(int i = 0; i < 3; ++i){
             if(i <= _hatsOwned ) target->draw(_hats[i]);
@@ -468,6 +496,7 @@ void scenePlayable::render(sf::RenderTarget *target){
         }
     }
 
+    //draw bullets
     for(auto it = _bullets.begin(); it != _bullets.end(); ++it){
         target->draw(*it);
         if(DEBUGDRAW){
@@ -483,29 +512,6 @@ void scenePlayable::render(sf::RenderTarget *target){
         }
     }
 
-    _player->draw(target);
-
-    for(auto it = _enemies.begin(); it != _enemies.end(); ++it){
-        if((*it)->hitted()){
-            float aux = (*it)->hittedTimer();
-            Resources::cInvert.setParameter("deltaTime", aux);
-            if (int(aux*10) %3 != 0) target->draw(*(*it),&Resources::cInvert);
-            else target->draw(*(*it));
-        }
-        else target->draw(*(*it));
-
-        if(DEBUGDRAW){
-            sf::RectangleShape box;
-            box.setFillColor(sf::Color(100,0,100,130));
-            box.setOutlineThickness(4);
-            box.setOutlineColor(sf::Color(100,0,100,180));
-            box.setOrigin((*(*it)).getOrigin());
-            box.setRotation((*(*it)).getRotation());
-            box.setPosition((*(*it)).getPosition());
-            box.setSize(sf::Vector2f ((*(*it)).getLocalBounds().width, (*(*it)).getLocalBounds().height) );
-            target->draw(box);
-        }
-    }
 }
 
 void scenePlayable::resizing(){
