@@ -2,29 +2,52 @@
 #include <random>
 #include <iostream>
 #define PLAYERSPEED 50
+#define HITEDTIMER 1.1
 
 
-int Player::actualHat() const
+int Player::actualHat() const { return _actualHat; }
+
+void Player::setActualHat(int actualHat) { _actualHat = actualHat; }
+
+int Player::getHP() const { return _hp; }
+
+void Player::setHP(int helthPoints) { _hp = helthPoints; }
+
+
+bool Player::hitted() const
 {
-    return _actualHat;
+    return _hitted;
 }
 
-void Player::setActualHat(int actualHat)
+void Player::setHitted(bool hitted)
 {
-    _actualHat = actualHat;
+    _hitted = hitted;
+}
+
+float Player::hittedTimer() const
+{
+    return _hittedTimer;
+}
+
+void Player::setHittedTimer(float hittedTimer)
+{
+    _hittedTimer = hittedTimer;
 }
 Player::Player(): body(40,100), guide(10,100){
+    _hp = 5;
     angle = 0;
-    speed = PLAYERSPEED;
     radius = 35;
     lastUpdate = 0;
+    speed = PLAYERSPEED;
+
     hooking = false;
     hookPos.x = hookPos.y = 1;
     hook.setOrigin(hookPos);
     hook.setDestiny(hookPos);
+
     vel.x = vel.y = 0.01;
     cameraPos = mousePos = sf::Vector2f(0,0);
-    //eyes.setTexture();
+
     body.setColor(sf::Color(100,100,100));
     guide.setColor(sf::Color(100,100,100));
     hook.setTexture(std::string(TEXTURETPATH)+("hook.png"));
@@ -48,6 +71,16 @@ void Player::setDistantHookPos(sf::Vector2i mousePos, Background* bg){
 }
 
 float Player::getRadius() const{ return radius; }
+
+void Player::updateHits(float deltaTime){
+    if(_hitted){
+        _hittedTimer += deltaTime;
+        if(_hittedTimer >= HITEDTIMER){
+            _hitted = false;
+            _hittedTimer = 0.0;
+        }
+    }
+}
 
 void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
 
@@ -143,6 +176,14 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
 
     if (stopX) vel.x = 0;
 
+    getSpeed();
+    updateHits(deltaTime);
+
+}
+
+void Player::hit(){
+    --_hp;
+    _hitted = true;
 }
 
 float Player::getSpeed() const { return speed; }
@@ -155,7 +196,7 @@ void Player::setMousePos(const sf::Vector2f &value) { mousePos = value;}
 
 sf::Vector2f Player::getPos() const { return pos; }
 
-void Player::setPos(const sf::Vector2f &value) { pos = value; log("setPos");}
+void Player::setPos(const sf::Vector2f &value) { pos = value; /*log("setPos");*/}
 
 sf::Vector2f Player::getPosition() { return body.getPosition(); }
 
@@ -175,7 +216,17 @@ void Player::draw(sf::RenderTarget * w){
     if(hooking) hook.draw(w);
     body.draw(w);
     eyes.draw(w);
-    w->draw(hat);
+    if(hitted()){
+        float aux = hittedTimer();
+        Resources::cInvert.setParameter("deltaTime", aux);
+        if (int(aux*10) %3 != 0) {
+            w->draw(hat,&Resources::cInvert);
+        }else {
+            w->draw(hat);
+        }
+    }else {
+        w->draw(hat);
+    }
     guide.draw(w);
 
     if(DEBUGDRAW){
