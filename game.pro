@@ -50,7 +50,8 @@ SOURCES += main.cpp \
     EnemyLog.cpp \
     EnemyShooter.cpp \
     EnemyBullet.cpp \
-    EnemySnipper.cpp
+    EnemySnipper.cpp \
+    EnemyBoss.cpp
 
 HEADERS += utils.hpp \
         Resources.cpp \
@@ -95,4 +96,5 @@ HEADERS += utils.hpp \
     EnemyLog.hpp \
     EnemyShooter.hpp \
     EnemyBullet.hpp \
-    EnemySnipper.hpp
+    EnemySnipper.hpp \
+    EnemyBoss.hpp

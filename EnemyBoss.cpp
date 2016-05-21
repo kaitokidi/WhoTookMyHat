@@ -17,7 +17,6 @@ void EnemyBoss::init() {
 
 void EnemyBoss::movement(float deltaTime, Background *bg){
 
-//    log("::::::::::::::::::::::::::");
     if(_dir == direction::none)     getNewDirection();
     if(_dir == direction::up)       _vel.y = -ENEMSPEED*deltaTime;
     if(_dir == direction::left)     _vel.x = -ENEMSPEED*deltaTime;
