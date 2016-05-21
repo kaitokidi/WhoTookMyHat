@@ -11,6 +11,7 @@ public:
     //static sf::Texture ...
     static sf::Texture key;
     static sf::Texture log;
+    static sf::Texture boss;
     static sf::Texture eyes;
     static sf::Texture enemy;
     static sf::Texture chain;
