@@ -6,12 +6,13 @@
 #include "Bullet.hpp"
 #include "Player.hpp"
 #include "EnemyBloc.hpp"
+#include "EnemyBoss.hpp"
 #include "Background.hpp"
 #include "EnemyGhost.hpp"
 #include "EnemyNinja.hpp"
-#include "EnemySnipper.hpp"
 #include "EnemyBouncy.hpp"
 #include "EnemyFlying.hpp"
+#include "EnemySnipper.hpp"
 
 class Game;
 

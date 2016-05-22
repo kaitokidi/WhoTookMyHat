@@ -27,7 +27,6 @@ void scenePlayable::init(sf::Vector2f){
 
     _shootTimer = 0;
 
-    for(int i = 0; i < 3; ++i) _hatshits[i] = 0;
     for(int i = 0; i < 3; ++i) { _hatshits[i] = 0; _hats[i].setScale(sf::Vector2f(1.0,1.0)); _hats[i].setRotation(0);}
     for(int i = 0; i < 3; ++i) _hats[i].setOrigin(_hats[i].getGlobalBounds().width/2,_hats[i].getGlobalBounds().height/2 );
     //init();
@@ -122,6 +121,9 @@ void scenePlayable::readEnemies(int lvl) {
                                 _enemyPull.push(new EnemySnipper(& _enemies, _player));
                                 _enemyPull.back()->setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
                                 break;
+                                case 'm': //monster final boss
+                                _enemyPull.push(new EnemyBoss(& _enemies, _player));
+                                _enemyPull.back()->setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
                                 default:
                                 break;
                             }

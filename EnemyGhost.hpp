@@ -7,7 +7,7 @@ public:
     EnemyGhost();
     virtual void init();
     void getNewObjective();
-    virtual void movement(float deltaTime, Background *bg);
+    virtual void movement(float deltaTime, Background);
 
 protected:
     sf::Vector2f _objective;

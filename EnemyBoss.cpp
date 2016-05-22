@@ -2,18 +2,69 @@
 #define ENEMSPEED 100
 //enum dir { down, left, right, up , none };
 
-EnemyBoss::EnemyBoss(){
-    _hp = 5;
+EnemyBoss::EnemyBoss(std::list<Enemy *> *e, Player* p){
+    _hp = 22;
+    _enem = e;
+    _player = p;
     _dir = direction::none;
     init();
 }
 
 void EnemyBoss::init() {
-    _texture = Resources::enemyBoss;
+    _texture = Resources::boss;
     _spawnAnimation = Resources::spawnAnim;
     _destroyAnimation = Resources::destroyAnim;
 }
 
+void EnemyBoss::hit(){
+    --_hp;
+    _hitted = true;
+    if(_hp <= 0) {
+        _index = 0;
+        setRotation(0);
+        _hitted = false;
+        _destroying = true;
+        _animTimer.restart();
+    } else {
+        //SPAWN ENEMY
+        char enemy = 'b';
+        switch(enemy) {
+            case 's': // Spike ball
+                    _enem->push_back(new Enemy());
+                    _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
+            break;
+            case 'w': // Wall square
+                    _enem->push_back(new EnemyBloc());
+                    _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
+            break;
+            case 'f': // Flying star
+                    _enem->push_back(new EnemyFlying());
+                    _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
+            break;
+            case 'b': // Bouncing spike
+                    _enem->push_back(new EnemyBouncy());
+                    _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
+            break;
+            case 'g': // ghost
+                    _enem->push_back(new EnemyGhost());
+                    _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
+            break;
+            case 'n': // ninja
+                    _enem->push_back(new EnemyNinja( _enem));
+                    _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
+            break;
+            case 'd': //distant shooters
+                    _enem->push_back(new EnemySnipper( _enem, _player));
+                    _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
+            break;
+            case 'm': //monster final boss
+                    _enem->push_back(new EnemyBoss( _enem, _player));
+                    _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
+            default:
+            break;
+        }
+    }
+}
 
 void EnemyBoss::movement(float deltaTime, Background *bg){
 

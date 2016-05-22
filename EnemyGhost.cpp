@@ -23,7 +23,7 @@ void EnemyGhost::getNewObjective(){
     _deltaY = (_objective.y - getPosition().y) /mod;
 }
 
-void EnemyGhost::movement(float deltaTime, Background *bg){
+void EnemyGhost::movement(float deltaTime, Background /**bg*/){
 
     if(_objective.x == -1) getNewObjective();
 
