@@ -11,7 +11,7 @@ EnemyLog::EnemyLog(){
 
 void EnemyLog::init() {
     _texture = Resources::log;
-    _spawnAnimation = Resources::puff;
+    _spawnAnimation = Resources::puff0;
     _destroyAnimation = Resources::puff;
 }
 

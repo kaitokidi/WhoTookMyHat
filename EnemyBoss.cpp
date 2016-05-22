@@ -1,6 +1,8 @@
 #include "EnemyBoss.hpp"
 #define ENEMSPEED 100
-//enum dir { down, left, right, up , none };
+#define NUMENEMIES 7
+
+const char chars [NUMENEMIES] = {'s','w','f','b','g','n','d'};
 
 EnemyBoss::EnemyBoss(std::list<Enemy *> *e, Player* p){
     _hp = 22;
@@ -27,39 +29,39 @@ void EnemyBoss::hit(){
         _animTimer.restart();
     } else {
         //SPAWN ENEMY
-        char enemy = 'b';
+        char enemy = chars[rand()%NUMENEMIES];
         switch(enemy) {
             case 's': // Spike ball
-                    _enem->push_back(new Enemy());
-                    _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
+                _enem->push_back(new Enemy());
+                _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
             break;
             case 'w': // Wall square
-                    _enem->push_back(new EnemyBloc());
-                    _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
+                _enem->push_back(new EnemyBloc());
+                _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
             break;
             case 'f': // Flying star
-                    _enem->push_back(new EnemyFlying());
-                    _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
+                _enem->push_back(new EnemyFlying());
+                _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
             break;
             case 'b': // Bouncing spike
-                    _enem->push_back(new EnemyBouncy());
-                    _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
+                _enem->push_back(new EnemyBouncy());
+                _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
             break;
             case 'g': // ghost
-                    _enem->push_back(new EnemyGhost());
-                    _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
+                _enem->push_back(new EnemyGhost());
+                _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
             break;
             case 'n': // ninja
-                    _enem->push_back(new EnemyNinja( _enem));
-                    _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
+                _enem->push_back(new EnemyNinja( _enem));
+                _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
             break;
             case 'd': //distant shooters
-                    _enem->push_back(new EnemySnipper( _enem, _player));
-                    _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
+                _enem->push_back(new EnemySnipper( _enem, _player));
+                _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
             break;
             case 'm': //monster final boss
-                    _enem->push_back(new EnemyBoss( _enem, _player));
-                    _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
+                _enem->push_back(new EnemyBoss( _enem, _player));
+                _enem->back()->setPosition(sf::Vector2f(getPosition().x, getPosition().y));
             default:
             break;
         }

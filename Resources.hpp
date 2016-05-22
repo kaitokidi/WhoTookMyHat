@@ -37,6 +37,7 @@ public:
     static std::vector<sf::Texture> one;
     static std::vector<sf::Texture> none;
     static std::vector<sf::Texture> puff;
+    static std::vector<sf::Texture> puff0;
     static std::vector<sf::Texture> spawnAnim;
     static std::vector<sf::Texture> destroyAnim;
 

@@ -61,6 +61,13 @@ void EnemyNinja::movement(float deltaTime, Background *bg){
             _vel.x = 0; _dir = direction::none;
         } else move(dest.x, 0);
     }
+    else{
+        if(_dir == direction::none)          getNewDirection();
+        else if(_dir == direction::up)       _dir =  direction::down;
+        else if(_dir == direction::down)     _dir =    direction::up;
+        else if(_dir == direction::left)     _dir = direction::right;
+        else if(_dir == direction::right)    _dir =  direction::left;
+    }
 }
 
 void EnemyNinja::getNewDirection() {

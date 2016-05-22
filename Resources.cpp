@@ -27,6 +27,7 @@ sf::Texture            Resources::enemyStar;
 std::vector<sf::Texture> Resources::one(1);
 std::vector<sf::Texture> Resources::none (1);
 std::vector<sf::Texture> Resources::puff (9);
+std::vector<sf::Texture> Resources::puff0 (9);
 std::vector<sf::Texture> Resources::spawnAnim (9);
 std::vector<sf::Texture> Resources::destroyAnim (9);
 
@@ -70,6 +71,9 @@ void Resources::load() {
     }
     for(int i = 0; i < 9; ++i){
         if(! puff[i].loadFromFile  (TEXTURETPATH+std::string("puff/smoke_puff_000")+std::string(std::to_string(i+1))+std::string(".png") )) printError("puffAnim");
+    }
+    for(int i = 9; i >=0; --i){
+        if(! puff0[9-i].loadFromFile  (TEXTURETPATH+std::string("puff/smoke_puff_000")+std::string(std::to_string(i+1))+std::string(".png") )) printError("puff0Anim");
     }
     for(int i = 0; i < 9; ++i){
         if(! spawnAnim[i].loadFromFile  (TEXTURETPATH+std::string("spawn/smoke_plume_000")+std::string(std::to_string(i+1))+std::string(".png") )) printError("spawnAnim");
