@@ -1,6 +1,5 @@
 #include "EnemyNinja.hpp"
 #define ENEMSPEED 100
-//enum dir { down, left, right, up , none };
 
 EnemyNinja::EnemyNinja(std::list<Enemy *> *e){
     _enem = e;
@@ -31,6 +30,11 @@ void EnemyNinja::hit(){
             _enem->push_back(new EnemyLog());
             _enem->back()->setPosition(sf::Vector2f(getPosition().x - getLocalBounds().width/2-32,
                                                     getPosition().y - getLocalBounds().height/2-32));
+            if(_dir == direction::none)          getNewDirection();
+            else if(_dir == direction::up)       _dir =  direction::down;
+            else if(_dir == direction::down)     _dir =    direction::up;
+            else if(_dir == direction::left)     _dir = direction::right;
+            else if(_dir == direction::right)    _dir =  direction::left;
         }
     }
 }
@@ -60,13 +64,6 @@ void EnemyNinja::movement(float deltaTime, Background *bg){
         if(bg->rectangleColision( desrect )){
             _vel.x = 0; _dir = direction::none;
         } else move(dest.x, 0);
-    }
-    else{
-        if(_dir == direction::none)          getNewDirection();
-        else if(_dir == direction::up)       _dir =  direction::down;
-        else if(_dir == direction::down)     _dir =    direction::up;
-        else if(_dir == direction::left)     _dir = direction::right;
-        else if(_dir == direction::right)    _dir =  direction::left;
     }
 }
 
