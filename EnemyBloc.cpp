@@ -6,6 +6,7 @@ EnemyBloc::EnemyBloc(){
     _hp = 5;
     _dir = direction::none;
     init();
+    _movementScaler = 1.0;
 }
 
 void EnemyBloc::init() {
@@ -19,10 +20,14 @@ void EnemyBloc::movement(float deltaTime, Background *bg){
 
 //    log("::::::::::::::::::::::::::");
     if(_dir == direction::none)     getNewDirection();
-    if(_dir == direction::up)       _vel.y = -ENEMSPEED*deltaTime;
-    if(_dir == direction::left)     _vel.x = -ENEMSPEED*deltaTime;
-    if(_dir == direction::down)     _vel.y =  ENEMSPEED*deltaTime;
-    if(_dir == direction::right)    _vel.x =  ENEMSPEED*deltaTime;
+    if(_dir == direction::up)       _vel.y = -ENEMSPEED*deltaTime*_movementScaler;
+    if(_dir == direction::left)     _vel.x = -ENEMSPEED*deltaTime*_movementScaler;
+    if(_dir == direction::down)     _vel.y =  ENEMSPEED*deltaTime*_movementScaler;
+    if(_dir == direction::right)    _vel.x =  ENEMSPEED*deltaTime*_movementScaler;
+
+    _movementScaler += deltaTime;
+    std::cout << _movementScaler << std::endl;
+    if(_movementScaler > 1.5) _movementScaler = 1.6;
 
     sf::Vector2f dest(_vel.x, _vel.y);
 
@@ -43,9 +48,6 @@ void EnemyBloc::movement(float deltaTime, Background *bg){
 
 void EnemyBloc::getNewDirection() {
     int r = rand()%4;
-//    if(r == 3) _dir = direction::down;
-//    if(r == 1) _dir = direction::left;
-//    if(r == 2) _dir = direction::right;
-//    if(r == 0) _dir = direction::up;
+    _movementScaler = 0.4;
     _dir = direction::dir(r);
 }

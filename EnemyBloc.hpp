@@ -12,6 +12,7 @@ public:
 protected:
 
     direction::dir _dir;
+    float _movementScaler;
 
 };
 
