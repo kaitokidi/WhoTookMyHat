@@ -23,7 +23,7 @@ void EnemyGhost::getNewObjective(){
     _deltaY = (_objective.y - getPosition().y) /mod;
 }
 
-void EnemyGhost::movement(float deltaTime, Background /**bg*/){
+void EnemyGhost::movement(float deltaTime, Background *bg){
 
     if(_objective.x == -1) getNewObjective();
 
@@ -38,10 +38,8 @@ void EnemyGhost::movement(float deltaTime, Background /**bg*/){
             || getPosition().y - getGlobalBounds().height/2 +_vel.y <= 5
             || getPosition().y + getGlobalBounds().height/2 +_vel.y >= 760 ) {
         _objective.x = -1;
-        log("change");
     }else {
         move(_vel.x, _vel.y);
-        std::cout << "letsmove" << getPosition().x << std::endl;
     }
 
 

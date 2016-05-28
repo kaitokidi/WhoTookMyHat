@@ -70,10 +70,10 @@ void Resources::load() {
         if(! none[i].loadFromFile  (TEXTURETPATH+std::string("none/none.png") )) printError("noneAnim");
     }
     for(int i = 0; i < 9; ++i){
-        if(! puff[i].loadFromFile  (TEXTURETPATH+std::string("puff/smoke_puff_000")+std::string(std::to_string(i+1))+std::string(".png") )) printError("puffAnim");
+        if(! puff[i].loadFromFile  (TEXTURETPATH+std::string("puff_clean/smoke_puff_000")+std::string(std::to_string(i+1))+std::string(".png") )) printError("puffAnim");
     }
-    for(int i = 9; i >=0; --i){
-        if(! puff0[9-i].loadFromFile  (TEXTURETPATH+std::string("puff/smoke_puff_000")+std::string(std::to_string(i+1))+std::string(".png") )) printError("puff0Anim");
+    for(int i = 9; i > 0; --i){
+        if(! puff0[9-i].loadFromFile  (TEXTURETPATH+std::string("puff/smoke_puff_000")+std::string(std::to_string(i))+std::string(".png") )) printError("puff0Anim");
     }
     for(int i = 0; i < 9; ++i){
         if(! spawnAnim[i].loadFromFile  (TEXTURETPATH+std::string("spawn/smoke_plume_000")+std::string(std::to_string(i+1))+std::string(".png") )) printError("spawnAnim");

@@ -19,6 +19,7 @@ void EnemyBoss::init() {
 }
 
 void EnemyBoss::hit(){
+    setScale(getScale().x*0.9,getScale().y*0.9);
     --_hp;
     _hitted = true;
     if(_hp <= 0) {

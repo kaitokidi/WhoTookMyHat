@@ -105,7 +105,8 @@ void Game::loadScenes() {
     _scenes.insert(std::make_pair("level1", new scenePlayable(this, & _window, "cutScene4", "level1", "level2", &_player)));
     _scenes.insert(std::make_pair("level2", new scenePlayable(this, & _window, "level1", "level2", "level3", &_player)));
     _scenes.insert(std::make_pair("level3", new scenePlayable(this, & _window, "level2", "level3", "level4", &_player)));
-    _scenes.insert(std::make_pair("level4", new scenePlayable(this, & _window, "level3", "level4", "test2", &_player)));
+    _scenes.insert(std::make_pair("level4", new scenePlayable(this, & _window, "level3", "level4", "level5", &_player)));
+    _scenes.insert(std::make_pair("level5", new scenePlayable(this, & _window, "level4", "level5", "test2", &_player)));
 
 }
 
