@@ -1,0 +1,22 @@
+tunel5
+#thoughts
+Default
+#Catalan language
+CAT
+Recordo que van passar per aquíi
+un nano que volia guanyar
+la lliga de nosequèe...
+OK
+#English language
+ENG
+I remember a boy passing this way
+who wanted to be the very best
+at something...
+OK
+#Spanish language
+ESP
+Recuerdo que pasóo por aquíi 
+un chico que queria ganar
+nose quée liga...
+OK
+$ End of Descriptor file : )

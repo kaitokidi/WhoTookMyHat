@@ -1,0 +1,22 @@
+tunel7
+#thoughts
+Default
+#Catalan language
+CAT
+    
+Es rumoreja que al final de la cova...
+hi ha pastís!!!!
+OK
+#English language
+ENG
+    
+Some say that at the end of the cave...
+there are cake!!!
+OK
+#Spanish language
+ESP
+     
+Se rumorea que al final de la cueva...
+Hay pastel!!!!
+OK
+$ End of Descriptor file : )

@@ -1,0 +1,28 @@
+tunel6
+#thoughts
+Default
+#Catalan language
+CAT
+    
+Pata Pata Pata Pon!!!
+anaven cantant... 
+i buscaven
+alguna cosa també...
+OK
+#English language
+ENG
+    
+Pata Pata Pata Pon!!!
+They where singing...
+and they where 
+searching something
+OK
+#Spanish language
+ESP
+     
+Pata Pata Pata Pon!!!
+Iban cantando...
+y buscaban
+alguna cosa también...
+OK
+$ End of Descriptor file : )
