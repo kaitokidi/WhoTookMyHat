@@ -25,6 +25,7 @@ protected:
     Player* _player;
     direction::dir _dir;
     std::list<Enemy *>* _enem;
+    float _movementScaler;
 
 };
 

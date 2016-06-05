@@ -5,6 +5,7 @@ EnemyNinja::EnemyNinja(std::list<Enemy *> *e){
     _enem = e;
     _hp = 5;
     _dir = direction::none;
+    _movementScaler = 1;
     init();
 }
 
@@ -43,11 +44,17 @@ void EnemyNinja::movement(float deltaTime, Background *bg){
 
     if(!_hitted){
 
-        if(_dir == direction::none)          getNewDirection();
-        else if(_dir == direction::up)       _vel.y = -ENEMSPEED*deltaTime;
-        else if(_dir == direction::left)     _vel.x = -ENEMSPEED*deltaTime;
-        else if(_dir == direction::down)     _vel.y =  ENEMSPEED*deltaTime;
-        else if(_dir == direction::right)    _vel.x =  ENEMSPEED*deltaTime;
+        if(_dir == direction::none)     getNewDirection();
+        if(_dir == direction::up)       _vel.y = -ENEMSPEED*deltaTime*_movementScaler;
+        if(_dir == direction::left)     _vel.x = -ENEMSPEED*deltaTime*_movementScaler;
+        if(_dir == direction::down)     _vel.y =  ENEMSPEED*deltaTime*_movementScaler;
+        if(_dir == direction::right)    _vel.x =  ENEMSPEED*deltaTime*_movementScaler;
+
+        _movementScaler += deltaTime;
+        if(_movementScaler > 1.5) {
+            if(_movementScaler < 1.6 && rand()%3 == 0) getNewDirection();
+            _movementScaler = 1.6;
+        }
 
         sf::Vector2f dest(_vel.x, _vel.y);
 
@@ -59,16 +66,17 @@ void EnemyNinja::movement(float deltaTime, Background *bg){
         } else move(0, dest.y);
         desrect.top -= _vel.y;
         desrect.left += _vel.x;
-
         //colide on x
         if(bg->rectangleColision( desrect )){
             _vel.x = 0; _dir = direction::none;
         } else move(dest.x, 0);
+
     }
 }
 
 void EnemyNinja::getNewDirection() {
     int r = rand()%4;
+    _movementScaler = 0.4;
     _dir = direction::dir(r);
 }
 

@@ -15,6 +15,7 @@ public:
 protected:
 
         direction::dir _dir;
+        float _movementScaler;
         std::list < Enemy* >* _enem;
 };
 #endif // ENEMYNINJA_HPP

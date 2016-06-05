@@ -26,7 +26,6 @@ void EnemyBloc::movement(float deltaTime, Background *bg){
     if(_dir == direction::right)    _vel.x =  ENEMSPEED*deltaTime*_movementScaler;
 
     _movementScaler += deltaTime;
-    std::cout << _movementScaler << std::endl;
     if(_movementScaler > 1.5) _movementScaler = 1.6;
 
     sf::Vector2f dest(_vel.x, _vel.y);
