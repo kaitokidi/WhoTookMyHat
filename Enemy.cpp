@@ -38,9 +38,9 @@ void Enemy::hit(){
 
 
 void Enemy::init() {
-    _texture = Resources::enemy;
-    _spawnAnimation = Resources::spawnAnim;
-    _destroyAnimation = Resources::destroyAnim;
+    _texture = &Resources::enemy;
+    _spawnAnimation = &Resources::spawnAnim;
+    _destroyAnimation = &Resources::destroyAnim;
 }
 
 bool Enemy::isAlive()                             {
@@ -63,7 +63,7 @@ void Enemy::update(float deltaTime, Background *bg){
         updateSprite(false);
         return;
     } else {
-        setTexture(_texture, true);
+        setTexture(*_texture, true);
         if(getOrigin().x == 0){
             setPosition(getPosition().x + getLocalBounds().width/2, getPosition().y + getLocalBounds().height/2);
             setOrigin( getLocalBounds().width/2, getLocalBounds().height/2);
@@ -113,15 +113,15 @@ bool Enemy::colides(Player *p){
 
 void Enemy::updateSprite(bool alive){
     if(alive){
-        setTexture(_spawnAnimation[_index],true);
+        setTexture((*_spawnAnimation)[_index],true);
     } else {
-        setTexture(_destroyAnimation[_index],true);
+        setTexture((*_destroyAnimation)[_index],true);
     }
 
     if(_animTimer.getElapsedTime().asSeconds() > ANIMTIMER){
         ++_index;
-        if(    (_alive && _index >= _spawnAnimation.size() )
-            || (!_alive && _index >= _destroyAnimation.size() ) ) {
+        if(    (_alive && _index >= _spawnAnimation->size() )
+            || (!_alive && _index >= _destroyAnimation->size() ) ) {
 
             if(_destroying) _destroying = _alive = false;
             else _spawning = false;

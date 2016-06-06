@@ -14,9 +14,9 @@ EnemyBoss::EnemyBoss(std::list<Enemy *> *e, Player* p){
 }
 
 void EnemyBoss::init() {
-    _texture = Resources::boss;
-    _spawnAnimation = Resources::spawnAnim;
-    _destroyAnimation = Resources::destroyAnim;
+    _texture = &Resources::boss;
+    _spawnAnimation = &Resources::spawnAnim;
+    _destroyAnimation = &Resources::destroyAnim;
 }
 
 void EnemyBoss::hit(){

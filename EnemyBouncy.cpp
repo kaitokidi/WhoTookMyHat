@@ -7,9 +7,9 @@ EnemyBouncy::EnemyBouncy(){
 }
 
 void EnemyBouncy::init(){
-    _texture = Resources::enemy;
-    _spawnAnimation = Resources::spawnAnim;
-    _destroyAnimation = Resources::destroyAnim;
+    _texture = &Resources::enemy;
+    _spawnAnimation = &Resources::spawnAnim;
+    _destroyAnimation = &Resources::destroyAnim;
 }
 
 void EnemyBouncy::movement(float deltaTime, Background *bg) {

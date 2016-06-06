@@ -9,9 +9,9 @@ EnemyFlying::EnemyFlying(){
 }
 
 void EnemyFlying::init(){
-    _texture = Resources::enemyStar;
-    _spawnAnimation = Resources::spawnAnim;
-    _destroyAnimation = Resources::destroyAnim;
+    _texture = &Resources::enemyStar;
+    _spawnAnimation = &Resources::spawnAnim;
+    _destroyAnimation = &Resources::destroyAnim;
 }
 
 void EnemyFlying::getNewObjective(){

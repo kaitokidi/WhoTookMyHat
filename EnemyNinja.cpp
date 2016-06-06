@@ -10,9 +10,9 @@ EnemyNinja::EnemyNinja(std::list<Enemy *> *e){
 }
 
 void EnemyNinja::init() {
-    _texture = Resources::ninja;
-    _spawnAnimation = Resources::spawnAnim;
-    _destroyAnimation = Resources::destroyAnim;
+    _texture = &Resources::ninja;
+    _spawnAnimation = &Resources::spawnAnim;
+    _destroyAnimation = &Resources::destroyAnim;
 }
 
 void EnemyNinja::hit(){

@@ -10,9 +10,9 @@ EnemyLog::EnemyLog(){
 }
 
 void EnemyLog::init() {
-    _texture = Resources::log;
-    _spawnAnimation = Resources::puff0;
-    _destroyAnimation = Resources::puff;
+    _texture = &Resources::log;
+    _spawnAnimation = &Resources::puff0;
+    _destroyAnimation = &Resources::puff;
 }
 
 void EnemyLog::update(float deltaTime   , Background *bg) {
@@ -32,7 +32,7 @@ void EnemyLog::update(float deltaTime   , Background *bg) {
         updateSprite(false);
         return;
     } else {
-        setTexture(_texture, true);
+        setTexture(*_texture, true);
         if(getOrigin().x == 0){
             setPosition(getPosition().x + getLocalBounds().width/2+32, getPosition().y + getLocalBounds().height/2+32);
             setOrigin( getLocalBounds().width/2, getLocalBounds().height/2);

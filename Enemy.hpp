@@ -41,10 +41,10 @@ protected:
 
     sf::Clock _animTimer;
 
-    sf::Texture _texture;
+    sf::Texture* _texture;
 
-    std::vector < sf::Texture > _spawnAnimation;
-    std::vector < sf::Texture > _destroyAnimation;
+    std::vector < sf::Texture >* _spawnAnimation;
+    std::vector < sf::Texture >* _destroyAnimation;
 
 
 };

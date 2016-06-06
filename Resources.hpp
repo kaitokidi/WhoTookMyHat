@@ -40,6 +40,7 @@ public:
     static std::vector<sf::Texture> puff0;
     static std::vector<sf::Texture> spawnAnim;
     static std::vector<sf::Texture> destroyAnim;
+    static std::vector<sf::Texture> destroyPlayer;
 
     static std::vector<SpriteSheetDescription> descriptions;
 

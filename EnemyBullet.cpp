@@ -17,9 +17,9 @@ EnemyBullet::EnemyBullet(sf::Vector2i orig, sf::Vector2i dest){
 }
 
 void EnemyBullet::init() {
-    _texture = Resources::bullet2;
-    _spawnAnimation = Resources::none;
-    _destroyAnimation = Resources::none;
+    _texture = &Resources::bullet2;
+    _spawnAnimation = &Resources::none;
+    _destroyAnimation = &Resources::none;
 }
 
 void EnemyBullet::movement(float deltaTime, Background *bg){

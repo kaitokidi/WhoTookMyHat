@@ -3,9 +3,9 @@
 #define ENEMSPEED 50
 
 void EnemySnipper::init(){
-    _texture = Resources::shooter;
-    _spawnAnimation = Resources::spawnAnim;
-    _destroyAnimation = Resources::destroyAnim;
+    _texture = &Resources::shooter;
+    _spawnAnimation = &Resources::spawnAnim;
+    _destroyAnimation = &Resources::destroyAnim;
 }
 
 EnemySnipper::EnemySnipper(std::list < Enemy* >* e, Player *p) : EnemyShooter(e){

@@ -10,9 +10,9 @@ EnemyBloc::EnemyBloc(){
 }
 
 void EnemyBloc::init() {
-    _texture = Resources::enemyBloc;
-    _spawnAnimation = Resources::spawnAnim;
-    _destroyAnimation = Resources::destroyAnim;
+    _texture = &Resources::enemyBloc;
+    _spawnAnimation = &Resources::spawnAnim;
+    _destroyAnimation = &Resources::destroyAnim;
 }
 
 

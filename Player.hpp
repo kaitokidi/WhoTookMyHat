@@ -11,35 +11,6 @@
 
 class Player {
 
-protected:
-
-    //Eyes
-    Eyes eyes;
-    Hook hook;
-    sf::Sprite hat;
-
-    bool _hitted;
-    bool hooking;
-    bool jumping;
-
-    float angle;
-    float speed;
-    float radius;
-    float lastUpdate;
-    float _hittedTimer;
-
-    int _hp;
-    int _actualHat;
-
-    sf::Vector2f pos;
-    sf::Vector2f vel;
-    sf::Vector2f hookPos;
-    sf::Vector2f mousePos;
-    sf::Vector2f cameraPos;
-
-    AnimatedCircle body;
-    AnimatedCircle guide;
-
 public:
 
     Player();
@@ -78,6 +49,36 @@ public:
     void setHitted(bool hitted);
     float hittedTimer() const;
     void setHittedTimer(float hittedTimer);
+
+protected:
+
+    //Eyes
+    Eyes eyes;
+    Hook hook;
+    sf::Sprite hat;
+
+    bool _hitted;
+    bool hooking;
+    bool jumping;
+
+    float angle;
+    float speed;
+    float radius;
+    float lastUpdate;
+    float _hittedTimer;
+
+    int _hp;
+    int _actualHat;
+
+    sf::Vector2f pos;
+    sf::Vector2f vel;
+    sf::Vector2f hookPos;
+    sf::Vector2f mousePos;
+    sf::Vector2f cameraPos;
+
+    AnimatedCircle body;
+    AnimatedCircle guide;
+
 };
 
 #endif // PLAYER_HPP

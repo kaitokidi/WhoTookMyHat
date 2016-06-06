@@ -9,9 +9,9 @@ EnemyGhost::EnemyGhost(){
 }
 
 void EnemyGhost::init(){
-    _texture = Resources::ghost;
-    _spawnAnimation = Resources::spawnAnim;
-    _destroyAnimation = Resources::destroyAnim;
+    _texture = &Resources::ghost;
+    _spawnAnimation = &Resources::spawnAnim;
+    _destroyAnimation = &Resources::destroyAnim;
 }
 
 void EnemyGhost::getNewObjective(){
