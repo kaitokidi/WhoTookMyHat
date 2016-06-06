@@ -3,7 +3,7 @@
 #include <iostream>
 #define PLAYERSPEED 50
 #define HITEDTIMER 1.1
-#define ANIMTIMER 0.1
+#define ANIMTIMER 0.2
 
 
 int Player::actualHat() const { return _actualHat; }
@@ -196,8 +196,10 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
 }
 
 void Player::hit(){
-    --_hp;
-    _hitted = true;
+    if(!_hitted && !_destroying) {
+        --_hp;
+        _hitted = true;
+    }
 }
 
 float Player::getSpeed() const { return speed; }
