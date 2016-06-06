@@ -3,6 +3,7 @@
 #include <iostream>
 #define PLAYERSPEED 50
 #define HITEDTIMER 1.1
+#define ANIMTIMER 0.1
 
 
 int Player::actualHat() const { return _actualHat; }
@@ -13,30 +14,20 @@ int Player::getHP() const { return _hp; }
 
 void Player::setHP(int helthPoints) { _hp = helthPoints; }
 
+bool Player::hitted() const{    return _hitted;}
 
-bool Player::hitted() const
-{
-    return _hitted;
-}
+void Player::setHitted(bool hitted){ _hitted = hitted; }
 
-void Player::setHitted(bool hitted)
-{
-    _hitted = hitted;
-}
+float Player::hittedTimer() const{ return _hittedTimer; }
 
-float Player::hittedTimer() const
-{
-    return _hittedTimer;
-}
+void Player::setHittedTimer(float hittedTimer){ _hittedTimer = hittedTimer; }
 
-void Player::setHittedTimer(float hittedTimer)
-{
-    _hittedTimer = hittedTimer;
-}
 Player::Player(): body(40,100), guide(10,100){
     _hp = 5;
     angle = 0;
+    _index = 0;
     radius = 35;
+    _actualHat = 0;
     lastUpdate = 0;
     speed = PLAYERSPEED;
 
@@ -51,7 +42,8 @@ Player::Player(): body(40,100), guide(10,100){
     body.setColor(sf::Color(100,100,100));
     guide.setColor(sf::Color(100,100,100));
     hook.setTexture(std::string(TEXTURETPATH)+("hook.png"));
-    _actualHat = 0;
+    _destroyAnim = &Resources::destroyPlayer;
+
 }
 
 
@@ -82,7 +74,29 @@ void Player::updateHits(float deltaTime){
     }
 }
 
+void Player::updateSprite(){
+
+     hat.setTexture((*_destroyAnim)[_index],true);
+
+    if(_animTimer.getElapsedTime().asSeconds() > ANIMTIMER){
+        ++_index;
+        if( _index >= _destroyAnim->size() ) {
+            _destroying = false; _index = 0;
+            _hp = 5;
+            hat.setTexture(Resources::none[0]);
+        }
+        _animTimer.restart();
+    }
+}
+
 void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
+
+    _destroying = (_hp <= 0);
+    if(_destroying){
+            updateSprite();
+            return;
+    }
+
 
     mousePos.x = auxMousePos.x;
     mousePos.y = auxMousePos.y;

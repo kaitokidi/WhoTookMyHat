@@ -17,6 +17,7 @@ public:
 
     void draw(sf::RenderTarget *w);
 
+    void updateSprite();
     void moveOut(float speed);
     void updateHits(float deltaTime);
     void update(float deltaTime, sf::Vector2i auxMousePos, Background *bg);
@@ -60,6 +61,7 @@ protected:
     bool _hitted;
     bool hooking;
     bool jumping;
+    bool _destroying;
 
     float angle;
     float speed;
@@ -68,6 +70,7 @@ protected:
     float _hittedTimer;
 
     int _hp;
+    int _index;
     int _actualHat;
 
     sf::Vector2f pos;
@@ -79,6 +82,8 @@ protected:
     AnimatedCircle body;
     AnimatedCircle guide;
 
+    sf::Clock _animTimer;
+    std::vector<sf::Texture>* _destroyAnim;
 };
 
 #endif // PLAYER_HPP
