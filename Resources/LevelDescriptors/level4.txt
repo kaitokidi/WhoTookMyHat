@@ -1,5 +1,5 @@
 cave4
-3
+0
 hat10.png
 hat11.png
 hat12.png
@@ -8,14 +8,14 @@ spawn
 50
 enemies
 0
-d d d d d
-2 2 2 1 1
+s s d s
+2 2 2 1 
 1
-s s w w w f f f
-2 2 2 2 2 1 1 1
+s b d d b s d f
+2 2 2 4 2 1 1 1
 2
-d d d d d d d d d
-2 5 5 1 1 1 1 1 1
+f f g g d d b d g s
+2 3 3 5 1 1 1 1 1 1
 $ END
 
 first there are the name of the background file
