@@ -162,9 +162,9 @@ int getSign(float n) {
     else return 0;
 }
 
-void log(std::string s){
+/*void log(std::string s){
     std::cout << s << std::endl;
-}
+}*/
 
 void mlog(std::string s){
     std::cout << s << std::endl;

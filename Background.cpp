@@ -346,7 +346,7 @@ sf::Vector2i Background::getIntersection(sf::Vector2i mousePos){
 sf::Vector2f Background::getCircleColisionOffset(sf::Vector2f pos, float rad){
     sf::Vector2f ret(0,0);
 
-    for(int i = 0; i < _boundaries.size(); ++i){
+    for(uint i = 0; i < _boundaries.size(); ++i){
 
         if( _boundaries[i].contains(pos.x+rad, pos.y)) ret.x = std::max(pos.x+rad - _boundaries[i].left, ret.x);
         if( _boundaries[i].contains(pos.x-rad, pos.y)) ret.x = std::max(_boundaries[i].left + _boundaries[i].width - pos.x-rad, pos.x);

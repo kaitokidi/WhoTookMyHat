@@ -48,6 +48,30 @@
 
 static const bool DEBUGDRAW = false;
 
+template <class T>
+void printError(T t){
+    std::cout << " Resources:: Error loading... " << t << std::endl;
+}
+
+template <class T>
+void internalPrintAll(T t) {
+    std::cout << t;
+}
+
+template <class T, class... Args>
+void internalPrintAll(const T& t, const Args&... args) {
+    std::cout << t << " , ";
+    internalPrintAll(args...);
+}
+
+template <class... Args>
+void log(const Args&... args) {
+    std::cout << "[";
+    internalPrintAll(args...);
+    std::cout << "]" << std::endl;
+}
+
+
 //movement dir { down, left, right, up , none };
 namespace direction {
     enum dir { down, left, right, up , none };
@@ -131,7 +155,7 @@ namespace constant{
     static const float playerMaxSpeed = 4;
 }
 
-void log(std::string s);
+//void log(std::string s);
 
 void mlog(std::string s);
 

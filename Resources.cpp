@@ -38,10 +38,9 @@ sf::Font               Resources::pauseMenuFont;
 
 std::vector<SpriteSheetDescription> Resources::descriptions;
 
-
-void printError(std::string s){
+/*void printError(std::string s){
     std::cerr << "Resources:: Error loading... " << s << std::endl;
-}
+}*/
 
 void Resources::load() {
     //LOAD THE INFORMATION IN THE VARIABLES
@@ -92,7 +91,7 @@ void Resources::load() {
 
    // descriptions = std::vector<SpriteSheetDescription>(spriteDescriptionsQtt);
    // descriptions[linkSpritesDescriptions]       = loadDescription("linkSheet");
-    std::cerr << " Resources Loaded " << std::endl;
+    log(" Resources Loaded ");
 }
 
 
