@@ -40,7 +40,7 @@ void SceneTest::processInput(){
 log("the best the best the best the best the best ");
             _selector.select(_window, kinds);
 log("penguin");
-            //GLOBAL::hardmode = hardness;
+            GLOBAL::hardmode = 2;
             changeScene(_next);//{_window->close(); exit(0);}
         }
     }

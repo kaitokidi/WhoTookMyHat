@@ -1,5 +1,6 @@
 #include "SceneSelector.hpp"
 #include "Resources.hpp"
+#include "MyButton.hpp"
 
 SceneSelector::SceneSelector() {
     open = true;
