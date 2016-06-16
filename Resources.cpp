@@ -91,7 +91,7 @@ void Resources::load() {
 
    // descriptions = std::vector<SpriteSheetDescription>(spriteDescriptionsQtt);
    // descriptions[linkSpritesDescriptions]       = loadDescription("linkSheet");
-    log(" Resources Loaded ");
+    mlog(" Resources Loaded ");
 }
 
 

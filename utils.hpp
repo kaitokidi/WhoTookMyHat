@@ -71,6 +71,13 @@ void log(const Args&... args) {
     std::cout << "]" << std::endl;
 }
 
+template <class... Args>
+void m_log(const Args&... args) {
+    std::cout << "[";
+    internalPrintAll(args...);
+    std::cout << "]" << std::endl;
+}
+
 
 //movement dir { down, left, right, up , none };
 namespace direction {
