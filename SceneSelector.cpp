@@ -52,7 +52,6 @@ int SceneSelector::select(sf::RenderWindow* window, std::vector<std::string> &bu
             for(int i = 0; i < qttyButtons; ++i){
                 if(!buttons[i].isClicked() && buttons[i].hasBeenClicked()){
                     window->setMouseCursorVisible(false);
-                    log("dem returns");
                     return i;
                 }
             }
