@@ -1,5 +1,6 @@
 #include "SceneTest.hpp"
 #include "Resources.hpp"
+#include "utils.hpp"
 
 SceneTest::SceneTest(Game *g, sf::RenderWindow *w, std::string next, std::string text) : Scene(g, w, sceneTypes::testScene, "test")  {
     _view = _window->getDefaultView();
@@ -34,7 +35,14 @@ void SceneTest::processInput(){
     sf::Event event;
     while(_window->pollEvent(event)){
         if (event.type == sf::Event::Closed) {_window->close(); exit(0);}
-        if (event.type == sf::Event::KeyReleased) changeScene(_next);//{_window->close(); exit(0);}
+        if (event.type == sf::Event::KeyReleased) {
+            std::vector<std::string> kinds = {"easy", "hardcore"};
+log("the best the best the best the best the best ");
+            _selector.select(_window, kinds);
+log("penguin");
+            //GLOBAL::hardmode = hardness;
+            changeScene(_next);//{_window->close(); exit(0);}
+        }
     }
     InputManager::update();
 }

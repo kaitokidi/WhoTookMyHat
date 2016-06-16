@@ -2,6 +2,7 @@
 #define SCENETEST_HPP
 #include "utils.hpp"
 #include "Scene.hpp"
+#include "SceneSelector.hpp"
 
 class Game;
 
@@ -30,6 +31,9 @@ private:
     std::string _next;
     sf::Sprite _sprite;
     sf::Texture _texture;
+
+    SceneSelector _selector;
+
 };
 
 #endif // SCENETEST_HPP
