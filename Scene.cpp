@@ -124,6 +124,8 @@ void Scene::resizing() {
 }
 
 void Scene::changeScene(std::string str){
+    extern int hardmode;
+    log("->", hardmode, &hardmode);
     _killed = true;
     _nextScene = str;
 }

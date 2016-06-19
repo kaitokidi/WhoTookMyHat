@@ -1,5 +1,7 @@
 #include "utils.hpp"
 
+int hardmode = 0;
+
 bool isInt(std::string s) {
     for(int i = 0; i < int(s.size()); ++i)
         if (!(s[i]>='0' && s[i]<='9'))

@@ -36,8 +36,10 @@ void SceneTest::processInput(){
     while(_window->pollEvent(event)){
         if (event.type == sf::Event::Closed) {_window->close(); exit(0);}
         if (event.type == sf::Event::KeyReleased) {
-            std::vector<std::string> kinds = {"  easy  ", "hardcore"};
-            GLOBAL::hardmode = _selector.select(_window, kinds);
+            std::vector<std::string> kinds = {"   easy   ", "hardcore"};
+            extern int hardmode;
+            hardmode = _selector.select(_window, kinds);
+            log(hardmode, &hardmode);
             changeScene(_next);//{_window->close(); exit(0);}
         }
     }

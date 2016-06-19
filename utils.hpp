@@ -48,9 +48,7 @@
 
 static const bool DEBUGDRAW = false;
 
-namespace GLOBAL{
-    static int hardmode;
-}
+extern int hardmode;
 
 template <class T>
 void printError(T t){
