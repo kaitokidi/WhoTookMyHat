@@ -29,6 +29,7 @@ private:
     Background bg;
     sf::Text _text;
     Player* _player;
+    bool _updatedYet;
     bool _textActive;
     float _shootTimer;
     std::string LANG;

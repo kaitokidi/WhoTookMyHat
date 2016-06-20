@@ -213,7 +213,7 @@ sf::Vector2f Background::getVectorFromCircleColision(sf::Vector2f &direction, sf
         bot = _boundaries[i].top + _boundaries[i].height;
         right = _boundaries[i].left + _boundaries[i].width;
 
-        log("0");
+        //log("0");
         // )|
         if( _boundaries[i].contains(pos.x+rad, pos.y)) { ret.x = min(left - pos.x+rad, ret.x);}
         // |(

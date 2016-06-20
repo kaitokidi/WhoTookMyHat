@@ -31,7 +31,6 @@ private:
     Player _player;
     Scene* _lastScene;
     Scene* _currentScene;
-    std::string LANGUAGE;
     sf::RenderWindow _window;
     std::map<std::string, Scene*> _scenes;
 

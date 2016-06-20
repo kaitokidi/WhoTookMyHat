@@ -36,10 +36,20 @@ void SceneTest::processInput(){
     while(_window->pollEvent(event)){
         if (event.type == sf::Event::Closed) {_window->close(); exit(0);}
         if (event.type == sf::Event::KeyReleased) {
-            std::vector<std::string> kinds = {"   easy   ", "hardcore"};
+
+            std::vector<std::string> languages = { "  CAT  ", "  ENG  ", "  ESP  "};
+            int language = _selector.select(_window, languages);
+            extern std::string LANGUAGE;
+            languages = { "CAT", "ENG", "ESP"};
+            LANGUAGE = languages[language];
+            log(language, LANGUAGE);
+            std::string easy[3] = {"  fàcil  ","   easy   ", "   fàcil   "};
+            std::string hard[3] = {" difícil ", "hardcore", " difícil "   };
+            std::vector<std::string> kinds = {easy[language], hard[language]};
             extern int hardmode;
             hardmode = _selector.select(_window, kinds);
-            log(hardmode, &hardmode);
+
+            //log(hardmode, &hardmode);
             changeScene(_next);//{_window->close(); exit(0);}
         }
     }

@@ -1,6 +1,7 @@
 #include "utils.hpp"
 
 int hardmode = 0;
+std::string LANGUAGE = "CAT";
 
 bool isInt(std::string s) {
     for(int i = 0; i < int(s.size()); ++i)

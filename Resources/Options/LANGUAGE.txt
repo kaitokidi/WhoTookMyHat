@@ -1,4 +1,4 @@
-CAT
+ENG
 
 Només es llegirà l aprimera linia, les opcions poden ser
 CAT per català

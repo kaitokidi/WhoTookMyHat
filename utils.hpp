@@ -49,6 +49,7 @@
 static const bool DEBUGDRAW = false;
 
 extern int hardmode;
+extern std::string LANGUAGE;
 
 template <class T>
 void printError(T t){

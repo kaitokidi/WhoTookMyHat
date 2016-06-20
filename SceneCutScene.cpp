@@ -10,7 +10,8 @@ SceneCutScene::SceneCutScene(Game *g, sf::RenderWindow *w, std::string previous,
     _levelName = levelName;
     init();
 
-    readLVL(levelName);
+    _updatedYet = false;
+
     bg._doorOpenedL = true;
     bg._doorOpenedR = true;
 
@@ -78,6 +79,11 @@ std::string gettextqtty(int ppos, int max, std::string s){
 }
 
 void SceneCutScene::update(float deltaTime){
+
+    if(!_updatedYet) {
+        readLVL(_levelName);
+        _updatedYet = true;
+    }
 
     _timer += deltaTime;
     _shootTimer += deltaTime;
@@ -164,11 +170,12 @@ void SceneCutScene::readLVL(std::string levelName){
     std::string line;
     std::ifstream myfile (LVLDESCIPTPATH+levelName+".txt");
 
-    std::ifstream mf (OPTIONSPATH+std::string("LANGUAGE.txt"));
+    /*std::ifstream mf (OPTIONSPATH+std::string("LANGUAGE.txt"));
     if(mf.is_open()){
         std::getline(mf, LANG);
     }else log("Error on languageFile -> SceneCutScene readLVL");
-
+*/
+    LANG = LANGUAGE;
     if (myfile.is_open()) {
 
         std::getline (myfile,line);
@@ -177,9 +184,6 @@ void SceneCutScene::readLVL(std::string levelName){
 
         std::getline (myfile,line);
         while(line[0] == '#') std::getline (myfile,line);
-        //TextBoxManager::setSize(1024,100);
-        //TextBoxManager::setText(std::string(line+LANG));
-        //log(line+LANG);
         _totalThought = TextBoxManager::getText(std::string(line+LANG));
 
         while (line[0] != '$') {

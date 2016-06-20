@@ -17,7 +17,7 @@ Game::Game() : _window(sf::VideoMode::getDesktopMode(),"WhoTookMyHat", sf::Style
     _player.setPosition(_player.getRadius()*3,660);
 
     /*could be read from a file*/
-    LANGUAGE = "CAT";
+    //LANGUAGE = "CAT";
     //LANGUAGE = "ENG";
     // LANGUAGE = "ESP";
 
@@ -85,7 +85,7 @@ void Game::loadScenes() {
    */
 
 
-    _scenes.insert(std::make_pair("test", new SceneTest(this, &_window, "portada")));
+    _scenes.insert(std::make_pair("test",    new SceneTest(this, &_window, "portada")));
     _scenes.insert(std::make_pair("portada", new SceneTemporal(this, &_window, "level1", 5, "", "Portada")));
     _scenes.insert(std::make_pair("s1", new SceneTemporal(this, &_window, "s2", 1, "", "scene1.png")));
     _scenes.insert(std::make_pair("s2", new SceneTemporal(this, &_window, "s3", 1, "", "scene2.png")));
@@ -97,19 +97,19 @@ void Game::loadScenes() {
     _scenes.insert(std::make_pair("s8", new SceneTemporal(this, &_window, "s9", 1, "", "scene8.png")));
     _scenes.insert(std::make_pair("s9", new SceneTemporal(this, &_window, "s10", 1, "", "scene9.png")));
     _scenes.insert(std::make_pair("s10", new SceneTemporal(this, &_window, "test2", 1, "", "scene10.png")));
-    _scenes.insert(std::make_pair("test2", new SceneTest(this, &_window, "cutScene1")));
+    _scenes.insert(std::make_pair("test2",   new SceneTest(this, &_window, "cutScene1")));
     _scenes.insert(std::make_pair("cutScene1", new SceneCutScene(this, & _window, "level4", "cutScene1", "cutScene2", &_player)));
     _scenes.insert(std::make_pair("cutScene2", new SceneCutScene(this, & _window, "cutScene1", "cutScene2", "cutScene3", &_player)));
     _scenes.insert(std::make_pair("cutScene3", new SceneCutScene(this, & _window, "cutScene2", "cutScene3", "cutScene4", &_player)));
     _scenes.insert(std::make_pair("cutScene4", new SceneCutScene(this, & _window, "cutScene3", "cutScene4", "level1", &_player)));
-    _scenes.insert(std::make_pair("level1", new scenePlayable(this, & _window, "cutScene4", "level1", "cutScene5", &_player)));
+    _scenes.insert(std::make_pair("level1",    new scenePlayable(this, & _window, "cutScene4", "level1", "cutScene5", &_player)));
     _scenes.insert(std::make_pair("cutScene5", new SceneCutScene(this, & _window, "level1", "cutScene5", "level2", &_player)));
-    _scenes.insert(std::make_pair("level2", new scenePlayable(this, & _window, "cutScene5", "level2", "cutScene6", &_player)));
+    _scenes.insert(std::make_pair("level2",    new scenePlayable(this, & _window, "cutScene5", "level2", "cutScene6", &_player)));
     _scenes.insert(std::make_pair("cutScene6", new SceneCutScene(this, & _window, "level2", "cutScene6", "level3", &_player)));
-    _scenes.insert(std::make_pair("level3", new scenePlayable(this, & _window, "cutScene6", "level3", "cutScene7", &_player)));
+    _scenes.insert(std::make_pair("level3",    new scenePlayable(this, & _window, "cutScene6", "level3", "cutScene7", &_player)));
     _scenes.insert(std::make_pair("cutScene7", new SceneCutScene(this, & _window, "level3", "cutScene7", "level4", &_player)));
-    _scenes.insert(std::make_pair("level4", new scenePlayable(this, & _window, "cutScene7", "level4", "level5", &_player)));
-    _scenes.insert(std::make_pair("level5", new scenePlayable(this, & _window, "level4", "level5", "test2", &_player)));
+    _scenes.insert(std::make_pair("level4",    new scenePlayable(this, & _window, "cutScene7", "level4", "level5", &_player)));
+    _scenes.insert(std::make_pair("level5",    new scenePlayable(this, & _window, "level4", "level5", "test2", &_player)));
 
 }
 
