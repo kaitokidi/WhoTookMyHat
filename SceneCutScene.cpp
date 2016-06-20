@@ -170,11 +170,12 @@ void SceneCutScene::readLVL(std::string levelName){
     std::string line;
     std::ifstream myfile (LVLDESCIPTPATH+levelName+".txt");
 
-    /*std::ifstream mf (OPTIONSPATH+std::string("LANGUAGE.txt"));
+    /*
+    std::ifstream mf (OPTIONSPATH+std::string("LANGUAGE.txt"));
     if(mf.is_open()){
         std::getline(mf, LANG);
     }else log("Error on languageFile -> SceneCutScene readLVL");
-*/
+    */
     LANG = LANGUAGE;
     if (myfile.is_open()) {
 
