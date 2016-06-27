@@ -1,5 +1,8 @@
 #include "Game.hpp"
 //getFullscreenModes()[0]
+
+static const std::string FIRSTSCENE = "anim0";
+
 Game::Game() : _window(sf::VideoMode::getDesktopMode(),"WhoTookMyHat", sf::Style::Close | sf::Style::Fullscreen) {
     _window.setFramerateLimit(FRAMERATE);
     _window.setMouseCursorVisible(false);
@@ -31,7 +34,7 @@ Game::~Game() {
 
 void Game::start() {
     loadScenes();
-    changeScene("test");
+    changeScene(FIRSTSCENE);
 
     while (_currentScene != nullptr) {
         _currentScene->run();
@@ -86,7 +89,7 @@ void Game::loadScenes() {
 
 
     _scenes.insert(std::make_pair("test",    new SceneTest(this, &_window, "portada")));
-    _scenes.insert(std::make_pair("portada", new SceneTemporal(this, &_window, "level1", 5, "", "Portada")));
+    _scenes.insert(std::make_pair("portada", new SceneTemporal(this, &_window, "anim0", 5, "", "Portada")));
     _scenes.insert(std::make_pair("s1", new SceneTemporal(this, &_window, "s2", 1, "", "scene1.png")));
     _scenes.insert(std::make_pair("s2", new SceneTemporal(this, &_window, "s3", 1, "", "scene2.png")));
     _scenes.insert(std::make_pair("s3", new SceneTemporal(this, &_window, "s4", 1, "", "scene3.png")));
@@ -98,6 +101,7 @@ void Game::loadScenes() {
     _scenes.insert(std::make_pair("s9", new SceneTemporal(this, &_window, "s10", 1, "", "scene9.png")));
     _scenes.insert(std::make_pair("s10", new SceneTemporal(this, &_window, "test2", 1, "", "scene10.png")));
     _scenes.insert(std::make_pair("test2",   new SceneTest(this, &_window, "cutScene1")));
+    _scenes.insert(std::make_pair("anim0",   new SceneAnimation(this, &_window, "test2", "anim0","level1")));
     _scenes.insert(std::make_pair("cutScene1", new SceneCutScene(this, & _window, "level4", "cutScene1", "cutScene2", &_player)));
     _scenes.insert(std::make_pair("cutScene2", new SceneCutScene(this, & _window, "cutScene1", "cutScene2", "cutScene3", &_player)));
     _scenes.insert(std::make_pair("cutScene3", new SceneCutScene(this, & _window, "cutScene2", "cutScene3", "cutScene4", &_player)));

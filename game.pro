@@ -41,7 +41,8 @@ SOURCES += main.cpp \
     EnemySnipper.cpp \
     EnemyBoss.cpp \
     SceneSelector.cpp \
-    MyButton.cpp
+    MyButton.cpp \
+    SceneAnimation.cpp
 
 HEADERS += utils.hpp \
         Resources.cpp \
@@ -77,4 +78,5 @@ HEADERS += utils.hpp \
     EnemySnipper.hpp \
     EnemyBoss.hpp \
     SceneSelector.hpp \
-    MyButton.hpp
+    MyButton.hpp \
+    SceneAnimation.hpp

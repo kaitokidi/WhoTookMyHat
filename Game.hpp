@@ -9,6 +9,7 @@
 #include "SceneTemporal.hpp"
 #include "ScenePlayable.hpp"
 #include "SceneCutScene.hpp"
+#include "SceneAnimation.hpp"
 #include "TextBoxManager.hpp"
 
 
