@@ -79,24 +79,26 @@ void SceneAnimation::update(float deltaTime){
     auto nameit = _names.begin();
     for (auto it = _elements.begin(); it != _elements.end();){
         if(it->currentAction.size() > 0){
-            log("nextElement", it->currentAction[0]);
+            log("dooing", it->currentAction[0]);
 
             it->myTimer -= deltaTime;
 
             if(it->currentAction[0] == "move"){
-                log("moving");
                 float diffx = myStoi(it->currentAction[2]) - it->getPosition().x;
                 float diffy = myStoi(it->currentAction[3]) - it->getPosition().y;
-                it->move(diffx/(deltaTime*it->myTimer), diffy/(deltaTime*it->myTimer));
+                log("moving",diffx/(deltaTime*it->myTimer), diffy/(deltaTime*it->myTimer));
+                it->move(diffx/(it->myTimer/deltaTime), diffy/(it->myTimer/deltaTime));
             }
             else if (it->currentAction[0] == "die"){
                 if(it->myTimer <= 0) it->dead = true;
             }
 
             if(it->myTimer <= 0){
-                it->currentAction = it->actionQueue.front();
-                it->actionQueue.pop();
-                it->myTimer = myStoi(it->currentAction[it->currentAction.last]);
+                if(it->actionQueue.size() > 0){
+                    it->currentAction = it->actionQueue.front();
+                    it->actionQueue.pop();
+                    it->myTimer = myStoi(it->currentAction[it->currentAction.last]);
+                }
             }
 
         }
@@ -110,11 +112,13 @@ void SceneAnimation::update(float deltaTime){
             ++nameit;
         }
     }
+    if(_orders.size() == 0 && !_waiting && _elements.size() == 0) changeScene(_next);
 }
 
 
 void SceneAnimation::render(sf::RenderTarget *target) {
     for (auto it = _elements.begin(); it != _elements.end();++it){
+        log("renderino");
         target->draw(*it);
     }
 }
