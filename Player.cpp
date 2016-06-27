@@ -80,7 +80,7 @@ void Player::updateSprite(){
 
     if(_animTimer.getElapsedTime().asSeconds() > ANIMTIMER){
         ++_index;
-        if( _index >= _destroyAnim->size() ) {
+        if( _index > _destroyAnim->size() ) {
             _destroying = false; _index = 0;
             _hp = 5;
             hat.setTexture(Resources::none[0]);
@@ -201,6 +201,10 @@ void Player::hit(){
         --_hp;
         _hitted = true;
     }
+}
+
+bool Player::isDead(){
+    return _hp <= 0 && _index >= _destroyAnim->size();
 }
 
 float Player::getSpeed() const { return speed; }

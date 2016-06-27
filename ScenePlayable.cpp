@@ -313,7 +313,17 @@ void scenePlayable::update(float deltaTime){
 
        }
 
-    _player->update(deltaTime, sf::Vector2i(_window->mapPixelToCoords(sf::Mouse::getPosition((*_window)),_view)), &bg);
+       _player->update(deltaTime, sf::Vector2i(_window->mapPixelToCoords(sf::Mouse::getPosition((*_window)),_view)), &bg);
+
+       if(_player->isDead()){
+           while(_enemyPull.size() > 0) _enemyPull.pop();
+           auto ite = _enemies.begin();
+           for(; ite != _enemies.end();){
+               delete(*ite);
+               ite = _enemies.erase(ite);
+           }
+           changeScene(_sceneName);
+       }
 
     }
 

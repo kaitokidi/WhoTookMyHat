@@ -23,6 +23,7 @@ public:
     void update(float deltaTime, sf::Vector2i auxMousePos, Background *bg);
 
     void hit();
+    bool isDead();
     int getHP() const;
     int actualHat() const;
     float getSpeed() const;
