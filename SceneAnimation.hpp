@@ -52,8 +52,8 @@ private:
     std::string _next;
     std::string _levelName;
     std::vector < std::string > _names;
-    std::vector < sf::Texture > _textures;
-    std::vector < Element > _elements;
+    std::vector < sf::Texture* > _textures;
+    std::vector < Element* > _elements;
     std::vector < Action > _orders;
 
 };

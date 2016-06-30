@@ -45,30 +45,27 @@ void SceneAnimation::processInput() {
 
 void SceneAnimation::update(float deltaTime){
     while(!_waiting && _orders.size() > 0){
-        log("_numofOrders ", _orders.size());
-        static std::string order = _orders[0][0];
-        static std::string name = _orders[0][1];
-        static std::string time = _orders[0][_orders[0].last];
+        std::string order = _orders[0][0];
+        std::string name = _orders[0][1];
+        std::string time = _orders[0][_orders[0].last];
         if(name == "NONE" && order == "wait"){
             _waiting = true;
             _timer = myStoi(time);
         }else {
             for(size_t i = 0; i < _names.size(); ++i){
-                log("names size", _names.size());
                 if(_names[i] == name){
-                    if(_elements[i].currentAction.size() > 0){
-                        log(name, "queueaction", _elements[i].currentAction.size());
-                        _elements[i].actionQueue.push(_orders[0]);
+                    log(name,"----->",order);
+                    if(_elements[i]->currentAction.size() > 0){
+                        _elements[i]->actionQueue.push(_orders[0]);
                     }else {
-                        log(name, "currentActiohn", _orders[0][0]);
-                        _elements[i].currentAction = _orders[0];
-                        _elements[i].myTimer = myStoi(time);
+                        _elements[i]->currentAction = _orders[0];
+                        _elements[i]->myTimer = myStof(time);
                     }
                 }
             }
+            log("end loop");
         }
         _orders.erase(_orders.begin());
-        log("elements actions on finishe the oop",_elements[0].currentAction.size());
     }
 
     if(_waiting) {
@@ -78,33 +75,36 @@ void SceneAnimation::update(float deltaTime){
 
     auto nameit = _names.begin();
     for (auto it = _elements.begin(); it != _elements.end();){
-        if(it->currentAction.size() > 0){
-            log("dooing", it->currentAction[0]);
+        if((*it)->currentAction.size() > 0){
 
-            it->myTimer -= deltaTime;
+            (*it)->myTimer -= deltaTime;
 
-            if(it->currentAction[0] == "move"){
-                float diffx = myStoi(it->currentAction[2]) - it->getPosition().x;
-                float diffy = myStoi(it->currentAction[3]) - it->getPosition().y;
-                log("moving",diffx/(deltaTime*it->myTimer), diffy/(deltaTime*it->myTimer));
-                it->move(diffx/(it->myTimer/deltaTime), diffy/(it->myTimer/deltaTime));
+            if((*it)->currentAction[0] == "move"){
+                float diffx = myStof((*it)->currentAction[2]) - (*it)->getPosition().x;
+                float diffy = myStof((*it)->currentAction[3]) - (*it)->getPosition().y;
+                (*it)->move(diffx/((*it)->myTimer/deltaTime), diffy/((*it)->myTimer/deltaTime));
             }
-            else if (it->currentAction[0] == "die"){
-                if(it->myTimer <= 0) it->dead = true;
+            else if ((*it)->currentAction[0] == "die"){
+                if((*it)->myTimer <= 0) (*it)->dead = true;
+            }
+            else if ((*it)->currentAction[0] == "hide"){
+                (*it)->visible = false;
+            }
+            else if ((*it)->currentAction[0] == "show"){
+                (*it)->visible = true;
             }
 
-            if(it->myTimer <= 0){
-                if(it->actionQueue.size() > 0){
-                    it->currentAction = it->actionQueue.front();
-                    it->actionQueue.pop();
-                    it->myTimer = myStoi(it->currentAction[it->currentAction.last]);
+            if((*it)->myTimer <= 0){
+                if((*it)->actionQueue.size() > 0){
+                    (*it)->currentAction = (*it)->actionQueue.front();
+                    (*it)->actionQueue.pop();
+                    (*it)->myTimer = myStof((*it)->currentAction[(*it)->currentAction.last]);
                 }
             }
-
         }
 
-        if(it->dead){
-            log("element dead");
+        if((*it)->dead){
+            delete(*it);
             it = _elements.erase(it);
             nameit = _names.erase(nameit);
         }else {
@@ -117,9 +117,13 @@ void SceneAnimation::update(float deltaTime){
 
 
 void SceneAnimation::render(sf::RenderTarget *target) {
+    //int i = 0;
     for (auto it = _elements.begin(); it != _elements.end();++it){
-        log("renderino");
-        target->draw(*it);
+        if((*it)->visible) {
+            //log("let's draw : ", _names[i]);
+            target->draw(*(*it));
+        } //else log("let's NOT draw ; ", _names[i]);
+        //++i;
     }
 }
 
@@ -128,7 +132,6 @@ void readLine(std::ifstream& myfile, std::string& line){
     while(line.size() == 0 || line[0] == '#') std::getline(myfile,line);
 }
 void SceneAnimation::readLVL(std::string levelName){
-    log("MOOOLT BE");
     std::string line;
     std::ifstream myfile (LVLDESCIPTPATH+levelName+".txt");
 
@@ -141,20 +144,26 @@ void SceneAnimation::readLVL(std::string levelName){
             _names.push_back(line);
 
             newLine
+            log("sprite -> ", line);
             sf::Texture t;
-            _textures.push_back(t);
+            _textures.push_back(new sf::Texture());
             Element e;
-            _elements.push_back(e);
-            if(! _textures[_textures.last].loadFromFile(TEXTURETPATH+line) ) log("OnSceneAnimation ",line," not loaded");
-            else _elements[_elements.last].setTexture(_textures[_textures.last]);
+            _elements.push_back(new Element());
+            log("-");
+            log(_textures.last, &_textures[_textures.last]);
+            log(_elements.last, &_elements[_elements.last]);
+            log("__");
+            if(! _textures[_textures.last]->loadFromFile(TEXTURETPATH+line) ) log("OnSceneAnimation ",line," not loaded");
+            else _elements[_elements.last]->setTexture(*_textures[_textures.last], true);
 
             newLine
-            _elements[_elements.last].setVisible(line == "hide");
+            _elements[_elements.last]->setVisible(line != "hide");
 
             newLine
         }
 
         while(line[0] != '$'){
+            log("action -> ", line);
 //            _orders.push_back(std::vector<std::string>());
 //            _orders[0].push_back(line);
 

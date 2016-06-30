@@ -19,11 +19,6 @@ Game::Game() : _window(sf::VideoMode::getDesktopMode(),"WhoTookMyHat", sf::Style
 
     _player.setPosition(_player.getRadius()*3,660);
 
-    /*could be read from a file*/
-    //LANGUAGE = "CAT";
-    //LANGUAGE = "ENG";
-    // LANGUAGE = "ESP";
-
 }
 
 Game::~Game() {
@@ -86,7 +81,6 @@ void Game::loadScenes() {
     _scenes.insert(std::make_pair("cutScene",new SceneCutScene(this, &_window,
                                                                Resources::AnimationIntro)));
    */
-
 
     _scenes.insert(std::make_pair("test",    new SceneTest(this, &_window, "portada")));
     _scenes.insert(std::make_pair("portada", new SceneTemporal(this, &_window, "anim0", 5, "", "Portada")));

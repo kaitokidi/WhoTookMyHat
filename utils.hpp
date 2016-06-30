@@ -171,6 +171,8 @@ void mlog(std::string s);
 
 bool isInt(std::string s);
 
+float myStof(std::string s);
+
 int myStoi(std::string s);
 
 bool myStob(std::string s);

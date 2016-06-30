@@ -12,8 +12,26 @@ bool isInt(std::string s) {
 
 int myStoi(std::string s) {
     int x = 0;
-    for (int i = 0; i < int(s.size()); ++i)
+    for (size_t i = 0; i < s.size(); ++i)
         x = 10*x+(s[i]-'0');
+    return x;
+}
+
+float myStof(std::string s){
+    float x = 0;
+    size_t i;
+    for (i = 0; i < s.size() && s[i]!='.'; ++i) {
+        x = 10*x+(s[i]-'0');
+    }
+    ++i;
+    float fract = 0;
+    float j = 0;
+    while(i < s.size()) {
+        fract = 10*fract+(s[i]-'0');
+        ++j;
+        ++i;
+    }
+    x += fract/std::pow(10,j);
     return x;
 }
 
