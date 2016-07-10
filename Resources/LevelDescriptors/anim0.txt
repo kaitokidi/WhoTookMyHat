@@ -41,19 +41,19 @@ playerHat
 1
 move
 playerNoHat
-60
-0
+20
+140
 1
 
 move
 HookOpen
 1024
-400
+350
 1
 move
 HookClose
 1024
-400
+350
 1
 
 wait
@@ -68,13 +68,13 @@ HookOpen
 # make hook move to player
 move
 HookOpen
-75
-400
+300
+350
 2
 move
 HookClose
-75
-400
+190
+350
 2
 
 wait
