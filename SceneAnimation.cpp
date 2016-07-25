@@ -54,7 +54,7 @@ void SceneAnimation::update(float deltaTime){
         }else {
             for(size_t i = 0; i < _names.size(); ++i){
                 if(_names[i] == name){
-                    log(name,"----->",order);
+                    //log(name,"----->",order);
                     if(_elements[i]->currentAction.size() > 0){
                         _elements[i]->actionQueue.push(_orders[0]);
                     }else {
@@ -63,7 +63,7 @@ void SceneAnimation::update(float deltaTime){
                     }
                 }
             }
-            log("end loop");
+            //log("end loop");
         }
         _orders.erase(_orders.begin());
     }
@@ -144,15 +144,13 @@ void SceneAnimation::readLVL(std::string levelName){
             _names.push_back(line);
 
             newLine
-            log("sprite -> ", line);
-            sf::Texture t;
+            //log("sprite -> ", line);
             _textures.push_back(new sf::Texture());
-            Element e;
             _elements.push_back(new Element());
-            log("-");
-            log(_textures.last, &_textures[_textures.last]);
-            log(_elements.last, &_elements[_elements.last]);
-            log("__");
+            //log("-");
+            //log(_textures.last, &_textures[_textures.last]);
+            //log(_elements.last, &_elements[_elements.last]);
+            //log("__");
             if(! _textures[_textures.last]->loadFromFile(TEXTURETPATH+line) ) log("OnSceneAnimation ",line," not loaded");
             else _elements[_elements.last]->setTexture(*_textures[_textures.last], true);
 
@@ -163,7 +161,7 @@ void SceneAnimation::readLVL(std::string levelName){
         }
 
         while(line[0] != '$'){
-            log("action -> ", line);
+            //log("action -> ", line);
 //            _orders.push_back(std::vector<std::string>());
 //            _orders[0].push_back(line);
 

@@ -79,7 +79,10 @@ void EnemyBoss::movement(float deltaTime, Background *bg){
         if(_dir == direction::right)    _vel.x =  ENEMSPEED*deltaTime*_movementScaler;
 
         _movementScaler += deltaTime;
-        if(_movementScaler > 1.5) _movementScaler = 1.6;
+        if(_movementScaler > 1.5) {
+            if(_movementScaler < 1.6 && rand()%3 == 0) getNewDirection();
+            _movementScaler = 1.6;
+        }
 
         sf::Vector2f dest(_vel.x, _vel.y);
 
@@ -95,7 +98,6 @@ void EnemyBoss::movement(float deltaTime, Background *bg){
         if(bg->rectangleColision( desrect )){
             _vel.x = 0; _dir = direction::none;
         } else move(dest.x, 0);
-
 }
 
 void EnemyBoss::getNewDirection() {

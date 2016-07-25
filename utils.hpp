@@ -157,12 +157,12 @@ enum directions {
 namespace constant{
     static const float gravity = 5;
     static const float friction = 4;
-    static const float hookForce = 0.03;
+    static const float hookForce = 0.05;
     static const float playerJump = 850;
     static const float playerSpeed = 20;
     static const float playerRadious = 30;
     static const float shootMaxTime = 0.8;
-    static const float playerMaxSpeed = 4;
+    static const float playerMaxSpeed = 4.5;
 }
 
 //void log(std::string s);
