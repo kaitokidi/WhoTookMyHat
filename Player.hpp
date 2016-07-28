@@ -22,7 +22,7 @@ public:
     void updateHits(float deltaTime);
     void update(float deltaTime, sf::Vector2i auxMousePos, Background *bg);
 
-    void hit();
+    void hit(int damage = 1);
     bool isDead();
     int getHP() const;
     int actualHat() const;
@@ -33,6 +33,7 @@ public:
     sf::Vector2f getLookPos() const;
     sf::Vector2f getHookPos() const;
     sf::Vector2f getMousePos() const;
+    sf::Vector2f getGuidePosition();
 
     void setAngle(float a);
     void setSpeed(float value);

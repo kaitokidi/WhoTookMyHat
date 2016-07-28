@@ -3,6 +3,10 @@ cave2
 hat4.png
 hat5.png
 hat6.png
+timer
+20
+20
+20
 spawn
 450
 170

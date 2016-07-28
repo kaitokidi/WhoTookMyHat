@@ -196,9 +196,9 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
 
 }
 
-void Player::hit(){
+void Player::hit(int damage){
     if(!_hitted && !_destroying) {
-        --_hp;
+        _hp -= damage;
         _hitted = true;
     }
 }
@@ -220,6 +220,8 @@ sf::Vector2f Player::getPos() const { return pos; }
 void Player::setPos(const sf::Vector2f &value) { pos = value; /*log("setPos");*/}
 
 sf::Vector2f Player::getPosition() { return body.getPosition(); }
+
+sf::Vector2f Player::getGuidePosition() { return guide.getPosition(); }
 
 void Player::draw(sf::RenderTarget * w){
     sf::Vector2f guiaPos;

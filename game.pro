@@ -42,7 +42,8 @@ SOURCES += main.cpp \
     EnemyBoss.cpp \
     SceneSelector.cpp \
     MyButton.cpp \
-    SceneAnimation.cpp
+    SceneAnimation.cpp \
+    ProgressionBar.cpp
 
 HEADERS += utils.hpp \
         Resources.cpp \
@@ -79,4 +80,5 @@ HEADERS += utils.hpp \
     EnemyBoss.hpp \
     SceneSelector.hpp \
     MyButton.hpp \
-    SceneAnimation.hpp
+    SceneAnimation.hpp \
+    ProgressionBar.hpp

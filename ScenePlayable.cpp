@@ -2,13 +2,15 @@
 #include <unistd.h>
 #include "Resources.hpp"
 #include "ScenePlayable.hpp"
+#include "ProgressionBar.hpp"
 
 /*
 colisió bullet _hat
 */
 
 scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string previous, std::string levelName, std::string next, Player *player)
-                                                    : Scene(g, w, sceneTypes::testScene, levelName)  {
+                                                    : Scene(g, w, sceneTypes::testScene, levelName),
+                                                      _progressionBar(sf::FloatRect(150,10,700,20))  {
     _next = next;
     _hatsOwned = 0;
     _player = player;
@@ -228,6 +230,7 @@ void scenePlayable::update(float deltaTime){
             if(_hatshits[i] > 1){
                 if(_enemyPull.empty()) readEnemies(i);
                 _player->setHat(_hats[i]);
+                _progressionBar.SetMaxTime(_caveTimer[i]);
                 _playing = true;
                 _picking = false;
             }
@@ -315,6 +318,9 @@ void scenePlayable::update(float deltaTime){
 
        _player->update(deltaTime, sf::Vector2i(_window->mapPixelToCoords(sf::Mouse::getPosition((*_window)),_view)), &bg);
 
+       _progressionBar.Update(deltaTime);
+       if(_progressionBar.finish()) _player->hit(50);
+
        if(_player->isDead()){
            while(_enemyPull.size() > 0) _enemyPull.pop();
            auto ite = _enemies.begin();
@@ -373,7 +379,8 @@ void scenePlayable::processInput(){
     if( InputManager::action(InputAction::shoot) > 0 && _shootTimer > constant::shootMaxTime){
         _shootTimer = 0;
         Bullet b;
-        b.setPosition(_player->getPosition());
+        if(_picking) b.setPosition(_player->getPosition());
+        else b.setPosition(_player->getGuidePosition());
         b.setDestiny(sf::Vector2f(bg.getIntersection( sf::Vector2i(_player->getPosition()) ,sf::Vector2i(_window->mapPixelToCoords(sf::Mouse::getPosition((*_window)),_view)))));
         _bullets.push_back(b);
     }
@@ -449,7 +456,7 @@ void scenePlayable::writteLVL(int lvl){
 
 void scenePlayable::render(sf::RenderTarget *target){
     bg.draw(target);
-
+    if(_playing) _progressionBar.Draw(target);
     //draw player
     _player->draw(target);
 
@@ -556,6 +563,21 @@ void scenePlayable::readLVL(std::string levelName){
                 else{
                     _hats[i].setTexture(_hatsT[i],true);
                 }
+            }
+
+            std::getline (myfile,line);
+            while(line[0] == '#') std::getline (myfile,line);
+
+            if(line == "timer"){
+                std::getline (myfile,line);
+                while(line[0] == '#') std::getline (myfile,line);
+                _caveTimer[0] = myStoi(line);
+                std::getline (myfile,line);
+                while(line[0] == '#') std::getline (myfile,line);
+                _caveTimer[1] = myStoi(line);
+                std::getline (myfile,line);
+                while(line[0] == '#') std::getline (myfile,line);
+                _caveTimer[2] = myStoi(line);
             }
 
             std::getline (myfile,line);
