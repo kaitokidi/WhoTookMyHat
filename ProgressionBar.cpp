@@ -34,6 +34,7 @@ void ProgressionBar::Update(float dt) {
         _finish = true;
     }else _finish = false;
     _progress.setSize(sf::Vector2f(_background.getSize().x*factor, _progress.getSize().y));
+    _progress.setFillColor(sf::Color(250-150*factor,100,100));
 }
 
 void ProgressionBar::Draw(sf::RenderTarget * window){
