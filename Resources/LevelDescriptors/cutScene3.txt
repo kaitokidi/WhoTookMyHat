@@ -3,10 +3,10 @@ tunel3
 Default
 #Catalan language
 CAT
-Apreta el botó dret del ratolíi
+Apreta el boto dret del ratoli
 per tirar un ganxo a les parets!!!
         
-jeje... ratolíi, com l'animal... jeje
+jeje... ratoli, com l'animal... jeje
 OK
 #English language
 ENG
@@ -17,9 +17,9 @@ jeje... mouse... like the animal... jeje
 OK
 #Spanish language
 ESP
-Aprieta el botón derecho del ratón
+Aprieta el boton derecho del raton
 para tirar un garfio a las paredes!!!
      
-jeje... ratón... como el animal... jeje
+jeje... raton... como el animal... jeje
 OK
 $ End of Descriptor file : )

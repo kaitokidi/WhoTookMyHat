@@ -4,10 +4,10 @@ Default
 #Catalan language
 CAT
     
-Apreta el botó esquerre del ratolíi
+Apreta el boto esquerre del ratoli
 per disparar projectils!!!
-Dispara els barrets
-per començar l'accióo
+Dispara als barrets
+per iniciar el nivell!
 OK
 #English language
 ENG
@@ -15,14 +15,14 @@ ENG
 Press the left click on the mouse
 to shoot your bullets!!!
 Shoot at the hats
-to start the action
+to start the action!
 OK
 #Spanish language
 ESP
      
-Aprieta el boton izquierdo del ratón
+Aprieta el boton izquierdo del raton
 para disparar proyectiles!!!
 Dispara los sombreros
-para empezar la acción!
+para empezar el nivel!
 OK
 $ End of Descriptor file : )

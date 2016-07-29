@@ -1,0 +1,31 @@
+tunel3_4
+#thoughts
+Default
+#Catalan language
+CAT
+M'encanten els pinguins <3
+a tu no?
+Per cert, ves amb compte, 
+tens vides limitades!
+i el temps tampoc es
+infinit...
+OK
+#English language
+ENG
+I love penguins <3
+don't you?
+Oh, btw, be careful,
+you have limited lifes!
+And the time is limted
+as well...
+OK
+#Spanish language
+ESP
+Me encantan los pinguinos <3
+a ti no?
+Por cierto, vete con ojo,
+tienes vidas limitadas!
+Y el timepo tampoco
+es infinito...
+OK
+$ End of Descriptor file : )

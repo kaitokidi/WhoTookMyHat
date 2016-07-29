@@ -3,9 +3,9 @@ tunel5
 Default
 #Catalan language
 CAT
-Recordo que van passar per aquíi
-un nano que volia guanyar
-la lliga de nosequèe...
+Recordo que van passar per aqui
+un nano que com tots
+buscava alguna cosa...
 OK
 #English language
 ENG
@@ -15,8 +15,8 @@ at something...
 OK
 #Spanish language
 ESP
-Recuerdo que pasóo por aquíi 
+Recuerdo que paso por aqui 
 un chico que queria ganar
-nose quée liga...
+nose que liga...
 OK
 $ End of Descriptor file : )

@@ -6,20 +6,23 @@ CAT
 Una cova molt acollidora
 no trobes?
         
-salta amb [W] 
+salta amb [W] si no estas
+en nivell dificil
 OK
 #English language
 ENG
 Wonderful place to stay
 don't you think so?
            
-jump with [W]
+jump with [W] if you are not
+on hard mode
 OK
 #Spanish language
 ESP
 Una cueva muy acojedora
 no te parece?
         
-salta con [W]
+salta con [W] si no estas
+en modo dificil
 OK
 $ End of Descriptor file : )
