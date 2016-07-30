@@ -119,7 +119,6 @@ void Game::loadScenes() {
 
 void Game::initInput() {
 
-    InputManager::bind(InputAction::shoot, 0, 0);  // Xbox A
     InputManager::bind(InputAction::hook,  0, 4); // Xbox LB
     InputManager::bind(InputAction::shoot, 0, 5); // Xbox RB
 
@@ -131,10 +130,10 @@ void Game::initInput() {
     InputManager::bind(InputAction::down,  sf::Keyboard::S);
     InputManager::bind(InputAction::right, sf::Keyboard::D);
 
-    InputManager::bind(InputAction::up,    sf::Keyboard::Up);
+/*    InputManager::bind(InputAction::up,    sf::Keyboard::Up);
     InputManager::bind(InputAction::left,  sf::Keyboard::Left);
     InputManager::bind(InputAction::down,  sf::Keyboard::Down);
-    InputManager::bind(InputAction::right, sf::Keyboard::Right);
+    InputManager::bind(InputAction::right, sf::Keyboard::Right);*/
 
     InputManager::bind(InputAction::hook,  sf::Keyboard::Space);
     InputManager::bind(InputAction::hook,  sf::Mouse::Right);
