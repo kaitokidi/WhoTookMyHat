@@ -137,21 +137,6 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
 
     }
 
-    if(sf::Joystick::isConnected(0)){
-/*        if( sf::Joystick::hasAxis(0, sf::Joystick::R)) //Right trigger
-        std::cout << "R " << sf::Joystick::getAxisPosition(0, sf::Joystick::R) << std::endl;
-        if( sf::Joystick::hasAxis(0, sf::Joystick::Z)) //left trigger
-        std::cout << "Z " << sf::Joystick::getAxisPosition(0, sf::Joystick::Z) << std::endl;*/
-
-
-        float dirx = sf::Joystick::getAxisPosition(0, sf::Joystick::U);
-        float diry =  sf::Joystick::getAxisPosition(0, sf::Joystick::V);
-
-        /*
-            get angle from dirx and diry and put mouse from player n units in that angle
-        */
-
-    }
     //Add gravity to the y speed
     vel.y += constant::gravity * deltaTime;
 

@@ -43,8 +43,8 @@ void SceneTest::processInput(){
             languages = { "CAT", "ENG", "ESP"};
             LANGUAGE = languages[language];
             log(language, LANGUAGE);
-            std::string easy[3] = {"  fàcil  ","   easy   ", "   fàcil   "};
-            std::string hard[3] = {" difícil ", "hardcore", " difícil "   };
+            std::string easy[3] = {" normal ","  normal  ", "  normal  "};
+            std::string hard[3] = {" dificil ", "hardcore", " dificil  "   };
             std::vector<std::string> kinds = {easy[language], hard[language]};
             extern int hardmode;
             hardmode = _selector.select(_window, kinds);

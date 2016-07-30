@@ -97,7 +97,7 @@ namespace status{
 }
 
 namespace InputAction {
-  enum action {
+  enum actions {
       menuDown      ,
       menuUp        ,
       menuMovement  , // gamepad axis

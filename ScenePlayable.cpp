@@ -169,6 +169,27 @@ void scenePlayable::update(float deltaTime){
     _timer += deltaTime;
     _shootTimer += deltaTime;
 
+    //fix for the joystick if it is plugged
+    if(sf::Joystick::isConnected(0) &&
+            sf::Joystick::hasAxis(0, sf::Joystick::U)&&
+            sf::Joystick::hasAxis(0, sf::Joystick::V)){
+/*        if( sf::Joystick::hasAxis(0, sf::Joystick::R)) //Right trigger
+        if( sf::Joystick::hasAxis(0, sf::Joystick::Z)) //left trigger*/
+
+        float dirx = sf::Joystick::getAxisPosition(0, sf::Joystick::U);
+        float diry =  sf::Joystick::getAxisPosition(0, sf::Joystick::V);
+
+        if(dirx >= 50 || diry >= 50 || dirx <= -50 || diry <= -50) {
+            float angle = getAngle(sf::Vector2f(dirx,0), sf::Vector2f(0,diry));
+            angle = angle*M_PI/180;
+            sf::Vector2f playerPos = _player->getPosition();
+            sf::Mouse::setPosition(sf::Vector2i(
+                                       playerPos.x+170 - (std::cos(angle))*_player->getRadius()*10,
+                                       playerPos.y + (std::sin(angle))*_player->getRadius()*10));
+        }
+
+    }
+
     //PICKING
     if(_picking){
 

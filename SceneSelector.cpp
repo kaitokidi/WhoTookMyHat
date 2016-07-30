@@ -43,8 +43,12 @@ int SceneSelector::select(sf::RenderWindow* window, std::vector<std::string> &bu
                 window->close();
                 exit(0);
                 break;
+            case sf::Event::JoystickButtonPressed:
+                return 0;
+                break;
             case sf::Event::KeyPressed:
                 if (event.key.code == sf::Keyboard::Escape) { window->close(); exit(0); }
+                else return 0;
                 break;
             default:
                 break;
