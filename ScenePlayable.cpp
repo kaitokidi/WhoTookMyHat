@@ -93,7 +93,7 @@ void scenePlayable::readEnemies(int lvl) {
                         std::getline (myfile,line);
 
                         while(line[0] == '#') std::getline (myfile,line);
-                        for(int i = 0; i < line.size(); ++i){
+                        for(size_t i = 0; i < line.size(); ++i){
                             switch(line[i]) {
                                 case 's': // Spike ball
                                 _enemyPull.push(new Enemy());
@@ -135,7 +135,7 @@ void scenePlayable::readEnemies(int lvl) {
                         std::getline (myfile,line);
                         while(line[0] == '#') std::getline (myfile,line);
 
-                        for(int i = 0; i < line.size(); ++i){
+                        for(size_t i = 0; i < line.size(); ++i){
                             if(line[i] != ' '){
                                 _enemyTimePull.push(line[i]-'0');
                             }
@@ -173,6 +173,7 @@ void scenePlayable::update(float deltaTime){
     if(sf::Joystick::isConnected(0) &&
             sf::Joystick::hasAxis(0, sf::Joystick::U)&&
             sf::Joystick::hasAxis(0, sf::Joystick::V)){
+
 /*        if( sf::Joystick::hasAxis(0, sf::Joystick::R)) //Right trigger
         if( sf::Joystick::hasAxis(0, sf::Joystick::Z)) //left trigger*/
 

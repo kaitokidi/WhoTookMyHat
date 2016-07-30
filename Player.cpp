@@ -97,7 +97,6 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
             return;
     }
 
-
     mousePos.x = auxMousePos.x;
     mousePos.y = auxMousePos.y;
 
@@ -117,18 +116,17 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
     if( InputManager::action(InputAction::down) > 0){
         //cry me a river
     }
-    if( (!hardmode) && InputManager::action(InputAction::left) > 0 ||
+    if(InputManager::action(InputAction::left) > 0 ||
             InputManager::action(InputAction::movementX) < -0.5){
         vel.x -= constant::playerSpeed*deltaTime;
     }
-    if( (!hardmode) && InputManager::action(InputAction::right) > 0 ||
+    if(InputManager::action(InputAction::right) > 0 ||
             InputManager::action(InputAction::movementX) > 0.5){
         vel.x += constant::playerSpeed*deltaTime;
     }
     if( InputManager::action(InputAction::hook) > 0){
        if(!hooking)setDistantHookPos(auxMousePos, bg);
        hooking = true;
-       //std::cout << "auxmousepos " << auxMousePos.x << " , " << auxMousePos.y << std::endl;
     } else {
        hooking = false;
        hookPos = mousePos;

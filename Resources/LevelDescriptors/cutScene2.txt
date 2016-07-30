@@ -6,23 +6,26 @@ CAT
 Una cova molt acollidora
 no trobes?
         
-salta amb [W] si no estas
-en nivell dificil
+En nivell Normal
+pots saltar amb [W]
+o amunt amb el joystic
 OK
 #English language
 ENG
 Wonderful place to stay
 don't you think so?
-           
-jump with [W] if you are not
-on hard mode
+
+In the normal level
+you can jump with [W]
+or with up joystick
 OK
 #Spanish language
 ESP
 Una cueva muy acojedora
 no te parece?
         
-salta con [W] si no estas
-en modo dificil
+En el nivel normal 
+puedes saltar con [W]
+o arriba en el joistick
 OK
 $ End of Descriptor file : )

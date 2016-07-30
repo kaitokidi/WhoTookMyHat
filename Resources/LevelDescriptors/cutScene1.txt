@@ -5,27 +5,30 @@ Default
 CAT
 Benvingut 
 A la COVA dels BARRETS!!!
-     
-apreta les tecles 
-[A] i [D] 
-per moure't
+
+per moure pots clicar
+[A] i [D] o el joystick
+esquerre del comandament
+i el dret per apuntar
 OK
 #English language
 ENG
 Welcome
 At the HAT CAVE!!!
      
-press keys 
-[A] and [D]
-to move
+to move you can press
+[A] and [D] or the left
+joystick on the controller
+and the right to aim
 OK
 #Spanish language
 ESP
 Bienvenido
 A la CUEVA de los SOMBREROS!
        
-pulsa las teclas
-[A] y [D]
-para moverte
+para moverte usa 
+[A] y [D] o el joystick
+izquierdo del mando
+i el derecho para apuntar
 OK
 $ End of Descriptor file : )

@@ -44,11 +44,12 @@ int SceneSelector::select(sf::RenderWindow* window, std::vector<std::string> &bu
                 exit(0);
                 break;
             case sf::Event::JoystickButtonPressed:
+                window->setMouseCursorVisible(false);
                 return 0;
                 break;
             case sf::Event::KeyPressed:
                 if (event.key.code == sf::Keyboard::Escape) { window->close(); exit(0); }
-                else return 0;
+                else { window->setMouseCursorVisible(false); return 0; }
                 break;
             default:
                 break;
@@ -66,6 +67,7 @@ int SceneSelector::select(sf::RenderWindow* window, std::vector<std::string> &bu
         }
         window->display();
     }
+    return 0;
 }
 
 void SceneSelector::display(sf::RenderWindow* window, std::string pathImage){

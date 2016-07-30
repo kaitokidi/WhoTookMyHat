@@ -4,6 +4,7 @@ Default
 #Catalan language
 CAT
 Apreta el boto dret del ratoli
+(o LB en el comandament)
 per tirar un ganxo a les parets!!!
         
 jeje... ratoli, com l'animal... jeje
@@ -11,6 +12,7 @@ OK
 #English language
 ENG
 Press the right click on the mouse
+(or LB on the controller)
 to shoot a hook to the walls!!!
           
 jeje... mouse... like the animal... jeje
@@ -18,6 +20,7 @@ OK
 #Spanish language
 ESP
 Aprieta el boton derecho del raton
+(o LB en el mando) 
 para tirar un garfio a las paredes!!!
      
 jeje... raton... como el animal... jeje

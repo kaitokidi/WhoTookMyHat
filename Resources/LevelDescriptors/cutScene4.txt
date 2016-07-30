@@ -5,6 +5,7 @@ Default
 CAT
     
 Apreta el boto esquerre del ratoli
+(o RB al comandament)
 per disparar projectils!!!
 Dispara als barrets
 per iniciar el nivell!
@@ -13,6 +14,7 @@ OK
 ENG
     
 Press the left click on the mouse
+(or RB on the controller)
 to shoot your bullets!!!
 Shoot at the hats
 to start the action!
@@ -21,6 +23,7 @@ OK
 ESP
      
 Aprieta el boton izquierdo del raton
+(o RB en el mando)
 para disparar proyectiles!!!
 Dispara los sombreros
 para empezar el nivel!
