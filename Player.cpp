@@ -106,17 +106,23 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
     angle = std::atan2(dY,dX)*180/M_PI;
 
     extern int hardmode;
-    if((! jumping) && (!hardmode) && InputManager::action(InputAction::up) > 0 ){
+    if((! jumping) && (!hardmode) &&
+           (InputManager::action(InputAction::up) > 0 ||
+            InputManager::action(InputAction::movementY) < -0.5)
+            ){
         vel.y = -constant::playerJump*deltaTime;
         jumping = true;
     }
+
     if( InputManager::action(InputAction::down) > 0){
         //cry me a river
     }
-    if( (!hardmode) && InputManager::action(InputAction::left) > 0){
+    if( (!hardmode) && InputManager::action(InputAction::left) > 0 ||
+            InputManager::action(InputAction::movementX) < -0.5){
         vel.x -= constant::playerSpeed*deltaTime;
     }
-    if( (!hardmode) && InputManager::action(InputAction::right) > 0){
+    if( (!hardmode) && InputManager::action(InputAction::right) > 0 ||
+            InputManager::action(InputAction::movementX) > 0.5){
         vel.x += constant::playerSpeed*deltaTime;
     }
     if( InputManager::action(InputAction::hook) > 0){

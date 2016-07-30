@@ -122,10 +122,14 @@ void Game::initInput() {
    /* InputManager::bind(InputAction::menuUp, sf::Keyboard::Up);
     InputManager::bind(InputAction::menuDown, sf::Keyboard::Down);
     InputManager::bind(InputAction::menuEnter, sf::Keyboard::Return);
-    InputManager::bind(InputAction::menuEnter, 0, 0);  // Xbox A
     InputManager::bind(InputAction::menuBack, sf::Keyboard::Escape);
-    InputManager::bind(InputAction::menuBack, 0, 1); // Xbox B
     InputManager::bind(InputAction::menuMovement, 0, sf::Joystick::Axis::Y);*/
+    InputManager::bind(InputAction::shoot, 0, 0);  // Xbox A
+    InputManager::bind(InputAction::hook, 0, 1); // Xbox B
+    InputManager::bind(InputAction::shoot, 0, 5); // Xbox RB
+    //InputManager::bind(InputAction::left, 0, sf::Joystick::Axis::X);
+    InputManager::bind(InputAction::movementX, 0, sf::Joystick::Axis::X);
+    InputManager::bind(InputAction::movementY, 0, sf::Joystick::Axis::Y);
 
     InputManager::bind(InputAction::up,    sf::Keyboard::W);
     InputManager::bind(InputAction::left,  sf::Keyboard::A);
@@ -142,10 +146,6 @@ void Game::initInput() {
 
    // InputManager::bind(InputAction::action, 0, 0);  // Xbox A
 /*
-    InputManager::bind(InputAction::p1movementX, 0, sf::Joystick::Axis::X);
-    InputManager::bind(InputAction::p2movementX, 1, sf::Joystick::Axis::X);
-    InputManager::bind(InputAction::p1movementY, 0, sf::Joystick::Axis::Y);
-    InputManager::bind(InputAction::p2movementY, 1, sf::Joystick::Axis::Y);
 
     InputManager::bind(InputAction::pause, 0, 7); // Xbox start
 
