@@ -50,97 +50,77 @@ SOURCES       = main.cpp \
 		Resources.cpp \
 		Game.cpp \
 		Scene.cpp \
-		SceneMenu.cpp \
-		ScenePlayable.cpp \
-		DungeonScene.cpp \
-		LightedDungeonScene.cpp \
-		Map.cpp \
-		Background.cpp \
-		Tile.cpp \
 		SceneChanger.cpp \
-		Player.cpp \
-		Enemy.cpp \
-		Octorok.cpp \
-		Weapon.cpp \
-		RockProjectile.cpp \
-		Projectile.cpp \
 		Collisionable.cpp \
-		Prop.cpp \
-		Object.cpp \
-		Fairy.cpp \
 		Effect.cpp \
-		Light.cpp \
-		LightSprite.cpp \
-		DungeonDoor.cpp \
-		GUI/Button.cpp \
-		GUI/Container.cpp \
-		GUI/Frame.cpp \
-		GUI/ImgButton.cpp \
-		GUI/ImgTextButton.cpp \
-		GUI/Label.cpp \
-		GUI/Layout.cpp \
-		GUI/TextButton.cpp \
-		GUI/VLayout.cpp \
-		GUI/HLayout.cpp \
-		GUI/Widget.cpp \
 		TextBox.cpp \
 		SoundManager.cpp \
 		DataManager.cpp \
-		StatsBar.cpp \
-		FairyShoot.cpp \
 		TextBoxManager.cpp \
 		InputManager.cpp \
-		Speaker.cpp \
-		EnemyPenguin.cpp \
-		SceneCutScene.cpp 
+		SceneTest.cpp \
+		Background.cpp \
+		ScenePlayable.cpp \
+		Player.cpp \
+		Eyes.cpp \
+		Hook.cpp \
+		AnimatedCircle.cpp \
+		Enemy.cpp \
+		Bullet.cpp \
+		EnemyBloc.cpp \
+		EnemyFlying.cpp \
+		SceneCutScene.cpp \
+		EnemyBouncy.cpp \
+		SceneTemporal.cpp \
+		EnemyGhost.cpp \
+		EnemyNinja.cpp \
+		EnemyLog.cpp \
+		EnemyShooter.cpp \
+		EnemyBullet.cpp \
+		EnemySnipper.cpp \
+		EnemyBoss.cpp \
+		SceneSelector.cpp \
+		MyButton.cpp \
+		SceneAnimation.cpp \
+		ProgressionBar.cpp 
 OBJECTS       = main.o \
 		utils.o \
 		Resources.o \
 		Game.o \
 		Scene.o \
-		SceneMenu.o \
-		ScenePlayable.o \
-		DungeonScene.o \
-		LightedDungeonScene.o \
-		Map.o \
-		Background.o \
-		Tile.o \
 		SceneChanger.o \
-		Player.o \
-		Enemy.o \
-		Octorok.o \
-		Weapon.o \
-		RockProjectile.o \
-		Projectile.o \
 		Collisionable.o \
-		Prop.o \
-		Object.o \
-		Fairy.o \
 		Effect.o \
-		Light.o \
-		LightSprite.o \
-		DungeonDoor.o \
-		Button.o \
-		Container.o \
-		Frame.o \
-		ImgButton.o \
-		ImgTextButton.o \
-		Label.o \
-		Layout.o \
-		TextButton.o \
-		VLayout.o \
-		HLayout.o \
-		Widget.o \
 		TextBox.o \
 		SoundManager.o \
 		DataManager.o \
-		StatsBar.o \
-		FairyShoot.o \
 		TextBoxManager.o \
 		InputManager.o \
-		Speaker.o \
-		EnemyPenguin.o \
-		SceneCutScene.o
+		SceneTest.o \
+		Background.o \
+		ScenePlayable.o \
+		Player.o \
+		Eyes.o \
+		Hook.o \
+		AnimatedCircle.o \
+		Enemy.o \
+		Bullet.o \
+		EnemyBloc.o \
+		EnemyFlying.o \
+		SceneCutScene.o \
+		EnemyBouncy.o \
+		SceneTemporal.o \
+		EnemyGhost.o \
+		EnemyNinja.o \
+		EnemyLog.o \
+		EnemyShooter.o \
+		EnemyBullet.o \
+		EnemySnipper.o \
+		EnemyBoss.o \
+		SceneSelector.o \
+		MyButton.o \
+		SceneAnimation.o \
+		ProgressionBar.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -369,56 +349,43 @@ compiler_clean:
 ####### Compile
 
 main.o: main.cpp Game.hpp \
-		Resources.hpp \
 		utils.hpp \
-		windirent.h \
 		DataManager.hpp \
 		SoundManager.hpp \
 		InputManager.hpp \
 		Scene.hpp \
 		SceneChanger.hpp \
-		SceneMenu.hpp \
-		GUI/Label.hpp \
-		GUI/Widget.hpp \
-		GUI/Frame.hpp \
-		GUI/Button.hpp \
-		GUI/Container.hpp \
-		GUI/Layout.hpp \
-		GUI/VLayout.hpp \
-		GUI/ImgButton.hpp \
-		GUI/TextButton.hpp \
-		GUI/ImgTextButton.hpp \
-		DungeonScene.hpp \
+		Resources.hpp \
+		SceneTest.hpp \
+		SceneSelector.hpp \
+		MyButton.hpp \
+		SceneTemporal.hpp \
 		ScenePlayable.hpp \
-		Map.hpp \
-		Prop.hpp \
-		Collisionable.hpp \
-		Tile.hpp \
-		Speaker.hpp \
-		Background.hpp \
-		DungeonDoor.hpp \
-		Fairy.hpp \
-		Effect.hpp \
 		Enemy.hpp \
-		Octorok.hpp \
-		RockProjectile.hpp \
-		Weapon.hpp \
-		EnemyPenguin.hpp \
+		Bullet.hpp \
+		Background.hpp \
 		Player.hpp \
-		Projectile.hpp \
-		LightSprite.hpp \
-		Light.hpp \
+		Eyes.hpp \
+		Hook.hpp \
+		AnimatedCircle.hpp \
+		EnemyBloc.hpp \
+		EnemyBoss.hpp \
+		EnemyGhost.hpp \
+		EnemyNinja.hpp \
+		EnemyLog.hpp \
+		EnemyBouncy.hpp \
+		EnemyFlying.hpp \
+		EnemySnipper.hpp \
+		EnemyShooter.hpp \
+		EnemyBullet.hpp \
+		ProgressionBar.hpp \
+		SceneCutScene.hpp \
+		SceneAnimation.hpp \
 		TextBoxManager.hpp \
-		TextBox.hpp \
-		Object.hpp \
-		StatsBar.hpp \
-		GUI/HLayout.hpp \
-		FairyShoot.hpp \
-		LightedDungeonScene.hpp
+		TextBox.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 utils.o: utils.cpp utils.hpp \
-		windirent.h \
 		DataManager.hpp \
 		SoundManager.hpp \
 		InputManager.hpp
@@ -426,741 +393,105 @@ utils.o: utils.cpp utils.hpp \
 
 Resources.o: Resources.cpp Resources.hpp \
 		utils.hpp \
-		windirent.h \
 		DataManager.hpp \
 		SoundManager.hpp \
 		InputManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Resources.o Resources.cpp
 
 Game.o: Game.cpp Game.hpp \
-		Resources.hpp \
 		utils.hpp \
-		windirent.h \
 		DataManager.hpp \
 		SoundManager.hpp \
 		InputManager.hpp \
 		Scene.hpp \
 		SceneChanger.hpp \
-		SceneMenu.hpp \
-		GUI/Label.hpp \
-		GUI/Widget.hpp \
-		GUI/Frame.hpp \
-		GUI/Button.hpp \
-		GUI/Container.hpp \
-		GUI/Layout.hpp \
-		GUI/VLayout.hpp \
-		GUI/ImgButton.hpp \
-		GUI/TextButton.hpp \
-		GUI/ImgTextButton.hpp \
-		DungeonScene.hpp \
+		Resources.hpp \
+		SceneTest.hpp \
+		SceneSelector.hpp \
+		MyButton.hpp \
+		SceneTemporal.hpp \
 		ScenePlayable.hpp \
-		Map.hpp \
-		Prop.hpp \
-		Collisionable.hpp \
-		Tile.hpp \
-		Speaker.hpp \
-		Background.hpp \
-		DungeonDoor.hpp \
-		Fairy.hpp \
-		Effect.hpp \
 		Enemy.hpp \
-		Octorok.hpp \
-		RockProjectile.hpp \
-		Weapon.hpp \
-		EnemyPenguin.hpp \
+		Bullet.hpp \
+		Background.hpp \
 		Player.hpp \
-		Projectile.hpp \
-		LightSprite.hpp \
-		Light.hpp \
+		Eyes.hpp \
+		Hook.hpp \
+		AnimatedCircle.hpp \
+		EnemyBloc.hpp \
+		EnemyBoss.hpp \
+		EnemyGhost.hpp \
+		EnemyNinja.hpp \
+		EnemyLog.hpp \
+		EnemyBouncy.hpp \
+		EnemyFlying.hpp \
+		EnemySnipper.hpp \
+		EnemyShooter.hpp \
+		EnemyBullet.hpp \
+		ProgressionBar.hpp \
+		SceneCutScene.hpp \
+		SceneAnimation.hpp \
 		TextBoxManager.hpp \
-		TextBox.hpp \
-		Object.hpp \
-		StatsBar.hpp \
-		GUI/HLayout.hpp \
-		FairyShoot.hpp \
-		LightedDungeonScene.hpp \
-		SceneCutScene.hpp
+		TextBox.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Game.o Game.cpp
 
 Scene.o: Scene.cpp Scene.hpp \
 		utils.hpp \
-		windirent.h \
 		DataManager.hpp \
 		SoundManager.hpp \
 		InputManager.hpp \
 		SceneChanger.hpp \
 		Game.hpp \
 		Resources.hpp \
-		SceneMenu.hpp \
-		GUI/Label.hpp \
-		GUI/Widget.hpp \
-		GUI/Frame.hpp \
-		GUI/Button.hpp \
-		GUI/Container.hpp \
-		GUI/Layout.hpp \
-		GUI/VLayout.hpp \
-		GUI/ImgButton.hpp \
-		GUI/TextButton.hpp \
-		GUI/ImgTextButton.hpp \
-		DungeonScene.hpp \
+		SceneTest.hpp \
+		SceneSelector.hpp \
+		MyButton.hpp \
+		SceneTemporal.hpp \
 		ScenePlayable.hpp \
-		Map.hpp \
-		Prop.hpp \
-		Collisionable.hpp \
-		Tile.hpp \
-		Speaker.hpp \
-		Background.hpp \
-		DungeonDoor.hpp \
-		Fairy.hpp \
-		Effect.hpp \
 		Enemy.hpp \
-		Octorok.hpp \
-		RockProjectile.hpp \
-		Weapon.hpp \
-		EnemyPenguin.hpp \
+		Bullet.hpp \
+		Background.hpp \
 		Player.hpp \
-		Projectile.hpp \
-		LightSprite.hpp \
-		Light.hpp \
+		Eyes.hpp \
+		Hook.hpp \
+		AnimatedCircle.hpp \
+		EnemyBloc.hpp \
+		EnemyBoss.hpp \
+		EnemyGhost.hpp \
+		EnemyNinja.hpp \
+		EnemyLog.hpp \
+		EnemyBouncy.hpp \
+		EnemyFlying.hpp \
+		EnemySnipper.hpp \
+		EnemyShooter.hpp \
+		EnemyBullet.hpp \
+		ProgressionBar.hpp \
+		SceneCutScene.hpp \
+		SceneAnimation.hpp \
 		TextBoxManager.hpp \
-		TextBox.hpp \
-		Object.hpp \
-		StatsBar.hpp \
-		GUI/HLayout.hpp \
-		FairyShoot.hpp \
-		LightedDungeonScene.hpp
+		TextBox.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Scene.o Scene.cpp
-
-SceneMenu.o: SceneMenu.cpp SceneMenu.hpp \
-		utils.hpp \
-		windirent.h \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		Scene.hpp \
-		SceneChanger.hpp \
-		GUI/Label.hpp \
-		GUI/Widget.hpp \
-		GUI/Frame.hpp \
-		GUI/Button.hpp \
-		GUI/Container.hpp \
-		GUI/Layout.hpp \
-		GUI/VLayout.hpp \
-		GUI/ImgButton.hpp \
-		GUI/TextButton.hpp \
-		GUI/ImgTextButton.hpp \
-		Game.hpp \
-		Resources.hpp \
-		DungeonScene.hpp \
-		ScenePlayable.hpp \
-		Map.hpp \
-		Prop.hpp \
-		Collisionable.hpp \
-		Tile.hpp \
-		Speaker.hpp \
-		Background.hpp \
-		DungeonDoor.hpp \
-		Fairy.hpp \
-		Effect.hpp \
-		Enemy.hpp \
-		Octorok.hpp \
-		RockProjectile.hpp \
-		Weapon.hpp \
-		EnemyPenguin.hpp \
-		Player.hpp \
-		Projectile.hpp \
-		LightSprite.hpp \
-		Light.hpp \
-		TextBoxManager.hpp \
-		TextBox.hpp \
-		Object.hpp \
-		StatsBar.hpp \
-		GUI/HLayout.hpp \
-		FairyShoot.hpp \
-		LightedDungeonScene.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SceneMenu.o SceneMenu.cpp
-
-ScenePlayable.o: ScenePlayable.cpp ScenePlayable.hpp \
-		Map.hpp \
-		Prop.hpp \
-		Resources.hpp \
-		utils.hpp \
-		windirent.h \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		Collisionable.hpp \
-		Tile.hpp \
-		Speaker.hpp \
-		Background.hpp \
-		DungeonDoor.hpp \
-		SceneChanger.hpp \
-		Fairy.hpp \
-		Effect.hpp \
-		Scene.hpp \
-		Enemy.hpp \
-		Octorok.hpp \
-		RockProjectile.hpp \
-		Weapon.hpp \
-		EnemyPenguin.hpp \
-		Player.hpp \
-		Projectile.hpp \
-		LightSprite.hpp \
-		Light.hpp \
-		TextBoxManager.hpp \
-		TextBox.hpp \
-		Object.hpp \
-		StatsBar.hpp \
-		GUI/Label.hpp \
-		GUI/Widget.hpp \
-		GUI/Frame.hpp \
-		GUI/Button.hpp \
-		GUI/Container.hpp \
-		GUI/Layout.hpp \
-		GUI/VLayout.hpp \
-		GUI/HLayout.hpp \
-		GUI/ImgButton.hpp \
-		GUI/TextButton.hpp \
-		GUI/ImgTextButton.hpp \
-		FairyShoot.hpp \
-		Game.hpp \
-		SceneMenu.hpp \
-		DungeonScene.hpp \
-		LightedDungeonScene.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ScenePlayable.o ScenePlayable.cpp
-
-DungeonScene.o: DungeonScene.cpp DungeonScene.hpp \
-		ScenePlayable.hpp \
-		Map.hpp \
-		Prop.hpp \
-		Resources.hpp \
-		utils.hpp \
-		windirent.h \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		Collisionable.hpp \
-		Tile.hpp \
-		Speaker.hpp \
-		Background.hpp \
-		DungeonDoor.hpp \
-		SceneChanger.hpp \
-		Fairy.hpp \
-		Effect.hpp \
-		Scene.hpp \
-		Enemy.hpp \
-		Octorok.hpp \
-		RockProjectile.hpp \
-		Weapon.hpp \
-		EnemyPenguin.hpp \
-		Player.hpp \
-		Projectile.hpp \
-		LightSprite.hpp \
-		Light.hpp \
-		TextBoxManager.hpp \
-		TextBox.hpp \
-		Object.hpp \
-		StatsBar.hpp \
-		GUI/Label.hpp \
-		GUI/Widget.hpp \
-		GUI/Frame.hpp \
-		GUI/Button.hpp \
-		GUI/Container.hpp \
-		GUI/Layout.hpp \
-		GUI/VLayout.hpp \
-		GUI/HLayout.hpp \
-		GUI/ImgButton.hpp \
-		GUI/TextButton.hpp \
-		GUI/ImgTextButton.hpp \
-		FairyShoot.hpp \
-		Game.hpp \
-		SceneMenu.hpp \
-		LightedDungeonScene.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o DungeonScene.o DungeonScene.cpp
-
-LightedDungeonScene.o: LightedDungeonScene.cpp LightedDungeonScene.hpp \
-		utils.hpp \
-		windirent.h \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		Light.hpp \
-		DungeonScene.hpp \
-		ScenePlayable.hpp \
-		Map.hpp \
-		Prop.hpp \
-		Resources.hpp \
-		Collisionable.hpp \
-		Tile.hpp \
-		Speaker.hpp \
-		Background.hpp \
-		DungeonDoor.hpp \
-		SceneChanger.hpp \
-		Fairy.hpp \
-		Effect.hpp \
-		Scene.hpp \
-		Enemy.hpp \
-		Octorok.hpp \
-		RockProjectile.hpp \
-		Weapon.hpp \
-		EnemyPenguin.hpp \
-		Player.hpp \
-		Projectile.hpp \
-		LightSprite.hpp \
-		TextBoxManager.hpp \
-		TextBox.hpp \
-		Object.hpp \
-		StatsBar.hpp \
-		GUI/Label.hpp \
-		GUI/Widget.hpp \
-		GUI/Frame.hpp \
-		GUI/Button.hpp \
-		GUI/Container.hpp \
-		GUI/Layout.hpp \
-		GUI/VLayout.hpp \
-		GUI/HLayout.hpp \
-		GUI/ImgButton.hpp \
-		GUI/TextButton.hpp \
-		GUI/ImgTextButton.hpp \
-		FairyShoot.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o LightedDungeonScene.o LightedDungeonScene.cpp
-
-Map.o: Map.cpp Map.hpp \
-		Prop.hpp \
-		Resources.hpp \
-		utils.hpp \
-		windirent.h \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		Collisionable.hpp \
-		Tile.hpp \
-		Speaker.hpp \
-		Background.hpp \
-		DungeonDoor.hpp \
-		SceneChanger.hpp \
-		ScenePlayable.hpp \
-		Fairy.hpp \
-		Effect.hpp \
-		Scene.hpp \
-		Enemy.hpp \
-		Octorok.hpp \
-		RockProjectile.hpp \
-		Weapon.hpp \
-		EnemyPenguin.hpp \
-		Player.hpp \
-		Projectile.hpp \
-		LightSprite.hpp \
-		Light.hpp \
-		TextBoxManager.hpp \
-		TextBox.hpp \
-		Object.hpp \
-		StatsBar.hpp \
-		GUI/Label.hpp \
-		GUI/Widget.hpp \
-		GUI/Frame.hpp \
-		GUI/Button.hpp \
-		GUI/Container.hpp \
-		GUI/Layout.hpp \
-		GUI/VLayout.hpp \
-		GUI/HLayout.hpp \
-		GUI/ImgButton.hpp \
-		GUI/TextButton.hpp \
-		GUI/ImgTextButton.hpp \
-		FairyShoot.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Map.o Map.cpp
-
-Background.o: Background.cpp Background.hpp \
-		utils.hpp \
-		windirent.h \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		Resources.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Background.o Background.cpp
-
-Tile.o: Tile.cpp Tile.hpp \
-		utils.hpp \
-		windirent.h \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		Resources.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Tile.o Tile.cpp
 
 SceneChanger.o: SceneChanger.cpp SceneChanger.hpp \
 		utils.hpp \
-		windirent.h \
 		DataManager.hpp \
 		SoundManager.hpp \
 		InputManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SceneChanger.o SceneChanger.cpp
 
-Player.o: Player.cpp Player.hpp \
-		Map.hpp \
-		Prop.hpp \
-		Resources.hpp \
-		utils.hpp \
-		windirent.h \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		Collisionable.hpp \
-		Tile.hpp \
-		Speaker.hpp \
-		Background.hpp \
-		DungeonDoor.hpp \
-		SceneChanger.hpp \
-		Projectile.hpp \
-		LightSprite.hpp \
-		Light.hpp \
-		TextBoxManager.hpp \
-		TextBox.hpp \
-		Enemy.hpp \
-		Weapon.hpp \
-		Object.hpp \
-		FairyShoot.hpp \
-		RockProjectile.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Player.o Player.cpp
-
-Enemy.o: Enemy.cpp Enemy.hpp \
-		utils.hpp \
-		windirent.h \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		Map.hpp \
-		Prop.hpp \
-		Resources.hpp \
-		Collisionable.hpp \
-		Tile.hpp \
-		Speaker.hpp \
-		Background.hpp \
-		DungeonDoor.hpp \
-		SceneChanger.hpp \
-		Weapon.hpp \
-		Object.hpp \
-		ScenePlayable.hpp \
-		Fairy.hpp \
-		Effect.hpp \
-		Scene.hpp \
-		Octorok.hpp \
-		RockProjectile.hpp \
-		EnemyPenguin.hpp \
-		Player.hpp \
-		Projectile.hpp \
-		LightSprite.hpp \
-		Light.hpp \
-		TextBoxManager.hpp \
-		TextBox.hpp \
-		StatsBar.hpp \
-		GUI/Label.hpp \
-		GUI/Widget.hpp \
-		GUI/Frame.hpp \
-		GUI/Button.hpp \
-		GUI/Container.hpp \
-		GUI/Layout.hpp \
-		GUI/VLayout.hpp \
-		GUI/HLayout.hpp \
-		GUI/ImgButton.hpp \
-		GUI/TextButton.hpp \
-		GUI/ImgTextButton.hpp \
-		FairyShoot.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Enemy.o Enemy.cpp
-
-Octorok.o: Octorok.cpp Octorok.hpp \
-		Enemy.hpp \
-		utils.hpp \
-		windirent.h \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		Map.hpp \
-		Prop.hpp \
-		Resources.hpp \
-		Collisionable.hpp \
-		Tile.hpp \
-		Speaker.hpp \
-		Background.hpp \
-		DungeonDoor.hpp \
-		SceneChanger.hpp \
-		RockProjectile.hpp \
-		Weapon.hpp \
-		ScenePlayable.hpp \
-		Fairy.hpp \
-		Effect.hpp \
-		Scene.hpp \
-		EnemyPenguin.hpp \
-		Player.hpp \
-		Projectile.hpp \
-		LightSprite.hpp \
-		Light.hpp \
-		TextBoxManager.hpp \
-		TextBox.hpp \
-		Object.hpp \
-		StatsBar.hpp \
-		GUI/Label.hpp \
-		GUI/Widget.hpp \
-		GUI/Frame.hpp \
-		GUI/Button.hpp \
-		GUI/Container.hpp \
-		GUI/Layout.hpp \
-		GUI/VLayout.hpp \
-		GUI/HLayout.hpp \
-		GUI/ImgButton.hpp \
-		GUI/TextButton.hpp \
-		GUI/ImgTextButton.hpp \
-		FairyShoot.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Octorok.o Octorok.cpp
-
-Weapon.o: Weapon.cpp Weapon.hpp \
-		utils.hpp \
-		windirent.h \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		Collisionable.hpp \
-		Map.hpp \
-		Prop.hpp \
-		Resources.hpp \
-		Tile.hpp \
-		Speaker.hpp \
-		Background.hpp \
-		DungeonDoor.hpp \
-		SceneChanger.hpp \
-		Player.hpp \
-		Projectile.hpp \
-		LightSprite.hpp \
-		Light.hpp \
-		TextBoxManager.hpp \
-		TextBox.hpp \
-		Fairy.hpp \
-		Effect.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Weapon.o Weapon.cpp
-
-RockProjectile.o: RockProjectile.cpp RockProjectile.hpp \
-		Weapon.hpp \
-		utils.hpp \
-		windirent.h \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		Collisionable.hpp \
-		Map.hpp \
-		Prop.hpp \
-		Resources.hpp \
-		Tile.hpp \
-		Speaker.hpp \
-		Background.hpp \
-		DungeonDoor.hpp \
-		SceneChanger.hpp \
-		Player.hpp \
-		Projectile.hpp \
-		LightSprite.hpp \
-		Light.hpp \
-		TextBoxManager.hpp \
-		TextBox.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o RockProjectile.o RockProjectile.cpp
-
-Projectile.o: Projectile.cpp Projectile.hpp \
-		utils.hpp \
-		windirent.h \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		Collisionable.hpp \
-		Resources.hpp \
-		LightSprite.hpp \
-		Light.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Projectile.o Projectile.cpp
-
 Collisionable.o: Collisionable.cpp Collisionable.hpp \
 		utils.hpp \
-		windirent.h \
 		DataManager.hpp \
 		SoundManager.hpp \
 		InputManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Collisionable.o Collisionable.cpp
 
-Prop.o: Prop.cpp Prop.hpp \
-		Resources.hpp \
-		utils.hpp \
-		windirent.h \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		Collisionable.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Prop.o Prop.cpp
-
-Object.o: Object.cpp Object.hpp \
-		utils.hpp \
-		windirent.h \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		Resources.hpp \
-		Collisionable.hpp \
-		Player.hpp \
-		Map.hpp \
-		Prop.hpp \
-		Tile.hpp \
-		Speaker.hpp \
-		Background.hpp \
-		DungeonDoor.hpp \
-		SceneChanger.hpp \
-		Projectile.hpp \
-		LightSprite.hpp \
-		Light.hpp \
-		TextBoxManager.hpp \
-		TextBox.hpp \
-		Scene.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Object.o Object.cpp
-
-Fairy.o: Fairy.cpp Fairy.hpp \
-		utils.hpp \
-		windirent.h \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		Effect.hpp \
-		Resources.hpp \
-		Collisionable.hpp \
-		Enemy.hpp \
-		Map.hpp \
-		Prop.hpp \
-		Tile.hpp \
-		Speaker.hpp \
-		Background.hpp \
-		DungeonDoor.hpp \
-		SceneChanger.hpp \
-		Weapon.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Fairy.o Fairy.cpp
-
 Effect.o: Effect.cpp Effect.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Effect.o Effect.cpp
-
-Light.o: Light.cpp Light.hpp \
-		utils.hpp \
-		windirent.h \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Light.o Light.cpp
-
-LightSprite.o: LightSprite.cpp LightSprite.hpp \
-		utils.hpp \
-		windirent.h \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		Light.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o LightSprite.o LightSprite.cpp
-
-DungeonDoor.o: DungeonDoor.cpp DungeonDoor.hpp \
-		utils.hpp \
-		windirent.h \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		Collisionable.hpp \
-		Resources.hpp \
-		DungeonScene.hpp \
-		ScenePlayable.hpp \
-		Map.hpp \
-		Prop.hpp \
-		Tile.hpp \
-		Speaker.hpp \
-		Background.hpp \
-		SceneChanger.hpp \
-		Fairy.hpp \
-		Effect.hpp \
-		Scene.hpp \
-		Enemy.hpp \
-		Octorok.hpp \
-		RockProjectile.hpp \
-		Weapon.hpp \
-		EnemyPenguin.hpp \
-		Player.hpp \
-		Projectile.hpp \
-		LightSprite.hpp \
-		Light.hpp \
-		TextBoxManager.hpp \
-		TextBox.hpp \
-		Object.hpp \
-		StatsBar.hpp \
-		GUI/Label.hpp \
-		GUI/Widget.hpp \
-		GUI/Frame.hpp \
-		GUI/Button.hpp \
-		GUI/Container.hpp \
-		GUI/Layout.hpp \
-		GUI/VLayout.hpp \
-		GUI/HLayout.hpp \
-		GUI/ImgButton.hpp \
-		GUI/TextButton.hpp \
-		GUI/ImgTextButton.hpp \
-		FairyShoot.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o DungeonDoor.o DungeonDoor.cpp
-
-Button.o: GUI/Button.cpp GUI/Button.hpp \
-		GUI/Widget.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Button.o GUI/Button.cpp
-
-Container.o: GUI/Container.cpp GUI/Container.hpp \
-		GUI/Widget.hpp \
-		GUI/Layout.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Container.o GUI/Container.cpp
-
-Frame.o: GUI/Frame.cpp GUI/Frame.hpp \
-		GUI/Widget.hpp \
-		GUI/Button.hpp \
-		GUI/Container.hpp \
-		GUI/Layout.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Frame.o GUI/Frame.cpp
-
-ImgButton.o: GUI/ImgButton.cpp GUI/ImgButton.hpp \
-		GUI/Label.hpp \
-		GUI/Widget.hpp \
-		GUI/Button.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ImgButton.o GUI/ImgButton.cpp
-
-ImgTextButton.o: GUI/ImgTextButton.cpp GUI/ImgTextButton.hpp \
-		GUI/Label.hpp \
-		GUI/Widget.hpp \
-		GUI/Button.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ImgTextButton.o GUI/ImgTextButton.cpp
-
-Label.o: GUI/Label.cpp GUI/Label.hpp \
-		GUI/Widget.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Label.o GUI/Label.cpp
-
-Layout.o: GUI/Layout.cpp GUI/Layout.hpp \
-		GUI/Widget.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Layout.o GUI/Layout.cpp
-
-TextButton.o: GUI/TextButton.cpp GUI/TextButton.hpp \
-		GUI/Label.hpp \
-		GUI/Widget.hpp \
-		GUI/Button.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TextButton.o GUI/TextButton.cpp
-
-VLayout.o: GUI/VLayout.cpp GUI/VLayout.hpp \
-		GUI/Layout.hpp \
-		GUI/Widget.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o VLayout.o GUI/VLayout.cpp
-
-HLayout.o: GUI/HLayout.cpp GUI/HLayout.hpp \
-		GUI/Layout.hpp \
-		GUI/Widget.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o HLayout.o GUI/HLayout.cpp
-
-Widget.o: GUI/Widget.cpp GUI/Widget.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Widget.o GUI/Widget.cpp
 
 TextBox.o: TextBox.cpp TextBox.hpp \
 		Resources.hpp \
 		utils.hpp \
-		windirent.h \
 		DataManager.hpp \
 		SoundManager.hpp \
 		InputManager.hpp
@@ -1171,53 +502,14 @@ SoundManager.o: SoundManager.cpp SoundManager.hpp
 
 DataManager.o: DataManager.cpp DataManager.hpp \
 		utils.hpp \
-		windirent.h \
 		SoundManager.hpp \
 		InputManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o DataManager.o DataManager.cpp
-
-StatsBar.o: StatsBar.cpp StatsBar.hpp \
-		utils.hpp \
-		windirent.h \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		GUI/Label.hpp \
-		GUI/Widget.hpp \
-		GUI/Frame.hpp \
-		GUI/Button.hpp \
-		GUI/Container.hpp \
-		GUI/Layout.hpp \
-		GUI/VLayout.hpp \
-		GUI/HLayout.hpp \
-		GUI/ImgButton.hpp \
-		GUI/TextButton.hpp \
-		GUI/ImgTextButton.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o StatsBar.o StatsBar.cpp
-
-FairyShoot.o: FairyShoot.cpp FairyShoot.hpp \
-		utils.hpp \
-		windirent.h \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		Weapon.hpp \
-		Collisionable.hpp \
-		Map.hpp \
-		Prop.hpp \
-		Resources.hpp \
-		Tile.hpp \
-		Speaker.hpp \
-		Background.hpp \
-		DungeonDoor.hpp \
-		SceneChanger.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o FairyShoot.o FairyShoot.cpp
 
 TextBoxManager.o: TextBoxManager.cpp TextBoxManager.hpp \
 		TextBox.hpp \
 		Resources.hpp \
 		utils.hpp \
-		windirent.h \
 		DataManager.hpp \
 		SoundManager.hpp \
 		InputManager.hpp
@@ -1226,86 +518,336 @@ TextBoxManager.o: TextBoxManager.cpp TextBoxManager.hpp \
 InputManager.o: InputManager.cpp InputManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o InputManager.o InputManager.cpp
 
-Speaker.o: Speaker.cpp Speaker.hpp \
-		Prop.hpp \
-		Resources.hpp \
+SceneTest.o: SceneTest.cpp SceneTest.hpp \
 		utils.hpp \
-		windirent.h \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		Collisionable.hpp \
-		TextBoxManager.hpp \
-		TextBox.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Speaker.o Speaker.cpp
-
-EnemyPenguin.o: EnemyPenguin.cpp EnemyPenguin.hpp \
-		Enemy.hpp \
-		utils.hpp \
-		windirent.h \
-		DataManager.hpp \
-		SoundManager.hpp \
-		InputManager.hpp \
-		Map.hpp \
-		Prop.hpp \
-		Resources.hpp \
-		Collisionable.hpp \
-		Tile.hpp \
-		Speaker.hpp \
-		Background.hpp \
-		DungeonDoor.hpp \
-		SceneChanger.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o EnemyPenguin.o EnemyPenguin.cpp
-
-SceneCutScene.o: SceneCutScene.cpp SceneCutScene.hpp \
-		utils.hpp \
-		windirent.h \
 		DataManager.hpp \
 		SoundManager.hpp \
 		InputManager.hpp \
 		Scene.hpp \
 		SceneChanger.hpp \
-		GUI/Label.hpp \
-		GUI/Widget.hpp \
-		GUI/Frame.hpp \
-		GUI/Button.hpp \
-		GUI/Container.hpp \
-		GUI/Layout.hpp \
-		GUI/VLayout.hpp \
-		GUI/ImgButton.hpp \
-		GUI/TextButton.hpp \
-		GUI/ImgTextButton.hpp \
-		Game.hpp \
-		Resources.hpp \
-		SceneMenu.hpp \
-		DungeonScene.hpp \
+		SceneSelector.hpp \
+		MyButton.hpp \
+		Resources.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SceneTest.o SceneTest.cpp
+
+Background.o: Background.cpp Background.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp \
+		Resources.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Background.o Background.cpp
+
+ScenePlayable.o: ScenePlayable.cpp Resources.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp \
 		ScenePlayable.hpp \
-		Map.hpp \
-		Prop.hpp \
-		Collisionable.hpp \
-		Tile.hpp \
-		Speaker.hpp \
-		Background.hpp \
-		DungeonDoor.hpp \
-		Fairy.hpp \
-		Effect.hpp \
 		Enemy.hpp \
-		Octorok.hpp \
-		RockProjectile.hpp \
-		Weapon.hpp \
-		EnemyPenguin.hpp \
+		Bullet.hpp \
+		Background.hpp \
 		Player.hpp \
-		Projectile.hpp \
-		LightSprite.hpp \
-		Light.hpp \
+		Eyes.hpp \
+		Hook.hpp \
+		AnimatedCircle.hpp \
+		Scene.hpp \
+		SceneChanger.hpp \
+		EnemyBloc.hpp \
+		EnemyBoss.hpp \
+		EnemyGhost.hpp \
+		EnemyNinja.hpp \
+		EnemyLog.hpp \
+		EnemyBouncy.hpp \
+		EnemyFlying.hpp \
+		EnemySnipper.hpp \
+		EnemyShooter.hpp \
+		EnemyBullet.hpp \
+		ProgressionBar.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ScenePlayable.o ScenePlayable.cpp
+
+Player.o: Player.cpp Player.hpp \
+		Eyes.hpp \
+		Hook.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp \
+		Background.hpp \
+		Resources.hpp \
+		AnimatedCircle.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Player.o Player.cpp
+
+Eyes.o: Eyes.cpp Eyes.hpp \
+		Resources.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Eyes.o Eyes.cpp
+
+Hook.o: Hook.cpp Hook.hpp \
+		Resources.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Hook.o Hook.cpp
+
+AnimatedCircle.o: AnimatedCircle.cpp AnimatedCircle.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o AnimatedCircle.o AnimatedCircle.cpp
+
+Enemy.o: Enemy.cpp Enemy.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp \
+		Bullet.hpp \
+		Resources.hpp \
+		Background.hpp \
+		Player.hpp \
+		Eyes.hpp \
+		Hook.hpp \
+		AnimatedCircle.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Enemy.o Enemy.cpp
+
+Bullet.o: Bullet.cpp Bullet.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp \
+		Resources.hpp \
+		Background.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Bullet.o Bullet.cpp
+
+EnemyBloc.o: EnemyBloc.cpp EnemyBloc.hpp \
+		Enemy.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp \
+		Bullet.hpp \
+		Resources.hpp \
+		Background.hpp \
+		Player.hpp \
+		Eyes.hpp \
+		Hook.hpp \
+		AnimatedCircle.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o EnemyBloc.o EnemyBloc.cpp
+
+EnemyFlying.o: EnemyFlying.cpp EnemyFlying.hpp \
+		Enemy.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp \
+		Bullet.hpp \
+		Resources.hpp \
+		Background.hpp \
+		Player.hpp \
+		Eyes.hpp \
+		Hook.hpp \
+		AnimatedCircle.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o EnemyFlying.o EnemyFlying.cpp
+
+SceneCutScene.o: SceneCutScene.cpp SceneCutScene.hpp \
+		Scene.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp \
+		SceneChanger.hpp \
+		Bullet.hpp \
+		Resources.hpp \
+		Background.hpp \
+		Player.hpp \
+		Eyes.hpp \
+		Hook.hpp \
+		AnimatedCircle.hpp \
 		TextBoxManager.hpp \
-		TextBox.hpp \
-		Object.hpp \
-		StatsBar.hpp \
-		GUI/HLayout.hpp \
-		FairyShoot.hpp \
-		LightedDungeonScene.hpp
+		TextBox.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SceneCutScene.o SceneCutScene.cpp
+
+EnemyBouncy.o: EnemyBouncy.cpp EnemyBouncy.hpp \
+		Enemy.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp \
+		Bullet.hpp \
+		Resources.hpp \
+		Background.hpp \
+		Player.hpp \
+		Eyes.hpp \
+		Hook.hpp \
+		AnimatedCircle.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o EnemyBouncy.o EnemyBouncy.cpp
+
+SceneTemporal.o: SceneTemporal.cpp SceneTemporal.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp \
+		Scene.hpp \
+		SceneChanger.hpp \
+		Resources.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SceneTemporal.o SceneTemporal.cpp
+
+EnemyGhost.o: EnemyGhost.cpp EnemyGhost.hpp \
+		Enemy.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp \
+		Bullet.hpp \
+		Resources.hpp \
+		Background.hpp \
+		Player.hpp \
+		Eyes.hpp \
+		Hook.hpp \
+		AnimatedCircle.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o EnemyGhost.o EnemyGhost.cpp
+
+EnemyNinja.o: EnemyNinja.cpp EnemyNinja.hpp \
+		Enemy.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp \
+		Bullet.hpp \
+		Resources.hpp \
+		Background.hpp \
+		Player.hpp \
+		Eyes.hpp \
+		Hook.hpp \
+		AnimatedCircle.hpp \
+		EnemyLog.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o EnemyNinja.o EnemyNinja.cpp
+
+EnemyLog.o: EnemyLog.cpp EnemyLog.hpp \
+		Enemy.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp \
+		Bullet.hpp \
+		Resources.hpp \
+		Background.hpp \
+		Player.hpp \
+		Eyes.hpp \
+		Hook.hpp \
+		AnimatedCircle.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o EnemyLog.o EnemyLog.cpp
+
+EnemyShooter.o: EnemyShooter.cpp EnemyShooter.hpp \
+		EnemyBullet.hpp \
+		Enemy.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp \
+		Bullet.hpp \
+		Resources.hpp \
+		Background.hpp \
+		Player.hpp \
+		Eyes.hpp \
+		Hook.hpp \
+		AnimatedCircle.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o EnemyShooter.o EnemyShooter.cpp
+
+EnemyBullet.o: EnemyBullet.cpp EnemyBullet.hpp \
+		Enemy.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp \
+		Bullet.hpp \
+		Resources.hpp \
+		Background.hpp \
+		Player.hpp \
+		Eyes.hpp \
+		Hook.hpp \
+		AnimatedCircle.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o EnemyBullet.o EnemyBullet.cpp
+
+EnemySnipper.o: EnemySnipper.cpp EnemySnipper.hpp \
+		Enemy.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp \
+		Bullet.hpp \
+		Resources.hpp \
+		Background.hpp \
+		Player.hpp \
+		Eyes.hpp \
+		Hook.hpp \
+		AnimatedCircle.hpp \
+		EnemyShooter.hpp \
+		EnemyBullet.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o EnemySnipper.o EnemySnipper.cpp
+
+EnemyBoss.o: EnemyBoss.cpp EnemyBoss.hpp \
+		Enemy.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp \
+		Bullet.hpp \
+		Resources.hpp \
+		Background.hpp \
+		Player.hpp \
+		Eyes.hpp \
+		Hook.hpp \
+		AnimatedCircle.hpp \
+		EnemyBloc.hpp \
+		EnemyGhost.hpp \
+		EnemyNinja.hpp \
+		EnemyLog.hpp \
+		EnemyBouncy.hpp \
+		EnemyFlying.hpp \
+		EnemySnipper.hpp \
+		EnemyShooter.hpp \
+		EnemyBullet.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o EnemyBoss.o EnemyBoss.cpp
+
+SceneSelector.o: SceneSelector.cpp SceneSelector.hpp \
+		MyButton.hpp \
+		Resources.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SceneSelector.o SceneSelector.cpp
+
+MyButton.o: MyButton.cpp MyButton.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MyButton.o MyButton.cpp
+
+SceneAnimation.o: SceneAnimation.cpp SceneAnimation.hpp \
+		Scene.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp \
+		SceneChanger.hpp \
+		Bullet.hpp \
+		Resources.hpp \
+		Background.hpp \
+		Player.hpp \
+		Eyes.hpp \
+		Hook.hpp \
+		AnimatedCircle.hpp \
+		TextBoxManager.hpp \
+		TextBox.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SceneAnimation.o SceneAnimation.cpp
+
+ProgressionBar.o: ProgressionBar.cpp ProgressionBar.hpp \
+		Resources.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ProgressionBar.o ProgressionBar.cpp
 
 ####### Install
 

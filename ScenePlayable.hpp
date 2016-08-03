@@ -12,8 +12,10 @@
 #include "EnemyNinja.hpp"
 #include "EnemyBouncy.hpp"
 #include "EnemyFlying.hpp"
+#include "LifeCounter.hpp"
 #include "EnemySnipper.hpp"
 #include "ProgressionBar.hpp"
+
 
 class Game;
 
@@ -54,15 +56,16 @@ private:
     sf::Texture _t;
     int _hatsOwned;
     Player* _player;
-    float _caveTimer[3];
     int _hatshits[3];
     int _hatsAchieved;
     float _shootTimer;
     std::string _prev;
     std::string _next;
+    float _caveTimer[3];
     sf::Sprite _hats[3];
     sf::Texture _hatsT[3];
     std::string _levelName;
+    LifeCounter _lifeCounter;
     sf::Sprite _playerHatSprite;
     sf::Texture _playerHatTexture;
     ProgressionBar _progressionBar;

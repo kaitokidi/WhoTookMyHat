@@ -131,7 +131,7 @@ bool Effect::loadSpriteSheet(sf::Image image, float rows, float columns, int las
 
 
 bool Effect::loadFrame(std::string name, int position) {
-    if(position >= animation.size()) return false;
+    if(size_t(position) >= animation.size()) return false;
     return animation[position].loadFromFile(name);
 }
 
@@ -143,7 +143,7 @@ bool Effect::loadFrame(std::string name) {
 }
 
 bool Effect::loadFrame(sf::Texture & text, int position) {
-    if(position >= animation.size()) return false;
+    if(size_t(position) >= animation.size()) return false;
     animation[position] = sf::Texture(text);
     return true;
 }

@@ -43,7 +43,8 @@ SOURCES += main.cpp \
     SceneSelector.cpp \
     MyButton.cpp \
     SceneAnimation.cpp \
-    ProgressionBar.cpp
+    ProgressionBar.cpp \
+    LifeCounter.cpp
 
 HEADERS += utils.hpp \
         Resources.cpp \
@@ -81,4 +82,5 @@ HEADERS += utils.hpp \
     SceneSelector.hpp \
     MyButton.hpp \
     SceneAnimation.hpp \
-    ProgressionBar.hpp
+    ProgressionBar.hpp \
+    LifeCounter.hpp

@@ -1,12 +1,12 @@
 cave3
-0
+3
 hat7.png
 hat8.png
 hat9.png
 timer
-20
-20
-20
+200
+300
+500
 spawn
 514
 50

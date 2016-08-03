@@ -10,7 +10,8 @@ colisió bullet _hat
 
 scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string previous, std::string levelName, std::string next, Player *player)
                                                     : Scene(g, w, sceneTypes::testScene, levelName),
-                                                      _progressionBar(sf::FloatRect(150,10,700,20))  {
+                                                      _progressionBar(sf::FloatRect(150,10,700,20)),
+                                                      _lifeCounter(sf::Vector2f(430,720)) {
     _next = next;
     _hatsOwned = 0;
     _player = player;
@@ -264,6 +265,10 @@ void scenePlayable::update(float deltaTime){
 
     //PLAYING
     if(_playing){
+
+        _lifeCounter.setLifes(_player->getHP());
+        _lifeCounter.Update(deltaTime);
+
         bg._doorOpenedL = false;
         bg._doorOpenedR = false;
 
@@ -479,6 +484,7 @@ void scenePlayable::writteLVL(int lvl){
 void scenePlayable::render(sf::RenderTarget *target){
     bg.draw(target);
     if(_playing) _progressionBar.Draw(target);
+    if(_playing) _lifeCounter.Draw(target);
     //draw player
     _player->draw(target);
 

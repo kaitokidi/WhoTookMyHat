@@ -81,7 +81,6 @@ void m_log(const Args&... args) {
     std::cout << "]" << std::endl;
 }
 
-
 //movement dir { down, left, right, up , none };
 namespace direction {
     enum dir { down, left, right, up , none };

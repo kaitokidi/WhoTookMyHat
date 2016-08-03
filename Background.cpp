@@ -23,7 +23,7 @@ bool Background::colision(float x, float y){
 }
 
 bool Background::colision(sf::Vector2f pos) {
-    for(int i = 0; i < _boundaries.size(); ++i){
+    for(size_t i = 0; i < _boundaries.size(); ++i){
         if(_boundaries[i].contains(pos)) return true;
     }
     return false;
@@ -45,7 +45,7 @@ void Background::draw(sf::RenderTarget *target){
 
     //DEBUG DRAW RED RECTANGLES
    if(DEBUGDRAW) {
-   for(int i = 0; i < _boundaries.size(); ++i){
+   for(size_t i = 0; i < _boundaries.size(); ++i){
         sf::RectangleShape RS(sf::Vector2f(_boundaries[i].width,_boundaries[i].height));
         RS.setPosition(sf::Vector2f(_boundaries[i].left,_boundaries[i].top));
         RS.setOutlineColor(sf::Color(i*10+10,i*20+20,i*30+30));
@@ -58,7 +58,7 @@ void Background::draw(sf::RenderTarget *target){
 }
 
 bool Background::circleColision(sf::Vector2f pos, float rad) {
-    for(int i = 0; i < _boundaries.size(); ++i){
+    for(size_t i = 0; i < _boundaries.size(); ++i){
 
         if(    _boundaries[i].contains(pos.x+rad, pos.y)
             || _boundaries[i].contains(pos.x-rad, pos.y)
@@ -78,7 +78,7 @@ bool Background::circleColision(sf::Vector2f pos, float rad) {
 
 
 bool Background::rectangleColision(sf::FloatRect rect){
-    for(int i = 0; i < _boundaries.size(); ++i){
+    for(size_t i = 0; i < _boundaries.size(); ++i){
         if(   _boundaries[i].contains(rect.left, rect.top)
            || _boundaries[i].contains(rect.left+rect.width, rect.top)
            || _boundaries[i].contains(rect.left, rect.top+rect.height)
@@ -143,7 +143,7 @@ sf::Vector2i Background::getIntersection(sf::Vector2i position, sf::Vector2i mou
 
     point pos(position.x, position.y);
     point vec(mousePos.x - position.x, mousePos.y - position.y);
-    for(int i = 0; i < _boundaries.size(); ++i){
+    for(size_t i = 0; i < _boundaries.size(); ++i){
 
         point a, b;
 
@@ -206,7 +206,7 @@ sf::Vector2f Background::getVectorFromCircleColision(sf::Vector2f &direction, sf
     direction.x = direction.x / getModule(sf::Vector2f(0,0), direction);
     direction.y = direction.y / getModule(sf::Vector2f(0,0), direction);
 
-    for(int i = 0; i < _boundaries.size(); ++i){
+    for(size_t i = 0; i < _boundaries.size(); ++i){
         float left, right, top, bot;
         top = _boundaries[i].top;
         left = _boundaries[i].left;
@@ -329,7 +329,7 @@ sf::Vector2i Background::getIntersection(sf::Vector2i mousePos){
 
     sf::Vector2i ret(1,1);
 
-    for(int i = 0; i < _boundaries.size(); ++i){
+    for(size_t i = 0; i < _boundaries.size(); ++i){
         if(_boundaries[i].contains(sf::Vector2f(mousePos.x,mousePos.y))){
             ret.x = _boundaries[i].left;
             ret.y = _boundaries[i].top;

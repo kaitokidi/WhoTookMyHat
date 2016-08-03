@@ -13,6 +13,7 @@ public:
     static sf::Texture log;
     static sf::Texture boss;
     static sf::Texture eyes;
+    static sf::Texture heart;
     static sf::Texture enemy;
     static sf::Texture chain;
     static sf::Texture ghost;

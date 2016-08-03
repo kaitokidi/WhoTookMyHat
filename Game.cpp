@@ -1,7 +1,8 @@
 #include "Game.hpp"
 //getFullscreenModes()[0]
 
-static const std::string FIRSTSCENE = "test";
+//static const std::string FIRSTSCENE = "test";
+static const std::string FIRSTSCENE = "level1";
 
 Game::Game() : _window(sf::VideoMode::getDesktopMode(),"WhoTookMyHat", sf::Style::Close | sf::Style::Fullscreen) {
     _window.setFramerateLimit(FRAMERATE);
@@ -111,8 +112,7 @@ void Game::loadScenes() {
     _scenes.insert(std::make_pair("cutScene7", new SceneCutScene(this, & _window, "level3", "cutScene7", "level4", &_player)));
     _scenes.insert(std::make_pair("level4",    new scenePlayable(this, & _window, "cutScene7", "level4", "level5", &_player)));
     _scenes.insert(std::make_pair("level5",    new scenePlayable(this, & _window, "level4", "level5", "End", &_player)));
-    _scenes.insert(std::make_pair("End", new SceneTemporal(this, &_window, "test2", 10, "", "End.png")));
-
+    _scenes.insert(std::make_pair("End", new SceneTemporal(this, &_window, "test", 10, "", "End.png")));
 
 }
 

@@ -7,6 +7,7 @@ sf::Texture            Resources::key;
 sf::Texture            Resources::log;
 sf::Texture            Resources::boss;
 sf::Texture            Resources::eyes;
+sf::Texture            Resources::heart;
 sf::Texture            Resources::enemy;
 sf::Texture            Resources::chain;
 sf::Texture            Resources::ghost;
@@ -47,8 +48,9 @@ void Resources::load() {
     //...loadFromFile(); or whatever
     if(! key.loadFromFile                    (TEXTURETPATH+std::string("key.png"))        ) printError("keyTex");
     if(! log.loadFromFile                    (TEXTURETPATH+std::string("log.png"))        ) printError("logTex");
-    if(! eyes.loadFromFile                   (TEXTURETPATH+std::string("eyes.png"))       ) printError("eyesTex");
     if(! boss.loadFromFile                   (TEXTURETPATH+std::string("boss.png"))       ) printError("bossTex");
+    if(! eyes.loadFromFile                   (TEXTURETPATH+std::string("eyes.png"))       ) printError("eyesTex");
+    if(! heart.loadFromFile                  (TEXTURETPATH+std::string("vida.png"))       ) printError("heartTex");
     if(! enemy.loadFromFile                  (TEXTURETPATH+std::string("enemy.png"))      ) printError("enemyTex");
     if(! chain.loadFromFile                  (TEXTURETPATH+std::string("hook.png"))       ) printError("chainTex");
     if(! ghost.loadFromFile                  (TEXTURETPATH+std::string("ghost.png"))      ) printError("ghostTex");

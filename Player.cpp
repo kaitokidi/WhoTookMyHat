@@ -24,6 +24,8 @@ void Player::setHittedTimer(float hittedTimer){ _hittedTimer = hittedTimer; }
 
 Player::Player(): body(40,100), guide(10,100){
     _hp = 5;
+    pos.x = 0;
+    pos.y = 0;
     angle = 0;
     _index = 0;
     radius = 35;
@@ -31,12 +33,16 @@ Player::Player(): body(40,100), guide(10,100){
     lastUpdate = 0;
     speed = PLAYERSPEED;
 
+    jumping = false;
     hooking = false;
+    _hitted = false;
+    _destroying = false;
     hookPos.x = hookPos.y = 1;
     hook.setOrigin(hookPos);
     hook.setDestiny(hookPos);
 
-    vel.x = vel.y = 0.01;
+    vel.x = 0.01;
+    vel.y = 0.01;
     cameraPos = mousePos = sf::Vector2f(0,0);
 
     body.setColor(sf::Color(100,100,100));
@@ -80,7 +86,7 @@ void Player::updateSprite(){
 
     if(_animTimer.getElapsedTime().asSeconds() > ANIMTIMER){
         ++_index;
-        if( _index > _destroyAnim->size() ) {
+        if( size_t(_index) > _destroyAnim->size() ) {
             _destroying = false; _index = 0;
             _hp = 5;
             hat.setTexture(Resources::none[0]);
@@ -105,7 +111,7 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
     angle = std::atan2(dY,dX)*180/M_PI;
 
     extern int hardmode;
-    if((! jumping) && (!hardmode) &&
+    if((!jumping) && (!hardmode) &&
            (InputManager::action(InputAction::up) > 0 ||
             InputManager::action(InputAction::movementY) < -0.5)
             ){
@@ -208,7 +214,7 @@ void Player::hit(int damage){
 }
 
 bool Player::isDead(){
-    return _hp <= 0 && _index >= _destroyAnim->size();
+    return _hp <= 0 && size_t(_index) >= _destroyAnim->size();
 }
 
 float Player::getSpeed() const { return speed; }
@@ -228,11 +234,6 @@ sf::Vector2f Player::getPosition() { return body.getPosition(); }
 sf::Vector2f Player::getGuidePosition() { return guide.getPosition(); }
 
 void Player::draw(sf::RenderTarget * w){
-    sf::Vector2f guiaPos;
-    guiaPos.x = body.getPosition().x + std::cos(angle*M_PI/180) * (body.getRadius() + guide.getRadius() + 10);
-    guiaPos.y = body.getPosition().y + std::sin(angle*M_PI/180) * (body.getRadius() + guide.getRadius() + 10);
-    guide.setPosition(guiaPos);
-
     sf::Vector2f hatpos;
     float anglehat = -(90+35);
     hatpos.x = body.getPosition().x + std::cos(anglehat*M_PI/180) * (body.getRadius());
@@ -240,21 +241,28 @@ void Player::draw(sf::RenderTarget * w){
     hat.setRotation(-1*vel.x);
     hat.setPosition(hatpos);
 
-    if(hooking) hook.draw(w);
-    body.draw(w);
-    eyes.draw(w);
-    if(hitted()){
-        float aux = hittedTimer();
-        Resources::cInvert.setParameter("deltaTime", aux);
-        if (int(aux*10) %3 != 0) {
-            w->draw(hat,&Resources::cInvert);
+    sf::Vector2f guiaPos;
+    //if(! isDead() && !_destroying ){
+    guiaPos.x = body.getPosition().x + std::cos(angle*M_PI/180) * (body.getRadius() + guide.getRadius() + 10);
+    guiaPos.y = body.getPosition().y + std::sin(angle*M_PI/180) * (body.getRadius() + guide.getRadius() + 10);
+        guide.setPosition(guiaPos);
+
+        if(hooking) hook.draw(w);
+        body.draw(w);
+        eyes.draw(w);
+        if(hitted()){
+            float aux = hittedTimer();
+            Resources::cInvert.setParameter("deltaTime", aux);
+            if (int(aux*10) %3 != 0) {
+                w->draw(hat,&Resources::cInvert);
+            }else {
+                w->draw(hat);
+            }
         }else {
             w->draw(hat);
         }
-    }else {
-        w->draw(hat);
-    }
-    guide.draw(w);
+        guide.draw(w);
+    //}
 
     if(DEBUGDRAW){
         sf::CircleShape O;

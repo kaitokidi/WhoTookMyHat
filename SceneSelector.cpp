@@ -4,6 +4,7 @@
 
 SceneSelector::SceneSelector() {
     open = true;
+    wantAnimation = true;
 }
 
 SceneSelector::~SceneSelector(){}

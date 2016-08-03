@@ -72,9 +72,9 @@ void SceneCutScene::processInput() {
 
 std::string gettextqtty(int ppos, int max, std::string s){
     float rate = float(ppos)/float(max);
-    int value = s.size()*rate;
+    size_t value = s.size()*rate;
     std::string aux;
-    for(int i = 0; i < value && i < s.size(); ++i) aux.push_back(s[i]);
+    for(size_t i = 0; i < value && i < s.size(); ++i) aux.push_back(s[i]);
     return aux;
 }
 

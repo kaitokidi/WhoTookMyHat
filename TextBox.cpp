@@ -220,6 +220,5 @@ bool TextBox::hasBeenClicked(){
 
 void TextBox::setSize(float x, float y){ setSize(sf::Vector2f(x,y)); }
 void TextBox::setSize(sf::Vector2f size){
-    //std::cout << "setSize" << std::endl;
     sprite.setScale(size.x/sprite.getLocalBounds().width, size.y/sprite.getLocalBounds().height);
 }

@@ -120,8 +120,8 @@ void Enemy::updateSprite(bool alive){
 
     if(_animTimer.getElapsedTime().asSeconds() > ANIMTIMER){
         ++_index;
-        if(    (_alive && _index >= _spawnAnimation->size() )
-            || (!_alive && _index >= _destroyAnimation->size() ) ) {
+        if(    (_alive && size_t(_index) >= _spawnAnimation->size() )
+            || (!_alive && size_t(_index) >= _destroyAnimation->size() ) ) {
 
             if(_destroying) _destroying = _alive = false;
             else _spawning = false;

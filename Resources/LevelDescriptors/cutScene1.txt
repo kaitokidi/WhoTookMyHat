@@ -5,7 +5,6 @@ Default
 CAT
 Benvingut 
 A la COVA dels BARRETS!!!
-
 per moure pots clicar
 [A] i [D] o el joystick
 esquerre del comandament
@@ -15,7 +14,6 @@ OK
 ENG
 Welcome
 At the HAT CAVE!!!
-     
 to move you can press
 [A] and [D] or the left
 joystick on the controller
@@ -25,7 +23,6 @@ OK
 ESP
 Bienvenido
 A la CUEVA de los SOMBREROS!
-       
 para moverte usa 
 [A] y [D] o el joystick
 izquierdo del mando

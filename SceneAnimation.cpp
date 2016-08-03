@@ -21,6 +21,7 @@ SceneAnimation::SceneAnimation(Game *g, sf::RenderWindow *w, std::string previou
     _next = next;
     _prev = previous;
     _levelName = levelName;
+    _waiting = false;
     //init();
 }
 
@@ -54,7 +55,6 @@ void SceneAnimation::update(float deltaTime){
         }else {
             for(size_t i = 0; i < _names.size(); ++i){
                 if(_names[i] == name){
-                    //log(name,"----->",order);
                     if(_elements[i]->currentAction.size() > 0){
                         _elements[i]->actionQueue.push(_orders[0]);
                     }else {
@@ -63,7 +63,6 @@ void SceneAnimation::update(float deltaTime){
                     }
                 }
             }
-            //log("end loop");
         }
         _orders.erase(_orders.begin());
     }
@@ -131,6 +130,7 @@ void readLine(std::ifstream& myfile, std::string& line){
     std::getline (myfile,line);
     while(line.size() == 0 || line[0] == '#') std::getline(myfile,line);
 }
+
 void SceneAnimation::readLVL(std::string levelName){
     std::string line;
     std::ifstream myfile (LVLDESCIPTPATH+levelName+".txt");
