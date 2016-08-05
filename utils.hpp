@@ -2,6 +2,8 @@
 #define __UTILS_HPP__
 
 #define FRAMERATE 60
+#define PLAYERHPHARD 3
+#define PLAYERHPNORMAL 5
 
 #define DATAPATH "Resources/Data/"
 #define TEXTPATH "Resources/Texts/"

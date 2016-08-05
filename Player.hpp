@@ -53,6 +53,9 @@ public:
     float hittedTimer() const;
     void setHittedTimer(float hittedTimer);
 
+    int maxHp() const;
+    void setMaxHp(int maxHp);
+
 protected:
 
     //Eyes
@@ -72,6 +75,7 @@ protected:
     float _hittedTimer;
 
     int _hp;
+    int _maxHp;
     int _index;
     int _actualHat;
 

@@ -21,9 +21,21 @@ void Player::setHitted(bool hitted){ _hitted = hitted; }
 float Player::hittedTimer() const{ return _hittedTimer; }
 
 void Player::setHittedTimer(float hittedTimer){ _hittedTimer = hittedTimer; }
+int Player::maxHp() const
+{
+    return _maxHp;
+}
+
+void Player::setMaxHp(int maxHp)
+{
+    _maxHp = maxHp;
+    _hp = maxHp;
+}
+
 
 Player::Player(): body(40,100), guide(10,100){
-    _hp = 5;
+    _maxHp = 5;
+    _hp = _maxHp;
     pos.x = 0;
     pos.y = 0;
     angle = 0;
@@ -88,7 +100,7 @@ void Player::updateSprite(){
         ++_index;
         if( size_t(_index) > _destroyAnim->size() ) {
             _destroying = false; _index = 0;
-            _hp = 5;
+            _hp = _maxHp;
             hat.setTexture(Resources::none[0]);
         }
         _animTimer.restart();
@@ -242,7 +254,7 @@ void Player::draw(sf::RenderTarget * w){
     hat.setPosition(hatpos);
 
     sf::Vector2f guiaPos;
-    //if(! isDead() && !_destroying ){
+    if(! isDead() && !_destroying ){
     guiaPos.x = body.getPosition().x + std::cos(angle*M_PI/180) * (body.getRadius() + guide.getRadius() + 10);
     guiaPos.y = body.getPosition().y + std::sin(angle*M_PI/180) * (body.getRadius() + guide.getRadius() + 10);
         guide.setPosition(guiaPos);
@@ -250,20 +262,23 @@ void Player::draw(sf::RenderTarget * w){
         if(hooking) hook.draw(w);
         body.draw(w);
         eyes.draw(w);
-        if(hitted()){
-            float aux = hittedTimer();
-            Resources::cInvert.setParameter("deltaTime", aux);
-            if (int(aux*10) %3 != 0) {
-                w->draw(hat,&Resources::cInvert);
-            }else {
-                w->draw(hat);
-            }
+    }
+
+    if(hitted()){
+        float aux = hittedTimer();
+        Resources::cInvert.setParameter("deltaTime", aux);
+        if (int(aux*10) %3 != 0) {
+            w->draw(hat,&Resources::cInvert);
         }else {
             w->draw(hat);
         }
-        guide.draw(w);
-    //}
+    }else {
+        w->draw(hat);
+    }
 
+    if(! isDead() && !_destroying ){
+        guide.draw(w);
+    }
     if(DEBUGDRAW){
         sf::CircleShape O;
         O.setRadius(guide.getRadius());

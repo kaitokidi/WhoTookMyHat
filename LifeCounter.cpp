@@ -11,7 +11,7 @@ LifeCounter::LifeCounter(sf::Vector2f pos){
 }
 
 void LifeCounter::init(){
-    _lifes = 5;
+    _lifes = hardmode? PLAYERHPHARD: PLAYERHPNORMAL;
     _hitted = false;
     _scale = 1;
     _position.x = 0;

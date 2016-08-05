@@ -51,6 +51,8 @@ void scenePlayable::init(sf::Vector2f){
     _hatsAchieved = value;
     inf.close();
 
+    _player->setMaxHp(hardmode? PLAYERHPHARD: PLAYERHPNORMAL);
+
 }
 
 scenePlayable::~scenePlayable(){
