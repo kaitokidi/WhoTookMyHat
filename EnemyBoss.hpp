@@ -2,18 +2,12 @@
 #define ENEMYBOSS_HPP
 #include "Enemy.hpp"
 #include "Player.hpp"
-#include "EnemyBloc.hpp"
 #include "Background.hpp"
-#include "EnemyGhost.hpp"
-#include "EnemyNinja.hpp"
-#include "EnemyBouncy.hpp"
-#include "EnemyFlying.hpp"
-#include "EnemySnipper.hpp"
 
 
 class EnemyBoss : public Enemy{
 public:
-    EnemyBoss(std::list<Enemy *> *e, Player *p);
+    EnemyBoss(std::list<Enemy *> *e, Player *p, Background* bg);
 
     virtual void hit();
     virtual void init();
@@ -23,6 +17,7 @@ public:
 protected:
 
     Player* _player;
+    Background* _bg;
     direction::dir _dir;
     std::list<Enemy *>* _enem;
     float _movementScaler;

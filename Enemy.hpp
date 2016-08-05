@@ -19,6 +19,7 @@ public:
     virtual void updateSprite(bool alive);
     virtual void update(float deltaTime, Background* bg);
     virtual void movement(float deltaTime, Background *bg);
+    virtual void setInitialPosition(sf::Vector2f position, Background* bg);
 
 
     bool hitted() const;

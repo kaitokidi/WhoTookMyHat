@@ -21,12 +21,12 @@ next
 0
 702
 1024
-100
+800
 next
 #limit right
 984
 0
-40
+400
 770
 end
 $ End Of Description File

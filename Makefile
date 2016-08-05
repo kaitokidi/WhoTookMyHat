@@ -82,7 +82,8 @@ SOURCES       = main.cpp \
 		SceneSelector.cpp \
 		MyButton.cpp \
 		SceneAnimation.cpp \
-		ProgressionBar.cpp 
+		ProgressionBar.cpp \
+		LifeCounter.cpp 
 OBJECTS       = main.o \
 		utils.o \
 		Resources.o \
@@ -120,7 +121,8 @@ OBJECTS       = main.o \
 		SceneSelector.o \
 		MyButton.o \
 		SceneAnimation.o \
-		ProgressionBar.o
+		ProgressionBar.o \
+		LifeCounter.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -378,6 +380,7 @@ main.o: main.cpp Game.hpp \
 		EnemySnipper.hpp \
 		EnemyShooter.hpp \
 		EnemyBullet.hpp \
+		LifeCounter.hpp \
 		ProgressionBar.hpp \
 		SceneCutScene.hpp \
 		SceneAnimation.hpp \
@@ -428,6 +431,7 @@ Game.o: Game.cpp Game.hpp \
 		EnemySnipper.hpp \
 		EnemyShooter.hpp \
 		EnemyBullet.hpp \
+		LifeCounter.hpp \
 		ProgressionBar.hpp \
 		SceneCutScene.hpp \
 		SceneAnimation.hpp \
@@ -465,6 +469,7 @@ Scene.o: Scene.cpp Scene.hpp \
 		EnemySnipper.hpp \
 		EnemyShooter.hpp \
 		EnemyBullet.hpp \
+		LifeCounter.hpp \
 		ProgressionBar.hpp \
 		SceneCutScene.hpp \
 		SceneAnimation.hpp \
@@ -563,6 +568,7 @@ ScenePlayable.o: ScenePlayable.cpp Resources.hpp \
 		EnemySnipper.hpp \
 		EnemyShooter.hpp \
 		EnemyBullet.hpp \
+		LifeCounter.hpp \
 		ProgressionBar.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ScenePlayable.o ScenePlayable.cpp
 
@@ -848,6 +854,14 @@ ProgressionBar.o: ProgressionBar.cpp ProgressionBar.hpp \
 		SoundManager.hpp \
 		InputManager.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ProgressionBar.o ProgressionBar.cpp
+
+LifeCounter.o: LifeCounter.cpp LifeCounter.hpp \
+		Resources.hpp \
+		utils.hpp \
+		DataManager.hpp \
+		SoundManager.hpp \
+		InputManager.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o LifeCounter.o LifeCounter.cpp
 
 ####### Install
 

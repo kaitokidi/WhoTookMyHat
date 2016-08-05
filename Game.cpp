@@ -2,7 +2,7 @@
 //getFullscreenModes()[0]
 
 //static const std::string FIRSTSCENE = "test";
-static const std::string FIRSTSCENE = "level1";
+static const std::string FIRSTSCENE = "level5";
 
 Game::Game() : _window(sf::VideoMode::getDesktopMode(),"WhoTookMyHat", sf::Style::Close | sf::Style::Fullscreen) {
     _window.setFramerateLimit(FRAMERATE);

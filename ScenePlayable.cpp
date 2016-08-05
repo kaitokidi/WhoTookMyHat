@@ -127,7 +127,7 @@ void scenePlayable::readEnemies(int lvl) {
                                 _enemyPull.back()->setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
                                 break;
                                 case 'm': //monster final boss
-                                _enemyPull.push(new EnemyBoss(& _enemies, _player));
+                                _enemyPull.push(new EnemyBoss(& _enemies, _player,& bg));
                                 _enemyPull.back()->setPosition(sf::Vector2f(_spawnPoint.x, _spawnPoint.y));
                                 default:
                                 break;
@@ -333,11 +333,11 @@ void scenePlayable::update(float deltaTime){
                (*ite)->hit(); _player->hit();
            }
            else for(; itb != _bullets.end() && ite != _enemies.end();){
-
                //check enemy and bullet colision
                if((*ite)->colides(&(*itb))  && (*ite)->colisionable()){
                    itb = _bullets.erase(itb);
-                   (*ite)->hit();
+//TODO:remove impact
+                   (*ite)->hit(); (*ite)->hit();(*ite)->hit();(*ite)->hit();(*ite)->hit();
                }
                else ++itb;
 

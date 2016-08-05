@@ -3,10 +3,11 @@
 #define ANIMTIMER 0.10
 #define HITEDTIMER 0.91
 #define ENEMROTATION 40
+#define ENEMYMAXHP 4
 
 Enemy::Enemy(){
 
-    _hp = 4;
+    _hp = ENEMYMAXHP;
     _index = 0;
 
     _alive = true;
@@ -156,6 +157,46 @@ void Enemy::movement(float deltaTime, Background *bg) {
 
 
 }
+
+void Enemy::setInitialPosition(sf::Vector2f position, Background* bg) {
+    setPosition(position);
+    if(bg->rectangleColision(sf::FloatRect(getGlobalBounds()))){
+        int i = 1;
+        int movx = 10;
+        int movy = 10;
+        while(bg->rectangleColision(sf::FloatRect(getGlobalBounds()))){
+            log("notOK, while", i,getGlobalBounds().left,getGlobalBounds().top, getGlobalBounds().width, getGlobalBounds().height);
+              move(i*movx, 0);//R
+              log("R");
+              if(! bg->rectangleColision(sf::FloatRect(getGlobalBounds()))) return;
+              setPosition(sf::Vector2f(position.x-2*i*movx,position.y)); //move(-2*i*movx,0);//L
+              log("L");
+              if(! bg->rectangleColision(sf::FloatRect(getGlobalBounds()))) return;
+              move(i*movx,0);//-
+              move(0, i*movy);//D
+              log("D");
+              if(! bg->rectangleColision(sf::FloatRect(getGlobalBounds()))) return;
+              setPosition(sf::Vector2f(position.x,position.y-i*movy)); //move(0, -2*i*movy);//U
+              log("U");
+              if(! bg->rectangleColision(sf::FloatRect(getGlobalBounds()))) return;
+              move(i*movx, 0); //UR
+              log("UR");
+              if(! bg->rectangleColision(sf::FloatRect(getGlobalBounds()))) return;
+              move(-2*i*movx,0); //UL
+              log("UL");
+              if(! bg->rectangleColision(sf::FloatRect(getGlobalBounds()))) return;
+              move(0,2*i*movy); //DL
+              log("DL");
+              if(! bg->rectangleColision(sf::FloatRect(getGlobalBounds()))) return;
+              move(2*i*movx,0); //DR
+              log("DR");
+              if(! bg->rectangleColision(sf::FloatRect(getGlobalBounds()))) return;
+              move(-i*movx,-i*movy); //base
+              ++i;
+        }
+    }else log("totOK",getGlobalBounds().left,getGlobalBounds().top, getGlobalBounds().width, getGlobalBounds().height);
+}
+
 bool Enemy::hitted() const { return _hitted; }
 float Enemy::hittedTimer() const{ return _hittedTimer; }
 
