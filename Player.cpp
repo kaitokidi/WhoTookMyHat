@@ -21,17 +21,14 @@ void Player::setHitted(bool hitted){ _hitted = hitted; }
 float Player::hittedTimer() const{ return _hittedTimer; }
 
 void Player::setHittedTimer(float hittedTimer){ _hittedTimer = hittedTimer; }
-int Player::maxHp() const
-{
-    return _maxHp;
-}
+int Player::maxHp() const { return _maxHp; }
 
 void Player::setMaxHp(int maxHp)
 {
     _maxHp = maxHp;
     _hp = maxHp;
+    _index = 0;
 }
-
 
 Player::Player(): body(40,100), guide(10,100){
     _maxHp = 5;
@@ -99,9 +96,10 @@ void Player::updateSprite(){
     if(_animTimer.getElapsedTime().asSeconds() > ANIMTIMER){
         ++_index;
         if( size_t(_index) > _destroyAnim->size() ) {
-            _destroying = false; _index = 0;
-            _hp = _maxHp;
+            _destroying = false;
             hat.setTexture(Resources::none[0]);
+            //_index = 0;
+            //_hp = _maxHp;
         }
         _animTimer.restart();
     }
@@ -114,7 +112,6 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
             updateSprite();
             return;
     }
-
     mousePos.x = auxMousePos.x;
     mousePos.y = auxMousePos.y;
 
@@ -215,6 +212,8 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
 
     getSpeed();
     updateHits(deltaTime);
+
+    _destroying = (_hp <= 0);
 
 }
 

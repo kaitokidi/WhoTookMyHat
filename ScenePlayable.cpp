@@ -24,6 +24,7 @@ scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string previous,
 
 void scenePlayable::init(sf::Vector2f){
 
+    readLVL(_levelName);
     _timer = 0;
     _view = _window->getDefaultView();
     initView(&_view, sf::Vector2i(1024,768));
@@ -285,11 +286,12 @@ void scenePlayable::update(float deltaTime){
         }
         else {
            //s'han acabat els enemics
-           if(_enemies.empty() && _enemyPull.empty()) {
+           if(_enemies.empty() && _enemyPull.empty() && !_player->isDead()) {
                _playing = false;
                _picking = true;
                for(int i = 0; i < 3; ++i) { _hatshits[i] = 0; _hats[i].setScale(sf::Vector2f(1.0,1.0)); _hats[i].setRotation(0);}
                //_hatsOwned = (_hatsOwned + 1);
+               log("enemics finished ", std::min(_hatsOwned,3));
                writteLVL(std::min(_hatsOwned,3));
            }
        }
