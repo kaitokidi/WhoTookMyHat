@@ -291,7 +291,7 @@ void scenePlayable::update(float deltaTime){
                _picking = true;
                for(int i = 0; i < 3; ++i) { _hatshits[i] = 0; _hats[i].setScale(sf::Vector2f(1.0,1.0)); _hats[i].setRotation(0);}
                //_hatsOwned = (_hatsOwned + 1);
-               log("enemics finished ", std::min(_hatsOwned,3));
+               //log("enemics finished ", std::min(_hatsOwned,3));
                writteLVL(std::min(_hatsOwned,3));
            }
        }
