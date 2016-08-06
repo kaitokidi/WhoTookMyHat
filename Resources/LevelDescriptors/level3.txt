@@ -1,5 +1,5 @@
 cave3
-3
+0
 hat7.png
 hat8.png
 hat9.png
