@@ -4,9 +4,9 @@ hat1.png
 hat2.png
 hat3.png
 timer
-200
-400
-500
+100
+50
+50
 spawn
 450
 170

@@ -338,13 +338,10 @@ void scenePlayable::update(float deltaTime){
                //check enemy and bullet colision
                if((*ite)->colides(&(*itb))  && (*ite)->colisionable()){
                    itb = _bullets.erase(itb);
-//TODO:remove impact
-                   (*ite)->hit(); (*ite)->hit();(*ite)->hit();(*ite)->hit();(*ite)->hit();
+                   (*ite)->hit();
                }
                else ++itb;
-
            }
-
        }
 
        _player->update(deltaTime, sf::Vector2i(_window->mapPixelToCoords(sf::Mouse::getPosition((*_window)),_view)), &bg);

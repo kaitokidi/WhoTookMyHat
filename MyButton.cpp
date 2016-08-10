@@ -12,7 +12,7 @@ void Button::setTextColor(sf::Color c){text.setColor(c); }
 sf::Color Button::getTextColor(){ return text.getColor(); }
 
 void Button::setCharacterSize(size_t u){ text.setCharacterSize(u); }
-uint Button::getCharacterSize(){ return text.getCharacterSize(); }
+size_t Button::getCharacterSize(){ return text.getCharacterSize(); }
 
 void Button::setFont(sf::Font f){ font = f; text.setFont(font); }
 

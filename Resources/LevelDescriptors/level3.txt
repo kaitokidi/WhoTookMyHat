@@ -4,16 +4,16 @@ hat7.png
 hat8.png
 hat9.png
 timer
-200
-300
-500
+45
+40
+75
 spawn
 514
 50
 enemies
 0
-s n s n
-2 2 2 2
+s n s n s
+2 2 2 2 1
 1
 s s w n w s s w
 2 2 2 2 2 1 1 1

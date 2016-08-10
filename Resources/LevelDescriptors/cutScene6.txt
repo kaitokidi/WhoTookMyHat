@@ -6,23 +6,26 @@ CAT
     
 Pata Pata Pata Pon!!!
 anaven cantant... 
-i volien arribar
-a algun lloc...
+
+Qui mata a qui?
+Qui es el dolent del joc?
 OK
 #English language
 ENG
     
 Pata Pata Pata Pon!!!
 They where singing...
-and they where 
-searching something
+
+Who kills who?
+Who is the game's bad guy?
 OK
 #Spanish language
 ESP
      
 Pata Pata Pata Pon!!!
 Iban cantando...
-y buscaban
-alguna cosa tambien...
+
+quien mata a quien?
+quien és el malo del juego?
 OK
 $ End of Descriptor file : )

@@ -4,19 +4,19 @@ Default
 #Catalan language
 CAT
 Recordo que van passar per aqui
-un nano que com tots
-buscava alguna cosa...
+Em pregunto si va arribar a ser el millor...
+per cert... tu tambe mates tocant...
 OK
 #English language
 ENG
 I remember a boy passing this way
-who wanted to be the very best
-at something...
+wonder if he achieved to be the very best
+btw... you do also kill touching...
 OK
 #Spanish language
 ESP
 Recuerdo que paso por aqui 
-un chico que queria ganar
-nose que liga...
+¿habra llegado a ser el mjor?
+por cierto... tu tambien mats tocando...
 OK
 $ End of Descriptor file : )
