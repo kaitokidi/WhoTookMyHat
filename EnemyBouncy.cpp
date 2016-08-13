@@ -25,7 +25,10 @@ void EnemyBouncy::movement(float deltaTime, Background *bg) {
     sf::Vector2f dest(_vel.x * deltaTime, _vel.y * deltaTime);
     if(bg->circleColision( sf::Vector2f( getPosition().x, float(getPosition().y)+dest.y ), 60)){
         //_vel.y = 0;
-        if(_vel.y > 0) _vel.y = - JUMPSPEED - rand()%50;
+        if(_vel.y > 0) {
+            SoundManager::playSound("EnemyBouncy");
+            _vel.y = - JUMPSPEED - rand()%50;
+        }
         else _vel.y = 0;
         setScale(1,0.7);
     } else move(0, dest.y);

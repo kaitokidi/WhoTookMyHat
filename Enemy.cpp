@@ -83,6 +83,7 @@ void Enemy::update(float deltaTime, Background *bg){
 }
 
 void Enemy::dyeing(){
+    SoundManager::playSound("enemyDie");
     //IS INVOKED FROM THE HIT FUNCTION
     //if you implementd hit() be careful to call it if you want this function
 }

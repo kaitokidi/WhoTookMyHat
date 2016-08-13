@@ -124,6 +124,7 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
            (InputManager::action(InputAction::up) > 0 ||
             InputManager::action(InputAction::movementY) < -0.5)
             ){
+        SoundManager::playSound("playerJump");
         vel.y = -constant::playerJump*deltaTime;
         jumping = true;
     }
@@ -140,7 +141,11 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
         vel.x += constant::playerSpeed*deltaTime;
     }
     if( InputManager::action(InputAction::hook) > 0){
-       if(!hooking)setDistantHookPos(auxMousePos, bg);
+       if(!hooking) {
+           setDistantHookPos(auxMousePos, bg);
+           if(rand()%2 == 0) SoundManager::playSound("hook1");
+           else SoundManager::playSound("hook2");
+       }
        hooking = true;
     } else {
        hooking = false;
@@ -219,7 +224,9 @@ void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
 
 void Player::hit(int damage){
     if(!_hitted && !_destroying) {
+        SoundManager::playSound("playerhit");
         _hp -= damage;
+        if(_hp <= 0) SoundManager::playSound("playerDeath");
         _hitted = true;
     }
 }

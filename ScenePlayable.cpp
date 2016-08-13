@@ -237,6 +237,7 @@ void scenePlayable::update(float deltaTime){
                 if(i <= _hatsOwned
                         && _hats[i].getGlobalBounds().contains(it->getPosition())
                    ){
+                    SoundManager::playSound("hat1");
                     ++_hatshits[i];
                     _hats[i].setScale(sf::Vector2f(_hats[i].getScale().x*2,_hats[i].getScale().y*2));
                     kill = true;
@@ -254,6 +255,7 @@ void scenePlayable::update(float deltaTime){
         //Hat hitted
         for(int i = 0; i < 3; ++i){
             if(_hatshits[i] > 1){
+                SoundManager::playSound("hat2");
                 if(_enemyPull.empty()) readEnemies(i);
                 _player->setHat(_hats[i]);
                 _progressionBar.SetMaxTime(_caveTimer[i]);
@@ -332,11 +334,13 @@ void scenePlayable::update(float deltaTime){
 
             itb = _bullets.begin();
            if((*ite)->colides(_player) && (*ite)->colisionable()){
+               SoundManager::playSound("hit");
                (*ite)->hit(); _player->hit();
            }
            else for(; itb != _bullets.end() && ite != _enemies.end();){
                //check enemy and bullet colision
                if((*ite)->colides(&(*itb))  && (*ite)->colisionable()){
+                   SoundManager::playSound("hit");
                    itb = _bullets.erase(itb);
                    (*ite)->hit();
                }
@@ -405,6 +409,7 @@ void scenePlayable::processInput(){
     InputManager::update();
 
     if( InputManager::action(InputAction::shoot) > 0 && _shootTimer > constant::shootMaxTime){
+        SoundManager::playSound("shoot");
         _shootTimer = 0;
         Bullet b;
         if(_picking) b.setPosition(_player->getPosition());
