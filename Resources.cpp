@@ -31,6 +31,7 @@ std::vector<sf::Texture> Resources::puff (9);
 std::vector<sf::Texture> Resources::puff0 (9);
 std::vector<sf::Texture> Resources::spawnAnim (9);
 std::vector<sf::Texture> Resources::destroyAnim (9);
+std::vector<sf::Texture> Resources::destroyBullet (9);
 std::vector<sf::Texture> Resources::destroyPlayer (9);
 
 sf::Shader             Resources::cInvert;
@@ -85,6 +86,9 @@ void Resources::load() {
     }
     for(int i = 0; i < 9; ++i){
         if(! destroyPlayer[i].loadFromFile  (TEXTURETPATH+std::string("puff_player/smoke_puff_000")+std::string(std::to_string(i+1))+std::string(".png") )) printError("destroyplayer");
+    }
+    for(int i = 0; i < 9; ++i){
+        if(! destroyBullet[i].loadFromFile  (TEXTURETPATH+std::string("bullet_puff/smoke_plume_000")+std::string(std::to_string(i+1))+std::string(".png") )) printError("destroybullet");
     }
 
     if (!cInvert.loadFromFile           (SHADERPATH+std::string("invert.frag"), sf::Shader::Fragment)) exit(EXIT_FAILURE);
