@@ -85,19 +85,6 @@ void Game::loadScenes() {
 
     _scenes.insert(std::make_pair("test",    new SceneTest(this, &_window, "portada")));
     _scenes.insert(std::make_pair("portada", new SceneTemporal(this, &_window, "anim0", 5, "", "Portada")));
-    /*
-    _scenes.insert(std::make_pair("s1", new SceneTemporal(this, &_window, "s2", 1, "", "scene1.png")));
-    _scenes.insert(std::make_pair("s2", new SceneTemporal(this, &_window, "s3", 1, "", "scene2.png")));
-    _scenes.insert(std::make_pair("s3", new SceneTemporal(this, &_window, "s4", 1, "", "scene3.png")));
-    _scenes.insert(std::make_pair("s4", new SceneTemporal(this, &_window, "s5", 1, "", "scene4.png")));
-    _scenes.insert(std::make_pair("s5", new SceneTemporal(this, &_window, "s6", 1, "", "scene5.png")));
-    _scenes.insert(std::make_pair("s6", new SceneTemporal(this, &_window, "s7", 1, "", "scene6.png")));
-    _scenes.insert(std::make_pair("s7", new SceneTemporal(this, &_window, "s8", 1, "", "scene7.png")));
-    _scenes.insert(std::make_pair("s8", new SceneTemporal(this, &_window, "s9", 1, "", "scene8.png")));
-    _scenes.insert(std::make_pair("s9", new SceneTemporal(this, &_window, "s10", 1, "", "scene9.png")));
-    _scenes.insert(std::make_pair("s10", new SceneTemporal(this, &_window, "test2", 1, "", "scene10.png")));
-    _scenes.insert(std::make_pair("test2",   new SceneTest(this, &_window, "anim0")));
-    */
     _scenes.insert(std::make_pair("anim0",   new SceneAnimation(this, &_window, "test2", "anim0","cutScene1")));
     _scenes.insert(std::make_pair("cutScene1", new SceneCutScene(this, & _window, "cutScene1", "cutScene1", "cutScene2", &_player)));
     _scenes.insert(std::make_pair("cutScene2", new SceneCutScene(this, & _window, "cutScene1", "cutScene3", "cutScene3", &_player)));
@@ -112,7 +99,28 @@ void Game::loadScenes() {
     _scenes.insert(std::make_pair("cutScene7", new SceneCutScene(this, & _window, "level3", "cutScene7", "level4", &_player)));
     _scenes.insert(std::make_pair("level4",    new scenePlayable(this, & _window, "cutScene7", "level4", "level5", &_player)));
     _scenes.insert(std::make_pair("level5",    new scenePlayable(this, & _window, "level4", "level5", "End", &_player)));
-    _scenes.insert(std::make_pair("End", new SceneTemporal(this, &_window, "test", 10, "", "End.png")));
+    _scenes.insert(std::make_pair("End", new SceneTemporal(this, &_window, "End1", 5, "", "End.png")));
+    _scenes.insert(std::make_pair("End1", new SceneTemporal(this, &_window, "End2", 4, "", "credits/credits1.png")));
+    _scenes.insert(std::make_pair("End2", new SceneTemporal(this, &_window, "End3", 4, "", "credits/credits2.png")));
+    _scenes.insert(std::make_pair("End3", new SceneTemporal(this, &_window, "End4", 4, "", "credits/credits3.png")));
+    _scenes.insert(std::make_pair("End4", new SceneTemporal(this, &_window, "End5", 4, "", "credits/credits4.png")));
+    _scenes.insert(std::make_pair("End5", new SceneTemporal(this, &_window, "EndEnd", 4, "", "credits/credits5.png")));
+    _scenes.insert(std::make_pair("EndEnd", new SceneTemporal(this, &_window, "test", 10, "", "End.png")));
+
+    //previously on how to hardcode animations...
+    /*
+    _scenes.insert(std::make_pair("s1", new SceneTemporal(this, &_window, "s2", 1, "", "scene1.png")));
+    _scenes.insert(std::make_pair("s2", new SceneTemporal(this, &_window, "s3", 1, "", "scene2.png")));
+    _scenes.insert(std::make_pair("s3", new SceneTemporal(this, &_window, "s4", 1, "", "scene3.png")));
+    _scenes.insert(std::make_pair("s4", new SceneTemporal(this, &_window, "s5", 1, "", "scene4.png")));
+    _scenes.insert(std::make_pair("s5", new SceneTemporal(this, &_window, "s6", 1, "", "scene5.png")));
+    _scenes.insert(std::make_pair("s6", new SceneTemporal(this, &_window, "s7", 1, "", "scene6.png")));
+    _scenes.insert(std::make_pair("s7", new SceneTemporal(this, &_window, "s8", 1, "", "scene7.png")));
+    _scenes.insert(std::make_pair("s8", new SceneTemporal(this, &_window, "s9", 1, "", "scene8.png")));
+    _scenes.insert(std::make_pair("s9", new SceneTemporal(this, &_window, "s10", 1, "", "scene9.png")));
+    _scenes.insert(std::make_pair("s10", new SceneTemporal(this, &_window, "test2", 1, "", "scene10.png")));
+    _scenes.insert(std::make_pair("test2",   new SceneTest(this, &_window, "anim0")));
+    */
 
 }
 
@@ -129,11 +137,6 @@ void Game::initInput() {
     InputManager::bind(InputAction::left,  sf::Keyboard::A);
     InputManager::bind(InputAction::down,  sf::Keyboard::S);
     InputManager::bind(InputAction::right, sf::Keyboard::D);
-
-/*    InputManager::bind(InputAction::up,    sf::Keyboard::Up);
-    InputManager::bind(InputAction::left,  sf::Keyboard::Left);
-    InputManager::bind(InputAction::down,  sf::Keyboard::Down);
-    InputManager::bind(InputAction::right, sf::Keyboard::Right);*/
 
     InputManager::bind(InputAction::hook,  sf::Keyboard::Space);
     InputManager::bind(InputAction::hook,  sf::Mouse::Right);
