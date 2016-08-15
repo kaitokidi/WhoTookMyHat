@@ -91,7 +91,26 @@ void Resources::load() {
         if(! destroyBullet[i].loadFromFile  (TEXTURETPATH+std::string("bullet_puff/smoke_plume_000")+std::string(std::to_string(i+1))+std::string(".png") )) printError("destroybullet");
     }
 
-    if (!cInvert.loadFromFile           (SHADERPATH+std::string("invert.frag"), sf::Shader::Fragment)) exit(EXIT_FAILURE);
+        if(sf::Shader::isAvailable() ){
+const std::string fragmentShader = \
+"uniform sampler2D texture;" \
+"uniform float Time;" \
+"uniform float deltaTime;" \
+"void main()" \
+"{"  \
+	"float blinkTimes;" \
+    "blinkTimes = Time*8.0;" \
+    "float aux = ((deltaTime/Time)*blinkTimes);" \
+    "float x = step(mod(aux,2.0), 1.0);" \
+    "vec4 originalColor = texture2D(texture, gl_TexCoord[0].xy) * gl_Color;" \
+    "gl_FragColor = vec4(originalColor.r+0.7,originalColor.g,originalColor.b,originalColor.a);"  \
+"}";
+//    "gl_FragColor = vec4(vec3(1.0-x,1.0-x,1.0-x) +(-1.0+2.0*x)*originalColor.rgb, originalColor.a);"
+// load only the fragment shader
+if (!cInvert.loadFromMemory(fragmentShader, sf::Shader::Fragment))
+{
+    std::cout << "mux shader failed" <<std::endl; // error...
+}
 
     if (!pauseMenuFont.loadFromFile("Resources/Fonts/font.TTF")) exit(EXIT_FAILURE);
 
