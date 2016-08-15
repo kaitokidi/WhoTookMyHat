@@ -105,13 +105,14 @@ const std::string fragmentShader = \
     "vec4 originalColor = texture2D(texture, gl_TexCoord[0].xy) * gl_Color;" \
     "gl_FragColor = vec4(originalColor.r+0.7,originalColor.g,originalColor.b,originalColor.a);"  \
 "}";
+
 //    "gl_FragColor = vec4(vec3(1.0-x,1.0-x,1.0-x) +(-1.0+2.0*x)*originalColor.rgb, originalColor.a);"
 // load only the fragment shader
 if (!cInvert.loadFromMemory(fragmentShader, sf::Shader::Fragment))
 {
     std::cout << "mux shader failed" <<std::endl; // error...
 }
-
+        }
     if (!pauseMenuFont.loadFromFile("Resources/Fonts/font.TTF")) exit(EXIT_FAILURE);
 
    // descriptions = std::vector<SpriteSheetDescription>(spriteDescriptionsQtt);
