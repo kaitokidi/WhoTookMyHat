@@ -82,6 +82,7 @@ void Game::loadScenes() {
     _scenes.insert(std::make_pair("cutScene",new SceneCutScene(this, &_window,
                                                                Resources::AnimationIntro)));
    */
+     _scenes.insert(std::make_pair("pause", new SceneTemporal(this, &_window, "previous", -1, "", "Pause.png")));
 
     _scenes.insert(std::make_pair("test",    new SceneTest(this, &_window, "portada")));
     _scenes.insert(std::make_pair("portada", new SceneTemporal(this, &_window, "anim0", 5, "", "Portada")));
@@ -141,9 +142,9 @@ void Game::initInput() {
     InputManager::bind(InputAction::hook,  sf::Keyboard::Space);
     InputManager::bind(InputAction::hook,  sf::Mouse::Right);
     InputManager::bind(InputAction::shoot, sf::Mouse::Left);
-    InputManager::bind(InputAction::pause, sf::Keyboard::Escape);
+    InputManager::bind(InputAction::pause, sf::Keyboard::P);
 
     InputManager::bind(InputAction::action, 0,0);
-//    InputManager::bind(InputAction::pause, 0, 7); // Xbox start
+    InputManager::bind(InputAction::pause, 0, 7); // Xbox start
 
 }

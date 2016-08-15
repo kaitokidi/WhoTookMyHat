@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include "Resources.hpp"
 #include "ScenePlayable.hpp"
+#include "SceneSelector.hpp"
 #include "ProgressionBar.hpp"
 
 /*
@@ -365,6 +366,15 @@ void scenePlayable::update(float deltaTime){
 
     }
 
+    if(InputManager::action(InputAction::pause)){
+        SceneSelector _selector;
+        std::string pauses[3] = {"continar","continue", "continuar"};
+        int language = 0;
+        if(LANGUAGE == "ENG") language = 1;
+        if(LANGUAGE == "ESP") language = 2;
+        std::vector<std::string> kinds = {pauses[language]};
+        _selector.select(_window, kinds);
+    }
 
 }
 
