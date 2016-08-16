@@ -107,7 +107,7 @@ void Player::updateSprite(){
 
 void Player::update(float deltaTime, sf::Vector2i auxMousePos, Background* bg) {
 
-    _destroying = (_hp <= 0);
+    _destroying = (_hp <= 0 && (size_t(_index) < _destroyAnim->size()));
     if(_destroying){
             updateSprite();
             return;

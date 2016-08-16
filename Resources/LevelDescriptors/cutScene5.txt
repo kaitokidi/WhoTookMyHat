@@ -5,18 +5,18 @@ Default
 CAT
 Recordo que van passar per aqui
 Em pregunto si va arribar a ser el millor...
-per cert... tu tambe mates tocant...
+Quin es el teu motiu? perquè fas tot això?
 OK
 #English language
 ENG
 I remember a boy passing this way
 wonder if he achieved to be the very best
-btw... you do also kill touching...
+Which is your goal? what do you try to achieve?
 OK
 #Spanish language
 ESP
 Recuerdo que paso por aqui 
 ¿habra llegado a ser el mjor?
-por cierto... tu tambien mats tocando...
+Cual es tu objetivo? que intentas conseguir?
 OK
 $ End of Descriptor file : )

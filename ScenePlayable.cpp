@@ -301,7 +301,7 @@ void scenePlayable::update(float deltaTime){
 
        //Update Enemies
        for(auto it = _enemies.begin(); it != _enemies.end(); ++it){
-           (*it)->update(deltaTime, &bg);
+           if(*it)(*it)->update(deltaTime, &bg);
        }
 
        //Update Bullets

@@ -17,7 +17,7 @@ void EnemyLog::init() {
 
 void EnemyLog::update(float deltaTime   , Background *bg) {
     _aliveTimer += deltaTime;
-    if(!_destroying && _aliveTimer > 10) {
+    if(!_destroying && _aliveTimer > 5) {
         //_alive = false;
         _index = 0;
         _destroying = true;
