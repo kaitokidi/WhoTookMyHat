@@ -97,7 +97,7 @@ void Player::updateSprite(){
         ++_index;
         if( size_t(_index) > _destroyAnim->size() ) {
             _destroying = false;
-            hat.setTexture(Resources::none[0]);
+            hat.setTexture(Resources::hatNone, true);
             //_index = 0;
             //_hp = _maxHp;
         }

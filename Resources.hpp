@@ -25,6 +25,7 @@ public:
     static sf::Texture Portada;
     static sf::Texture talkBox;
     static sf::Texture endHook;
+    static sf::Texture hatNone;
     static sf::Texture doors_OX;
     static sf::Texture doors_OO;
     static sf::Texture doors_XX;
