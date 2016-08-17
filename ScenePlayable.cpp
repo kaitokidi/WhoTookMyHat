@@ -258,6 +258,9 @@ void scenePlayable::update(float deltaTime){
             if(_hatshits[i] > 1){
                 SoundManager::playSound("hat2");
                 if(_enemyPull.empty()) readEnemies(i);
+                _player->setMaxHp(_player->maxHp());
+                _lifeCounter.setScale(0);
+                _lifeCounter.setLifes(_player->maxHp(), false);
                 _player->setHat(_hats[i]);
                 _progressionBar.SetMaxTime(_caveTimer[i]);
                 _playing = true;

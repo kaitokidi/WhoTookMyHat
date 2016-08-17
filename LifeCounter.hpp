@@ -16,10 +16,13 @@ public:
     void hit();
 
     int lifes() const;
-    void setLifes(int lifes);
+    void setLifes(int lifes, bool nohit=true);
 
     sf::Vector2f position() const;
     void setPosition(const sf::Vector2f &position);
+
+    float scale() const;
+    void setScale(float scale);
 
 private:
 

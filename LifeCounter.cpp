@@ -13,16 +13,26 @@ LifeCounter::LifeCounter(sf::Vector2f pos){
 void LifeCounter::init(){
     _lifes = hardmode? PLAYERHPHARD: PLAYERHPNORMAL;
     _hitted = false;
-    _scale = 1;
+    _scale = 0;
     _position.x = 0;
     _position.y = 0;
     _sprite.setTexture(Resources::heart);
     _sprite.setOrigin(0, _sprite.getGlobalBounds().height/2);
 }
+float LifeCounter::scale() const
+{
+    return _scale;
+}
+
+void LifeCounter::setScale(float scale)
+{
+    _scale = scale;
+}
+
 
 int LifeCounter::lifes() const { return _lifes; }
-void LifeCounter::setLifes(int lifes) {
-    if(_lifes != lifes){
+void LifeCounter::setLifes(int lifes, bool nohit) {
+    if(nohit && _lifes != lifes){
         hit();
     }
     _lifes = lifes;
@@ -52,7 +62,7 @@ void LifeCounter::Draw(sf::RenderTarget * window){
         window->draw(_sprite);
         _sprite.setScale(1,1);
     } else {
-        _hitted = false; _scale = 1;
+        _hitted = false; _scale = 0;
     }
 }
 
