@@ -56,6 +56,9 @@ public:
     int maxHp() const;
     void setMaxHp(int maxHp);
 
+    bool destroying() const;
+    void setDestroying(bool destroying);
+
 protected:
 
     //Eyes

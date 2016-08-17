@@ -29,6 +29,16 @@ void Player::setMaxHp(int maxHp)
     _hp = maxHp;
     _index = 0;
 }
+bool Player::destroying() const
+{
+    return _destroying;
+}
+
+void Player::setDestroying(bool destroying)
+{
+    _destroying = destroying;
+}
+
 
 Player::Player(): body(40,100), guide(10,100){
     _maxHp = 5;

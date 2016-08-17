@@ -332,23 +332,25 @@ void scenePlayable::update(float deltaTime){
            else ++ite;
        }
 
-       //Colision between enemies and bullets
-       ite = _enemies.begin();
-       for(; ite != _enemies.end();++ite){
+       //Colision between enemies and bullets & player
+       if(! _player->isDead() && ! _player->destroying()) {
+           ite = _enemies.begin();
+           for(; ite != _enemies.end();++ite){
 
-            itb = _bullets.begin();
-           if((*ite)->colides(_player) && (*ite)->colisionable()){
-               SoundManager::playSound("hit");
-               (*ite)->hit(); _player->hit();
-           }
-           else for(; itb != _bullets.end() && ite != _enemies.end();){
-               //check enemy and bullet colision
-               if((*ite)->colides(&(*itb))  && (*ite)->colisionable()){
+                itb = _bullets.begin();
+               if((*ite)->colides(_player) && (*ite)->colisionable()){
                    SoundManager::playSound("hit");
-                   itb = _bullets.erase(itb);
-                   (*ite)->hit();
+                   (*ite)->hit(); _player->hit();
                }
-               else ++itb;
+               else for(; itb != _bullets.end() && ite != _enemies.end();){
+                   //check enemy and bullet colision
+                   if((*ite)->colides(&(*itb))  && (*ite)->colisionable()){
+                       SoundManager::playSound("hit");
+                       itb = _bullets.erase(itb);
+                       (*ite)->hit();
+                   }
+                   else ++itb;
+               }
            }
        }
 
