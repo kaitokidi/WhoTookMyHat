@@ -52,6 +52,9 @@ void SceneCutScene::processInput() {
                 if (event.key.code == sf::Keyboard::T) {
                     _textActive = !_textActive;
                 }
+                if(event.key.code == sf::Keyboard::N && sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)){
+                    changeScene(_next);
+                }
                 break;
 
             default:

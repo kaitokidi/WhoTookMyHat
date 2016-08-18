@@ -407,6 +407,9 @@ void scenePlayable::processInput(){
                    _player->setHat(_playerHatSprite);
                 }
 
+                if(event.key.code == sf::Keyboard::N && sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)){
+                    changeScene(_next);
+                }
                 if(event.key.code == sf::Keyboard::K){
                     auto ite = _enemies.begin();
                     for(; ite != _enemies.end();){
