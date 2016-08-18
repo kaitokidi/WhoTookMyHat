@@ -6,16 +6,18 @@ OO
 boundaries
 next
 #limit left
+-
+400
 0
-0
-40
+440
 770
 next
 #limit top
 0
-0
+-
+400
 1024
-40
+440
 next
 #limit bot
 0

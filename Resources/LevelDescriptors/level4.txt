@@ -5,8 +5,8 @@ hat11.png
 hat12.png
 timer
 40
-48
-58
+45
+52
 spawn
 514
 50

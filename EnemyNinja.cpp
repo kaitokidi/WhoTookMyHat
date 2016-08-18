@@ -29,8 +29,8 @@ void EnemyNinja::hit(){
         if(rand()%4 == 0){
             ++_hp;
             _enem->push_back(new EnemyLog());
-            _enem->back()->setPosition(sf::Vector2f(getPosition().x - getLocalBounds().width/2-32,
-                                                    getPosition().y - getLocalBounds().height/2-32));
+            _enem->back()->setPosition(sf::Vector2f(getPosition().x - getLocalBounds().width,
+                                                    getPosition().y - getLocalBounds().height));
             if(_dir == direction::none)          getNewDirection();
             else if(_dir == direction::up)       _dir =  direction::down;
             else if(_dir == direction::down)     _dir =    direction::up;

@@ -423,16 +423,29 @@ void Background::readLevel(std::string lvlDesc) {
                         sf::FloatRect fr;
                         std::getline (myfile,line);
                         while(line[0] == '#') std::getline (myfile,line);
-                        fr.left = myStoi(line);
+                        if(line[0] == '-') {
+                            std::getline (myfile,line);
+                            fr.left = -1*myStoi(line);
+                        }
+                        else fr.left = myStoi(line);
                         std::getline (myfile,line);
                         while(line[0] == '#') std::getline (myfile,line);
-                        fr.top = myStoi(line);
+                        if(line[0] == '-') {
+                            std::getline (myfile,line);
+                            fr.top = -1*myStoi(line);
+                        } else fr.top = myStoi(line);
                         std::getline (myfile,line);
                         while(line[0] == '#') std::getline (myfile,line);
-                        fr.width = myStoi(line);
+                        if(line[0] == '-') {
+                            std::getline (myfile,line);
+                            fr.width = -1*myStoi(line);
+                        }else fr.width = myStoi(line);
                         std::getline (myfile,line);
                         while(line[0] == '#') std::getline (myfile,line);
-                        fr.height = myStoi(line);
+                        if(line[0] == '-') {
+                            std::getline (myfile,line);
+                            fr.height= -1*myStoi(line);
+                        }else fr.height = myStoi(line);
 
                         _boundaries.push_back(fr);
 

@@ -282,7 +282,7 @@ void Player::draw(sf::RenderTarget * w){
 
     if(hitted()){
         float aux = hittedTimer();
-        Resources::cInvert.setParameter("deltaTime", aux);
+        //Resources::cInvert.setParameter("deltaTime", aux);
         if (int(aux*10) %3 != 0) {
             w->draw(hat,&Resources::cInvert);
         }else {

@@ -513,7 +513,7 @@ void scenePlayable::render(sf::RenderTarget *target){
     for(auto it = _enemies.begin(); it != _enemies.end(); ++it){
         if((*it)->hitted()){
             float aux = (*it)->hittedTimer();
-            Resources::cInvert.setParameter("deltaTime", aux);
+            //Resources::cInvert.setParameter("deltaTime", aux);
             if (int(aux*10) %3 != 0) target->draw(*(*it),&Resources::cInvert);
             else target->draw(*(*it));
         }
