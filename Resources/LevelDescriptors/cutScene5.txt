@@ -4,19 +4,19 @@ Default
 #Catalan language
 CAT
 Recordo que van passar per aqui
-Em pregunto si va arribar a ser el millor...
-Quin es el teu motiu? perque fas tot aixo?
+Devia arribar a ser el millor?
+I tu? Que intentes aconseguir tu?
 OK
 #English language
 ENG
 I remember a boy passing this way
 wonder if he achieved to be the very best
-Which is your goal? what do you try to achieve?
+And what about you? Which is your goal?
 OK
 #Spanish language
 ESP
 Recuerdo que paso por aqui 
 ¿habra llegado a ser el mjor?
-Cual es tu objetivo? que intentas conseguir?
+¿Y tu? ¿Que intentas conseguir tu?
 OK
 $ End of Descriptor file : )
