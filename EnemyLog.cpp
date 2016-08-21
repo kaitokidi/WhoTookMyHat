@@ -5,6 +5,7 @@
 EnemyLog::EnemyLog(){
     _hp = 1;
     init();
+    _aliveTimer = 0;
     _animTimer.restart();
     _alive = true;
 }
