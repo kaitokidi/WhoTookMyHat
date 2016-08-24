@@ -199,6 +199,8 @@ void scenePlayable::update(float deltaTime){
     //PICKING
     if(_picking){
 
+        _player->revive();
+
         bg._doorOpenedL = true;
         bg._doorOpenedR = false;
         if(_hatsOwned >= 3) bg._doorOpenedR = true;

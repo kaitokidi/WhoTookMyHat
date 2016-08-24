@@ -144,13 +144,8 @@ void SceneAnimation::readLVL(std::string levelName){
             _names.push_back(line);
 
             newLine
-            //log("sprite -> ", line);
             _textures.push_back(new sf::Texture());
             _elements.push_back(new Element());
-            //log("-");
-            //log(_textures.last, &_textures[_textures.last]);
-            //log(_elements.last, &_elements[_elements.last]);
-            //log("__");
             if(! _textures[_textures.last]->loadFromFile(TEXTURETPATH+line) ) log("OnSceneAnimation ",line," not loaded");
             else _elements[_elements.last]->setTexture(*_textures[_textures.last], true);
 

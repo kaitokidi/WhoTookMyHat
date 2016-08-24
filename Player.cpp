@@ -89,6 +89,16 @@ void Player::setDistantHookPos(sf::Vector2i mousePos, Background* bg){
 
 float Player::getRadius() const{ return radius; }
 
+void Player::revive()
+{
+    if(_destroying){
+    _hp = _maxHp;
+    _index = 0;
+    _destroying = false;
+    hat.setTexture(Resources::hatNone, true);
+    }
+}
+
 void Player::updateHits(float deltaTime){
     if(_hitted){
         _hittedTimer += deltaTime;

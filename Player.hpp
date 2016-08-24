@@ -28,6 +28,7 @@ public:
     int actualHat() const;
     float getSpeed() const;
     float getRadius() const;
+    void revive();
     sf::Vector2f getPosition();
     sf::Vector2f getPos() const;
     sf::Vector2f getLookPos() const;
