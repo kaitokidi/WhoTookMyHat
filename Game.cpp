@@ -140,6 +140,7 @@ void Game::initInput() {
     InputManager::bind(InputAction::right, sf::Keyboard::D);
 
     InputManager::bind(InputAction::hook,  sf::Keyboard::Space);
+    InputManager::bind(InputAction::shoot, sf::Keyboard::LControl);
     InputManager::bind(InputAction::hook,  sf::Mouse::Right);
     InputManager::bind(InputAction::shoot, sf::Mouse::Left);
     InputManager::bind(InputAction::pause, sf::Keyboard::P);
