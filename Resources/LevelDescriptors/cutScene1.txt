@@ -13,11 +13,11 @@ OK
 #English language
 ENG
 Welcome
-At the HAT CAVE!!!
-to move you can press
-[A] and [D] or the left
-joystick on the controller
-and the right to aim
+To the HAT CAVE!!!
+you can move left and right
+with [A] [D] or the left
+joystick on the controller.
+The right joystick can be used to aim
 OK
 #Spanish language
 ESP

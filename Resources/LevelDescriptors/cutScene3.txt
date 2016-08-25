@@ -11,11 +11,11 @@ jeje... ratoli, com l'animal... jeje
 OK
 #English language
 ENG
-Press the right click on the mouse
+Press the right mouse button
 (or LB on the controller)
 to shoot a hook to the walls!!!
           
-jeje... mouse... like the animal... jeje
+hehe... mouse... like the animal... hehe
 OK
 #Spanish language
 ESP
@@ -23,6 +23,6 @@ Aprieta el boton derecho del raton
 (o LB en el mando) 
 para tirar un garfio a las paredes!!!
      
-jeje... raton... como el animal... jeje
+jaja... raton... como el animal... jaja
 OK
 $ End of Descriptor file : )

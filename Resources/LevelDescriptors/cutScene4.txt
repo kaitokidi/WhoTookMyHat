@@ -13,7 +13,7 @@ OK
 #English language
 ENG
     
-Press the left click on the mouse
+Press the left mouse button
 (or RB on the controller)
 to shoot your bullets!!!
 Shoot at the hats
