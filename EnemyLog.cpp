@@ -8,6 +8,14 @@ EnemyLog::EnemyLog(){
     _aliveTimer = 0;
     _animTimer.restart();
     _alive = true;
+    _destroying = false;
+    _index = 0;
+
+    _hitted = false;
+    _spawning = true;
+
+    _hittedTimer = 0;
+
 }
 
 void EnemyLog::init() {
@@ -29,15 +37,16 @@ void EnemyLog::update(float deltaTime   , Background *bg) {
     if(_spawning){
         updateSprite(true);
         return;
-    } if(_destroying){
+    }
+    if(_destroying){
         updateSprite(false);
         return;
-    } else {
-        setTexture(*_texture, true);
-        if(getOrigin().x == 0){
-            setPosition(getPosition().x + getLocalBounds().width/2+32, getPosition().y + getLocalBounds().height/2+32);
-            setOrigin( getLocalBounds().width/2, getLocalBounds().height/2);
-        }
+    }
+
+    setTexture(*_texture, true);
+    if(getOrigin().x == 0){
+        setPosition(getPosition().x + getLocalBounds().width/2+32, getPosition().y + getLocalBounds().height/2+32);
+        setOrigin( getLocalBounds().width/2, getLocalBounds().height/2);
     }
 
     movement(deltaTime, bg);

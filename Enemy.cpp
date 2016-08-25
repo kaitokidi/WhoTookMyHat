@@ -125,7 +125,10 @@ void Enemy::updateSprite(bool alive){
         if(    (_alive && size_t(_index) >= _spawnAnimation->size() )
             || (!_alive && size_t(_index) >= _destroyAnimation->size() ) ) {
 
-            if(_destroying) _destroying = _alive = false;
+            if(_destroying) {
+                _destroying = false;
+                _alive = false;
+            }
             else _spawning = false;
 
         }
