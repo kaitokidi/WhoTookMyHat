@@ -412,7 +412,7 @@ void scenePlayable::processInput(){
                 if(event.key.code == sf::Keyboard::N && sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)){
                     changeScene(_next);
                 }
-                if(event.key.code == sf::Keyboard::K){
+                if(event.key.code == sf::Keyboard::K && sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)){
                     auto ite = _enemies.begin();
                     for(; ite != _enemies.end();){
                         delete(*ite);
