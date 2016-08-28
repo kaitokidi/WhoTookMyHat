@@ -9,6 +9,7 @@ Scene::Scene(Game* g, sf::RenderWindow* w, sceneTypes sT, std::string name) :
     _sceneName(name),
     _sceneType(sT)
      {
+    _musicName = "none";
     _mousePointer.setTexture(Resources::pointer);
     _mousePointer.setOrigin(_mousePointer.getLocalBounds().width/2,_mousePointer.getLocalBounds().height/2);
 }
@@ -62,6 +63,23 @@ sf::View* Scene::getPtrView() {
 std::string Scene::getSceneName() {
     return _sceneName;
 }
+
+void Scene::setMusic(const std::string& name)
+{
+    _musicName = name;
+}
+
+void Scene::playMusic()
+{
+    SoundManager::playMusic(_musicName);
+    SoundManager::setLoop(true, _musicName);
+}
+
+void Scene::stopMusic()
+{
+    SoundManager::stopMusic(_musicName);
+}
+
 
 void Scene::processInput() {
     sf::Event event;

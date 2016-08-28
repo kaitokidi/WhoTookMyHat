@@ -1,4 +1,5 @@
 #include "SoundManager.hpp"
+#include "utils.hpp"
 
 //PLACE HERE A FORWARD DECLARATION OF YOUR STATIC VARIABLES
 //sf::SoundBuffer     SoundManager::SOUND_NAME;
@@ -8,18 +9,9 @@
 sf::Music           SoundManager::overWorldMusic;
 sf::SoundBuffer     SoundManager::attackBuf;
 */
-/*sf::SoundBuffer     SoundManager::playerJump;
-sf::SoundBuffer      SoundManager::a;
-sf::SoundBuffer      SoundManager::aa;
-sf::SoundBuffer      SoundManager::aaa;
-sf::SoundBuffer      SoundManager::aaaa;
-sf::SoundBuffer      SoundManager::aaaaa;
-sf::SoundBuffer      SoundManager::aaaaaa;
-sf::SoundBuffer      SoundManager::aaaaaaa;
-sf::SoundBuffer      SoundManager::aaaaaaaa;
-sf::SoundBuffer      SoundManager::aaaaaaaaa;
-sf::SoundBuffer      SoundManager::b;
-sf::SoundBuffer      SoundManager::c;*/
+std::string SoundManager::currentMusic;
+std::string SoundManager::currentSound;
+
 sf::SoundBuffer SoundManager::soundBuffers [13];
 
 std::map<std::string, sf::Sound> SoundManager::soundMap;
@@ -39,6 +31,50 @@ void SoundManager::load(){
     soundMap["chamaleonTongue"].setBuffer(attackBuf);
     */
 
+    //MUSUIC
+    musicMap["end"].openFromFile("Resources/Music/Other/credits.ogg");
+    musicMap["portada"].openFromFile("Resources/Music/Other/portada.ogg");
+    musicMap["pressAnyKey"].openFromFile("Resources/Music/Other/pressAnyKey.ogg");
+    musicMap["menuButtons"].openFromFile("Resources/Music/Other/menuButtons.ogg");
+
+    musicMap["initialAnimation"].openFromFile("Resources/Music/Other/initialAnimation.ogg");
+
+    musicMap["tunel1"].openFromFile("Resources/Music/tunels/tunel1.ogg");
+    musicMap["tunel2"].openFromFile("Resources/Music/tunels/tunel2.ogg");
+    musicMap["tunel3"].openFromFile("Resources/Music/tunels/tunel3.ogg");
+    musicMap["tunel4"].openFromFile("Resources/Music/tunels/tunel4.ogg");
+    musicMap["tunel5"].openFromFile("Resources/Music/tunels/tunel5.ogg");
+    musicMap["tunel6"].openFromFile("Resources/Music/tunels/tunel6.ogg");
+    musicMap["tunel7"].openFromFile("Resources/Music/tunels/tunel7.ogg");
+    musicMap["tunel8"].openFromFile("Resources/Music/tunels/tunel8.ogg");
+
+    musicMap["level1"].openFromFile("Resources/Music/levels/level1.ogg");
+        musicMap["level1_1"].openFromFile("Resources/Music/levels/hats/level1_1.ogg");
+        musicMap["level1_2"].openFromFile("Resources/Music/levels/hats/level1_2.ogg");
+        musicMap["level1_3"].openFromFile("Resources/Music/levels/hats/level1_3.ogg");
+
+    musicMap["level2"].openFromFile("Resources/Music/levels/level2.ogg");
+        musicMap["level2_1"].openFromFile("Resources/Music/levels/hats/level2_1.ogg");
+        musicMap["level2_2"].openFromFile("Resources/Music/levels/hats/level2_2.ogg");
+        musicMap["level2_3"].openFromFile("Resources/Music/levels/hats/level2_3.ogg");
+
+    musicMap["level3"].openFromFile("Resources/Music/levels/level3.ogg");
+        musicMap["level3_1"].openFromFile("Resources/Music/levels/hats/level3_1.ogg");
+        musicMap["level3_2"].openFromFile("Resources/Music/levels/hats/level3_2.ogg");
+        musicMap["level3_3"].openFromFile("Resources/Music/levels/hats/level3_3.ogg");
+
+    musicMap["level4"].openFromFile("Resources/Music/levels/level4.ogg");
+        musicMap["level4_1"].openFromFile("Resources/Music/levels/hats/level4_1.ogg");
+        musicMap["level4_2"].openFromFile("Resources/Music/levels/hats/level4_2.ogg");
+        musicMap["level4_3"].openFromFile("Resources/Music/levels/hats/level4_3.ogg");
+
+    musicMap["level5"].openFromFile("Resources/Music/levels/level5.ogg");
+        musicMap["level5_1"].openFromFile("Resources/Music/levels/hats/level5_1.ogg");
+        musicMap["level5_2"].openFromFile("Resources/Music/levels/hats/level5_2.ogg");
+        musicMap["level5_3"].openFromFile("Resources/Music/levels/hats/level5_3.ogg");
+
+
+    //SOUNDS
     int i = 0;
 
     if(!soundBuffers[i].loadFromFile("Resources/Sounds/171696__nenadsimic__picked-coin-echo.ogg")){ std::cout << "Fail on hat1" << std::endl;};
@@ -47,7 +83,6 @@ void SoundManager::load(){
     if(!soundBuffers[i].loadFromFile("Resources/Sounds/220184__gameaudio__win-spacey.ogg")){ std::cout << "Fail on hat2" << std::endl;};
     soundMap["hat2"].setBuffer(soundBuffers[i]); ++i;
 
-//    if(!soundBuffers[i].loadFromFile("Resources/Sounds/170146__timgormly__8-bit-explosion.ogg")){ std::cout << "Fail on enemydie" << std::endl;};
     if(!soundBuffers[i].loadFromFile("Resources/Sounds/swosh-13.ogg")){ std::cout << "Fail on enemydie" << std::endl;};
     soundMap["enemyDie"].setBuffer(soundBuffers[i]); ++i;
 
@@ -87,18 +122,29 @@ void SoundManager::load(){
 
 void SoundManager::playSound(std::string name){
     sit = soundMap.find(name);
-    if (sit != soundMap.end()) (sit->second).play();
+    if (sit != soundMap.end()) {
+        (sit->second).play();
+        currentSound = name;
+    }
 }
 
 void SoundManager::playMusic(std::string name){
-mit = musicMap.find(name);
-if (mit != musicMap.end()) (mit->second).play();
-
+    stopMusic(currentMusic);
+    if(name != "none"){
+        mit = musicMap.find(name);
+        if (mit != musicMap.end()) {
+            (mit->second).play();
+            currentMusic = name;
+        } else log("trying to play wrong music: ", name);
+    } else log("none music");
 }
 
 void SoundManager::stopMusic(std::string name){
     mit = musicMap.find(name);
-    if (mit != musicMap.end()) (mit->second).stop();
+    if (mit != musicMap.end()) {
+        (mit->second).stop();
+        currentMusic = "none";
+    }
 
 }
 

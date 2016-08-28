@@ -29,26 +29,15 @@ private:
      static sf::Music   overWorldMusic;
      static sf::SoundBuffer     attackBuf;
     */
+    static std::string currentMusic;
+    static std::string currentSound;
+
     static sf::SoundBuffer soundBuffers [13];
-/*    static sf::SoundBuffer      playerJump;
-    static sf::SoundBuffer      a;
-    static sf::SoundBuffer      aa;
-    static sf::SoundBuffer      aaa;
-    static sf::SoundBuffer      aaaa;
-    static sf::SoundBuffer      aaaaa;
-    static sf::SoundBuffer      aaaaaa;
-    static sf::SoundBuffer      aaaaaaa;
-    static sf::SoundBuffer      aaaaaaaa;
-    static sf::SoundBuffer      aaaaaaaaa;
-    static sf::SoundBuffer      b;
-    static sf::SoundBuffer      c;
-    static sf::SoundBuffer      d;*/
 
-
-     static std::map<std::string, sf::Sound> soundMap;
-     static std::map<std::string, sf::Music> musicMap;
-     static std::map<std::string, sf::Sound>::iterator sit;
-     static std::map<std::string, sf::Music>::iterator mit;
+    static std::map<std::string, sf::Sound> soundMap;
+    static std::map<std::string, sf::Music> musicMap;
+    static std::map<std::string, sf::Sound>::iterator sit;
+    static std::map<std::string, sf::Music>::iterator mit;
 
 };
 

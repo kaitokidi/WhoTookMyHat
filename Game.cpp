@@ -49,6 +49,7 @@ void Game::changeScene(std::string sceneName) {
             _currentScene = _lastScene;
             _lastScene = nullptr;
 
+            _currentScene->playMusic();
         } else {
             std::cout << "The selected scene does not exist: " << sceneName << std::endl;
             exit(EXIT_FAILURE);
@@ -60,6 +61,7 @@ void Game::changeScene(std::string sceneName) {
         }
         _currentScene = (*it).second;
         _currentScene->init();
+        _currentScene->playMusic();
     }
 }
 std::string Game::getLANGUAGE() const
@@ -107,6 +109,45 @@ void Game::loadScenes() {
     _scenes.insert(std::make_pair("End4", new SceneTemporal(this, &_window, "End5", 4, "", "credits/credits4.png")));
     _scenes.insert(std::make_pair("End5", new SceneTemporal(this, &_window, "EndEnd", 4, "", "credits/credits5.png")));
     _scenes.insert(std::make_pair("EndEnd", new SceneTemporal(this, &_window, "test", 10, "", "End.png")));
+
+
+
+    std::vector<std::pair<std::string, std::string> > musicmap;
+
+    musicmap.emplace_back("test", "pressAnyKey");
+    musicmap.emplace_back("portada", "portada");
+    musicmap.emplace_back("anim0", "initialAnimation");
+
+    musicmap.emplace_back("cutScene1", "tunel1");
+    musicmap.emplace_back("cutScene2", "tunel2");
+    musicmap.emplace_back("cutScene3", "tunel3");
+    musicmap.emplace_back("cutScene3_4", "tunel4");
+    musicmap.emplace_back("cutScene4", "tunel5");
+
+    musicmap.emplace_back("level1", "level1");
+    musicmap.emplace_back("cutScene5", "tunel6");
+
+    musicmap.emplace_back("level2", "level2");
+    musicmap.emplace_back("cutScene6", "tunel7");
+
+    musicmap.emplace_back("level3", "level3");
+    musicmap.emplace_back("cutScene7", "tunel8");
+
+    musicmap.emplace_back("level4", "level4");
+    musicmap.emplace_back("level5", "level5");
+
+    musicmap.emplace_back("cutScene5", "tunel1");
+
+    musicmap.emplace_back("End", "credits");
+
+
+
+    for(size_t i = 0; i < musicmap.size(); ++i){
+        std::cout << musicmap[i].first << std::endl;
+        auto it = _scenes.find(musicmap[i].first);
+        if (it != _scenes.end()) it->second->setMusic(musicmap[i].second);
+    }
+
 
     //previously on how to hardcode animations...
     /*

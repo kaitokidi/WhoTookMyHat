@@ -38,7 +38,10 @@ void SceneTest::processInput(){
         if (event.type == sf::Event::KeyReleased) {
 
             std::vector<std::string> languages = { "  CAT  ", "  ENG  ", "  ESP  "};
+            SoundManager::stopMusic("pressAnyKey");
+            SoundManager::playMusic("menuButtons");
             int language = _selector.select(_window, languages);
+
             extern std::string LANGUAGE;
             languages = { "CAT", "ENG", "ESP"};
             LANGUAGE = languages[language];
@@ -48,6 +51,8 @@ void SceneTest::processInput(){
             std::vector<std::string> kinds = {easy[language], hard[language]};
             extern int hardmode;
             hardmode = _selector.select(_window, kinds);
+            SoundManager::stopMusic("menuButtons");
+            SoundManager::playMusic("pressAnyKey");
 
             //log(hardmode, &hardmode);
             changeScene(_next);//{_window->close(); exit(0);}

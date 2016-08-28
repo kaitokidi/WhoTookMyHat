@@ -21,11 +21,16 @@ public:
     sf::View* getPtrView();
     std::string getSceneName();
 
+    void playMusic();
+    void stopMusic();
+    void setMusic(const std::string &name);
+
 protected:
 
     bool _focus;
     Game* _game;
     sf::View _view;
+    std::string _musicName;
     std::string _sceneName;
     sf::RenderWindow* _window;
 
