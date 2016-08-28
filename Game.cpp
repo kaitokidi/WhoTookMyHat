@@ -143,7 +143,6 @@ void Game::loadScenes() {
 
 
     for(size_t i = 0; i < musicmap.size(); ++i){
-        std::cout << musicmap[i].first << std::endl;
         auto it = _scenes.find(musicmap[i].first);
         if (it != _scenes.end()) it->second->setMusic(musicmap[i].second);
     }
