@@ -129,23 +129,26 @@ void SoundManager::playSound(std::string name){
 }
 
 void SoundManager::playMusic(std::string name){
-    stopMusic(currentMusic);
-    if(name != "none"){
-        mit = musicMap.find(name);
-        if (mit != musicMap.end()) {
-            (mit->second).play();
-            currentMusic = name;
-        } else log("trying to play wrong music: ", name);
-    } else log("none music");
+    if( name != "follow") {
+        stopMusic(currentMusic);
+        if(name != "none"){
+            mit = musicMap.find(name);
+            if (mit != musicMap.end()) {
+                (mit->second).play();
+                currentMusic = name;
+            } else log("trying to play wrong music: ", name);
+        } else log("none music");
+    }
 }
 
 void SoundManager::stopMusic(std::string name){
-    mit = musicMap.find(name);
-    if (mit != musicMap.end()) {
-        (mit->second).stop();
-        currentMusic = "none";
+    if(name  != "follow" && name != "none") {
+        mit = musicMap.find(name);
+        if (mit != musicMap.end()) {
+            (mit->second).stop();
+            currentMusic = "none";
+        }
     }
-
 }
 
 void SoundManager::pauseMusic(std::string name){
