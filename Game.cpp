@@ -114,6 +114,27 @@ void Game::loadScenes() {
 
     std::vector<std::pair<std::string, std::string> > musicmap;
 
+    std::string line;
+    std::string scene;
+    std::string song;
+    std::ifstream myfile ("Resources/Documents/musics.txt");
+
+    if (myfile.is_open()) {
+
+        while(line[0] != '$'){
+            std::getline (myfile,line);
+            while(line[0] == '#') std::getline (myfile,line);
+            scene = line;
+            std::getline (myfile,line);
+            while(line[0] == '#') std::getline (myfile,line);
+            song = line;
+            musicmap.emplace_back(scene, song);
+        }
+    } else std::cout << "could not read from the songs text" << std::endl;
+
+    myfile.close();
+
+    /* previously on how to hardcode music for each scene..
     musicmap.emplace_back("test", "pressAnyKey");
     musicmap.emplace_back("portada", "portada");
     musicmap.emplace_back("anim0", "initialAnimation");
@@ -139,7 +160,7 @@ void Game::loadScenes() {
     musicmap.emplace_back("cutScene5", "tunel1");
 
     musicmap.emplace_back("End", "credits");
-
+    */
 
 
     for(size_t i = 0; i < musicmap.size(); ++i){
