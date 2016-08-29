@@ -1,0 +1,85 @@
+#############################################################
+# Scene - Musica                                            #
+#                                                           #
+# A continuacio es pot posar a musica per cada escena       #
+# per fer-ho, la primera linia sera el nom de la escena     #
+# i la segona el nom de la canço sense extensions           #
+# perque funcioni nomes s'ha de canviar la segona linia     #
+# de cada grup. Les linies que comencin per # seran         #
+# ignorades per el programa. Les escenes que tinguin        #
+# la paraula ->  follow  <-  no faran cap canvi de musica  #
+#                                                           #
+#############################################################
+test
+pressAnyKey
+################
+portada
+portada
+################
+anim0
+initialAnimation
+################
+cutScene1
+tunel1
+################
+cutScene2
+tunel2
+################
+cutScene3
+tunel3
+################
+cutScene3_4
+tunel4
+################
+cutScene4
+tunel5
+################
+level1
+level1
+################
+cutScene5
+tunel6
+################
+level2
+level2
+################
+cutScene6
+tunel7
+################
+level3
+level3
+################
+cutScene7
+tunel8
+################
+level4
+level4
+################
+level5
+level5
+################
+cutScene5
+tunel1
+################
+End
+credits
+################
+End1
+follow
+################
+End2
+follow
+################
+End3
+follow
+################
+End4
+follow
+################
+End5
+follow
+################
+EndEnd
+follow
+################
+$$$$$$END$$$$$$$
