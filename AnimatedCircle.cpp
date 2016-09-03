@@ -1,10 +1,14 @@
 #include "AnimatedCircle.hpp"
 
 AnimatedCircle::AnimatedCircle(){
-
+    circle.setOutlineThickness(4);
+    circle.setOutlineColor(sf::Color::Black);
+    circle.setRadius(0);
+    circle.setPointCount(30);
+    circle.setOrigin(circle.getRadius(), circle.getRadius());
 }
 
-AnimatedCircle::AnimatedCircle(float radius=0, unsigned int pointCount=30){
+AnimatedCircle::AnimatedCircle(float radius, unsigned int pointCount = 30){
     circle.setOutlineThickness(4);
     circle.setOutlineColor(sf::Color::Black);
     circle.setRadius(radius);
