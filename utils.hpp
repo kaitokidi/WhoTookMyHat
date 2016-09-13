@@ -33,6 +33,9 @@
 #include <sstream>
 #include <cfloat>
 #include <climits>
+#include <math.h>
+#include <cmath>
+#include <vector>
 #include <functional> // priority queue stuff
 
 #include "DataManager.hpp"
