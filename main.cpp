@@ -6,12 +6,10 @@
 
 int main() {
 
-
     Resources::load();
     DataManager::load();
     SoundManager::load();
     TextBoxManager::load();
-
 
     srand(time(NULL));
     Game game;

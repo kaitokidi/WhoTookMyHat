@@ -32,46 +32,46 @@ void SoundManager::load(){
     */
 
     //MUSUIC
-    musicMap["end"].openFromFile("Resources/Music/Other/credits.ogg");
+    if(! musicMap["end"].openFromFile("Resources/Music/Other/credits.ogg") ) std::cout << "sure for the music and that" << std::endl;
     musicMap["portada"].openFromFile("Resources/Music/Other/portada.ogg");
     musicMap["pressAnyKey"].openFromFile("Resources/Music/Other/pressAnyKey.ogg");
     musicMap["menuButtons"].openFromFile("Resources/Music/Other/menuButtons.ogg");
 
     musicMap["initialAnimation"].openFromFile("Resources/Music/Other/initialAnimation.ogg");
 
-    musicMap["tunel1"].openFromFile("Resources/Music/tunels/tunel1.ogg");
-    musicMap["tunel2"].openFromFile("Resources/Music/tunels/tunel2.ogg");
-    musicMap["tunel3"].openFromFile("Resources/Music/tunels/tunel3.ogg");
-    musicMap["tunel4"].openFromFile("Resources/Music/tunels/tunel4.ogg");
-    musicMap["tunel5"].openFromFile("Resources/Music/tunels/tunel5.ogg");
+    musicMap["tunel1"].openFromFile("Resources/Music/tunels/tutorial.ogg");
+    musicMap["tunel2"].openFromFile("Resources/Music/follow.ogg");
+    musicMap["tunel3"].openFromFile("Resources/Music/follow.ogg");
+    musicMap["tunel4"].openFromFile("Resources/Music/follow.ogg");
+    musicMap["tunel5"].openFromFile("Resources/Music/follow.ogg");
     musicMap["tunel6"].openFromFile("Resources/Music/tunels/tunel6.ogg");
     musicMap["tunel7"].openFromFile("Resources/Music/tunels/tunel7.ogg");
     musicMap["tunel8"].openFromFile("Resources/Music/tunels/tunel8.ogg");
 
     musicMap["level1"].openFromFile("Resources/Music/levels/level1.ogg");
-        musicMap["level1_1"].openFromFile("Resources/Music/levels/hats/level1_1.ogg");
-        musicMap["level1_2"].openFromFile("Resources/Music/levels/hats/level1_2.ogg");
-        musicMap["level1_3"].openFromFile("Resources/Music/levels/hats/level1_3.ogg");
+        musicMap["level1_1"].openFromFile("Resources/Music/follow.ogg");
+        musicMap["level1_2"].openFromFile("Resources/Music/follow.ogg");
+        musicMap["level1_3"].openFromFile("Resources/Music/follow.ogg");
 
     musicMap["level2"].openFromFile("Resources/Music/levels/level2.ogg");
-        musicMap["level2_1"].openFromFile("Resources/Music/levels/hats/level2_1.ogg");
-        musicMap["level2_2"].openFromFile("Resources/Music/levels/hats/level2_2.ogg");
-        musicMap["level2_3"].openFromFile("Resources/Music/levels/hats/level2_3.ogg");
+        musicMap["level2_1"].openFromFile("Resources/Music/follow.ogg");
+        musicMap["level2_2"].openFromFile("Resources/Music/follow.ogg");
+        musicMap["level2_3"].openFromFile("Resources/Music/follow.ogg");
 
     musicMap["level3"].openFromFile("Resources/Music/levels/level3.ogg");
-        musicMap["level3_1"].openFromFile("Resources/Music/levels/hats/level3_1.ogg");
-        musicMap["level3_2"].openFromFile("Resources/Music/levels/hats/level3_2.ogg");
-        musicMap["level3_3"].openFromFile("Resources/Music/levels/hats/level3_3.ogg");
+        musicMap["level3_1"].openFromFile("Resources/Music/follow.ogg");
+        musicMap["level3_2"].openFromFile("Resources/Music/follow.ogg");
+        musicMap["level3_3"].openFromFile("Resources/Music/follow.ogg");
 
     musicMap["level4"].openFromFile("Resources/Music/levels/level4.ogg");
-        musicMap["level4_1"].openFromFile("Resources/Music/levels/hats/level4_1.ogg");
-        musicMap["level4_2"].openFromFile("Resources/Music/levels/hats/level4_2.ogg");
-        musicMap["level4_3"].openFromFile("Resources/Music/levels/hats/level4_3.ogg");
+        musicMap["level4_1"].openFromFile("Resources/Music/follow.ogg");
+        musicMap["level4_2"].openFromFile("Resources/Music/follow.ogg");
+        musicMap["level4_3"].openFromFile("Resources/Music/follow.ogg");
 
     musicMap["level5"].openFromFile("Resources/Music/levels/level5.ogg");
-        musicMap["level5_1"].openFromFile("Resources/Music/levels/hats/level5_1.ogg");
-        musicMap["level5_2"].openFromFile("Resources/Music/levels/hats/level5_2.ogg");
-        musicMap["level5_3"].openFromFile("Resources/Music/levels/hats/level5_3.ogg");
+        musicMap["level5_1"].openFromFile("Resources/Music/follow.ogg");
+        musicMap["level5_2"].openFromFile("Resources/Music/follow.ogg");
+        musicMap["level5_3"].openFromFile("Resources/Music/follow.ogg");
 
 
     //SOUNDS
@@ -116,6 +116,7 @@ void SoundManager::load(){
     if(!soundBuffers[i].loadFromFile("Resources/Sounds/270328__littlerobotsoundfactory__hero-death-00.ogg")){ std::cout << "Fail on die" << std::endl;};
     soundMap["playerDeath"].setBuffer(soundBuffers[i]); ++i;
 
+    std::cout << "sounds loaded" << std::endl;
 }
 
 
