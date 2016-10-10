@@ -107,7 +107,8 @@ void Game::loadScenes() {
     _scenes.insert(std::make_pair("End2", new SceneTemporal(this, &_window, "End3", 4, "", "credits/credits2.png")));
     _scenes.insert(std::make_pair("End3", new SceneTemporal(this, &_window, "End4", 4, "", "credits/credits3.png")));
     _scenes.insert(std::make_pair("End4", new SceneTemporal(this, &_window, "End5", 4, "", "credits/credits4.png")));
-    _scenes.insert(std::make_pair("End5", new SceneTemporal(this, &_window, "EndEnd", 4, "", "credits/credits5.png")));
+    _scenes.insert(std::make_pair("End5", new SceneTemporal(this, &_window, "End6", 4, "", "credits/credits5.png")));
+    _scenes.insert(std::make_pair("End6", new SceneTemporal(this, &_window, "EndEnd", 4, "", "credits/credits6.png")));
     _scenes.insert(std::make_pair("EndEnd", new SceneTemporal(this, &_window, "test", 10, "", "End.png")));
 
 
