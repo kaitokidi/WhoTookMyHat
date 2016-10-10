@@ -14,7 +14,7 @@ Game::Game() : _window(sf::VideoMode::getDesktopMode(),"WhoTookMyHat", sf::Style
     initInput();
 
     SoundManager::setGlobalSoundVolumen(100.0f);
-    SoundManager::setGlobalMusicVolumen(100.0f);
+    SoundManager::setGlobalMusicVolumen(20.0f);
     //SoundManager::playMusic("overWorld");
     //SoundManager::setLoop(true, "overWorld");
 
@@ -118,11 +118,9 @@ void Game::loadScenes() {
     std::string scene;
     std::string song;
     std::ifstream myfile ("Resources/Documents/musics.txt");
-    std::cout << "loc " << std::endl;
     if (myfile.is_open()) {
 
         while(line[0] != '$'){
-            std::cout << "nodolar -> " << line << std::endl;
             std::getline (myfile,line);
             while(line[0] == '#') std::getline (myfile,line);
             scene = line;
@@ -132,7 +130,6 @@ void Game::loadScenes() {
             musicmap.emplace_back(scene, song);
         }
     } else std::cout << "could not read from the songs text" << std::endl;
-std::cout << "ended loc " << std::endl;
     myfile.close();
 
     /* previously on how to hardcode music for each scene..

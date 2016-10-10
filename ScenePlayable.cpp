@@ -263,7 +263,7 @@ void scenePlayable::update(float deltaTime){
         for(int i = 0; i < 3; ++i){
             if(_hatshits[i] > 1){
                 SoundManager::playSound("hat2");
-                SoundManager::playMusic(_levelName+"_"+std::to_string(i+1));
+                //SoundManager::playMusic(_levelName+"_"+std::to_string(i+1));
                 if(_enemyPull.empty()) readEnemies(i);
                 _player->setMaxHp(_player->maxHp());
                 _lifeCounter.setScale(0);
