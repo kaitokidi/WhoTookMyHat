@@ -47,7 +47,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
-static const bool DEBUGDRAW = true;
+static const bool DEBUGDRAW = false;
 
 extern int hardmode;
 extern std::string LANGUAGE;
