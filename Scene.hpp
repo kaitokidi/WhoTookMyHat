@@ -2,7 +2,6 @@
 #define __SCENE_HPP__
 
 #include "utils.hpp"
-#include "SceneChanger.hpp"
 
 class Game;
 
