@@ -198,6 +198,8 @@ void Game::initInput() {
     InputManager::bind(InputAction::left,  sf::Keyboard::A);
     InputManager::bind(InputAction::down,  sf::Keyboard::S);
     InputManager::bind(InputAction::right, sf::Keyboard::D);
+    
+    if (InputManager::action(InputAction::down)) moveDown();
 
     InputManager::bind(InputAction::hook,  sf::Keyboard::Space);
     InputManager::bind(InputAction::shoot, sf::Keyboard::LControl);
