@@ -5,7 +5,6 @@
 #include "Scene.hpp"
 #include "Resources.hpp"
 #include "SceneTest.hpp"
-#include "SceneChanger.hpp"
 #include "SceneTemporal.hpp"
 #include "ScenePlayable.hpp"
 #include "SceneCutScene.hpp"
@@ -22,7 +21,7 @@ public:
 
     void start();
 
-    void changeScene(SceneChanger* sC);
+    void changeScene();
     void changeScene(std::string sceneName);
 
     std::string getLANGUAGE() const;
