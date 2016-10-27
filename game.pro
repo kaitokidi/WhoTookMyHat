@@ -11,7 +11,6 @@ SOURCES += main.cpp \
         Resources.cpp \
         Game.cpp \
         Scene.cpp \
-        SceneChanger.cpp \
         Collisionable.cpp \
     	Effect.cpp \
     TextBox.cpp \
@@ -50,7 +49,6 @@ HEADERS += utils.hpp \
         Resources.cpp \
         Game.cpp \
         Scene.hpp \
-        SceneChanger.hpp \
         Collisionable.hpp \
     	Effect.hpp \
     TextBox.hpp \
