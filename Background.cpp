@@ -41,6 +41,8 @@ void Background::draw(sf::RenderTarget *target){
     else if(! _doorOpenedL && ! _doorOpenedR){
         _doors.setTexture(Resources::doors_XX);
     }
+    _doors.setScale(_background.getLocalBounds().width/_doors.getLocalBounds().width,
+                    _background.getLocalBounds().height/_doors.getLocalBounds().height);
     target->draw(_doors);
 
     //DEBUG DRAW RED RECTANGLES

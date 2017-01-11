@@ -34,11 +34,11 @@ public:
     sf::Vector2i getIntersection(sf::Vector2i position, sf::Vector2i mousePos);
     sf::Vector2f getVectorFromCircleColision(sf::Vector2f &direction, sf::Vector2f pos, float rad);
 
+    sf::Texture _bTexture;
 private:
 
 
     sf::Sprite _doors;
-    sf::Texture _bTexture;
     sf::Sprite _background;
 
     std::vector<sf::FloatRect> _boundaries;

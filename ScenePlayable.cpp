@@ -5,13 +5,12 @@
 #include "SceneSelector.hpp"
 #include "ProgressionBar.hpp"
 
-/*
-colisió bullet _hat
-*/
 
 scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string previous, std::string levelName, std::string next, Player *player)
                                                     : Scene(g, w, sceneTypes::testScene, levelName),
+                                                      //TODO set this rect depending on the bg
                                                       _progressionBar(sf::FloatRect(150,10,700,20)),
+                                                      //TODO2 set this position depending on bg and add scale
                                                       _lifeCounter(sf::Vector2f(430,720)) {
     _next = next;
     _hatsOwned = 0;
@@ -28,7 +27,7 @@ void scenePlayable::init(sf::Vector2f){
     readLVL(_levelName);
     _timer = 0;
     _view = _window->getDefaultView();
-    initView(&_view, sf::Vector2i(1024,768));
+    initView(&_view, sf::Vector2i(bg._bTexture.getSize()));
 
     _shootTimer = 0;
 
@@ -213,7 +212,7 @@ void scenePlayable::update(float deltaTime){
         _hats[0].setPosition(300,150); _hats[1].setPosition(500,150); _hats[2].setPosition(700,150);
 
         if(_player->getPosition().y > 666){//està a terra
-            if(bg._doorOpenedR && _player->getPosition().x > 948) {
+            if(bg._doorOpenedR && _player->getPosition().x > bg._bTexture.getSize().x - 40) {
                 if (_player->getPosition().x < 1024+_player->getRadius()+50 ) {
                     _player->moveOut(90*deltaTime);
                     _bullets.clear();

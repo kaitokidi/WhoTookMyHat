@@ -1,5 +1,5 @@
 cave5
-0
+3
 hat13.png
 hat14.png
 hat15.png
@@ -8,8 +8,8 @@ timer
 170
 500
 spawn
-514
-50
+1000
+200
 enemies
 0
 w w s b s b w s b s w b s b s

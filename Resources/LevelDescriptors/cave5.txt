@@ -6,29 +6,27 @@ OO
 boundaries
 next
 #limit left
--
-400
 0
-440
-770
+0
+40
+1600
 next
 #limit top
 0
--
-400
-1024
-440
+0
+2048
+80
 next
 #limit bot
 0
-702
-1024
-800
+1530
+2048
+1590
 next
 #limit right
-984
+2012
 0
-400
-770
+2080
+1600
 end
 $ End Of Description File
