@@ -3,7 +3,7 @@
 #define ANIMTIMER 0.10
 #define HITEDTIMER 0.91
 #define ENEMROTATION 40
-#define ENEMYMAXHP 4
+#define ENEMYMAXHP 5
 
 Enemy::Enemy(){
 

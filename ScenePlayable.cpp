@@ -9,9 +9,10 @@
 scenePlayable::scenePlayable(Game *g, sf::RenderWindow *w, std::string previous, std::string levelName, std::string next, Player *player)
                                                     : Scene(g, w, sceneTypes::testScene, levelName),
                                                       //TODO set this rect depending on the bg
-                                                      _progressionBar(sf::FloatRect(150,10,700,20)),
+                                                      _progressionBar(sf::FloatRect(0,0,0,0)),
                                                       //TODO2 set this position depending on bg and add scale
-                                                      _lifeCounter(sf::Vector2f(430,720)) {
+                                                      _lifeCounter(sf::Vector2f(0,0)) {
+
     _next = next;
     _hatsOwned = 0;
     _player = player;
@@ -28,6 +29,13 @@ void scenePlayable::init(sf::Vector2f){
     _timer = 0;
     _view = _window->getDefaultView();
     initView(&_view, sf::Vector2i(bg._bTexture.getSize()));
+
+    _progressionBar = ProgressionBar(sf::FloatRect(150* float(bg._bTexture.getSize().x)/1024.f,
+                                  10 * float(bg._bTexture.getSize().y)/768.f,
+                                  700* float(bg._bTexture.getSize().x)/1024.f,
+                                  20 * float(bg._bTexture.getSize().y)/768.f));
+
+    _lifeCounter = LifeCounter(sf::Vector2f(430*bg._bTexture.getSize().x/1024,720 * bg._bTexture.getSize().y/768));
 
     _shootTimer = 0;
 
@@ -211,9 +219,10 @@ void scenePlayable::update(float deltaTime){
         //Set selection Hats
         _hats[0].setPosition(300,150); _hats[1].setPosition(500,150); _hats[2].setPosition(700,150);
 
-        if(_player->getPosition().y > 666){//està a terra
-            if(bg._doorOpenedR && _player->getPosition().x > bg._bTexture.getSize().x - 40) {
-                if (_player->getPosition().x < 1024+_player->getRadius()+50 ) {
+        float factor = bg._bTexture.getSize().x/1024;
+        /*if(_player->getPosition().y > 500*factor){//està a terra
+            if(bg._doorOpenedR && _player->getPosition().x > bg._bTexture.getSize().x - 40*factor) {
+                if (_player->getPosition().x < 1024*factor+_player->getRadius()+50 ) {
                     _player->moveOut(90*deltaTime);
                     _bullets.clear();
                 }
@@ -234,6 +243,30 @@ void scenePlayable::update(float deltaTime){
             }
             else _player->update(deltaTime, sf::Vector2i(_window->mapPixelToCoords(sf::Mouse::getPosition((*_window)),_view)), &bg);
         } else   _player->update(deltaTime, sf::Vector2i(_window->mapPixelToCoords(sf::Mouse::getPosition((*_window)),_view)), &bg);
+*/
+        if(_player->getPosition().y > 666*factor){//està a terra
+                    if(bg._doorOpenedR && _player->getPosition().x > 948*factor) {
+                        if (_player->getPosition().x < 1024*factor+_player->getRadius()+50) {
+                            _player->moveOut(90*factor*deltaTime);
+                            _bullets.clear();
+                        }
+                        else {
+                            _player->setPosition(76, 666);
+                            changeScene(_next);//move to next LVL
+                        }
+
+                    }
+                    else if(bg._doorOpenedL && _player->getPosition().x < 76*factor) {
+                        if(_player->getPosition().x > 0-_player->getRadius()-50*factor){
+                            _player->moveOut(-90*deltaTime);
+                            _bullets.clear();
+                        }else {
+                            _player->setPosition(947,666);
+                            changeScene(_prev);
+                        }
+                    }
+                    else _player->update(deltaTime, sf::Vector2i(_window->mapPixelToCoords(sf::Mouse::getPosition((*_window)),_view)), &bg);
+                } else   _player->update(deltaTime, sf::Vector2i(_window->mapPixelToCoords(sf::Mouse::getPosition((*_window)),_view)), &bg);
 
         //Update Bullets
         for(auto it = _bullets.begin(); it != _bullets.end();){
@@ -266,6 +299,7 @@ void scenePlayable::update(float deltaTime){
                 if(_enemyPull.empty()) readEnemies(i);
                 _player->setMaxHp(_player->maxHp());
                 _lifeCounter.setScale(0);
+                _lifeCounter.setScale(bg._bTexture.getSize().x/1024);
                 _lifeCounter.setLifes(_player->maxHp(), false);
                 _player->setHat(_hats[i]);
                 _progressionBar.SetMaxTime(_caveTimer[i]);
@@ -432,7 +466,10 @@ void scenePlayable::processInput(){
 
     InputManager::update();
 
-    if( InputManager::action(InputAction::shoot) > 0 && _shootTimer > constant::shootMaxTime){
+    float slowShootRatio = 1;
+    if(_picking) slowShootRatio = 4;
+
+    if( InputManager::action(InputAction::shoot) > 0 && _shootTimer > constant::shootMaxTime*slowShootRatio){
         SoundManager::playSound("shoot");
         _shootTimer = 0;
         Bullet b;

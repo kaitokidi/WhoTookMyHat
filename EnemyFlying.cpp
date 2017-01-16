@@ -2,7 +2,7 @@
 #define MOVEMENT 80
 
 EnemyFlying::EnemyFlying(){
-    _hp = 3;
+    _hp = 4;
     _objective.x = -1;
     _objective.y = -1;
     init();

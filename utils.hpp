@@ -2,8 +2,8 @@
 #define __UTILS_HPP__
 
 #define FRAMERATE 60
-#define PLAYERHPHARD 3
-#define PLAYERHPNORMAL 5
+#define PLAYERHPHARD 2
+#define PLAYERHPNORMAL 4
 
 #define DATAPATH "Resources/Data/"
 #define TEXTPATH "Resources/Texts/"
@@ -161,7 +161,7 @@ namespace constant{
     static const float playerJump = 850;
     static const float playerSpeed = 20;
     static const float playerRadious = 30;
-    static const float shootMaxTime = 0.8;
+    static const float shootMaxTime = 0.2;
     static const float playerMaxSpeed = 4.5;
 }
 

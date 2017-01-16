@@ -18,10 +18,10 @@ next
 80
 next
 #limit bot
-0
-1530
-2048
-1590
+70
+1395
+1905
+140
 next
 #limit right
 2012
