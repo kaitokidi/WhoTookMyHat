@@ -256,8 +256,8 @@ void scenePlayable::update(float deltaTime){
                         }
 
                     }
-                    else if(bg._doorOpenedL && _player->getPosition().x < 76*factor) {
-                        if(_player->getPosition().x > 0-_player->getRadius()-50*factor){
+                    else if(bg._doorOpenedL && _player->getPosition().x < 76) {
+                        if(_player->getPosition().x > 0-_player->getRadius()-50){
                             _player->moveOut(-90*deltaTime);
                             _bullets.clear();
                         }else {
